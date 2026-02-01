@@ -924,6 +924,7 @@
             <button class="btn-icon" id="exportBtn">📤 Exportar</button>
             <button class="btn-icon" id="importBtn">📥 Importar</button>
             <input type="file" id="importFile" accept=".json" style="display: none;">
+            <button class="btn-icon" id="resetBtn" title="Recargar datos desde el servidor">🔄 Resetear</button>
             <div class="theme-toggle" id="themeToggle">
                 <span class="theme-label">Tema</span>
                 <div class="theme-toggle-track">
@@ -1828,6 +1829,32 @@
                 e.target.value = '';
             }
         });
+
+        // Reset data from server
+        async function resetData() {
+            if (confirm('¿Estás seguro?\n\nEsto borrará tus datos locales y recargará desde el servidor.\n\nSi has hecho cambios locales que no has exportado, se perderán.')) {
+                // Clear localStorage
+                localStorage.removeItem(STORAGE_KEY);
+                
+                // Reload from JSON
+                const jsonData = await loadFromJSON();
+                if (jsonData) {
+                    libros = jsonData;
+                    saveData(libros);
+                    initFilters();
+                    filterAndSortBooks();
+                    if (chartsInitialized) {
+                        destroyCharts();
+                        initCharts();
+                    }
+                    showToast('Datos recargados desde el servidor');
+                } else {
+                    showToast('Error al cargar datos del servidor', 'error');
+                }
+            }
+        }
+
+        document.getElementById('resetBtn').addEventListener('click', resetData);
 
         // Initialize app
         initApp();
