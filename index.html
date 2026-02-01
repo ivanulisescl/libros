@@ -1103,12 +1103,20 @@
     </div>
 
     <script>
-        // Storage key
-        const STORAGE_KEY = 'biblioteca_libros_v5';
+        // Storage key - CHANGE THIS TO FORCE RELOAD
+        const STORAGE_KEY = 'biblioteca_libros_v6';
         const JSON_URL = 'libros.json';
 
         // Current data
         let libros = [];
+
+        // Clean old localStorage versions on load
+        (function cleanOldStorage() {
+            ['biblioteca_libros', 'biblioteca_libros_v2', 'biblioteca_libros_v3', 
+             'biblioteca_libros_v4', 'biblioteca_libros_v5'].forEach(key => {
+                localStorage.removeItem(key);
+            });
+        })();
 
         // Save data to localStorage
         function saveData(data) {
@@ -1118,10 +1126,16 @@
         // Load data from JSON file
         async function loadFromJSON() {
             try {
-                const response = await fetch(JSON_URL + '?t=' + Date.now()); // Cache bust
+                const url = JSON_URL + '?v=' + Date.now();
+                console.log('Fetching:', url);
+                const response = await fetch(url);
+                console.log('Response status:', response.status);
                 if (response.ok) {
                     const data = await response.json();
-                    return data.libros || data;
+                    console.log('JSON data:', data);
+                    const result = data.libros || data;
+                    console.log('Parsed libros:', result.length);
+                    return result;
                 }
             } catch (e) {
                 console.error('Error cargando JSON:', e);
@@ -1161,13 +1175,15 @@
         // Initialize the app
         async function initApp() {
             try {
+                console.log('Iniciando app...');
                 libros = await loadData();
-                console.log('Libros cargados:', libros.length);
+                console.log('Total libros cargados:', libros.length);
                 initFilters();
                 initViewToggle();
                 initThemeToggle();
                 initStatsToggle();
                 filterAndSortBooks();
+                console.log('App inicializada correctamente');
             } catch (e) {
                 console.error('Error inicializando app:', e);
             }
@@ -1854,6 +1870,7 @@
                 localStorage.removeItem('biblioteca_libros_v2');
                 localStorage.removeItem('biblioteca_libros_v3');
                 localStorage.removeItem('biblioteca_libros_v4');
+                localStorage.removeItem('biblioteca_libros_v5');
                 
                 // Reload from JSON
                 try {
