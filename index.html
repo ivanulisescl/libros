@@ -1199,17 +1199,20 @@
     </div>
 
     <script>
-        // Storage key - CHANGE THIS TO FORCE RELOAD
-        const STORAGE_KEY = 'biblioteca_libros_v6';
-        const JSON_URL = 'libros.json';
+        // Storage keys
+        const STORAGE_KEY = 'biblioteca_libros_v7';
+        const PROXIMAS_KEY = 'biblioteca_proximas_v2';
+        const JSON_URL = 'mi_biblioteca.json';
 
         // Current data
         let libros = [];
+        let proximasLecturas = [];
 
         // Clean old localStorage versions on load
         (function cleanOldStorage() {
             ['biblioteca_libros', 'biblioteca_libros_v2', 'biblioteca_libros_v3', 
-             'biblioteca_libros_v4', 'biblioteca_libros_v5'].forEach(key => {
+             'biblioteca_libros_v4', 'biblioteca_libros_v5', 'biblioteca_libros_v6',
+             'biblioteca_proximas_v1'].forEach(key => {
                 localStorage.removeItem(key);
             });
         })();
@@ -1219,19 +1222,20 @@
             localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
         }
 
-        // Load data from JSON file
+        function saveProximas(data) {
+            localStorage.setItem(PROXIMAS_KEY, JSON.stringify(data));
+        }
+
+        // Load all data from mi_biblioteca.json
         async function loadFromJSON() {
             try {
                 const url = JSON_URL + '?v=' + Date.now();
                 console.log('Fetching:', url);
                 const response = await fetch(url);
-                console.log('Response status:', response.status);
                 if (response.ok) {
                     const data = await response.json();
-                    console.log('JSON data:', data);
-                    const result = data.libros || data;
-                    console.log('Parsed libros:', result.length);
-                    return result;
+                    console.log('JSON cargado:', data.libros?.length, 'libros,', data.proximas?.length, 'próximas');
+                    return data;
                 }
             } catch (e) {
                 console.error('Error cargando JSON:', e);
@@ -1239,86 +1243,67 @@
             return null;
         }
 
-        // Load data: localStorage first, then JSON file
+        // Load libros: localStorage first, then JSON file
         async function loadData() {
-            // Check localStorage first
             const stored = localStorage.getItem(STORAGE_KEY);
             if (stored) {
                 try {
                     const parsed = JSON.parse(stored);
                     if (parsed && Array.isArray(parsed) && parsed.length > 0) {
-                        console.log('Datos cargados desde localStorage:', parsed.length);
+                        console.log('Libros desde localStorage:', parsed.length);
                         return parsed;
                     }
-                } catch (e) {
-                    console.error('Error parseando localStorage:', e);
-                }
+                } catch (e) {}
             }
-            
-            // Try to load from JSON file
-            console.log('Intentando cargar desde JSON...');
-            const jsonData = await loadFromJSON();
-            if (jsonData && Array.isArray(jsonData) && jsonData.length > 0) {
-                console.log('Datos cargados desde JSON:', jsonData.length);
-                saveData(jsonData);
-                return jsonData;
-            }
-            
-            console.log('No se pudieron cargar datos');
-            return [];
+            return null; // Will be loaded from JSON in initApp
         }
 
-        // ========== PRÓXIMAS LECTURAS - Variables y funciones de carga ==========
-        const PROXIMAS_KEY = 'biblioteca_proximas_v1';
-        const PROXIMAS_URL = 'proximas.json';
-        let proximasLecturas = [];
-
-        // Load próximas from JSON file
-        async function loadProximasFromJSON() {
-            try {
-                const response = await fetch(PROXIMAS_URL + '?v=' + Date.now());
-                if (response.ok) {
-                    const data = await response.json();
-                    return data.proximas || data;
-                }
-            } catch (e) {
-                console.error('Error cargando próximas:', e);
-            }
-            return null;
-        }
-
-        // Save próximas to localStorage
-        function saveProximas(data) {
-            localStorage.setItem(PROXIMAS_KEY, JSON.stringify(data));
-        }
-
-        // Load próximas: localStorage first, then JSON
+        // Load próximas: localStorage first, then JSON file
         async function loadProximas() {
             const stored = localStorage.getItem(PROXIMAS_KEY);
             if (stored) {
                 try {
                     const parsed = JSON.parse(stored);
                     if (parsed && Array.isArray(parsed) && parsed.length > 0) {
+                        console.log('Próximas desde localStorage:', parsed.length);
                         return parsed;
                     }
                 } catch (e) {}
             }
-            const jsonData = await loadProximasFromJSON();
-            if (jsonData && Array.isArray(jsonData) && jsonData.length > 0) {
-                saveProximas(jsonData);
-                return jsonData;
-            }
-            return [];
+            return null; // Will be loaded from JSON in initApp
         }
 
         // Initialize the app
         async function initApp() {
             try {
                 console.log('Iniciando app...');
+                
+                // Try localStorage first
                 libros = await loadData();
                 proximasLecturas = await loadProximas();
-                console.log('Total libros cargados:', libros.length);
-                console.log('Total próximas cargadas:', proximasLecturas.length);
+                
+                // If either is empty, load from JSON
+                if (!libros || !proximasLecturas) {
+                    const jsonData = await loadFromJSON();
+                    if (jsonData) {
+                        if (!libros && jsonData.libros) {
+                            libros = jsonData.libros;
+                            saveData(libros);
+                        }
+                        if (!proximasLecturas && jsonData.proximas) {
+                            proximasLecturas = jsonData.proximas;
+                            saveProximas(proximasLecturas);
+                        }
+                    }
+                }
+                
+                // Ensure arrays
+                libros = libros || [];
+                proximasLecturas = proximasLecturas || [];
+                
+                console.log('Total libros:', libros.length);
+                console.log('Total próximas:', proximasLecturas.length);
+                
                 initFilters();
                 initViewToggle();
                 initThemeToggle();
@@ -2023,27 +2008,29 @@
         // Reset data from server
         async function resetData() {
             if (confirm('¿Estás seguro?\n\nEsto borrará tus datos locales y recargará desde el servidor.\n\nSi has hecho cambios locales que no has exportado, se perderán.')) {
-                // Clear all localStorage versions
+                // Clear localStorage
                 localStorage.removeItem(STORAGE_KEY);
-                localStorage.removeItem('biblioteca_libros');
-                localStorage.removeItem('biblioteca_libros_v2');
-                localStorage.removeItem('biblioteca_libros_v3');
-                localStorage.removeItem('biblioteca_libros_v4');
-                localStorage.removeItem('biblioteca_libros_v5');
+                localStorage.removeItem(PROXIMAS_KEY);
                 
                 // Reload from JSON
                 try {
                     const jsonData = await loadFromJSON();
-                    if (jsonData && jsonData.length > 0) {
-                        libros = jsonData;
-                        saveData(libros);
+                    if (jsonData) {
+                        if (jsonData.libros) {
+                            libros = jsonData.libros;
+                            saveData(libros);
+                        }
+                        if (jsonData.proximas) {
+                            proximasLecturas = jsonData.proximas;
+                            saveProximas(proximasLecturas);
+                        }
                         initFilters();
                         filterAndSortBooks();
                         if (chartsInitialized) {
                             destroyCharts();
                             initCharts();
                         }
-                        showToast(`Datos recargados: ${libros.length} libros`);
+                        showToast(`Recargados: ${libros.length} libros + ${proximasLecturas.length} próximas`);
                     } else {
                         showToast('Error: No se encontraron datos en el servidor', 'error');
                     }
