@@ -1,0 +1,1903 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Biblioteca Personal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent-light: #ff6b6b;
+            --text: #eaeaea;
+            --text-muted: #a0a0a0;
+            --card-bg: #0f0f23;
+            --card-hover: #1a1a3e;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --shadow: rgba(0,0,0,0.3);
+            --border: rgba(255,255,255,0.05);
+            --border-hover: rgba(255,255,255,0.1);
+            --success: #43e97b;
+            --danger: #ff4757;
+            --star: #ffd700;
+        }
+
+        [data-theme="light"] {
+            --primary: #f5f7fa;
+            --secondary: #e8ecf1;
+            --text: #2d3748;
+            --text-muted: #718096;
+            --card-bg: #ffffff;
+            --card-hover: #f7fafc;
+            --shadow: rgba(0,0,0,0.1);
+            --border: rgba(0,0,0,0.08);
+            --border-hover: rgba(0,0,0,0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            min-height: 100vh;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        body:not([data-theme="light"]) {
+            background-image: 
+                radial-gradient(ellipse at 10% 20%, rgba(233, 69, 96, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 90% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 50%);
+        }
+
+        /* Header */
+        header {
+            padding: 2rem 2rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            background: linear-gradient(180deg, var(--secondary) 0%, transparent 100%);
+        }
+
+        .header-left h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-left p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons */
+        .btn-icon {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--card-bg);
+            color: var(--text);
+            padding: 0.7rem 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-icon:hover {
+            border-color: var(--accent);
+            background: var(--card-hover);
+        }
+
+        .btn-icon.primary {
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+        }
+
+        .btn-icon.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-icon.success {
+            background: var(--success);
+            color: #1a1a2e;
+            border: none;
+        }
+
+        .btn-icon.success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(67, 233, 123, 0.4);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--card-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent);
+        }
+
+        .theme-toggle-track {
+            width: 50px;
+            height: 26px;
+            background: var(--secondary);
+            border-radius: 13px;
+            position: relative;
+            transition: background 0.3s ease;
+        }
+
+        .theme-toggle-thumb {
+            width: 22px;
+            height: 22px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        [data-theme="light"] .theme-toggle-thumb {
+            transform: translateX(24px);
+        }
+
+        .theme-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1.5rem;
+            margin: 1rem 2rem;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Charts Section */
+        .charts-section {
+            display: none;
+            padding: 0 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .charts-section.visible {
+            display: block;
+            animation: slideDown 0.4s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .chart-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .chart-card:hover {
+            border-color: var(--border-hover);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .chart-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .chart-container {
+            position: relative;
+            height: 280px;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 0 2rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: none;
+            border-radius: 12px;
+            background: var(--card-bg);
+            color: var(--text);
+            font-size: 1rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(233, 69, 96, 0.2);
+        }
+
+        .search-box::before {
+            content: "🔍";
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1rem;
+        }
+
+        select {
+            padding: 0.8rem 1.2rem;
+            border: none;
+            border-radius: 10px;
+            background: var(--card-bg);
+            color: var(--text);
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        select:hover {
+            border-color: var(--accent);
+            background: var(--card-hover);
+        }
+
+        /* View Toggle */
+        .view-toggle {
+            display: flex;
+            gap: 0.5rem;
+            background: var(--card-bg);
+            padding: 0.3rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .view-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .view-btn.active {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        /* Grid */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.5rem;
+            padding: 0 2rem 3rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* Book Card */
+        .book-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .book-card:nth-child(3n+2)::before { background: var(--gradient-2); }
+        .book-card:nth-child(3n)::before { background: var(--gradient-3); }
+
+        .book-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-hover);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .book-card:hover::before { opacity: 1; }
+        .book-card:hover .book-actions { opacity: 1; }
+
+        .book-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .book-date {
+            font-size: 0.75rem;
+            color: var(--accent);
+            background: rgba(233, 69, 96, 0.15);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .book-pages {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .book-pages span {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .book-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+            color: var(--text);
+        }
+
+        .book-author {
+            font-size: 1rem;
+            color: var(--accent-light);
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+
+        .book-editorial {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: var(--secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .book-editorial::before {
+            content: "📚";
+            font-size: 0.9rem;
+        }
+
+        /* Rating */
+        .book-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.75rem 0;
+        }
+
+        .stars {
+            display: flex;
+            gap: 2px;
+        }
+
+        .star {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .star.filled {
+            color: var(--star);
+        }
+
+        .rating-value {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--star);
+            background: rgba(255, 215, 0, 0.15);
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+        }
+
+        .no-rating {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* Sinopsis & Comments */
+        .book-extras {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .extras-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .extra-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--accent);
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            transition: color 0.2s ease;
+        }
+
+        .extra-toggle:hover {
+            color: var(--accent-light);
+        }
+
+        .extra-toggle.sinopsis-btn {
+            color: #667eea;
+        }
+
+        .extra-toggle.sinopsis-btn:hover {
+            color: #764ba2;
+        }
+
+        .extra-text {
+            display: none;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            padding: 0.75rem;
+            background: var(--secondary);
+            border-radius: 10px;
+            white-space: pre-wrap;
+        }
+
+        .extra-text.visible {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .extra-text.sinopsis {
+            border-left: 3px solid #667eea;
+        }
+
+        .extra-text.comment {
+            border-left: 3px solid var(--accent);
+        }
+
+        .book-actions {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .book-actions button {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-edit {
+            background: rgba(102, 126, 234, 0.2);
+            color: #667eea;
+        }
+
+        .btn-edit:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-delete {
+            background: rgba(255, 71, 87, 0.2);
+            color: #ff4757;
+        }
+
+        .btn-delete:hover {
+            background: #ff4757;
+            color: white;
+        }
+
+        /* List View */
+        .books-grid.list-view {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .books-grid.list-view .book-card {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+
+        .books-grid.list-view .book-header { display: none; }
+        .books-grid.list-view .book-actions { opacity: 1; position: static; }
+        .books-grid.list-view .book-extras { display: none; }
+
+        .books-grid.list-view .book-title {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        .books-grid.list-view .book-author {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+        }
+
+        .books-grid.list-view .book-rating {
+            margin: 0.5rem 0;
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-muted);
+            grid-column: 1 / -1;
+        }
+
+        .no-results h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+            padding: 1rem;
+        }
+
+        .modal-overlay.visible {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 550px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid var(--border);
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--text);
+        }
+
+        .modal-close {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: var(--secondary);
+            color: var(--text);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--secondary);
+            color: var(--text);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-row-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+        }
+
+        /* Star Rating Input */
+        .rating-input {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .rating-input input[type="range"] {
+            flex: 1;
+            -webkit-appearance: none;
+            height: 8px;
+            border-radius: 4px;
+            background: var(--secondary);
+            outline: none;
+        }
+
+        .rating-input input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--star);
+            cursor: pointer;
+        }
+
+        .rating-input input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--star);
+            cursor: pointer;
+            border: none;
+        }
+
+        .rating-display {
+            min-width: 45px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--star);
+            font-size: 1.1rem;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .modal-footer button {
+            flex: 1;
+            padding: 1rem;
+            border-radius: 10px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cancel {
+            background: var(--secondary);
+            color: var(--text);
+        }
+
+        .btn-cancel:hover {
+            background: var(--card-hover);
+        }
+
+        .btn-save {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-save:hover {
+            background: var(--accent-light);
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 1rem 1.5rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 30px var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            z-index: 2000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .toast.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast.success { border-left: 4px solid var(--success); }
+        .toast.error { border-left: 4px solid var(--danger); }
+
+        /* Data info */
+        .data-info {
+            text-align: center;
+            padding: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .book-card {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header { flex-direction: column; text-align: center; }
+            .header-left h1 { font-size: 2rem; }
+            .header-right { justify-content: center; }
+            .stats-bar { gap: 1rem; padding: 1rem; }
+            .stat-value { font-size: 1.5rem; }
+            .controls { flex-direction: column; }
+            .search-box { width: 100%; max-width: none; }
+            .books-grid { grid-template-columns: 1fr; padding: 0 1rem 2rem; }
+            .charts-grid { grid-template-columns: 1fr; }
+            .chart-container { height: 250px; }
+            .form-row, .form-row-3 { grid-template-columns: 1fr; }
+            .book-actions { opacity: 1; }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--primary); }
+        ::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <h1>Mi Biblioteca Personal</h1>
+            <p>Colección de lecturas desde 2023</p>
+        </div>
+        <div class="header-right">
+            <button class="btn-icon success" id="addBookBtn">➕ Añadir Libro</button>
+            <button class="btn-icon primary" id="statsToggle">📊 Estadísticas</button>
+            <button class="btn-icon" id="exportBtn">📤 Exportar</button>
+            <button class="btn-icon" id="importBtn">📥 Importar</button>
+            <input type="file" id="importFile" accept=".json" style="display: none;">
+            <div class="theme-toggle" id="themeToggle">
+                <span class="theme-label">Tema</span>
+                <div class="theme-toggle-track">
+                    <div class="theme-toggle-thumb">🌙</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="stats-bar">
+        <div class="stat">
+            <div class="stat-value" id="totalBooks">0</div>
+            <div class="stat-label">Libros</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value" id="totalPages">0</div>
+            <div class="stat-label">Páginas</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value" id="totalAuthors">0</div>
+            <div class="stat-label">Autores</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value" id="avgRating">-</div>
+            <div class="stat-label">Nota Media</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value" id="totalEditorials">0</div>
+            <div class="stat-label">Editoriales</div>
+        </div>
+    </div>
+
+    <section class="charts-section" id="chartsSection">
+        <div class="charts-grid">
+            <div class="chart-card">
+                <h3 class="chart-title">📅 Libros por Mes</h3>
+                <div class="chart-container"><canvas id="monthlyChart"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <h3 class="chart-title">📆 Libros por Año</h3>
+                <div class="chart-container"><canvas id="yearlyChart"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <h3 class="chart-title">✍️ Top 10 Autores</h3>
+                <div class="chart-container"><canvas id="authorsChart"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <h3 class="chart-title">🏢 Top 10 Editoriales</h3>
+                <div class="chart-container"><canvas id="editorialsChart"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <h3 class="chart-title">⭐ Distribución de Puntuaciones</h3>
+                <div class="chart-container"><canvas id="ratingsChart"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <h3 class="chart-title">📏 Distribución por Extensión</h3>
+                <div class="chart-container"><canvas id="lengthChart"></canvas></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="controls">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Buscar por título, autor o editorial...">
+        </div>
+        <select id="authorFilter"><option value="">Todos los autores</option></select>
+        <select id="editorialFilter"><option value="">Todas las editoriales</option></select>
+        <select id="yearFilter"><option value="">Todos los años</option></select>
+        <select id="ratingFilter">
+            <option value="">Todas las puntuaciones</option>
+            <option value="10">⭐ 10 - Obra maestra</option>
+            <option value="9">⭐ 9+</option>
+            <option value="8">⭐ 8+</option>
+            <option value="7">⭐ 7+</option>
+            <option value="6">⭐ 6+</option>
+            <option value="5">⭐ 5+</option>
+            <option value="0">Sin puntuar</option>
+        </select>
+        <select id="sortFilter">
+            <option value="date-desc">Más recientes</option>
+            <option value="date-asc">Más antiguos</option>
+            <option value="rating-desc">Mejor puntuación</option>
+            <option value="rating-asc">Peor puntuación</option>
+            <option value="title">Título A-Z</option>
+            <option value="author">Autor A-Z</option>
+            <option value="pages-desc">Más páginas</option>
+            <option value="pages-asc">Menos páginas</option>
+        </select>
+        <div class="view-toggle">
+            <button class="view-btn active" data-view="grid" title="Vista cuadrícula">▦</button>
+            <button class="view-btn" data-view="list" title="Vista lista">☰</button>
+        </div>
+    </div>
+
+    <div class="books-grid" id="booksGrid"></div>
+    
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage)</div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modalTitle">Añadir Libro</h2>
+                <button class="modal-close" id="modalClose">×</button>
+            </div>
+            <form id="bookForm">
+                <input type="hidden" id="bookId">
+                <div class="form-group">
+                    <label for="titulo">Título</label>
+                    <input type="text" id="titulo" required placeholder="Ej: Cien años de soledad">
+                </div>
+                <div class="form-group">
+                    <label for="autor">Autor</label>
+                    <input type="text" id="autor" required placeholder="Ej: Gabriel García Márquez">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="mes">Mes de lectura</label>
+                        <select id="mes" required>
+                            <option value="Enero">Enero</option>
+                            <option value="Febrero">Febrero</option>
+                            <option value="Marzo">Marzo</option>
+                            <option value="Abril">Abril</option>
+                            <option value="Mayo">Mayo</option>
+                            <option value="Junio">Junio</option>
+                            <option value="Julio">Julio</option>
+                            <option value="Agosto">Agosto</option>
+                            <option value="Septiembre">Septiembre</option>
+                            <option value="Octubre">Octubre</option>
+                            <option value="Noviembre">Noviembre</option>
+                            <option value="Diciembre">Diciembre</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="anio">Año</label>
+                        <input type="number" id="anio" required min="2000" max="2100" placeholder="2025">
+                    </div>
+                </div>
+                <div class="form-row-3">
+                    <div class="form-group">
+                        <label for="paginas">Páginas</label>
+                        <input type="number" id="paginas" required min="1" placeholder="256">
+                    </div>
+                    <div class="form-group">
+                        <label for="editorial">Editorial</label>
+                        <input type="text" id="editorial" required placeholder="Ej: Anagrama">
+                    </div>
+                    <div class="form-group">
+                        <label for="puntuacion">Puntuación</label>
+                        <div class="rating-input">
+                            <input type="range" id="puntuacion" min="0" max="10" value="0" step="1">
+                            <span class="rating-display" id="ratingDisplay">-</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="sinopsis">Sinopsis (opcional)</label>
+                    <textarea id="sinopsis" placeholder="Resumen o sinopsis del libro..." rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="comentario">Comentarios (opcional)</label>
+                    <textarea id="comentario" placeholder="Tus impresiones sobre el libro..." rows="3"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" id="cancelBtn">Cancelar</button>
+                    <button type="submit" class="btn-save">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <span id="toastIcon">✓</span>
+        <span id="toastMessage">Mensaje</span>
+    </div>
+
+    <script>
+        // Datos iniciales (sin puntuación ni comentarios)
+        const initialData = [
+            {"titulo": "CABALLEROS DE FORTUNA", "autor": "LUIS LANDERO", "fecha": "Octubre de 2023", "paginas": 328, "editorial": "Tusquets Editores SA", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "NOVELA DE AJEDREZ", "autor": "STEFAN ZWEIG", "fecha": "Octubre de 2023", "paginas": 96, "editorial": "Acantilado", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "EL CANDELABRO ENTERRADO", "autor": "STEFAN ZWEIG", "fecha": "Octubre de 2023", "paginas": 144, "editorial": "Acantilado", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "EL ACONTECIMIENTO", "autor": "ANNIE ERNAUX", "fecha": "Octubre de 2023", "paginas": 128, "editorial": "Tusquets Editores SA", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "LA TIERRA MÁS DISPUTADA", "autor": "JOAN B. CULLA", "fecha": "Noviembre de 2023", "paginas": 512, "editorial": "Debate", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "24 HORAS EN LA VIDA DE UNA MUJER", "autor": "STEFAN ZWEIG", "fecha": "Noviembre de 2023", "paginas": 104, "editorial": "Acantilado", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "JOSÉ", "autor": "ARMANDO PALACIO VALDÉS", "fecha": "Diciembre de 2023", "paginas": 240, "editorial": "Cátedra", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "FUNDACIÓN", "autor": "ISAAC ASIMOV", "fecha": "Diciembre de 2023", "paginas": 256, "editorial": "DeBolsillo", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "FUNDACIÓN E IMPERIO", "autor": "ISAAC ASIMOV", "fecha": "Diciembre de 2023", "paginas": 288, "editorial": "DeBolsillo", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "SEGUNDA FUNDACIÓN", "autor": "ISAAC ASIMOV", "fecha": "Diciembre de 2023", "paginas": 256, "editorial": "DeBolsillo", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "DRÁCULA YE TEBERGANU", "autor": "SEGISMUNDO MEANA PÉREZ", "fecha": "Diciembre de 2023", "paginas": 120, "editorial": "Ediciones Trabe", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "LA MALDICIÓN DE LA PITA ROXA", "autor": "JOSÉ RAMÓN OLIVA ALONSO", "fecha": "Diciembre de 2023", "paginas": 180, "editorial": "Autoedición", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "BONES NUECHES, MIO XENERAL", "autor": "JOSÉ RAMÓN LÓPEZ MENÉNDEZ", "fecha": "Diciembre de 2023", "paginas": 215, "editorial": "Trabe", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "MANIAC", "autor": "BENJAMÍN LABATUT", "fecha": "Enero de 2024", "paginas": 400, "editorial": "Anagrama", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "LA FUNDACIÓN", "autor": "ANTONIO BUERO VALLEJO", "fecha": "Enero de 2024", "paginas": 224, "editorial": "Espasa-Calpe", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "AMOK", "autor": "STEFAN ZWEIG", "fecha": "Febrero de 2024", "paginas": 112, "editorial": "Acantilado", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "COMER Y CORRER", "autor": "J. BASULTO Y J. CÁCERES", "fecha": "Febrero de 2024", "paginas": 288, "editorial": "Debate", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "RETRATO DE UN HOMBRE INMADURO", "autor": "LUIS LANDERO", "fecha": "Febrero de 2024", "paginas": 336, "editorial": "Tusquets", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "NIEBLA", "autor": "MIGUEL DE UNAMUNO", "fecha": "Febrero de 2024", "paginas": 304, "editorial": "Cátedra", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "EL MISTERIO DE LA CRIPTA EMBRUJADA", "autor": "EDUARDO MENDOZA", "fecha": "Marzo de 2024", "paginas": 192, "editorial": "Seix Barral", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "EL LABERINTO DE LAS ACEITUNAS", "autor": "EDUARDO MENDOZA", "fecha": "Marzo de 2024", "paginas": 256, "editorial": "Seix Barral", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "SI ESTO ES UN HOMBRE", "autor": "PRIMO LEVI", "fecha": "Abril de 2024", "paginas": 224, "editorial": "Península", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "ALGO SUPUESTAMENTE DIVERTIDO...", "autor": "DAVID FOSTER WALLACE", "fecha": "Abril de 2024", "paginas": 160, "editorial": "DeBolsillo", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "LAS OBRAS INFAMES DE PANCHO MARAMBIO", "autor": "ALFREDO BRYCE ECHENIQUE", "fecha": "Mayo de 2024", "paginas": 320, "editorial": "Anagrama", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "INCÓGNITO: LAS VIDAS SECRETAS...", "autor": "DAVID EAGLEMAN", "fecha": "Junio de 2024", "paginas": 336, "editorial": "Anagrama", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "CONTRA EL TIEMPO", "autor": "LUCIANO CONCHEIRO", "fecha": "Junio de 2024", "paginas": 160, "editorial": "Anagrama", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "ENTRE LÍNEAS: EL CUENTO O LA VIDA", "autor": "LUIS LANDERO", "fecha": "Junio de 2024", "paginas": 208, "editorial": "Tusquets", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "ROMA SOY YO", "autor": "SANTIAGO POSTEGUILLO", "fecha": "Julio de 2024", "paginas": 752, "editorial": "Ediciones B", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "MALDITA ROMA", "autor": "SANTIAGO POSTEGUILLO", "fecha": "Julio de 2024", "paginas": 896, "editorial": "Ediciones B", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "WAKEFIELD", "autor": "NATHANIEL HAWTHORNE", "fecha": "Julio de 2024", "paginas": 64, "editorial": "Nórdica", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "JULIO CÉSAR", "autor": "WILLIAM SHAKESPEARE", "fecha": "Agosto de 2024", "paginas": 160, "editorial": "Alianza Editorial", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "FORTUNA", "autor": "HERNÁN DÍAZ", "fecha": "Agosto de 2024", "paginas": 440, "editorial": "Anagrama", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "GUÍA DEL AUTOESTOPISTA GALÁCTICO", "autor": "DOUGLAS ADAMS", "fecha": "Septiembre de 2024", "paginas": 288, "editorial": "Anagrama", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "EL MÁGICO APRENDIZ", "autor": "LUIS LANDERO", "fecha": "Septiembre de 2024", "paginas": 272, "editorial": "Tusquets", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "EL PAÍS DE LAS ÚLTIMAS COSAS", "autor": "PAUL AUSTER", "fecha": "Septiembre de 2024", "paginas": 208, "editorial": "Anagrama", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "MÚSICA PARA CAMALEONES", "autor": "TRUMAN CAPOTE", "fecha": "Octubre de 2024", "paginas": 304, "editorial": "Anagrama", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "EN LA COLONIA PENITENCIARIA", "autor": "FRANZ KAFKA", "fecha": "Octubre de 2024", "paginas": 80, "editorial": "Alianza", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "EL PEÓN", "autor": "PACO CERDÁ", "fecha": "Octubre de 2024", "paginas": 256, "editorial": "Pepitas de Calabaza", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "LOS ÚLTIMOS. VOCES DE LA LAPONIA...", "autor": "PACO CERDÁ", "fecha": "Noviembre de 2024", "paginas": 176, "editorial": "Pepitas de Calabaza", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "LEVIATÁN", "autor": "PAUL AUSTER", "fecha": "Diciembre de 2024", "paginas": 256, "editorial": "Anagrama", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "14 DE JULIO", "autor": "PACO CERDÁ", "fecha": "Enero de 2025", "paginas": 160, "editorial": "Pepitas de Calabaza", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "PRESENTES", "autor": "PACO CERDÁ", "fecha": "Enero de 2025", "paginas": 224, "editorial": "Alfaguara", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "COMPRENDER EL VINO", "autor": "PEDRO BALLESTEROS TORRES", "fecha": "Febrero de 2025", "paginas": 320, "editorial": "Planeta", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "V13", "autor": "EMMANUEL CARRÈRE", "fecha": "Marzo de 2025", "paginas": 368, "editorial": "Anagrama", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "EL GUITARRISTA", "autor": "LUIS LANDERO", "fecha": "Marzo de 2025", "paginas": 240, "editorial": "Tusquets", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "LA CONQUISTA DE LA FELICIDAD", "autor": "BERTRAND RUSSELL", "fecha": "Abril de 2025", "paginas": 208, "editorial": "DeBolsillo", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "LA VEGETARIANA", "autor": "HAN KANG", "fecha": "Abril de 2025", "paginas": 240, "editorial": "Random House", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "DONDE LAS MUJERES", "autor": "ÁLVARO POMBO", "fecha": "Mayo de 2025", "paginas": 256, "editorial": "Anagrama", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "ANATOMÍA DE UN INSTANTE", "autor": "JAVIER CERCAS", "fecha": "Mayo de 2025", "paginas": 464, "editorial": "Mondadori", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "CIEN AÑOS DE SOLEDAD", "autor": "GABRIEL GARCÍA MÁRQUEZ", "fecha": "Junio de 2025", "paginas": 496, "editorial": "RAE", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "EL LOCO DE DIOS EN EL FIN DEL MUNDO", "autor": "JAVIER CERCAS", "fecha": "Junio de 2025", "paginas": 180, "editorial": "Tusquets", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "COMO AGUA PARA CHOCOLATE", "autor": "LAURA ESQUIVEL", "fecha": "Julio de 2025", "paginas": 256, "editorial": "DeBolsillo", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "LA INCREÍBLE Y TRISTE HISTORIA...", "autor": "GABRIEL GARCÍA MÁRQUEZ", "fecha": "Julio de 2025", "paginas": 160, "editorial": "DeBolsillo", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "LOS DETECTIVES SALVAJES", "autor": "ROBERTO BOLAÑO", "fecha": "Agosto de 2025", "paginas": 640, "editorial": "Anagrama", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "CUMBRES BORRASCOSAS", "autor": "EMILY BRONTË", "fecha": "Agosto de 2025", "paginas": 416, "editorial": "Alba Editorial", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "UN VERDOR TERRIBLE", "autor": "BENJAMÍN LABATUT", "fecha": "Agosto de 2025", "paginas": 216, "editorial": "Anagrama", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "LA PIEDRA DE LA LOCURA", "autor": "BENJAMÍN LABATUT", "fecha": "Septiembre de 2025", "paginas": 80, "editorial": "Anagrama", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "MARIANELA", "autor": "BENITO PÉREZ GALDÓS", "fecha": "Septiembre de 2025", "paginas": 224, "editorial": "Cátedra", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "LA ÚLTIMA FUNCIÓN", "autor": "LUIS LANDERO", "fecha": "Septiembre de 2025", "paginas": 304, "editorial": "Tusquets", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "COMO NOS VENDEN LA MOTO", "autor": "NOAM CHOMSKY", "fecha": "Octubre de 2025", "paginas": 112, "editorial": "Icaria", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "LA SUBASTA DEL LOTE 49", "autor": "THOMAS PYNCHON", "fecha": "Octubre de 2025", "paginas": 208, "editorial": "Tusquets", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "SAL DE TU MENTE Y ENTRA EN TU VIDA", "autor": "STEVEN C. HAYES", "fecha": "Octubre de 2025", "paginas": 240, "editorial": "Paidós", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "SOLDADOS DE SALAMINA", "autor": "JAVIER CERCAS", "fecha": "Diciembre de 2025", "paginas": 216, "editorial": "Tusquets", "puntuacion": null, "comentario": "", "sinopsis": ""},
+            {"titulo": "MAESTROS DE LA FELICIDAD", "autor": "RAFAEL NARBONA", "fecha": "Diciembre de 2025", "paginas": 320, "editorial": "Roca Editorial", "puntuacion": null, "comentario": "", "sinopsis": ""}
+        ];
+
+        // Storage key
+        const STORAGE_KEY = 'biblioteca_libros_v3';
+
+        // Migrate old data if exists
+        function migrateData() {
+            const oldKeys = ['biblioteca_libros', 'biblioteca_libros_v2'];
+            const newData = localStorage.getItem(STORAGE_KEY);
+            
+            if (!newData) {
+                for (const oldKey of oldKeys) {
+                    const oldData = localStorage.getItem(oldKey);
+                    if (oldData) {
+                        const books = JSON.parse(oldData);
+                        // Add new fields to old data
+                        const migrated = books.map(book => ({
+                            ...book,
+                            puntuacion: book.puntuacion ?? null,
+                            comentario: book.comentario ?? "",
+                            sinopsis: book.sinopsis ?? ""
+                        }));
+                        localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
+                        return migrated;
+                    }
+                }
+            }
+            return null;
+        }
+
+        // Load data from localStorage or use initial data
+        function loadData() {
+            // Try migration first
+            const migrated = migrateData();
+            if (migrated) return migrated;
+
+            const stored = localStorage.getItem(STORAGE_KEY);
+            if (stored) {
+                return JSON.parse(stored);
+            }
+            saveData(initialData);
+            return initialData;
+        }
+
+        // Save data to localStorage
+        function saveData(data) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        }
+
+        // Current data
+        let libros = loadData();
+
+        // Chart instances
+        let charts = {};
+        let chartsInitialized = false;
+
+        // Parse date for sorting
+        function parseDate(dateStr) {
+            const months = {
+                'Enero': 0, 'Febrero': 1, 'Marzo': 2, 'Abril': 3,
+                'Mayo': 4, 'Junio': 5, 'Julio': 6, 'Agosto': 7,
+                'Septiembre': 8, 'Octubre': 9, 'Noviembre': 10, 'Diciembre': 11
+            };
+            const parts = dateStr.split(' de ');
+            const month = months[parts[0]];
+            const year = parseInt(parts[1]);
+            return new Date(year, month);
+        }
+
+        // Get unique values
+        function getUniqueValues(arr, key) {
+            return [...new Set(arr.map(item => item[key]))].sort();
+        }
+
+        function getYears(arr) {
+            return [...new Set(arr.map(item => item.fecha.split(' de ')[1]))].sort();
+        }
+
+        // Count occurrences
+        function countBy(arr, key) {
+            return arr.reduce((acc, item) => {
+                acc[item[key]] = (acc[item[key]] || 0) + 1;
+                return acc;
+            }, {});
+        }
+
+        // Get chart colors
+        function getChartColors(count) {
+            const colors = [
+                '#e94560', '#667eea', '#4facfe', '#f093fb', '#00f2fe',
+                '#ff6b6b', '#764ba2', '#f5576c', '#43e97b', '#fa709a',
+                '#fee140', '#6a11cb', '#fc4a1a', '#7f7fd5', '#86a8e7'
+            ];
+            return colors.slice(0, count);
+        }
+
+        function isLightMode() {
+            return document.body.getAttribute('data-theme') === 'light';
+        }
+
+        function getChartTextColor() {
+            return isLightMode() ? '#2d3748' : '#eaeaea';
+        }
+
+        function getChartGridColor() {
+            return isLightMode() ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)';
+        }
+
+        // Render stars
+        function renderStars(rating) {
+            if (rating === null || rating === undefined) {
+                return '<span class="no-rating">Sin puntuar</span>';
+            }
+            const fullStars = Math.floor(rating / 2);
+            const halfStar = rating % 2 >= 1;
+            let html = '<div class="stars">';
+            for (let i = 0; i < 5; i++) {
+                if (i < fullStars) {
+                    html += '<span class="star filled">★</span>';
+                } else if (i === fullStars && halfStar) {
+                    html += '<span class="star filled">★</span>';
+                } else {
+                    html += '<span class="star">☆</span>';
+                }
+            }
+            html += `</div><span class="rating-value">${rating}/10</span>`;
+            return html;
+        }
+
+        // Initialize Charts
+        function initCharts() {
+            const textColor = getChartTextColor();
+            Chart.defaults.color = textColor;
+
+            // Monthly data
+            const monthlyData = {};
+            libros.forEach(book => {
+                const date = parseDate(book.fecha);
+                const key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+                monthlyData[key] = (monthlyData[key] || 0) + 1;
+            });
+            const sortedMonths = Object.keys(monthlyData).sort();
+            const monthLabels = sortedMonths.map(m => {
+                const [year, month] = m.split('-');
+                const monthNames = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+                return `${monthNames[parseInt(month) - 1]} ${year.slice(2)}`;
+            });
+
+            charts.monthly = new Chart(document.getElementById('monthlyChart'), {
+                type: 'line',
+                data: {
+                    labels: monthLabels,
+                    datasets: [{
+                        label: 'Libros',
+                        data: sortedMonths.map(m => monthlyData[m]),
+                        borderColor: '#e94560',
+                        backgroundColor: 'rgba(233, 69, 96, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: '#e94560',
+                        pointRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
+                }
+            });
+
+            // Yearly Chart
+            const yearlyData = countBy(libros.map(b => ({year: b.fecha.split(' de ')[1]})), 'year');
+            const years = Object.keys(yearlyData).sort();
+            
+            charts.yearly = new Chart(document.getElementById('yearlyChart'), {
+                type: 'bar',
+                data: {
+                    labels: years,
+                    datasets: [{
+                        label: 'Libros',
+                        data: years.map(y => yearlyData[y]),
+                        backgroundColor: getChartColors(years.length),
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { y: { beginAtZero: true, ticks: { stepSize: 5 } } }
+                }
+            });
+
+            // Authors Chart
+            const authorCounts = countBy(libros, 'autor');
+            const topAuthors = Object.entries(authorCounts).sort((a, b) => b[1] - a[1]).slice(0, 10);
+
+            charts.authors = new Chart(document.getElementById('authorsChart'), {
+                type: 'bar',
+                data: {
+                    labels: topAuthors.map(a => a[0].length > 20 ? a[0].slice(0, 20) + '...' : a[0]),
+                    datasets: [{
+                        label: 'Libros',
+                        data: topAuthors.map(a => a[1]),
+                        backgroundColor: getChartColors(10),
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { x: { beginAtZero: true, ticks: { stepSize: 1 } } }
+                }
+            });
+
+            // Editorials Chart
+            const editorialCounts = countBy(libros, 'editorial');
+            const topEditorials = Object.entries(editorialCounts).sort((a, b) => b[1] - a[1]).slice(0, 10);
+
+            charts.editorials = new Chart(document.getElementById('editorialsChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: topEditorials.map(e => e[0].length > 18 ? e[0].slice(0, 18) + '...' : e[0]),
+                    datasets: [{ data: topEditorials.map(e => e[1]), backgroundColor: getChartColors(10), borderWidth: 0 }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'right', labels: { boxWidth: 12, padding: 8, font: { size: 11 } } } }
+                }
+            });
+
+            // Ratings Distribution Chart
+            const ratingCounts = {};
+            for (let i = 1; i <= 10; i++) ratingCounts[i] = 0;
+            ratingCounts['Sin puntuar'] = 0;
+            
+            libros.forEach(book => {
+                if (book.puntuacion !== null && book.puntuacion > 0) {
+                    ratingCounts[book.puntuacion]++;
+                } else {
+                    ratingCounts['Sin puntuar']++;
+                }
+            });
+
+            const ratingLabels = [...Array(10).keys()].map(i => i + 1);
+            const ratingData = ratingLabels.map(r => ratingCounts[r]);
+
+            charts.ratings = new Chart(document.getElementById('ratingsChart'), {
+                type: 'bar',
+                data: {
+                    labels: ratingLabels.map(r => `${r}⭐`),
+                    datasets: [{
+                        label: 'Libros',
+                        data: ratingData,
+                        backgroundColor: ratingLabels.map(r => `hsl(${(r - 1) * 12}, 70%, 50%)`),
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
+                }
+            });
+
+            // Length Distribution
+            const lengthRanges = { 'Cortos (<150)': 0, 'Medios (150-300)': 0, 'Largos (300-500)': 0, 'Muy largos (>500)': 0 };
+            libros.forEach(book => {
+                if (book.paginas < 150) lengthRanges['Cortos (<150)']++;
+                else if (book.paginas < 300) lengthRanges['Medios (150-300)']++;
+                else if (book.paginas < 500) lengthRanges['Largos (300-500)']++;
+                else lengthRanges['Muy largos (>500)']++;
+            });
+
+            charts.length = new Chart(document.getElementById('lengthChart'), {
+                type: 'pie',
+                data: {
+                    labels: Object.keys(lengthRanges),
+                    datasets: [{ data: Object.values(lengthRanges), backgroundColor: ['#4facfe', '#667eea', '#e94560', '#f093fb'], borderWidth: 0 }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'right', labels: { boxWidth: 12, padding: 10 } } }
+                }
+            });
+
+            chartsInitialized = true;
+        }
+
+        function destroyCharts() {
+            Object.values(charts).forEach(chart => chart.destroy());
+            charts = {};
+            chartsInitialized = false;
+        }
+
+        function updateChartsTheme() {
+            const textColor = getChartTextColor();
+            const gridColor = getChartGridColor();
+            Object.values(charts).forEach(chart => {
+                chart.options.scales && Object.values(chart.options.scales).forEach(scale => {
+                    scale.ticks = scale.ticks || {};
+                    scale.ticks.color = textColor;
+                    scale.grid = scale.grid || {};
+                    scale.grid.color = gridColor;
+                });
+                if (chart.options.plugins?.legend) {
+                    chart.options.plugins.legend.labels = chart.options.plugins.legend.labels || {};
+                    chart.options.plugins.legend.labels.color = textColor;
+                }
+                chart.update();
+            });
+        }
+
+        // Initialize filters
+        function initFilters() {
+            const authorSelect = document.getElementById('authorFilter');
+            const editorialSelect = document.getElementById('editorialFilter');
+            const yearSelect = document.getElementById('yearFilter');
+
+            authorSelect.innerHTML = '<option value="">Todos los autores</option>';
+            editorialSelect.innerHTML = '<option value="">Todas las editoriales</option>';
+            yearSelect.innerHTML = '<option value="">Todos los años</option>';
+
+            const authors = getUniqueValues(libros, 'autor');
+            const editorials = getUniqueValues(libros, 'editorial');
+            const years = getYears(libros);
+
+            authors.forEach(author => {
+                authorSelect.innerHTML += `<option value="${author}">${author}</option>`;
+            });
+            editorials.forEach(editorial => {
+                editorialSelect.innerHTML += `<option value="${editorial}">${editorial}</option>`;
+            });
+            years.forEach(year => {
+                yearSelect.innerHTML += `<option value="${year}">${year}</option>`;
+            });
+        }
+
+        // Update stats
+        function updateStats(books) {
+            document.getElementById('totalBooks').textContent = books.length;
+            document.getElementById('totalPages').textContent = books.reduce((sum, b) => sum + b.paginas, 0).toLocaleString();
+            document.getElementById('totalAuthors').textContent = getUniqueValues(books, 'autor').length;
+            document.getElementById('totalEditorials').textContent = getUniqueValues(books, 'editorial').length;
+            
+            // Calculate average rating
+            const ratedBooks = books.filter(b => b.puntuacion !== null && b.puntuacion > 0);
+            if (ratedBooks.length > 0) {
+                const avg = ratedBooks.reduce((sum, b) => sum + b.puntuacion, 0) / ratedBooks.length;
+                document.getElementById('avgRating').textContent = avg.toFixed(1);
+            } else {
+                document.getElementById('avgRating').textContent = '-';
+            }
+        }
+
+        // Toggle extra content visibility (sinopsis/comment)
+        function toggleExtra(index, type) {
+            const contentEl = document.getElementById(`${type}-${index}`);
+            const toggleBtn = document.getElementById(`toggle-${type}-${index}`);
+            const icons = { sinopsis: '📖', comment: '💬' };
+            const labels = { sinopsis: 'Sinopsis', comment: 'Comentario' };
+            
+            if (contentEl.classList.contains('visible')) {
+                contentEl.classList.remove('visible');
+                toggleBtn.innerHTML = `${icons[type]} ${labels[type]}`;
+            } else {
+                contentEl.classList.add('visible');
+                toggleBtn.innerHTML = `${icons[type]} Ocultar`;
+            }
+        }
+
+        // Render books
+        function renderBooks(books) {
+            const grid = document.getElementById('booksGrid');
+            
+            if (books.length === 0) {
+                grid.innerHTML = `<div class="no-results"><h3>No se encontraron libros</h3><p>Prueba con otros filtros o añade un nuevo libro</p></div>`;
+                return;
+            }
+
+            grid.innerHTML = books.map((book) => {
+                const realIndex = libros.indexOf(book);
+                const hasSinopsis = book.sinopsis && book.sinopsis.trim() !== '';
+                const hasComment = book.comentario && book.comentario.trim() !== '';
+                const hasExtras = hasSinopsis || hasComment;
+                
+                return `
+                <div class="book-card" data-index="${realIndex}">
+                    <div class="book-actions">
+                        <button class="btn-edit" onclick="editBook(${realIndex})" title="Editar">✏️</button>
+                        <button class="btn-delete" onclick="deleteBook(${realIndex})" title="Eliminar">🗑️</button>
+                    </div>
+                    <div class="book-header">
+                        <span class="book-date">${book.fecha}</span>
+                        <span class="book-pages"><span>${book.paginas}</span> págs.</span>
+                    </div>
+                    <h3 class="book-title">${book.titulo}</h3>
+                    <p class="book-author">${book.autor}</p>
+                    <div class="book-rating">${renderStars(book.puntuacion)}</div>
+                    <span class="book-editorial">${book.editorial}</span>
+                    ${hasExtras ? `
+                    <div class="book-extras">
+                        <div class="extras-buttons">
+                            ${hasSinopsis ? `<button class="extra-toggle sinopsis-btn" id="toggle-sinopsis-${realIndex}" onclick="toggleExtra(${realIndex}, 'sinopsis')">📖 Sinopsis</button>` : ''}
+                            ${hasComment ? `<button class="extra-toggle" id="toggle-comment-${realIndex}" onclick="toggleExtra(${realIndex}, 'comment')">💬 Comentario</button>` : ''}
+                        </div>
+                        ${hasSinopsis ? `<div class="extra-text sinopsis" id="sinopsis-${realIndex}">${book.sinopsis}</div>` : ''}
+                        ${hasComment ? `<div class="extra-text comment" id="comment-${realIndex}">${book.comentario}</div>` : ''}
+                    </div>
+                    ` : ''}
+                </div>
+            `}).join('');
+
+            updateStats(books);
+        }
+
+        // Filter and sort books
+        function filterAndSortBooks() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const authorFilter = document.getElementById('authorFilter').value;
+            const editorialFilter = document.getElementById('editorialFilter').value;
+            const yearFilter = document.getElementById('yearFilter').value;
+            const ratingFilter = document.getElementById('ratingFilter').value;
+            const sortBy = document.getElementById('sortFilter').value;
+
+            let filtered = libros.filter(book => {
+                const matchesSearch = !searchTerm || 
+                    book.titulo.toLowerCase().includes(searchTerm) ||
+                    book.autor.toLowerCase().includes(searchTerm) ||
+                    book.editorial.toLowerCase().includes(searchTerm) ||
+                    (book.sinopsis && book.sinopsis.toLowerCase().includes(searchTerm)) ||
+                    (book.comentario && book.comentario.toLowerCase().includes(searchTerm));
+                const matchesAuthor = !authorFilter || book.autor === authorFilter;
+                const matchesEditorial = !editorialFilter || book.editorial === editorialFilter;
+                const matchesYear = !yearFilter || book.fecha.includes(yearFilter);
+                
+                let matchesRating = true;
+                if (ratingFilter === '0') {
+                    matchesRating = book.puntuacion === null || book.puntuacion === 0;
+                } else if (ratingFilter) {
+                    matchesRating = book.puntuacion !== null && book.puntuacion >= parseInt(ratingFilter);
+                }
+                
+                return matchesSearch && matchesAuthor && matchesEditorial && matchesYear && matchesRating;
+            });
+
+            switch(sortBy) {
+                case 'date-desc': filtered.sort((a, b) => parseDate(b.fecha) - parseDate(a.fecha)); break;
+                case 'date-asc': filtered.sort((a, b) => parseDate(a.fecha) - parseDate(b.fecha)); break;
+                case 'rating-desc': filtered.sort((a, b) => (b.puntuacion || 0) - (a.puntuacion || 0)); break;
+                case 'rating-asc': filtered.sort((a, b) => (a.puntuacion || 0) - (b.puntuacion || 0)); break;
+                case 'title': filtered.sort((a, b) => a.titulo.localeCompare(b.titulo)); break;
+                case 'author': filtered.sort((a, b) => a.autor.localeCompare(b.autor)); break;
+                case 'pages-desc': filtered.sort((a, b) => b.paginas - a.paginas); break;
+                case 'pages-asc': filtered.sort((a, b) => a.paginas - b.paginas); break;
+            }
+
+            renderBooks(filtered);
+        }
+
+        // Toast notification
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const icon = document.getElementById('toastIcon');
+            const msg = document.getElementById('toastMessage');
+            
+            icon.textContent = type === 'success' ? '✓' : '✕';
+            msg.textContent = message;
+            toast.className = `toast ${type} visible`;
+            
+            setTimeout(() => toast.classList.remove('visible'), 3000);
+        }
+
+        // Modal functions
+        function openModal(title = 'Añadir Libro') {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalOverlay').classList.add('visible');
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('visible');
+            document.getElementById('bookForm').reset();
+            document.getElementById('bookId').value = '';
+            document.getElementById('puntuacion').value = 0;
+            updateRatingDisplay(0);
+        }
+
+        function updateRatingDisplay(value) {
+            const display = document.getElementById('ratingDisplay');
+            display.textContent = value == 0 ? '-' : value;
+        }
+
+        // Add book
+        function addBook(book) {
+            libros.push(book);
+            saveData(libros);
+            initFilters();
+            filterAndSortBooks();
+            if (chartsInitialized) {
+                destroyCharts();
+                initCharts();
+            }
+            showToast('Libro añadido correctamente');
+        }
+
+        // Edit book
+        function editBook(index) {
+            const book = libros[index];
+            const [mes, anio] = book.fecha.split(' de ');
+            
+            document.getElementById('bookId').value = index;
+            document.getElementById('titulo').value = book.titulo;
+            document.getElementById('autor').value = book.autor;
+            document.getElementById('mes').value = mes;
+            document.getElementById('anio').value = anio;
+            document.getElementById('paginas').value = book.paginas;
+            document.getElementById('editorial').value = book.editorial;
+            document.getElementById('puntuacion').value = book.puntuacion || 0;
+            document.getElementById('sinopsis').value = book.sinopsis || '';
+            document.getElementById('comentario').value = book.comentario || '';
+            updateRatingDisplay(book.puntuacion || 0);
+            
+            openModal('Editar Libro');
+        }
+
+        // Update book
+        function updateBook(index, book) {
+            libros[index] = book;
+            saveData(libros);
+            initFilters();
+            filterAndSortBooks();
+            if (chartsInitialized) {
+                destroyCharts();
+                initCharts();
+            }
+            showToast('Libro actualizado correctamente');
+        }
+
+        // Delete book
+        function deleteBook(index) {
+            if (confirm('¿Estás seguro de que quieres eliminar este libro?')) {
+                libros.splice(index, 1);
+                saveData(libros);
+                initFilters();
+                filterAndSortBooks();
+                if (chartsInitialized) {
+                    destroyCharts();
+                    initCharts();
+                }
+                showToast('Libro eliminado');
+            }
+        }
+
+        // Export data
+        function exportData() {
+            const dataStr = JSON.stringify({ libros }, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'mi_biblioteca.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast('Datos exportados correctamente');
+        }
+
+        // Import data
+        function importData(file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    if (data.libros && Array.isArray(data.libros)) {
+                        if (confirm(`Se importarán ${data.libros.length} libros. ¿Quieres reemplazar los datos actuales o añadirlos?\n\nAceptar = Reemplazar\nCancelar = Añadir`)) {
+                            libros = data.libros.map(b => ({
+                                ...b,
+                                puntuacion: b.puntuacion ?? null,
+                                comentario: b.comentario ?? "",
+                                sinopsis: b.sinopsis ?? ""
+                            }));
+                        } else {
+                            const newBooks = data.libros.map(b => ({
+                                ...b,
+                                puntuacion: b.puntuacion ?? null,
+                                comentario: b.comentario ?? "",
+                                sinopsis: b.sinopsis ?? ""
+                            }));
+                            libros = [...libros, ...newBooks];
+                        }
+                        saveData(libros);
+                        initFilters();
+                        filterAndSortBooks();
+                        if (chartsInitialized) {
+                            destroyCharts();
+                            initCharts();
+                        }
+                        showToast(`${data.libros.length} libros importados`);
+                    } else {
+                        showToast('Formato de archivo no válido', 'error');
+                    }
+                } catch (err) {
+                    showToast('Error al leer el archivo', 'error');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // View toggle
+        function initViewToggle() {
+            const viewBtns = document.querySelectorAll('.view-btn');
+            const grid = document.getElementById('booksGrid');
+
+            viewBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    viewBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    grid.classList.toggle('list-view', btn.dataset.view === 'list');
+                });
+            });
+        }
+
+        // Theme toggle
+        function initThemeToggle() {
+            const toggle = document.getElementById('themeToggle');
+            const thumb = toggle.querySelector('.theme-toggle-thumb');
+            
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.setAttribute('data-theme', 'light');
+                thumb.textContent = '☀️';
+            }
+
+            toggle.addEventListener('click', () => {
+                const isLight = document.body.getAttribute('data-theme') === 'light';
+                if (isLight) {
+                    document.body.removeAttribute('data-theme');
+                    thumb.textContent = '🌙';
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    document.body.setAttribute('data-theme', 'light');
+                    thumb.textContent = '☀️';
+                    localStorage.setItem('theme', 'light');
+                }
+                if (chartsInitialized) updateChartsTheme();
+            });
+        }
+
+        // Stats toggle
+        function initStatsToggle() {
+            const btn = document.getElementById('statsToggle');
+            const section = document.getElementById('chartsSection');
+
+            btn.addEventListener('click', () => {
+                const isVisible = section.classList.contains('visible');
+                if (isVisible) {
+                    section.classList.remove('visible');
+                    btn.innerHTML = '📊 Estadísticas';
+                } else {
+                    section.classList.add('visible');
+                    btn.innerHTML = '📊 Ocultar';
+                    if (!chartsInitialized) initCharts();
+                }
+            });
+        }
+
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('input', filterAndSortBooks);
+        document.getElementById('authorFilter').addEventListener('change', filterAndSortBooks);
+        document.getElementById('editorialFilter').addEventListener('change', filterAndSortBooks);
+        document.getElementById('yearFilter').addEventListener('change', filterAndSortBooks);
+        document.getElementById('ratingFilter').addEventListener('change', filterAndSortBooks);
+        document.getElementById('sortFilter').addEventListener('change', filterAndSortBooks);
+
+        document.getElementById('addBookBtn').addEventListener('click', () => openModal('Añadir Libro'));
+        document.getElementById('modalClose').addEventListener('click', closeModal);
+        document.getElementById('cancelBtn').addEventListener('click', closeModal);
+        document.getElementById('modalOverlay').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closeModal();
+        });
+
+        document.getElementById('puntuacion').addEventListener('input', (e) => {
+            updateRatingDisplay(e.target.value);
+        });
+
+        document.getElementById('bookForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const puntuacionVal = parseInt(document.getElementById('puntuacion').value);
+            const book = {
+                titulo: document.getElementById('titulo').value.toUpperCase(),
+                autor: document.getElementById('autor').value.toUpperCase(),
+                fecha: `${document.getElementById('mes').value} de ${document.getElementById('anio').value}`,
+                paginas: parseInt(document.getElementById('paginas').value),
+                editorial: document.getElementById('editorial').value,
+                puntuacion: puntuacionVal === 0 ? null : puntuacionVal,
+                sinopsis: document.getElementById('sinopsis').value.trim(),
+                comentario: document.getElementById('comentario').value.trim()
+            };
+            
+            const bookId = document.getElementById('bookId').value;
+            if (bookId !== '') {
+                updateBook(parseInt(bookId), book);
+            } else {
+                addBook(book);
+            }
+            closeModal();
+        });
+
+        document.getElementById('exportBtn').addEventListener('click', exportData);
+        document.getElementById('importBtn').addEventListener('click', () => {
+            document.getElementById('importFile').click();
+        });
+        document.getElementById('importFile').addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                importData(e.target.files[0]);
+                e.target.value = '';
+            }
+        });
+
+        // Initialize
+        initFilters();
+        initViewToggle();
+        initThemeToggle();
+        initStatsToggle();
+        filterAndSortBooks();
+    </script>
+</body>
+</html>

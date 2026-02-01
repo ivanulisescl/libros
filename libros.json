@@ -1,0 +1,452 @@
+{
+  "libros": [
+    {
+      "titulo": "CABALLEROS DE FORTUNA",
+      "autor": "LUIS LANDERO",
+      "fecha": "Octubre de 2023",
+      "paginas": 328,
+      "editorial": "Tusquets Editores SA"
+    },
+    {
+      "titulo": "NOVELA DE AJEDREZ",
+      "autor": "STEFAN ZWEIG",
+      "fecha": "Octubre de 2023",
+      "paginas": 96,
+      "editorial": "Acantilado"
+    },
+    {
+      "titulo": "EL CANDELABRO ENTERRADO",
+      "autor": "STEFAN ZWEIG",
+      "fecha": "Octubre de 2023",
+      "paginas": 144,
+      "editorial": "Acantilado"
+    },
+    {
+      "titulo": "EL ACONTECIMIENTO",
+      "autor": "ANNIE ERNAUX",
+      "fecha": "Octubre de 2023",
+      "paginas": 128,
+      "editorial": "Tusquets Editores SA"
+    },
+    {
+      "titulo": "LA TIERRA MÁS DISPUTADA",
+      "autor": "JOAN B. CULLA",
+      "fecha": "Noviembre de 2023",
+      "paginas": 512,
+      "editorial": "Debate"
+    },
+    {
+      "titulo": "24 HORAS EN LA VIDA DE UNA MUJER",
+      "autor": "STEFAN ZWEIG",
+      "fecha": "Noviembre de 2023",
+      "paginas": 104,
+      "editorial": "Acantilado"
+    },
+    {
+      "titulo": "JOSÉ",
+      "autor": "ARMANDO PALACIO VALDÉS",
+      "fecha": "Diciembre de 2023",
+      "paginas": 240,
+      "editorial": "Cátedra"
+    },
+    {
+      "titulo": "FUNDACIÓN",
+      "autor": "ISAAC ASIMOV",
+      "fecha": "Diciembre de 2023",
+      "paginas": 256,
+      "editorial": "DeBolsillo"
+    },
+    {
+      "titulo": "FUNDACIÓN E IMPERIO",
+      "autor": "ISAAC ASIMOV",
+      "fecha": "Diciembre de 2023",
+      "paginas": 288,
+      "editorial": "DeBolsillo"
+    },
+    {
+      "titulo": "SEGUNDA FUNDACIÓN",
+      "autor": "ISAAC ASIMOV",
+      "fecha": "Diciembre de 2023",
+      "paginas": 256,
+      "editorial": "DeBolsillo"
+    },
+    {
+      "titulo": "DRÁCULA YE TEBERGANU",
+      "autor": "SEGISMUNDO MEANA PÉREZ",
+      "fecha": "Diciembre de 2023",
+      "paginas": 120,
+      "editorial": "Ediciones Trabe"
+    },
+    {
+      "titulo": "LA MALDICIÓN DE LA PITA ROXA",
+      "autor": "JOSÉ RAMÓN OLIVA ALONSO",
+      "fecha": "Diciembre de 2023",
+      "paginas": 180,
+      "editorial": "Autoedición"
+    },
+    {
+      "titulo": "BONES NUECHES, MIO XENERAL",
+      "autor": "JOSÉ RAMÓN LÓPEZ MENÉNDEZ",
+      "fecha": "Diciembre de 2023",
+      "paginas": 215,
+      "editorial": "Trabe"
+    },
+    {
+      "titulo": "MANIAC",
+      "autor": "BENJAMÍN LABATUT",
+      "fecha": "Enero de 2024",
+      "paginas": 400,
+      "editorial": "Anagrama"
+    },
+    {
+      "titulo": "LA FUNDACIÓN",
+      "autor": "ANTONIO BUERO VALLEJO",
+      "fecha": "Enero de 2024",
+      "paginas": 224,
+      "editorial": "Espasa-Calpe"
+    },
+    {
+      "titulo": "AMOK",
+      "autor": "STEFAN ZWEIG",
+      "fecha": "Febrero de 2024",
+      "paginas": 112,
+      "editorial": "Acantilado"
+    },
+    {
+      "titulo": "COMER Y CORRER",
+      "autor": "J. BASULTO Y J. CÁCERES",
+      "fecha": "Febrero de 2024",
+      "paginas": 288,
+      "editorial": "Debate"
+    },
+    {
+      "titulo": "RETRATO DE UN HOMBRE INMADURO",
+      "autor": "LUIS LANDERO",
+      "fecha": "Febrero de 2024",
+      "paginas": 336,
+      "editorial": "Tusquets"
+    },
+    {
+      "titulo": "NIEBLA",
+      "autor": "MIGUEL DE UNAMUNO",
+      "fecha": "Febrero de 2024",
+      "paginas": 304,
+      "editorial": "Cátedra"
+    },
+    {
+      "titulo": "EL MISTERIO DE LA CRIPTA EMBRUJADA",
+      "autor": "EDUARDO MENDOZA",
+      "fecha": "Marzo de 2024",
+      "paginas": 192,
+      "editorial": "Seix Barral"
+    },
+    {
+      "titulo": "EL LABERINTO DE LAS ACEITUNAS",
+      "autor": "EDUARDO MENDOZA",
+      "fecha": "Marzo de 2024",
+      "paginas": 256,
+      "editorial": "Seix Barral"
+    },
+    {
+      "titulo": "SI ESTO ES UN HOMBRE",
+      "autor": "PRIMO LEVI",
+      "fecha": "Abril de 2024",
+      "paginas": 224,
+      "editorial": "Península"
+    },
+    {
+      "titulo": "ALGO SUPUESTAMENTE DIVERTIDO...",
+      "autor": "DAVID FOSTER WALLACE",
+      "fecha": "Abril de 2024",
+      "paginas": 160,
+      "editorial": "DeBolsillo"
+    },
+    {
+      "titulo": "LAS OBRAS INFAMES DE PANCHO MARAMBIO",
+      "autor": "ALFREDO BRYCE ECHENIQUE",
+      "fecha": "Mayo de 2024",
+      "paginas": 320,
+      "editorial": "Anagrama"
+    },
+    {
+      "titulo": "INCÓGNITO: LAS VIDAS SECRETAS...",
+      "autor": "DAVID EAGLEMAN",
+      "fecha": "Junio de 2024",
+      "paginas": 336,
+      "editorial": "Anagrama"
+    },
+    {
+      "titulo": "CONTRA EL TIEMPO",
+      "autor": "LUCIANO CONCHEIRO",
+      "fecha": "Junio de 2024",
+      "paginas": 160,
+      "editorial": "Anagrama"
+    },
+    {
+      "titulo": "ENTRE LÍNEAS: EL CUENTO O LA VIDA",
+      "autor": "LUIS LANDERO",
+      "fecha": "Junio de 2024",
+      "paginas": 208,
+      "editorial": "Tusquets"
+    },
+    {
+      "titulo": "ROMA SOY YO",
+      "autor": "SANTIAGO POSTEGUILLO",
+      "fecha": "Julio de 2024",
+      "paginas": 752,
+      "editorial": "Ediciones B"
+    },
+    {
+      "titulo": "MALDITA ROMA",
+      "autor": "SANTIAGO POSTEGUILLO",
+      "fecha": "Julio de 2024",
+      "paginas": 896,
+      "editorial": "Ediciones B"
+    },
+    {
+      "titulo": "WAKEFIELD",
+      "autor": "NATHANIEL HAWTHORNE",
+      "fecha": "Julio de 2024",
+      "paginas": 64,
+      "editorial": "Nórdica"
+    },
+    {
+      "titulo": "JULIO CÉSAR",
+      "autor": "WILLIAM SHAKESPEARE",
+      "fecha": "Agosto de 2024",
+      "paginas": 160,
+      "editorial": "Alianza Editorial"
+    },
+    {
+      "titulo": "FORTUNA",
+      "autor": "HERNÁN DÍAZ",
+      "fecha": "Agosto de 2024",
+      "paginas": 440,
+      "editorial": "Anagrama"
+    },
+    {
+      "titulo": "GUÍA DEL AUTOESTOPISTA GALÁCTICO",
+      "autor": "DOUGLAS ADAMS",
+      "fecha": "Septiembre de 2024",
+      "paginas": 288,
+      "editorial": "Anagrama"
+    },
+    {
+      "titulo": "EL MÁGICO APRENDIZ",
+      "autor": "LUIS LANDERO",
+      "fecha": "Septiembre de 2024",
+      "paginas": 272,
+      "editorial": "Tusquets"
+    },
+    {
+      "titulo": "EL PAÍS DE LAS ÚLTIMAS COSAS",
+      "autor": "PAUL AUSTER",
+      "fecha": "Septiembre de 2024",
+      "paginas": 208,
+      "editorial": "Anagrama"
+    },
+    {
+      "titulo": "MÚSICA PARA CAMALEONES",
+      "autor": "TRUMAN CAPOTE",
+      "fecha": "Octubre de 2024",
+      "paginas": 304,
+      "editorial": "Anagrama"
+    },
+    {
+      "titulo": "EN LA COLONIA PENITENCIARIA",
+      "autor": "FRANZ KAFKA",
+      "fecha": "Octubre de 2024",
+      "paginas": 80,
+      "editorial": "Alianza"
+    },
+    {
+      "titulo": "EL PEÓN",
+      "autor": "PACO CERDÁ",
+      "fecha": "Octubre de 2024",
+      "paginas": 256,
+      "editorial": "Pepitas de Calabaza"
+    },
+    {
+      "titulo": "LOS ÚLTIMOS. VOCES DE LA LAPONIA...",
+      "autor": "PACO CERDÁ",
+      "fecha": "Noviembre de 2024",
+      "paginas": 176,
+      "editorial": "Pepitas de Calabaza"
+    },
+    {
+      "titulo": "LEVIATÁN",
+      "autor": "PAUL AUSTER",
+      "fecha": "Diciembre de 2024",
+      "paginas": 256,
+      "editorial": "Anagrama"
+    },
+    {
+      "titulo": "14 DE JULIO",
+      "autor": "PACO CERDÁ",
+      "fecha": "Enero de 2025",
+      "paginas": 160,
+      "editorial": "Pepitas de Calabaza"
+    },
+    {
+      "titulo": "PRESENTES",
+      "autor": "PACO CERDÁ",
+      "fecha": "Enero de 2025",
+      "paginas": 224,
+      "editorial": "Alfaguara"
+    },
+    {
+      "titulo": "COMPRENDER EL VINO",
+      "autor": "PEDRO BALLESTEROS TORRES",
+      "fecha": "Febrero de 2025",
+      "paginas": 320,
+      "editorial": "Planeta"
+    },
+    {
+      "titulo": "V13",
+      "autor": "EMMANUEL CARRÈRE",
+      "fecha": "Marzo de 2025",
+      "paginas": 368,
+      "editorial": "Anagrama"
+    },
+    {
+      "titulo": "EL GUITARRISTA",
+      "autor": "LUIS LANDERO",
+      "fecha": "Marzo de 2025",
+      "paginas": 240,
+      "editorial": "Tusquets"
+    },
+    {
+      "titulo": "LA CONQUISTA DE LA FELICIDAD",
+      "autor": "BERTRAND RUSSELL",
+      "fecha": "Abril de 2025",
+      "paginas": 208,
+      "editorial": "DeBolsillo"
+    },
+    {
+      "titulo": "LA VEGETARIANA",
+      "autor": "HAN KANG",
+      "fecha": "Abril de 2025",
+      "paginas": 240,
+      "editorial": "Random House"
+    },
+    {
+      "titulo": "DONDE LAS MUJERES",
+      "autor": "ÁLVARO POMBO",
+      "fecha": "Mayo de 2025",
+      "paginas": 256,
+      "editorial": "Anagrama"
+    },
+    {
+      "titulo": "ANATOMÍA DE UN INSTANTE",
+      "autor": "JAVIER CERCAS",
+      "fecha": "Mayo de 2025",
+      "paginas": 464,
+      "editorial": "Mondadori"
+    },
+    {
+      "titulo": "CIEN AÑOS DE SOLEDAD",
+      "autor": "GABRIEL GARCÍA MÁRQUEZ",
+      "fecha": "Junio de 2025",
+      "paginas": 496,
+      "editorial": "RAE"
+    },
+    {
+      "titulo": "EL LOCO DE DIOS EN EL FIN DEL MUNDO",
+      "autor": "JAVIER CERCAS",
+      "fecha": "Junio de 2025",
+      "paginas": 180,
+      "editorial": "Tusquets"
+    },
+    {
+      "titulo": "COMO AGUA PARA CHOCOLATE",
+      "autor": "LAURA ESQUIVEL",
+      "fecha": "Julio de 2025",
+      "paginas": 256,
+      "editorial": "DeBolsillo"
+    },
+    {
+      "titulo": "LA INCREÍBLE Y TRISTE HISTORIA...",
+      "autor": "GABRIEL GARCÍA MÁRQUEZ",
+      "fecha": "Julio de 2025",
+      "paginas": 160,
+      "editorial": "DeBolsillo"
+    },
+    {
+      "titulo": "LOS DETECTIVES SALVAJES",
+      "autor": "ROBERTO BOLAÑO",
+      "fecha": "Agosto de 2025",
+      "paginas": 640,
+      "editorial": "Anagrama"
+    },
+    {
+      "titulo": "CUMBRES BORRASCOSAS",
+      "autor": "EMILY BRONTË",
+      "fecha": "Agosto de 2025",
+      "paginas": 416,
+      "editorial": "Alba Editorial"
+    },
+    {
+      "titulo": "UN VERDOR TERRIBLE",
+      "autor": "BENJAMÍN LABATUT",
+      "fecha": "Agosto de 2025",
+      "paginas": 216,
+      "editorial": "Anagrama"
+    },
+    {
+      "titulo": "LA PIEDRA DE LA LOCURA",
+      "autor": "BENJAMÍN LABATUT",
+      "fecha": "Septiembre de 2025",
+      "paginas": 80,
+      "editorial": "Anagrama"
+    },
+    {
+      "titulo": "MARIANELA",
+      "autor": "BENITO PÉREZ GALDÓS",
+      "fecha": "Septiembre de 2025",
+      "paginas": 224,
+      "editorial": "Cátedra"
+    },
+    {
+      "titulo": "LA ÚLTIMA FUNCIÓN",
+      "autor": "LUIS LANDERO",
+      "fecha": "Septiembre de 2025",
+      "paginas": 304,
+      "editorial": "Tusquets"
+    },
+    {
+      "titulo": "COMO NOS VENDEN LA MOTO",
+      "autor": "NOAM CHOMSKY",
+      "fecha": "Octubre de 2025",
+      "paginas": 112,
+      "editorial": "Icaria"
+    },
+    {
+      "titulo": "LA SUBASTA DEL LOTE 49",
+      "autor": "THOMAS PYNCHON",
+      "fecha": "Octubre de 2025",
+      "paginas": 208,
+      "editorial": "Tusquets"
+    },
+    {
+      "titulo": "SAL DE TU MENTE Y ENTRA EN TU VIDA",
+      "autor": "STEVEN C. HAYES",
+      "fecha": "Octubre de 2025",
+      "paginas": 240,
+      "editorial": "Paidós"
+    },
+    {
+      "titulo": "SOLDADOS DE SALAMINA",
+      "autor": "JAVIER CERCAS",
+      "fecha": "Diciembre de 2025",
+      "paginas": 216,
+      "editorial": "Tusquets"
+    },
+    {
+      "titulo": "MAESTROS DE LA FELICIDAD",
+      "autor": "RAFAEL NARBONA",
+      "fecha": "Diciembre de 2025",
+      "paginas": 320,
+      "editorial": "Roca Editorial"
+    }
+  ]
+}
