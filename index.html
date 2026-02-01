@@ -935,22 +935,19 @@
             transition: all 0.3s ease;
         }
 
-        .proxima-btn.read {
-            background: var(--success);
-            color: #1a1a2e;
-        }
-
-        .proxima-btn.read:hover {
-            transform: scale(1.05);
-        }
-
-        .proxima-btn.delete {
-            background: var(--danger);
+        .proxima-btn.edit {
+            background: var(--gradient-1);
             color: white;
         }
 
-        .proxima-btn.delete:hover {
+        .proxima-btn.edit:hover {
             transform: scale(1.05);
+        }
+
+        .proxima-has-sinopsis {
+            font-size: 0.75rem;
+            color: var(--accent);
+            margin-top: 0.25rem;
         }
 
         .proximas-empty {
@@ -958,37 +955,6 @@
             padding: 2rem;
             color: var(--text-muted);
             font-style: italic;
-        }
-
-        .proxima-sinopsis-btn {
-            background: none;
-            border: none;
-            color: var(--accent);
-            cursor: pointer;
-            font-size: 0.8rem;
-            padding: 0.25rem 0;
-            margin-top: 0.5rem;
-            transition: opacity 0.3s;
-        }
-
-        .proxima-sinopsis-btn:hover {
-            opacity: 0.7;
-        }
-
-        .proxima-sinopsis {
-            display: none;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-            margin-top: 0.5rem;
-            padding: 0.75rem;
-            background: var(--primary);
-            border-radius: 8px;
-            border-left: 3px solid var(--accent);
-        }
-
-        .proxima-sinopsis.expanded {
-            display: block;
         }
 
         /* Responsive */
@@ -1199,7 +1165,7 @@
         </div>
     </div>
 
-    <!-- Modal Próximas Lecturas -->
+    <!-- Modal Próximas Lecturas - Lista -->
     <div class="modal-overlay" id="proximasOverlay">
         <div class="modal" style="max-width: 650px;">
             <div class="modal-header">
@@ -1207,23 +1173,35 @@
                 <button class="modal-close" id="proximasClose">×</button>
             </div>
             <div id="proximasList" style="margin-bottom: 1rem; max-height: 450px; overflow-y: auto;"></div>
-            <button type="button" class="btn-icon primary" id="showAddProximaBtn" style="width: 100%; margin-bottom: 1rem;">➕ Añadir nuevo libro</button>
-            <form id="proximaForm" style="display: none; border-top: 1px solid var(--border); padding-top: 1rem;">
+            <button type="button" class="btn-icon primary" id="showAddProximaBtn" style="width: 100%;">➕ Añadir nuevo libro</button>
+        </div>
+    </div>
+
+    <!-- Modal Editar/Añadir Próxima Lectura -->
+    <div class="modal-overlay" id="editProximaOverlay">
+        <div class="modal" style="max-width: 550px;">
+            <div class="modal-header">
+                <h2 id="editProximaTitle">Editar Próxima Lectura</h2>
+                <button class="modal-close" id="editProximaClose">×</button>
+            </div>
+            <form id="editProximaForm">
+                <input type="hidden" id="editProximaId">
                 <div class="form-group">
-                    <label for="proximaTitulo">Título</label>
-                    <input type="text" id="proximaTitulo" required placeholder="Título del libro">
+                    <label for="editProximaTitulo">Título</label>
+                    <input type="text" id="editProximaTitulo" required placeholder="Título del libro">
                 </div>
                 <div class="form-group">
-                    <label for="proximaAutor">Autor</label>
-                    <input type="text" id="proximaAutor" required placeholder="Nombre del autor">
+                    <label for="editProximaAutor">Autor</label>
+                    <input type="text" id="editProximaAutor" required placeholder="Nombre del autor">
                 </div>
                 <div class="form-group">
-                    <label for="proximaSinopsis">Sinopsis (opcional)</label>
-                    <textarea id="proximaSinopsis" placeholder="Resumen o descripción del libro..." rows="3"></textarea>
+                    <label for="editProximaSinopsis">Sinopsis (opcional)</label>
+                    <textarea id="editProximaSinopsis" placeholder="Resumen o descripción del libro..." rows="4"></textarea>
                 </div>
-                <div class="modal-footer" style="gap: 0.5rem;">
-                    <button type="button" class="btn-cancel" id="cancelAddProximaBtn">Cancelar</button>
-                    <button type="submit" class="btn-save">Guardar</button>
+                <div class="modal-footer" style="flex-wrap: wrap; gap: 0.5rem;">
+                    <button type="button" class="btn-cancel" id="deleteProximaBtn" style="background: var(--danger); color: white;">🗑️ Eliminar</button>
+                    <button type="button" class="btn-icon success" id="marcarLeidoBtn">✓ Marcar como leído</button>
+                    <button type="submit" class="btn-save">💾 Guardar</button>
                 </div>
             </form>
         </div>
@@ -2082,13 +2060,7 @@
 
         // ========== PRÓXIMAS LECTURAS - UI ==========
 
-        // Toggle sinopsis visibility
-        function toggleProximaSinopsis(index) {
-            const el = document.getElementById(`proxima-sinopsis-${index}`);
-            if (el) {
-                el.classList.toggle('expanded');
-            }
-        }
+        let currentEditProximaIndex = -1;
 
         // Render próximas list
         function renderProximas() {
@@ -2098,85 +2070,123 @@
                 return;
             }
             container.innerHTML = proximasLecturas.map((libro, index) => `
-                <div class="proxima-item">
+                <div class="proxima-item" onclick="editarProxima(${index})" style="cursor: pointer;">
                     <div class="proxima-info">
                         <div class="proxima-titulo">${libro.titulo}</div>
                         <div class="proxima-autor">${libro.autor}</div>
-                        ${libro.sinopsis ? `
-                            <button class="proxima-sinopsis-btn" onclick="toggleProximaSinopsis(${index})">📖 Ver sinopsis</button>
-                            <div class="proxima-sinopsis" id="proxima-sinopsis-${index}">${libro.sinopsis}</div>
-                        ` : ''}
+                        ${libro.sinopsis ? '<div class="proxima-has-sinopsis">📖 Tiene sinopsis</div>' : ''}
                     </div>
                     <div class="proxima-actions">
-                        <button class="proxima-btn read" onclick="marcarLeido(${index})" title="Marcar como leído">✓ Leído</button>
-                        <button class="proxima-btn delete" onclick="eliminarProxima(${index})" title="Eliminar">✕</button>
+                        <button class="proxima-btn edit" onclick="event.stopPropagation(); editarProxima(${index})" title="Editar">✏️ Editar</button>
                     </div>
                 </div>
             `).join('');
         }
 
-        // Show/hide add form
-        function showAddProximaForm() {
-            document.getElementById('proximaForm').style.display = 'block';
-            document.getElementById('showAddProximaBtn').style.display = 'none';
-            document.getElementById('proximaTitulo').focus();
+        // Open edit modal for a próxima
+        function editarProxima(index) {
+            currentEditProximaIndex = index;
+            const libro = proximasLecturas[index];
+            document.getElementById('editProximaTitle').textContent = 'Editar Próxima Lectura';
+            document.getElementById('editProximaId').value = index;
+            document.getElementById('editProximaTitulo').value = libro.titulo;
+            document.getElementById('editProximaAutor').value = libro.autor;
+            document.getElementById('editProximaSinopsis').value = libro.sinopsis || '';
+            document.getElementById('deleteProximaBtn').style.display = 'inline-flex';
+            document.getElementById('marcarLeidoBtn').style.display = 'inline-flex';
+            document.getElementById('editProximaOverlay').classList.add('visible');
         }
 
-        function hideAddProximaForm() {
-            document.getElementById('proximaForm').style.display = 'none';
-            document.getElementById('showAddProximaBtn').style.display = 'block';
-            document.getElementById('proximaForm').reset();
+        // Open add new próxima modal
+        function addNuevaProxima() {
+            currentEditProximaIndex = -1;
+            document.getElementById('editProximaTitle').textContent = 'Añadir Próxima Lectura';
+            document.getElementById('editProximaForm').reset();
+            document.getElementById('editProximaId').value = '';
+            document.getElementById('deleteProximaBtn').style.display = 'none';
+            document.getElementById('marcarLeidoBtn').style.display = 'none';
+            document.getElementById('editProximaOverlay').classList.add('visible');
+            document.getElementById('editProximaTitulo').focus();
         }
 
-        // Add to próximas
-        function addProxima(titulo, autor, sinopsis = '') {
-            proximasLecturas.push({ 
-                titulo: titulo.toUpperCase(), 
+        // Save próxima (add or update)
+        function guardarProxima() {
+            const titulo = document.getElementById('editProximaTitulo').value.trim();
+            const autor = document.getElementById('editProximaAutor').value.trim();
+            const sinopsis = document.getElementById('editProximaSinopsis').value.trim();
+            
+            if (!titulo || !autor) return;
+            
+            const libro = {
+                titulo: titulo.toUpperCase(),
                 autor: autor.toUpperCase(),
-                sinopsis: sinopsis.trim()
-            });
+                sinopsis: sinopsis
+            };
+            
+            if (currentEditProximaIndex >= 0) {
+                proximasLecturas[currentEditProximaIndex] = libro;
+                showToast('Libro actualizado');
+            } else {
+                proximasLecturas.push(libro);
+                showToast('Libro añadido a próximas lecturas');
+            }
+            
             saveProximas(proximasLecturas);
             renderProximas();
-            hideAddProximaForm();
-            showToast('Libro añadido a próximas lecturas');
+            document.getElementById('editProximaOverlay').classList.remove('visible');
         }
 
         // Delete from próximas
-        function eliminarProxima(index) {
-            const libro = proximasLecturas[index];
-            proximasLecturas.splice(index, 1);
+        function eliminarProximaActual() {
+            if (currentEditProximaIndex < 0) return;
+            if (!confirm('¿Eliminar este libro de la lista?')) return;
+            
+            const libro = proximasLecturas[currentEditProximaIndex];
+            proximasLecturas.splice(currentEditProximaIndex, 1);
             saveProximas(proximasLecturas);
             renderProximas();
-            showToast(`"${libro.titulo}" eliminado de la lista`);
+            document.getElementById('editProximaOverlay').classList.remove('visible');
+            showToast(`"${libro.titulo}" eliminado`);
         }
 
         // Mark as read - opens the add book modal with data
-        function marcarLeido(index) {
-            const libro = proximasLecturas[index];
-            // Close próximas modal
+        function marcarLeidoActual() {
+            if (currentEditProximaIndex < 0) return;
+            
+            // Save current form values first
+            const titulo = document.getElementById('editProximaTitulo').value.trim();
+            const autor = document.getElementById('editProximaAutor').value.trim();
+            const sinopsis = document.getElementById('editProximaSinopsis').value.trim();
+            
+            // Close edit modal and próximas modal
+            document.getElementById('editProximaOverlay').classList.remove('visible');
             document.getElementById('proximasOverlay').classList.remove('visible');
+            
             // Open add book modal with pre-filled data
             document.getElementById('modalTitle').textContent = 'Añadir Libro Leído';
             document.getElementById('bookForm').reset();
             document.getElementById('bookId').value = '';
-            document.getElementById('titulo').value = libro.titulo;
-            document.getElementById('autor').value = libro.autor;
-            document.getElementById('sinopsis').value = libro.sinopsis || '';
+            document.getElementById('titulo').value = titulo.toUpperCase();
+            document.getElementById('autor').value = autor.toUpperCase();
+            document.getElementById('sinopsis').value = sinopsis;
+            
             // Set current month/year
             const now = new Date();
             document.getElementById('mes').value = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'][now.getMonth()];
             document.getElementById('anio').value = now.getFullYear();
+            document.getElementById('puntuacion').value = 0;
+            updateRatingDisplay(0);
             document.getElementById('modalOverlay').classList.add('visible');
+            
             // Remove from próximas
-            proximasLecturas.splice(index, 1);
+            proximasLecturas.splice(currentEditProximaIndex, 1);
             saveProximas(proximasLecturas);
         }
 
-        // Próximas modal events
+        // Próximas list modal events
         document.getElementById('proximasBtn').addEventListener('click', async () => {
             proximasLecturas = await loadProximas();
             renderProximas();
-            hideAddProximaForm();
             document.getElementById('proximasOverlay').classList.add('visible');
         });
 
@@ -2190,18 +2200,26 @@
             }
         });
 
-        document.getElementById('showAddProximaBtn').addEventListener('click', showAddProximaForm);
-        document.getElementById('cancelAddProximaBtn').addEventListener('click', hideAddProximaForm);
+        document.getElementById('showAddProximaBtn').addEventListener('click', addNuevaProxima);
 
-        document.getElementById('proximaForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const titulo = document.getElementById('proximaTitulo').value.trim();
-            const autor = document.getElementById('proximaAutor').value.trim();
-            const sinopsis = document.getElementById('proximaSinopsis').value.trim();
-            if (titulo && autor) {
-                addProxima(titulo, autor, sinopsis);
+        // Edit próxima modal events
+        document.getElementById('editProximaClose').addEventListener('click', () => {
+            document.getElementById('editProximaOverlay').classList.remove('visible');
+        });
+
+        document.getElementById('editProximaOverlay').addEventListener('click', (e) => {
+            if (e.target.id === 'editProximaOverlay') {
+                document.getElementById('editProximaOverlay').classList.remove('visible');
             }
         });
+
+        document.getElementById('editProximaForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            guardarProxima();
+        });
+
+        document.getElementById('deleteProximaBtn').addEventListener('click', eliminarProximaActual);
+        document.getElementById('marcarLeidoBtn').addEventListener('click', marcarLeidoActual);
 
         // Initialize app
         initApp();
