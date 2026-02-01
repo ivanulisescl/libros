@@ -694,19 +694,23 @@
     },
     {
       "titulo": "EL HOLOCAUSTO ESPAÑOL",
-      "autor": "PAUL PRESTON"
+      "autor": "PAUL PRESTON",
+      "sinopsis": "«Durante la Guerra Civil española, cerca de 200.000 hombres y mujeres fueron asesinados lejos del frente, ejecutados extrajudicialmente o tras precarios procesos legales, y al menos 300.000 hombres perdieron la vida en los frentes de batalla. Además, un número desconocido de hombres, mujeres y niños fueron víctimas de los bombardeos y los éxodos que siguieron a la ocupación del territorio por parte de las fuerzas militares de Franco. En el conjunto de España, tras la victoria definitiva de los rebeldes a finales de marzo de 1939, alrededor de 20.000 republicanos fueron ejecutados. Muchos más murieron de hambre y enfermedades en las prisiones y los campos de concentración donde se hacinaban en condiciones infrahumanas. Otros sucumbieron a las condiciones esclavistas de los batallones de trabajo. A más de medio millón de refugiados no les quedó otra salida que el exilio, y muchos perecieron en los campos de internamiento franceses. Varios miles acabaron en los campos de exterminio nazis."
     },
     {
       "titulo": "LOS DESTROZOS",
-      "autor": "BRET EASTON ELLIS"
-    },
-    {
-      "titulo": "EL VIAJE ÍNTIMO DE LA LOCURA",
-      "autor": "ROBE INIESTA"
+      "autor": "BRET EASTON ELLIS",
+      "sinopsis": "Los Ángeles, 1981. A sus diecisiete años, Bret está a punto de empezar su último curso de secundaria en Buckley junto a su exclusivo y sofisticado grupo de amigos: Thom, Susan y Debbie, novia de Bret, experimentan con el sexo, el alcohol y las drogas mientras aprovechan los últimos días de verano. Pero este sueño paradisiaco se desmorona con la llegada de un nuevo alumno: Robert Mallory es brillante, guapo y carismático, pero algo en él no encaja, y nadie más que Bret parece darse cuenta de que ese algo podría estar relacionado con la aparición del Arrastrero, un asesino en serie que amenaza a los adolescentes de la ciudad y a sus mascotas."
     },
     {
       "titulo": "COLOQUIOS DE INVIERNO",
-      "autor": "LUIS LANDERO"
+      "autor": "LUIS LANDERO",
+      "sinopsis": "Siete personajes atrapados por un temporal deciden animar la espera contándose historias que nunca antes habían confesado."
+    },
+    {
+      "titulo": "EL VIAJE ÍNTIMO DE LA LOCURA",
+      "autor": "ROBE INIESTA",
+      "sinopsis": "En esta novela, a través de su forma original —y única— de expresarse, nos adentra en una aventura que, además de hacernos soñar, nos permitirá ver el mundo desde una perspectiva diferente."
     }
   ]
 }
