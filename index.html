@@ -1104,10 +1104,10 @@
 
     <script>
         // Storage key
-        const STORAGE_KEY = 'biblioteca_libros_v4';
+        const STORAGE_KEY = 'biblioteca_libros_v5';
         const JSON_URL = 'libros.json';
 
-        // Current data (will be loaded)
+        // Current data
         let libros = [];
 
         // Save data to localStorage
@@ -1118,13 +1118,13 @@
         // Load data from JSON file
         async function loadFromJSON() {
             try {
-                const response = await fetch(JSON_URL);
+                const response = await fetch(JSON_URL + '?t=' + Date.now()); // Cache bust
                 if (response.ok) {
                     const data = await response.json();
                     return data.libros || data;
                 }
             } catch (e) {
-                console.log('No se pudo cargar el JSON, usando datos locales');
+                console.error('Error cargando JSON:', e);
             }
             return null;
         }
@@ -1134,32 +1134,43 @@
             // Check localStorage first
             const stored = localStorage.getItem(STORAGE_KEY);
             if (stored) {
-                const parsed = JSON.parse(stored);
-                // Only use localStorage if it has data
-                if (parsed && parsed.length > 0) {
-                    return parsed;
+                try {
+                    const parsed = JSON.parse(stored);
+                    if (parsed && Array.isArray(parsed) && parsed.length > 0) {
+                        console.log('Datos cargados desde localStorage:', parsed.length);
+                        return parsed;
+                    }
+                } catch (e) {
+                    console.error('Error parseando localStorage:', e);
                 }
             }
             
             // Try to load from JSON file
+            console.log('Intentando cargar desde JSON...');
             const jsonData = await loadFromJSON();
-            if (jsonData && jsonData.length > 0) {
+            if (jsonData && Array.isArray(jsonData) && jsonData.length > 0) {
+                console.log('Datos cargados desde JSON:', jsonData.length);
                 saveData(jsonData);
                 return jsonData;
             }
             
-            // Fallback: empty array
+            console.log('No se pudieron cargar datos');
             return [];
         }
 
         // Initialize the app
         async function initApp() {
-            libros = await loadData();
-            initFilters();
-            initViewToggle();
-            initThemeToggle();
-            initStatsToggle();
-            filterAndSortBooks();
+            try {
+                libros = await loadData();
+                console.log('Libros cargados:', libros.length);
+                initFilters();
+                initViewToggle();
+                initThemeToggle();
+                initStatsToggle();
+                filterAndSortBooks();
+            } catch (e) {
+                console.error('Error inicializando app:', e);
+            }
         }
 
         // Chart instances
@@ -1842,6 +1853,7 @@
                 localStorage.removeItem('biblioteca_libros');
                 localStorage.removeItem('biblioteca_libros_v2');
                 localStorage.removeItem('biblioteca_libros_v3');
+                localStorage.removeItem('biblioteca_libros_v4');
                 
                 // Reload from JSON
                 try {
