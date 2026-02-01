@@ -889,6 +889,77 @@
             animation: fadeInUp 0.5s ease forwards;
         }
 
+        /* Próximas lecturas */
+        .proxima-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: var(--secondary);
+            border-radius: 10px;
+            margin-bottom: 0.75rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .proxima-item:hover {
+            border-color: var(--accent);
+        }
+
+        .proxima-info {
+            flex: 1;
+        }
+
+        .proxima-titulo {
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+        }
+
+        .proxima-autor {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .proxima-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .proxima-btn {
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .proxima-btn.read {
+            background: var(--success);
+            color: #1a1a2e;
+        }
+
+        .proxima-btn.read:hover {
+            transform: scale(1.05);
+        }
+
+        .proxima-btn.delete {
+            background: var(--danger);
+            color: white;
+        }
+
+        .proxima-btn.delete:hover {
+            transform: scale(1.05);
+        }
+
+        .proximas-empty {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             header { flex-direction: column; text-align: center; }
@@ -920,6 +991,7 @@
         </div>
         <div class="header-right">
             <button class="btn-icon success" id="addBookBtn">➕ Añadir Libro</button>
+            <button class="btn-icon" id="proximasBtn" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border: none;">📚 Próximas Lecturas</button>
             <button class="btn-icon primary" id="statsToggle">📊 Estadísticas</button>
             <button class="btn-icon" id="exportBtn">📤 Exportar</button>
             <button class="btn-icon" id="importBtn">📥 Importar</button>
@@ -1091,6 +1163,30 @@
                 <div class="modal-footer">
                     <button type="button" class="btn-cancel" id="cancelBtn">Cancelar</button>
                     <button type="submit" class="btn-save">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Próximas Lecturas -->
+    <div class="modal-overlay" id="proximasOverlay">
+        <div class="modal" style="max-width: 600px;">
+            <div class="modal-header">
+                <h2>📚 Próximas Lecturas</h2>
+                <button class="modal-close" id="proximasClose">×</button>
+            </div>
+            <div id="proximasList" style="margin-bottom: 1.5rem; max-height: 400px; overflow-y: auto;"></div>
+            <form id="proximaForm">
+                <div class="form-group">
+                    <label for="proximaTitulo">Título</label>
+                    <input type="text" id="proximaTitulo" required placeholder="Título del libro">
+                </div>
+                <div class="form-group">
+                    <label for="proximaAutor">Autor</label>
+                    <input type="text" id="proximaAutor" required placeholder="Nombre del autor">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn-save" style="width: 100%;">➕ Añadir a la lista</button>
                 </div>
             </form>
         </div>
@@ -1896,6 +1992,135 @@
         }
 
         document.getElementById('resetBtn').addEventListener('click', resetData);
+
+        // ========== PRÓXIMAS LECTURAS ==========
+        const PROXIMAS_KEY = 'biblioteca_proximas_v1';
+        const PROXIMAS_URL = 'proximas.json';
+        let proximasLecturas = [];
+
+        // Load próximas from JSON file
+        async function loadProximasFromJSON() {
+            try {
+                const response = await fetch(PROXIMAS_URL + '?v=' + Date.now());
+                if (response.ok) {
+                    const data = await response.json();
+                    return data.proximas || data;
+                }
+            } catch (e) {
+                console.error('Error cargando próximas:', e);
+            }
+            return null;
+        }
+
+        // Save próximas to localStorage
+        function saveProximas(data) {
+            localStorage.setItem(PROXIMAS_KEY, JSON.stringify(data));
+        }
+
+        // Load próximas: localStorage first, then JSON
+        async function loadProximas() {
+            const stored = localStorage.getItem(PROXIMAS_KEY);
+            if (stored) {
+                try {
+                    const parsed = JSON.parse(stored);
+                    if (parsed && Array.isArray(parsed) && parsed.length > 0) {
+                        return parsed;
+                    }
+                } catch (e) {}
+            }
+            const jsonData = await loadProximasFromJSON();
+            if (jsonData && Array.isArray(jsonData) && jsonData.length > 0) {
+                saveProximas(jsonData);
+                return jsonData;
+            }
+            return [];
+        }
+
+        // Render próximas list
+        function renderProximas() {
+            const container = document.getElementById('proximasList');
+            if (proximasLecturas.length === 0) {
+                container.innerHTML = '<div class="proximas-empty">No hay libros en la lista</div>';
+                return;
+            }
+            container.innerHTML = proximasLecturas.map((libro, index) => `
+                <div class="proxima-item">
+                    <div class="proxima-info">
+                        <div class="proxima-titulo">${libro.titulo}</div>
+                        <div class="proxima-autor">${libro.autor}</div>
+                    </div>
+                    <div class="proxima-actions">
+                        <button class="proxima-btn read" onclick="marcarLeido(${index})" title="Marcar como leído">✓ Leído</button>
+                        <button class="proxima-btn delete" onclick="eliminarProxima(${index})" title="Eliminar">✕</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Add to próximas
+        function addProxima(titulo, autor) {
+            proximasLecturas.push({ titulo: titulo.toUpperCase(), autor: autor.toUpperCase() });
+            saveProximas(proximasLecturas);
+            renderProximas();
+            showToast('Libro añadido a próximas lecturas');
+        }
+
+        // Delete from próximas
+        function eliminarProxima(index) {
+            const libro = proximasLecturas[index];
+            proximasLecturas.splice(index, 1);
+            saveProximas(proximasLecturas);
+            renderProximas();
+            showToast(`"${libro.titulo}" eliminado de la lista`);
+        }
+
+        // Mark as read - opens the add book modal with data
+        function marcarLeido(index) {
+            const libro = proximasLecturas[index];
+            // Close próximas modal
+            document.getElementById('proximasOverlay').classList.remove('visible');
+            // Open add book modal with pre-filled data
+            document.getElementById('modalTitle').textContent = 'Añadir Libro Leído';
+            document.getElementById('bookForm').reset();
+            document.getElementById('bookId').value = '';
+            document.getElementById('titulo').value = libro.titulo;
+            document.getElementById('autor').value = libro.autor;
+            // Set current month/year
+            const now = new Date();
+            document.getElementById('mes').value = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'][now.getMonth()];
+            document.getElementById('anio').value = now.getFullYear();
+            document.getElementById('modalOverlay').classList.add('visible');
+            // Remove from próximas
+            proximasLecturas.splice(index, 1);
+            saveProximas(proximasLecturas);
+        }
+
+        // Próximas modal events
+        document.getElementById('proximasBtn').addEventListener('click', async () => {
+            proximasLecturas = await loadProximas();
+            renderProximas();
+            document.getElementById('proximasOverlay').classList.add('visible');
+        });
+
+        document.getElementById('proximasClose').addEventListener('click', () => {
+            document.getElementById('proximasOverlay').classList.remove('visible');
+        });
+
+        document.getElementById('proximasOverlay').addEventListener('click', (e) => {
+            if (e.target.id === 'proximasOverlay') {
+                document.getElementById('proximasOverlay').classList.remove('visible');
+            }
+        });
+
+        document.getElementById('proximaForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const titulo = document.getElementById('proximaTitulo').value.trim();
+            const autor = document.getElementById('proximaAutor').value.trim();
+            if (titulo && autor) {
+                addProxima(titulo, autor);
+                document.getElementById('proximaForm').reset();
+            }
+        });
 
         // Initialize app
         initApp();
