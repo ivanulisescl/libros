@@ -1134,12 +1134,16 @@
             // Check localStorage first
             const stored = localStorage.getItem(STORAGE_KEY);
             if (stored) {
-                return JSON.parse(stored);
+                const parsed = JSON.parse(stored);
+                // Only use localStorage if it has data
+                if (parsed && parsed.length > 0) {
+                    return parsed;
+                }
             }
             
             // Try to load from JSON file
             const jsonData = await loadFromJSON();
-            if (jsonData) {
+            if (jsonData && jsonData.length > 0) {
                 saveData(jsonData);
                 return jsonData;
             }
@@ -1833,23 +1837,31 @@
         // Reset data from server
         async function resetData() {
             if (confirm('¿Estás seguro?\n\nEsto borrará tus datos locales y recargará desde el servidor.\n\nSi has hecho cambios locales que no has exportado, se perderán.')) {
-                // Clear localStorage
+                // Clear all localStorage versions
                 localStorage.removeItem(STORAGE_KEY);
+                localStorage.removeItem('biblioteca_libros');
+                localStorage.removeItem('biblioteca_libros_v2');
+                localStorage.removeItem('biblioteca_libros_v3');
                 
                 // Reload from JSON
-                const jsonData = await loadFromJSON();
-                if (jsonData) {
-                    libros = jsonData;
-                    saveData(libros);
-                    initFilters();
-                    filterAndSortBooks();
-                    if (chartsInitialized) {
-                        destroyCharts();
-                        initCharts();
+                try {
+                    const jsonData = await loadFromJSON();
+                    if (jsonData && jsonData.length > 0) {
+                        libros = jsonData;
+                        saveData(libros);
+                        initFilters();
+                        filterAndSortBooks();
+                        if (chartsInitialized) {
+                            destroyCharts();
+                            initCharts();
+                        }
+                        showToast(`Datos recargados: ${libros.length} libros`);
+                    } else {
+                        showToast('Error: No se encontraron datos en el servidor', 'error');
                     }
-                    showToast('Datos recargados desde el servidor');
-                } else {
+                } catch (e) {
                     showToast('Error al cargar datos del servidor', 'error');
+                    console.error(e);
                 }
             }
         }
