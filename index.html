@@ -439,22 +439,6 @@
             font-weight: 500;
         }
 
-        .book-editorial {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            background: var(--secondary);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-        }
-
-        .book-editorial::before {
-            content: "📚";
-            font-size: 0.9rem;
-        }
-
         /* Rating */
         .book-rating {
             display: flex;
@@ -1683,7 +1667,6 @@
                     <h3 class="book-title">${book.titulo}</h3>
                     <p class="book-author">${book.autor}</p>
                     <div class="book-rating">${renderStars(book.puntuacion)}</div>
-                    <span class="book-editorial">${book.editorial}</span>
                     ${hasExtras ? `
                     <div class="book-extras">
                         <div class="extras-buttons">
