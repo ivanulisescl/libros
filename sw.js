@@ -1,10 +1,11 @@
-const CACHE_NAME = 'biblioteca-v2.2';
+const CACHE_NAME = 'biblioteca-v2.3';
 const ASSETS = [
   './',
   './index.html',
   './manifest.json',
   './icon-192.png',
-  './icon-512.png'
+  './icon-512.png',
+  './favicon.ico'
 ];
 
 // Install - cache assets
