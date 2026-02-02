@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Biblioteca Personal</title>
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#e94560">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Biblioteca">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <!-- Fonts & Scripts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -2255,6 +2263,13 @@
 
         document.getElementById('deleteProximaBtn').addEventListener('click', eliminarProximaActual);
         document.getElementById('marcarLeidoBtn').addEventListener('click', marcarLeidoActual);
+
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(() => console.log('Service Worker registrado'))
+                .catch(err => console.log('Error SW:', err));
+        }
 
         // Initialize app
         initApp();
