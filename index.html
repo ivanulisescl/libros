@@ -984,6 +984,235 @@
             font-style: italic;
         }
 
+        /* Leyendo Ahora Section */
+        .leyendo-section {
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            padding: 0 2rem;
+            display: none;
+        }
+
+        .leyendo-section.visible {
+            display: block;
+        }
+
+        .leyendo-card {
+            background: linear-gradient(135deg, var(--card-bg) 0%, var(--secondary) 100%);
+            border: 2px solid var(--accent);
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .leyendo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-2);
+        }
+
+        .leyendo-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .leyendo-titulo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .leyendo-autor {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .leyendo-actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .leyendo-btn {
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .leyendo-btn.cita {
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            color: #1a1a2e;
+        }
+
+        .leyendo-btn.terminado {
+            background: var(--success);
+            color: #1a1a2e;
+        }
+
+        .leyendo-btn.editar {
+            background: var(--gradient-1);
+            color: white;
+        }
+
+        .leyendo-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        /* Modal de opciones */
+        .options-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .options-modal.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .options-modal h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .options-modal p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .options-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .option-btn {
+            padding: 1rem;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .option-btn.empezar {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .option-btn.terminado {
+            background: var(--success);
+            color: #1a1a2e;
+        }
+
+        .option-btn.cancelar {
+            background: var(--secondary);
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+        }
+
+        .option-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Modal añadir cita rápida */
+        .cita-rapida-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid var(--border);
+        }
+
+        .cita-rapida-modal.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .cita-rapida-modal h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .cita-rapida-modal textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--secondary);
+            color: var(--text);
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+            margin-bottom: 1rem;
+        }
+
+        .cita-rapida-modal textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .cita-rapida-actions {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: flex-end;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             header { flex-direction: column; text-align: center; }
@@ -1050,6 +1279,45 @@
         <div class="stat">
             <div class="stat-value" id="totalEditorials">0</div>
             <div class="stat-label">Editoriales</div>
+        </div>
+    </div>
+
+    <!-- Sección Leyendo Ahora -->
+    <section class="leyendo-section" id="leyendoSection">
+        <div class="leyendo-card">
+            <div class="leyendo-header">📖 Leyendo ahora</div>
+            <div class="leyendo-titulo" id="leyendoTitulo"></div>
+            <div class="leyendo-autor" id="leyendoAutor"></div>
+            <div class="leyendo-actions">
+                <button class="leyendo-btn cita" onclick="abrirCitaRapida()">💡 Añadir cita</button>
+                <button class="leyendo-btn terminado" onclick="terminarLectura()">✓ Terminado</button>
+                <button class="leyendo-btn editar" onclick="editarLeyendo()">✏️ Editar</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal opciones al marcar leído -->
+    <div class="modal-overlay" id="opcionesOverlay">
+        <div class="options-modal" id="opcionesModal">
+            <h3>¿Qué quieres hacer?</h3>
+            <p id="opcionesTitulo"></p>
+            <div class="options-buttons">
+                <button class="option-btn empezar" onclick="empezarLectura()">📖 Empezar a leer</button>
+                <button class="option-btn terminado" onclick="yaTerminado()">✓ Ya terminado</button>
+                <button class="option-btn cancelar" onclick="cerrarOpciones()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal añadir cita rápida -->
+    <div class="modal-overlay" id="citaRapidaOverlay">
+        <div class="cita-rapida-modal" id="citaRapidaModal">
+            <h3>💡 Añadir cita</h3>
+            <textarea id="nuevaCita" placeholder="Escribe la cita..."></textarea>
+            <div class="cita-rapida-actions">
+                <button class="btn-icon" onclick="cerrarCitaRapida()">Cancelar</button>
+                <button class="btn-icon primary" onclick="guardarCitaRapida()">Guardar</button>
+            </div>
         </div>
     </div>
 
@@ -1253,6 +1521,9 @@
         // Current data
         let libros = [];
         let proximasLecturas = [];
+        let libroLeyendo = null;
+        let proximaPendiente = null; // Para guardar datos de la próxima lectura temporalmente
+        const LEYENDO_KEY = 'biblioteca_leyendo_v1';
 
         // Clean old localStorage versions on load
         (function cleanOldStorage() {
@@ -1349,6 +1620,10 @@
                 
                 console.log('Total libros:', libros.length);
                 console.log('Total próximas:', proximasLecturas.length);
+                
+                // Load currently reading book
+                loadLeyendo();
+                renderLeyendo();
                 
                 initFilters();
                 initViewToggle();
@@ -2160,6 +2435,18 @@
             
             if (!titulo || !autor) return;
             
+            // Special case: editing "leyendo" book
+            if (currentEditProximaIndex === -999) {
+                libroLeyendo.titulo = titulo.toUpperCase();
+                libroLeyendo.autor = autor.toUpperCase();
+                libroLeyendo.sinopsis = sinopsis;
+                saveLeyendo();
+                renderLeyendo();
+                showToast('Libro actualizado');
+                document.getElementById('editProximaOverlay').classList.remove('visible');
+                return;
+            }
+            
             const libro = {
                 titulo: titulo.toUpperCase(),
                 autor: autor.toUpperCase(),
@@ -2196,22 +2483,75 @@
         function marcarLeidoActual() {
             if (currentEditProximaIndex < 0) return;
             
-            // Save current form values first
+            // Save current form values
             const titulo = document.getElementById('editProximaTitulo').value.trim();
             const autor = document.getElementById('editProximaAutor').value.trim();
             const sinopsis = document.getElementById('editProximaSinopsis').value.trim();
             
-            // Close edit modal and próximas modal
+            // Store data temporarily
+            proximaPendiente = { titulo, autor, sinopsis, index: currentEditProximaIndex };
+            
+            // Close edit modal
             document.getElementById('editProximaOverlay').classList.remove('visible');
+            
+            // Show options modal
+            document.getElementById('opcionesTitulo').textContent = titulo;
+            document.getElementById('opcionesOverlay').classList.add('visible');
+            document.getElementById('opcionesModal').classList.add('visible');
+        }
+
+        function cerrarOpciones() {
+            document.getElementById('opcionesOverlay').classList.remove('visible');
+            document.getElementById('opcionesModal').classList.remove('visible');
+            proximaPendiente = null;
+        }
+
+        function empezarLectura() {
+            if (!proximaPendiente) return;
+            
+            // Si ya hay un libro leyendo, preguntar
+            if (libroLeyendo) {
+                if (!confirm('Ya tienes un libro en lectura. ¿Quieres reemplazarlo?')) {
+                    cerrarOpciones();
+                    return;
+                }
+            }
+            
+            // Set as currently reading
+            libroLeyendo = {
+                titulo: proximaPendiente.titulo.toUpperCase(),
+                autor: proximaPendiente.autor.toUpperCase(),
+                sinopsis: proximaPendiente.sinopsis,
+                citas: '',
+                fechaInicio: new Date().toISOString()
+            };
+            saveLeyendo();
+            renderLeyendo();
+            
+            // Remove from próximas
+            proximasLecturas.splice(proximaPendiente.index, 1);
+            saveProximas(proximasLecturas);
+            renderProximas();
+            
+            cerrarOpciones();
+            document.getElementById('proximasOverlay').classList.remove('visible');
+            showToast('¡A disfrutar de la lectura! 📖');
+        }
+
+        function yaTerminado() {
+            if (!proximaPendiente) return;
+            
+            // Close options and próximas modals
+            cerrarOpciones();
             document.getElementById('proximasOverlay').classList.remove('visible');
             
             // Open add book modal with pre-filled data
             document.getElementById('modalTitle').textContent = 'Añadir Libro Leído';
             document.getElementById('bookForm').reset();
             document.getElementById('bookId').value = '';
-            document.getElementById('titulo').value = titulo.toUpperCase();
-            document.getElementById('autor').value = autor.toUpperCase();
-            document.getElementById('sinopsis').value = sinopsis;
+            document.getElementById('titulo').value = proximaPendiente.titulo.toUpperCase();
+            document.getElementById('autor').value = proximaPendiente.autor.toUpperCase();
+            document.getElementById('sinopsis').value = proximaPendiente.sinopsis;
             
             // Set current month/year
             const now = new Date();
@@ -2222,8 +2562,101 @@
             document.getElementById('modalOverlay').classList.add('visible');
             
             // Remove from próximas
-            proximasLecturas.splice(currentEditProximaIndex, 1);
+            proximasLecturas.splice(proximaPendiente.index, 1);
             saveProximas(proximasLecturas);
+        }
+
+        // Funciones para "Leyendo ahora"
+        function saveLeyendo() {
+            localStorage.setItem(LEYENDO_KEY, JSON.stringify(libroLeyendo));
+        }
+
+        function loadLeyendo() {
+            const data = localStorage.getItem(LEYENDO_KEY);
+            if (data) {
+                libroLeyendo = JSON.parse(data);
+            }
+        }
+
+        function renderLeyendo() {
+            const section = document.getElementById('leyendoSection');
+            if (libroLeyendo) {
+                document.getElementById('leyendoTitulo').textContent = libroLeyendo.titulo;
+                document.getElementById('leyendoAutor').textContent = libroLeyendo.autor;
+                section.classList.add('visible');
+            } else {
+                section.classList.remove('visible');
+            }
+        }
+
+        function abrirCitaRapida() {
+            document.getElementById('nuevaCita').value = '';
+            document.getElementById('citaRapidaOverlay').classList.add('visible');
+            document.getElementById('citaRapidaModal').classList.add('visible');
+            document.getElementById('nuevaCita').focus();
+        }
+
+        function cerrarCitaRapida() {
+            document.getElementById('citaRapidaOverlay').classList.remove('visible');
+            document.getElementById('citaRapidaModal').classList.remove('visible');
+        }
+
+        function guardarCitaRapida() {
+            const nuevaCita = document.getElementById('nuevaCita').value.trim();
+            if (!nuevaCita) {
+                showToast('Escribe una cita', 'error');
+                return;
+            }
+            
+            if (libroLeyendo.citas) {
+                libroLeyendo.citas += '\n\n' + nuevaCita;
+            } else {
+                libroLeyendo.citas = nuevaCita;
+            }
+            saveLeyendo();
+            cerrarCitaRapida();
+            showToast('Cita guardada 💡');
+        }
+
+        function terminarLectura() {
+            if (!libroLeyendo) return;
+            
+            // Open add book modal with pre-filled data
+            document.getElementById('modalTitle').textContent = 'Añadir Libro Leído';
+            document.getElementById('bookForm').reset();
+            document.getElementById('bookId').value = '';
+            document.getElementById('titulo').value = libroLeyendo.titulo;
+            document.getElementById('autor').value = libroLeyendo.autor;
+            document.getElementById('sinopsis').value = libroLeyendo.sinopsis || '';
+            document.getElementById('citas').value = libroLeyendo.citas || '';
+            
+            // Set current month/year
+            const now = new Date();
+            document.getElementById('mes').value = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'][now.getMonth()];
+            document.getElementById('anio').value = now.getFullYear();
+            document.getElementById('puntuacion').value = 0;
+            updateRatingDisplay(0);
+            document.getElementById('modalOverlay').classList.add('visible');
+            
+            // Clear leyendo
+            libroLeyendo = null;
+            localStorage.removeItem(LEYENDO_KEY);
+            renderLeyendo();
+        }
+
+        function editarLeyendo() {
+            // Open a mini modal to edit leyendo book
+            document.getElementById('editProximaTitle').textContent = 'Editar Libro en Lectura';
+            document.getElementById('editProximaTitulo').value = libroLeyendo.titulo;
+            document.getElementById('editProximaAutor').value = libroLeyendo.autor;
+            document.getElementById('editProximaSinopsis').value = libroLeyendo.sinopsis || '';
+            
+            // Hide delete and mark as read buttons
+            document.getElementById('deleteProximaBtn').style.display = 'none';
+            document.getElementById('marcarLeidoBtn').style.display = 'none';
+            
+            currentEditProximaIndex = -999; // Special marker for leyendo
+            document.getElementById('editProximaOverlay').classList.add('visible');
         }
 
         // Próximas list modal events
@@ -2263,6 +2696,14 @@
 
         document.getElementById('deleteProximaBtn').addEventListener('click', eliminarProximaActual);
         document.getElementById('marcarLeidoBtn').addEventListener('click', marcarLeidoActual);
+
+        // Close modals on overlay click
+        document.getElementById('opcionesOverlay').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) cerrarOpciones();
+        });
+        document.getElementById('citaRapidaOverlay').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) cerrarCitaRapida();
+        });
 
         // Register Service Worker for PWA
         if ('serviceWorker' in navigator) {
