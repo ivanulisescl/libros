@@ -542,6 +542,41 @@
             border-left: 3px solid var(--accent);
         }
 
+        .extra-text.citas {
+            border-left: 3px solid var(--star);
+            padding: 0.5rem;
+        }
+
+        .cita-item {
+            margin: 0 0 1rem 0;
+            padding: 0.75rem 1rem;
+            background: var(--secondary);
+            border-radius: 8px;
+            font-style: italic;
+            color: var(--text);
+            line-height: 1.6;
+            position: relative;
+        }
+
+        .cita-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .cita-item::before {
+            content: "❝";
+            position: absolute;
+            left: -5px;
+            top: -5px;
+            font-size: 1.5rem;
+            color: var(--star);
+            font-style: normal;
+        }
+
+        .citas-btn {
+            background: linear-gradient(135deg, var(--star) 0%, #ffa500 100%) !important;
+            color: #1a1a2e !important;
+        }
+
         .book-actions {
             position: absolute;
             bottom: 1rem;
@@ -1141,6 +1176,10 @@
                     <label for="comentario">Comentarios (opcional)</label>
                     <textarea id="comentario" placeholder="Tus impresiones sobre el libro..." rows="3"></textarea>
                 </div>
+                <div class="form-group">
+                    <label for="citas">Citas favoritas (opcional)</label>
+                    <textarea id="citas" placeholder="Fragmentos o citas memorables del libro...&#10;&#10;Separa cada cita con una línea en blanco." rows="4"></textarea>
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn-cancel" id="cancelBtn">Cancelar</button>
                     <button type="submit" class="btn-save">Guardar</button>
@@ -1627,8 +1666,8 @@
         function toggleExtra(index, type) {
             const contentEl = document.getElementById(`${type}-${index}`);
             const toggleBtn = document.getElementById(`toggle-${type}-${index}`);
-            const icons = { sinopsis: '📖', comment: '💬' };
-            const labels = { sinopsis: 'Sinopsis', comment: 'Comentario' };
+            const icons = { sinopsis: '📖', comment: '💬', citas: '💡' };
+            const labels = { sinopsis: 'Sinopsis', comment: 'Comentario', citas: 'Citas' };
             
             if (contentEl.classList.contains('visible')) {
                 contentEl.classList.remove('visible');
@@ -1637,6 +1676,14 @@
                 contentEl.classList.add('visible');
                 toggleBtn.innerHTML = `${icons[type]} Ocultar`;
             }
+        }
+
+        // Format citas as individual quote blocks
+        function formatCitas(citasText) {
+            if (!citasText) return '';
+            return citasText.split(/\n\s*\n/).filter(c => c.trim()).map(cita => 
+                `<blockquote class="cita-item">"${cita.trim()}"</blockquote>`
+            ).join('');
         }
 
         // Render books
@@ -1652,7 +1699,8 @@
                 const realIndex = libros.indexOf(book);
                 const hasSinopsis = book.sinopsis && book.sinopsis.trim() !== '';
                 const hasComment = book.comentario && book.comentario.trim() !== '';
-                const hasExtras = hasSinopsis || hasComment;
+                const hasCitas = book.citas && book.citas.trim() !== '';
+                const hasExtras = hasSinopsis || hasComment || hasCitas;
                 
                 return `
                 <div class="book-card" data-index="${realIndex}">
@@ -1672,9 +1720,11 @@
                         <div class="extras-buttons">
                             ${hasSinopsis ? `<button class="extra-toggle sinopsis-btn" id="toggle-sinopsis-${realIndex}" onclick="toggleExtra(${realIndex}, 'sinopsis')">📖 Sinopsis</button>` : ''}
                             ${hasComment ? `<button class="extra-toggle" id="toggle-comment-${realIndex}" onclick="toggleExtra(${realIndex}, 'comment')">💬 Comentario</button>` : ''}
+                            ${hasCitas ? `<button class="extra-toggle citas-btn" id="toggle-citas-${realIndex}" onclick="toggleExtra(${realIndex}, 'citas')">💡 Citas</button>` : ''}
                         </div>
                         ${hasSinopsis ? `<div class="extra-text sinopsis" id="sinopsis-${realIndex}">${book.sinopsis}</div>` : ''}
                         ${hasComment ? `<div class="extra-text comment" id="comment-${realIndex}">${book.comentario}</div>` : ''}
+                        ${hasCitas ? `<div class="extra-text citas" id="citas-${realIndex}">${formatCitas(book.citas)}</div>` : ''}
                     </div>
                     ` : ''}
                 </div>
@@ -1787,6 +1837,7 @@
             document.getElementById('puntuacion').value = book.puntuacion || 0;
             document.getElementById('sinopsis').value = book.sinopsis || '';
             document.getElementById('comentario').value = book.comentario || '';
+            document.getElementById('citas').value = book.citas || '';
             updateRatingDisplay(book.puntuacion || 0);
             
             openModal('Editar Libro');
@@ -1980,7 +2031,8 @@
                 editorial: document.getElementById('editorial').value,
                 puntuacion: puntuacionVal === 0 ? null : puntuacionVal,
                 sinopsis: document.getElementById('sinopsis').value.trim(),
-                comentario: document.getElementById('comentario').value.trim()
+                comentario: document.getElementById('comentario').value.trim(),
+                citas: document.getElementById('citas').value.trim()
             };
             
             const bookId = document.getElementById('bookId').value;
