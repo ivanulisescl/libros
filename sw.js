@@ -1,4 +1,4 @@
-const CACHE_NAME = 'biblioteca-v2.1';
+const CACHE_NAME = 'biblioteca-v2.2';
 const ASSETS = [
   './',
   './index.html',
@@ -31,15 +31,16 @@ self.addEventListener('activate', (e) => {
 
 // Fetch - serve from cache, fallback to network
 self.addEventListener('fetch', (e) => {
-  // Skip non-GET requests and external URLs
+  // Skip non-GET requests and non-http(s) URLs
   if (e.request.method !== 'GET') return;
+  if (!e.request.url.startsWith('http')) return;
   
   e.respondWith(
     caches.match(e.request).then((cached) => {
       // Return cached version or fetch from network
       const fetched = fetch(e.request).then((response) => {
-        // Cache successful responses
-        if (response && response.status === 200) {
+        // Cache successful responses (only same-origin)
+        if (response && response.status === 200 && response.type === 'basic') {
           const clone = response.clone();
           caches.open(CACHE_NAME).then((cache) => {
             cache.put(e.request, clone);
