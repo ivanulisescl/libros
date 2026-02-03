@@ -876,6 +876,8 @@
         .btn-proxima-eliminar { background: var(--danger) !important; color: white !important; }
         .btn-proxima-empezar { background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%) !important; color: white !important; border: none !important; }
         .btn-proxima-guardar { background: var(--success) !important; color: #1a1a2e !important; border: none !important; }
+        .btn-proxima-terminado { background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%) !important; color: white !important; border: none !important; padding: 0.6rem 1rem; border-radius: 8px; cursor: pointer; font-weight: 500; }
+        .textarea-sinopsis { min-height: 140px; resize: vertical; }
 
         /* Toast Notification */
         .toast {
@@ -1296,7 +1298,6 @@
             <div class="leyendo-autor" id="leyendoAutor"></div>
             <div class="leyendo-actions">
                 <button class="leyendo-btn cita" onclick="abrirCitaRapida()">💡 Añadir cita</button>
-                <button class="leyendo-btn terminado" onclick="terminarLectura()">✓ Terminado</button>
                 <button class="leyendo-btn editar" onclick="editarLeyendo()">✏️ Editar</button>
             </div>
         </div>
@@ -1391,7 +1392,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v2.6</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v2.7</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
@@ -1501,11 +1502,12 @@
                 </div>
                 <div class="form-group">
                     <label for="editProximaSinopsis">Sinopsis (opcional)</label>
-                    <textarea id="editProximaSinopsis" placeholder="Resumen o descripción del libro..." rows="4"></textarea>
+                    <textarea id="editProximaSinopsis" placeholder="Resumen o descripción del libro..." rows="6" class="textarea-sinopsis"></textarea>
                 </div>
                 <div class="modal-footer" style="flex-wrap: wrap; gap: 0.5rem;">
                     <button type="button" class="btn-cancel btn-proxima-eliminar" id="deleteProximaBtn">🗑️ Eliminar</button>
                     <button type="button" class="btn-proxima-empezar" id="marcarLeidoBtn">📖 Empezar a leer</button>
+                    <button type="button" class="btn-proxima-terminado" id="terminadoLeyendoBtn" style="display: none;">✓ Terminado</button>
                     <button type="submit" class="btn-proxima-guardar" id="guardarProximaBtn">💾 Guardar</button>
                 </div>
             </form>
@@ -2441,6 +2443,7 @@
             document.getElementById('editProximaSinopsis').value = libro.sinopsis || '';
             document.getElementById('deleteProximaBtn').style.display = 'inline-flex';
             document.getElementById('marcarLeidoBtn').style.display = 'inline-flex';
+            document.getElementById('terminadoLeyendoBtn').style.display = 'none';
             document.getElementById('editProximaOverlay').classList.add('visible');
         }
 
@@ -2452,6 +2455,7 @@
             document.getElementById('editProximaId').value = '';
             document.getElementById('deleteProximaBtn').style.display = 'none';
             document.getElementById('marcarLeidoBtn').style.display = 'none';
+            document.getElementById('terminadoLeyendoBtn').style.display = 'none';
             document.getElementById('editProximaOverlay').classList.add('visible');
             document.getElementById('editProximaTitulo').focus();
         }
@@ -2683,17 +2687,16 @@
         }
 
         function editarLeyendo() {
-            // Open a mini modal to edit leyendo book
             document.getElementById('editProximaTitle').textContent = 'Editar Libro en Lectura';
             document.getElementById('editProximaTitulo').value = libroLeyendo.titulo;
             document.getElementById('editProximaAutor').value = libroLeyendo.autor;
             document.getElementById('editProximaSinopsis').value = libroLeyendo.sinopsis || '';
             
-            // Hide delete and mark as read buttons
             document.getElementById('deleteProximaBtn').style.display = 'none';
             document.getElementById('marcarLeidoBtn').style.display = 'none';
+            document.getElementById('terminadoLeyendoBtn').style.display = 'inline-flex';
             
-            currentEditProximaIndex = -999; // Special marker for leyendo
+            currentEditProximaIndex = -999;
             document.getElementById('editProximaOverlay').classList.add('visible');
         }
 
@@ -2734,6 +2737,10 @@
 
         document.getElementById('deleteProximaBtn').addEventListener('click', eliminarProximaActual);
         document.getElementById('marcarLeidoBtn').addEventListener('click', marcarLeidoActual);
+        document.getElementById('terminadoLeyendoBtn').addEventListener('click', () => {
+            document.getElementById('editProximaOverlay').classList.remove('visible');
+            terminarLectura();
+        });
 
         // Close modals on overlay click
         document.getElementById('opcionesOverlay').addEventListener('click', (e) => {
