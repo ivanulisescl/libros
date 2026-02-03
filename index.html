@@ -1391,7 +1391,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v2.4</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v2.5</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
@@ -2489,21 +2489,30 @@
         function marcarLeidoActual() {
             if (currentEditProximaIndex < 0) return;
             
-            // Save current form values
             const titulo = document.getElementById('editProximaTitulo').value.trim();
             const autor = document.getElementById('editProximaAutor').value.trim();
             const sinopsis = document.getElementById('editProximaSinopsis').value.trim();
+            if (!titulo || !autor) return;
             
-            // Store data temporarily
-            proximaPendiente = { titulo, autor, sinopsis, index: currentEditProximaIndex };
+            if (libroLeyendo && !confirm('Ya tienes un libro en lectura. ¿Reemplazarlo?')) return;
             
-            // Close edit modal
+            libroLeyendo = {
+                titulo: titulo.toUpperCase(),
+                autor: autor.toUpperCase(),
+                sinopsis: sinopsis,
+                citas: '',
+                fechaInicio: new Date().toISOString()
+            };
+            saveLeyendo();
+            renderLeyendo();
+            
+            proximasLecturas.splice(currentEditProximaIndex, 1);
+            saveProximas(proximasLecturas);
+            renderProximas();
+            
             document.getElementById('editProximaOverlay').classList.remove('visible');
-            
-            // Show options modal
-            document.getElementById('opcionesTitulo').textContent = titulo;
-            document.getElementById('opcionesOverlay').classList.add('visible');
-            document.getElementById('opcionesModal').classList.add('visible');
+            document.getElementById('proximasOverlay').classList.remove('visible');
+            showToast('¡A disfrutar de la lectura! 📖');
         }
 
         function cerrarOpciones() {
