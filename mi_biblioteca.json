@@ -639,16 +639,6 @@
       "puntuacion": 6,
       "sinopsis": "Un recorrido filosófico que analiza cómo los grandes pensadores de la historia entendieron la dicha. Es una invitación a aplicar la sabiduría clásica a los problemas contemporáneos para encontrar un equilibrio emocional en el día a día.",
       "comentario": "Tardé en enganchar porque me costaba entender a los filósofos griegos, pero luego sí que lo leí con motivación. Se pueden sacar lecturas en las que profundizar en algunos autores. El final se me hizo un poco pesado"
-    },
-    {
-      "titulo": "MI NOMBRE ES EMILIA DEL VALLE",
-      "autor": "ISABEL ALLENDE",
-      "fecha": "Enero de 2026",
-      "paginas": 368,
-      "editorial": "Plaza&Janes",
-      "puntuacion": null,
-      "sinopsis": "La novela narra la vida de Emilia del Valle, nacida en San Francisco en 1866 e hija de una monja irlandesa y un aristócrata chileno que la abandonó. Criada en un ambiente de libertad, Emilia desafía las convenciones de su época para seguir su vocación literaria, publicando inicialmente bajo un pseudónimo masculino hasta convertirse en periodista profesional.\n\nEl núcleo de la historia se desarrolla cuando viaja a Chile como corresponsal de guerra durante el conflicto civil entre el presidente Balmaceda y el Congreso. En medio de la violencia de las batallas y los hospitales, Emilia no solo cubre la guerra junto al periodista Eric Whelan, sino que emprende una búsqueda personal para confrontar su pasado, conocer a su padre y descubrir su verdadera identidad dentro de la saga familiar de los Del Valle. Es una historia de supervivencia, vocación y redención protagonizada por una mujer que se reinventa ante la adversidad.",
-      "comentario": ""
     }
   ],
   "proximas": [
@@ -721,5 +711,12 @@
       "autor": "ROBE INIESTA",
       "sinopsis": "En esta novela, a través de su forma original —y única— de expresarse, nos adentra en una aventura que, además de hacernos soñar, nos permitirá ver el mundo desde una perspectiva diferente."
     }
-  ]
+  ],
+  "leyendo": {
+    "titulo": "MI NOMBRE ES EMILIA DEL VALLE",
+    "autor": "ISABEL ALLENDE",
+    "sinopsis": "La novela narra la vida de Emilia del Valle, nacida en San Francisco en 1866 e hija de una monja irlandesa y un aristócrata chileno que la abandonó. Criada en un ambiente de libertad, Emilia desafía las convenciones de su época para seguir su vocación literaria, publicando inicialmente bajo un pseudónimo masculino hasta convertirse en periodista profesional.\n\nEl núcleo de la historia se desarrolla cuando viaja a Chile como corresponsal de guerra durante el conflicto civil entre el presidente Balmaceda y el Congreso. En medio de la violencia de las batallas y los hospitales, Emilia no solo cubre la guerra junto al periodista Eric Whelan, sino que emprende una búsqueda personal para confrontar su pasado, conocer a su padre y descubrir su verdadera identidad dentro de la saga familiar de los Del Valle. Es una historia de supervivencia, vocación y redención protagonizada por una mujer que se reinventa ante la adversidad.",
+    "citas": "",
+    "fechaInicio": "2026-02-03T14:47:11.725Z"
+  }
 }
