@@ -872,6 +872,11 @@
             background: var(--accent-light);
         }
 
+        /* Botones modal Próximas */
+        .btn-proxima-eliminar { background: var(--danger) !important; color: white !important; }
+        .btn-proxima-empezar { background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%) !important; color: white !important; border: none !important; }
+        .btn-proxima-guardar { background: var(--success) !important; color: #1a1a2e !important; border: none !important; }
+
         /* Toast Notification */
         .toast {
             position: fixed;
@@ -1386,7 +1391,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v2.3</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v2.4</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
@@ -1499,9 +1504,9 @@
                     <textarea id="editProximaSinopsis" placeholder="Resumen o descripción del libro..." rows="4"></textarea>
                 </div>
                 <div class="modal-footer" style="flex-wrap: wrap; gap: 0.5rem;">
-                    <button type="button" class="btn-cancel" id="deleteProximaBtn" style="background: var(--danger); color: white;">🗑️ Eliminar</button>
-                    <button type="button" class="btn-icon success" id="marcarLeidoBtn">✓ Marcar como leído</button>
-                    <button type="submit" class="btn-save">💾 Guardar</button>
+                    <button type="button" class="btn-cancel btn-proxima-eliminar" id="deleteProximaBtn">🗑️ Eliminar</button>
+                    <button type="button" class="btn-proxima-empezar" id="marcarLeidoBtn">📖 Empezar a leer</button>
+                    <button type="submit" class="btn-proxima-guardar" id="guardarProximaBtn">💾 Guardar</button>
                 </div>
             </form>
         </div>
