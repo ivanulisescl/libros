@@ -1391,7 +1391,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v2.5</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v2.6</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
@@ -1616,6 +1616,10 @@
                         if (!proximasLecturas && jsonData.proximas) {
                             proximasLecturas = jsonData.proximas;
                             saveProximas(proximasLecturas);
+                        }
+                        if (jsonData.hasOwnProperty('leyendo')) {
+                            libroLeyendo = jsonData.leyendo;
+                            saveLeyendo();
                         }
                     }
                 }
@@ -2164,7 +2168,8 @@
         function exportData() {
             const dataStr = JSON.stringify({ 
                 libros: libros,
-                proximas: proximasLecturas 
+                proximas: proximasLecturas,
+                leyendo: libroLeyendo
             }, null, 2);
             const blob = new Blob([dataStr], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
@@ -2173,7 +2178,8 @@
             a.download = 'mi_biblioteca.json';
             a.click();
             URL.revokeObjectURL(url);
-            showToast(`Exportados: ${libros.length} libros + ${proximasLecturas.length} próximas`);
+            const leyendoMsg = libroLeyendo ? ' + leyendo' : '';
+            showToast(`Exportados: ${libros.length} libros + ${proximasLecturas.length} próximas${leyendoMsg}`);
         }
 
         // Import data
@@ -2220,8 +2226,16 @@
                         importedProximas = data.proximas.length;
                     }
 
-                    if (importedBooks > 0 || importedProximas > 0) {
-                        showToast(`Importados: ${importedBooks} libros + ${importedProximas} próximas`);
+                    // Import leyendo ahora
+                    if (data.hasOwnProperty('leyendo')) {
+                        libroLeyendo = data.leyendo;
+                        saveLeyendo();
+                        renderLeyendo();
+                    }
+
+                    if (importedBooks > 0 || importedProximas > 0 || data.hasOwnProperty('leyendo')) {
+                        const leyendoMsg = data.leyendo ? ' + leyendo' : '';
+                        showToast(`Importados: ${importedBooks} libros + ${importedProximas} próximas${leyendoMsg}`);
                     } else {
                         showToast('Formato de archivo no válido', 'error');
                     }
@@ -2350,6 +2364,7 @@
                 // Clear localStorage
                 localStorage.removeItem(STORAGE_KEY);
                 localStorage.removeItem(PROXIMAS_KEY);
+                localStorage.removeItem(LEYENDO_KEY);
                 
                 // Reload from JSON
                 try {
@@ -2363,13 +2378,21 @@
                             proximasLecturas = jsonData.proximas;
                             saveProximas(proximasLecturas);
                         }
+                        if (jsonData.hasOwnProperty('leyendo')) {
+                            libroLeyendo = jsonData.leyendo;
+                            saveLeyendo();
+                        } else {
+                            libroLeyendo = null;
+                        }
+                        renderLeyendo();
                         initFilters();
                         filterAndSortBooks();
                         if (chartsInitialized) {
                             destroyCharts();
                             initCharts();
                         }
-                        showToast(`Recargados: ${libros.length} libros + ${proximasLecturas.length} próximas`);
+                        const leyendoMsg = libroLeyendo ? ' + leyendo' : '';
+                        showToast(`Recargados: ${libros.length} libros + ${proximasLecturas.length} próximas${leyendoMsg}`);
                     } else {
                         showToast('Error: No se encontraron datos en el servidor', 'error');
                     }
