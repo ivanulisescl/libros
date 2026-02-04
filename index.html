@@ -169,6 +169,29 @@
             background: #2f2942;
         }
 
+        /* Próximas lecturas - turquesa muy suave */
+        .btn-proximas-teal-soft {
+            background: rgba(0, 184, 148, 0.12);
+            color: #81ecec;
+            border: 1px solid rgba(0, 206, 201, 0.25);
+        }
+
+        .btn-proximas-teal-soft:hover {
+            background: rgba(0, 184, 148, 0.18);
+            border-color: rgba(0, 206, 201, 0.4);
+        }
+
+        [data-theme="light"] .btn-proximas-teal-soft {
+            background: rgba(0, 184, 148, 0.15);
+            color: #00897b;
+            border-color: rgba(0, 137, 123, 0.35);
+        }
+
+        [data-theme="light"] .btn-proximas-teal-soft:hover {
+            background: rgba(0, 184, 148, 0.22);
+            border-color: rgba(0, 137, 123, 0.5);
+        }
+
         /* Operaciones Dropdown */
         .operaciones-container {
             position: relative;
@@ -1339,8 +1362,8 @@
             <p>Colección de lecturas desde 2023</p>
         </div>
         <div class="header-right">
-            <button class="btn-icon primary" id="proximasBtn">📚 Próximas Lecturas</button>
-            <button class="btn-icon btn-soft-proximas" id="statsToggle">📊 Estadísticas</button>
+            <button class="btn-icon btn-proximas-teal-soft" id="proximasBtn">📚 Próximas Lecturas</button>
+            <button class="btn-icon" id="statsToggle">📊 Estadísticas</button>
             <div class="operaciones-container">
                 <button class="btn-icon" id="operacionesBtn">⚙️ Operaciones</button>
                 <div class="operaciones-menu" id="operacionesMenu">
@@ -1486,7 +1509,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v2.9</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.0</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
