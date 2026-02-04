@@ -146,6 +146,44 @@
             box-shadow: 0 5px 20px rgba(67, 233, 123, 0.4);
         }
 
+        /* Operaciones Dropdown */
+        .operaciones-container {
+            position: relative;
+        }
+
+        .operaciones-menu {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            right: 0;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 0.5rem;
+            min-width: 200px;
+            box-shadow: 0 4px 20px var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .operaciones-menu.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .operaciones-menu .btn-icon {
+            width: 100%;
+            justify-content: flex-start;
+            margin-bottom: 0.25rem;
+        }
+
+        .operaciones-menu .btn-icon:last-child {
+            margin-bottom: 0;
+        }
+
         /* Theme Toggle */
         .theme-toggle {
             display: flex;
@@ -1245,6 +1283,14 @@
             header { flex-direction: column; text-align: center; }
             .header-left h1 { font-size: 2rem; }
             .header-right { justify-content: center; }
+            .operaciones-menu {
+                right: auto;
+                left: 50%;
+                transform: translateX(-50%) translateY(-10px);
+            }
+            .operaciones-menu.visible {
+                transform: translateX(-50%) translateY(0);
+            }
             .stats-bar { gap: 1rem; padding: 1rem; }
             .stat-value { font-size: 1.5rem; }
             .controls { flex-direction: column; }
@@ -1273,11 +1319,16 @@
             <button class="btn-icon success" id="addBookBtn">➕ Añadir Libro</button>
             <button class="btn-icon" id="proximasBtn" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border: none;">📚 Próximas Lecturas</button>
             <button class="btn-icon primary" id="statsToggle">📊 Estadísticas</button>
-            <button class="btn-icon" id="exportBtn">📤 Exportar</button>
-            <button class="btn-icon" id="importBtn">📥 Importar</button>
-            <input type="file" id="importFile" accept=".json" style="display: none;">
-            <button class="btn-icon" id="resetBtn" title="Recargar datos desde el servidor">🔄 Resetear</button>
-            <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">🔄 Buscar actualizaciones</button>
+            <div class="operaciones-container">
+                <button class="btn-icon" id="operacionesBtn">⚙️ Operaciones</button>
+                <div class="operaciones-menu" id="operacionesMenu">
+                    <button class="btn-icon" id="exportBtn">📤 Exportar</button>
+                    <button class="btn-icon" id="importBtn">📥 Importar</button>
+                    <input type="file" id="importFile" accept=".json" style="display: none;">
+                    <button class="btn-icon" id="resetBtn" title="Recargar datos desde el servidor">🔄 Resetear</button>
+                    <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">🔄 Actualizar</button>
+                </div>
+            </div>
             <div class="theme-toggle" id="themeToggle">
                 <span class="theme-label">Tema</span>
                 <div class="theme-toggle-track">
@@ -2369,7 +2420,26 @@
             closeModal();
         });
 
-        document.getElementById('exportBtn').addEventListener('click', exportData);
+        // Operaciones menu toggle
+        document.getElementById('operacionesBtn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            const menu = document.getElementById('operacionesMenu');
+            menu.classList.toggle('visible');
+        });
+
+        // Close operaciones menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const container = document.querySelector('.operaciones-container');
+            const menu = document.getElementById('operacionesMenu');
+            if (container && menu && !container.contains(e.target)) {
+                menu.classList.remove('visible');
+            }
+        });
+
+        document.getElementById('exportBtn').addEventListener('click', () => {
+            exportData();
+            document.getElementById('operacionesMenu').classList.remove('visible');
+        });
         document.getElementById('importBtn').addEventListener('click', () => {
             document.getElementById('importFile').click();
         });
@@ -2377,6 +2447,7 @@
             if (e.target.files.length > 0) {
                 importData(e.target.files[0]);
                 e.target.value = '';
+                document.getElementById('operacionesMenu').classList.remove('visible');
             }
         });
 
@@ -2425,10 +2496,14 @@
             }
         }
 
-        document.getElementById('resetBtn').addEventListener('click', resetData);
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            resetData();
+            document.getElementById('operacionesMenu').classList.remove('visible');
+        });
 
         // Forzar actualización de la app (desregistrar SW y recargar)
         document.getElementById('updateAppBtn').addEventListener('click', async () => {
+            document.getElementById('operacionesMenu').classList.remove('visible');
             if ('serviceWorker' in navigator) {
                 const regs = await navigator.serviceWorker.getRegistrations();
                 for (const reg of regs) await reg.unregister();
