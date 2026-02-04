@@ -146,6 +146,29 @@
             box-shadow: 0 5px 20px rgba(67, 233, 123, 0.4);
         }
 
+        /* Botones header (menos llamativos) */
+        .btn-soft-add {
+            background: #203a2b;
+            color: #b7f7d6;
+            border: 1px solid rgba(183,247,214,0.25);
+        }
+
+        .btn-soft-add:hover {
+            border-color: rgba(183,247,214,0.45);
+            background: #244032;
+        }
+
+        .btn-soft-proximas {
+            background: #2a253a;
+            color: #e1d7ff;
+            border: 1px solid rgba(225,215,255,0.25);
+        }
+
+        .btn-soft-proximas:hover {
+            border-color: rgba(225,215,255,0.45);
+            background: #2f2942;
+        }
+
         /* Operaciones Dropdown */
         .operaciones-container {
             position: relative;
@@ -1316,12 +1339,12 @@
             <p>Colección de lecturas desde 2023</p>
         </div>
         <div class="header-right">
-            <button class="btn-icon success" id="addBookBtn">➕ Añadir Libro</button>
-            <button class="btn-icon" id="proximasBtn" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border: none;">📚 Próximas Lecturas</button>
-            <button class="btn-icon primary" id="statsToggle">📊 Estadísticas</button>
+            <button class="btn-icon primary" id="proximasBtn">📚 Próximas Lecturas</button>
+            <button class="btn-icon btn-soft-proximas" id="statsToggle">📊 Estadísticas</button>
             <div class="operaciones-container">
                 <button class="btn-icon" id="operacionesBtn">⚙️ Operaciones</button>
                 <div class="operaciones-menu" id="operacionesMenu">
+                    <button class="btn-icon btn-soft-add" id="addBookBtn">➕ Añadir Libro</button>
                     <button class="btn-icon" id="exportBtn">📤 Exportar</button>
                     <button class="btn-icon" id="importBtn">📥 Importar</button>
                     <input type="file" id="importFile" accept=".json" style="display: none;">
