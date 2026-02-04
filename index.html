@@ -553,13 +553,13 @@
 
         .extra-text.citas {
             border-left: 3px solid var(--star);
-            padding: 0.5rem;
+            padding: 0.75rem;
         }
 
         .cita-item {
             margin: 0 0 1rem 0;
             padding: 0.75rem 1rem;
-            background: var(--secondary);
+            background: transparent;
             border-radius: 8px;
             font-style: italic;
             color: var(--text);
@@ -979,6 +979,24 @@
             transform: scale(1.05);
         }
 
+        .proxima-btn.order {
+            background: var(--secondary);
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: 0.4rem 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .proxima-btn.order:hover {
+            background: var(--card-hover);
+            border-color: var(--accent);
+        }
+
+        .proxima-btn.order:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
         .proxima-has-sinopsis {
             font-size: 0.75rem;
             color: var(--accent);
@@ -1258,6 +1276,7 @@
             <button class="btn-icon" id="importBtn">📥 Importar</button>
             <input type="file" id="importFile" accept=".json" style="display: none;">
             <button class="btn-icon" id="resetBtn" title="Recargar datos desde el servidor">🔄 Resetear</button>
+            <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">🔄 Buscar actualizaciones</button>
             <div class="theme-toggle" id="themeToggle">
                 <span class="theme-label">Tema</span>
                 <div class="theme-toggle-track">
@@ -1297,7 +1316,7 @@
             <div class="leyendo-titulo" id="leyendoTitulo"></div>
             <div class="leyendo-autor" id="leyendoAutor"></div>
             <div class="leyendo-actions">
-                <button class="leyendo-btn cita" onclick="abrirCitaRapida()">💡 Añadir cita</button>
+                <button class="leyendo-btn cita" onclick="abrirCitaRapida()">💡 Añadir nota</button>
                 <button class="leyendo-btn editar" onclick="editarLeyendo()">✏️ Editar</button>
             </div>
         </div>
@@ -1319,8 +1338,8 @@
     <!-- Modal añadir cita rápida -->
     <div class="modal-overlay" id="citaRapidaOverlay">
         <div class="cita-rapida-modal" id="citaRapidaModal">
-            <h3>💡 Añadir cita</h3>
-            <textarea id="nuevaCita" placeholder="Escribe la cita..."></textarea>
+            <h3>💡 Añadir nota</h3>
+            <textarea id="nuevaCita" placeholder="Escribe la nota..."></textarea>
             <div class="cita-rapida-actions">
                 <button class="btn-icon" onclick="cerrarCitaRapida()">Cancelar</button>
                 <button class="btn-icon primary" onclick="guardarCitaRapida()">Guardar</button>
@@ -1392,7 +1411,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v2.7</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v2.8</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
@@ -1460,8 +1479,8 @@
                     <textarea id="comentario" placeholder="Tus impresiones sobre el libro..." rows="3"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="citas">Citas favoritas (opcional)</label>
-                    <textarea id="citas" placeholder="Fragmentos o citas memorables del libro...&#10;&#10;Separa cada cita con una línea en blanco." rows="4"></textarea>
+                    <label for="citas">Notas favoritas (opcional)</label>
+                    <textarea id="citas" placeholder="Notas o fragmentos memorables del libro...&#10;&#10;Separa cada nota con una línea en blanco." rows="4"></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn-cancel" id="cancelBtn">Cancelar</button>
@@ -1962,7 +1981,7 @@
             const contentEl = document.getElementById(`${type}-${index}`);
             const toggleBtn = document.getElementById(`toggle-${type}-${index}`);
             const icons = { sinopsis: '📖', comment: '💬', citas: '💡' };
-            const labels = { sinopsis: 'Sinopsis', comment: 'Comentario', citas: 'Citas' };
+            const labels = { sinopsis: 'Sinopsis', comment: 'Comentario', citas: 'Notas' };
             
             if (contentEl.classList.contains('visible')) {
                 contentEl.classList.remove('visible');
@@ -2407,6 +2426,16 @@
 
         document.getElementById('resetBtn').addEventListener('click', resetData);
 
+        // Forzar actualización de la app (desregistrar SW y recargar)
+        document.getElementById('updateAppBtn').addEventListener('click', async () => {
+            if ('serviceWorker' in navigator) {
+                const regs = await navigator.serviceWorker.getRegistrations();
+                for (const reg of regs) await reg.unregister();
+            }
+            showToast('Actualizando...');
+            setTimeout(() => window.location.reload(true), 500);
+        });
+
         // ========== PRÓXIMAS LECTURAS - UI ==========
 
         let currentEditProximaIndex = -1;
@@ -2426,10 +2455,29 @@
                         ${libro.sinopsis ? '<div class="proxima-has-sinopsis">📖 Tiene sinopsis</div>' : ''}
                     </div>
                     <div class="proxima-actions">
+                        <button class="proxima-btn order" onclick="event.stopPropagation(); moverProxima(${index}, 'arriba')" title="Subir" ${index === 0 ? 'disabled' : ''}>▲</button>
+                        <button class="proxima-btn order" onclick="event.stopPropagation(); moverProxima(${index}, 'abajo')" title="Bajar" ${index === proximasLecturas.length - 1 ? 'disabled' : ''}>▼</button>
                         <button class="proxima-btn edit" onclick="event.stopPropagation(); editarProxima(${index})" title="Editar">✏️ Editar</button>
                     </div>
                 </div>
             `).join('');
+        }
+
+        // Mover próxima lectura arriba o abajo
+        function moverProxima(index, direccion) {
+            if (direccion === 'arriba' && index === 0) return;
+            if (direccion === 'abajo' && index === proximasLecturas.length - 1) return;
+            
+            const nuevoIndex = direccion === 'arriba' ? index - 1 : index + 1;
+            const libro = proximasLecturas[index];
+            
+            // Intercambiar posiciones
+            proximasLecturas[index] = proximasLecturas[nuevoIndex];
+            proximasLecturas[nuevoIndex] = libro;
+            
+            saveProximas(proximasLecturas);
+            renderProximas();
+            showToast(`Libro movido ${direccion === 'arriba' ? 'arriba' : 'abajo'}`);
         }
 
         // Open edit modal for a próxima
@@ -2646,7 +2694,7 @@
         function guardarCitaRapida() {
             const nuevaCita = document.getElementById('nuevaCita').value.trim();
             if (!nuevaCita) {
-                showToast('Escribe una cita', 'error');
+                showToast('Escribe una nota', 'error');
                 return;
             }
             
@@ -2657,7 +2705,7 @@
             }
             saveLeyendo();
             cerrarCitaRapida();
-            showToast('Cita guardada 💡');
+            showToast('Nota guardada 💡');
         }
 
         function terminarLectura() {
