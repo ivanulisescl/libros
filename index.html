@@ -559,7 +559,8 @@
         .cita-item {
             margin: 0 0 1rem 0;
             padding: 0.75rem 1rem;
-            background: transparent;
+            background: transparent !important;
+            border: none !important;
             border-radius: 8px;
             font-style: italic;
             color: var(--text);
@@ -1411,7 +1412,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v2.8</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v2.9</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
@@ -2034,7 +2035,7 @@
                         <div class="extras-buttons">
                             ${hasSinopsis ? `<button class="extra-toggle sinopsis-btn" id="toggle-sinopsis-${realIndex}" onclick="toggleExtra(${realIndex}, 'sinopsis')">📖 Sinopsis</button>` : ''}
                             ${hasComment ? `<button class="extra-toggle" id="toggle-comment-${realIndex}" onclick="toggleExtra(${realIndex}, 'comment')">💬 Comentario</button>` : ''}
-                            ${hasCitas ? `<button class="extra-toggle citas-btn" id="toggle-citas-${realIndex}" onclick="toggleExtra(${realIndex}, 'citas')">💡 Citas</button>` : ''}
+                            ${hasCitas ? `<button class="extra-toggle citas-btn" id="toggle-citas-${realIndex}" onclick="toggleExtra(${realIndex}, 'citas')">💡 Notas</button>` : ''}
                         </div>
                         ${hasSinopsis ? `<div class="extra-text sinopsis" id="sinopsis-${realIndex}">${book.sinopsis}</div>` : ''}
                         ${hasComment ? `<div class="extra-text comment" id="comment-${realIndex}">${book.comentario}</div>` : ''}
