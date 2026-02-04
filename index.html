@@ -170,26 +170,27 @@
         }
 
         /* Próximas lecturas - turquesa muy suave */
-        .btn-proximas-teal-soft {
-            background: rgba(0, 184, 148, 0.12);
-            color: #81ecec;
-            border: 1px solid rgba(0, 206, 201, 0.25);
+        /* Próximas lecturas - coral/ámbar, buen contraste */
+        .btn-proximas-accent {
+            background: rgba(225, 112, 85, 0.25);
+            color: #ff9f80;
+            border: 1px solid rgba(225, 112, 85, 0.5);
         }
 
-        .btn-proximas-teal-soft:hover {
-            background: rgba(0, 184, 148, 0.18);
-            border-color: rgba(0, 206, 201, 0.4);
+        .btn-proximas-accent:hover {
+            background: rgba(225, 112, 85, 0.35);
+            border-color: rgba(225, 112, 85, 0.7);
         }
 
-        [data-theme="light"] .btn-proximas-teal-soft {
-            background: rgba(0, 184, 148, 0.15);
-            color: #00897b;
-            border-color: rgba(0, 137, 123, 0.35);
+        [data-theme="light"] .btn-proximas-accent {
+            background: rgba(214, 48, 49, 0.12);
+            color: #c0392b;
+            border-color: rgba(192, 57, 43, 0.4);
         }
 
-        [data-theme="light"] .btn-proximas-teal-soft:hover {
-            background: rgba(0, 184, 148, 0.22);
-            border-color: rgba(0, 137, 123, 0.5);
+        [data-theme="light"] .btn-proximas-accent:hover {
+            background: rgba(214, 48, 49, 0.18);
+            border-color: rgba(192, 57, 43, 0.55);
         }
 
         /* Operaciones Dropdown */
@@ -1362,7 +1363,7 @@
             <p>Colección de lecturas desde 2023</p>
         </div>
         <div class="header-right">
-            <button class="btn-icon btn-proximas-teal-soft" id="proximasBtn">📚 Próximas Lecturas</button>
+            <button class="btn-icon btn-proximas-accent" id="proximasBtn">📚 Próximas Lecturas</button>
             <button class="btn-icon" id="statsToggle">📊 Estadísticas</button>
             <div class="operaciones-container">
                 <button class="btn-icon" id="operacionesBtn">⚙️ Operaciones</button>
@@ -1509,7 +1510,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.0</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.1</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
