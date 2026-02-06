@@ -1181,6 +1181,13 @@
             color: #1a1a2e;
         }
 
+        .leyendo-btn.cita .icono-plus {
+            display: inline-block;
+            color: #ffd700 !important;
+            text-shadow: 0 0 4px rgba(255, 215, 0, 0.8);
+            filter: brightness(1.3) saturate(1.2);
+        }
+
         .leyendo-btn.terminado {
             background: var(--success);
             color: #1a1a2e;
@@ -1205,6 +1212,18 @@
         .leyendo-btn.ver-notas:hover {
             background: rgba(255, 212, 168, 0.3);
             border-color: rgba(255, 212, 168, 0.6);
+        }
+
+        [data-theme="light"] .leyendo-btn.ver-notas {
+            background: rgba(192, 57, 43, 0.15) !important;
+            color: #a93226 !important;
+            border-color: rgba(192, 57, 43, 0.4) !important;
+        }
+
+        [data-theme="light"] .leyendo-btn.ver-notas:hover {
+            background: rgba(192, 57, 43, 0.22) !important;
+            border-color: rgba(192, 57, 43, 0.55) !important;
+            color: #922b21 !important;
         }
 
         .leyendo-notas {
@@ -1473,9 +1492,9 @@
             <div class="leyendo-titulo" id="leyendoTitulo"></div>
             <div class="leyendo-autor" id="leyendoAutor"></div>
             <div class="leyendo-actions">
-                <button class="leyendo-btn cita" onclick="abrirCitaRapida()">💡 Añadir nota</button>
-                <button class="leyendo-btn ver-notas" id="verNotasBtn" onclick="toggleVerNotas()" style="display: none;">📝 Ver notas</button>
-                <button class="leyendo-btn editar" onclick="editarLeyendo()">✏️ Editar</button>
+                <button class="leyendo-btn cita" onclick="abrirCitaRapida()"><span class="icono-plus" style="color: #ffd700; text-shadow: 0 0 4px rgba(255, 215, 0, 0.8);">➕</span> Nota</button>
+                <button class="leyendo-btn ver-notas" id="verNotasBtn" onclick="toggleVerNotas()" style="display: none;"><span id="ojoIcono">👁️</span><span id="verNotasTexto"> Nota</span></button>
+                <button class="leyendo-btn editar" onclick="editarLeyendo()">✏️</button>
             </div>
             <div class="leyendo-notas" id="leyendoNotas">
                 <div class="leyendo-notas-content" id="leyendoNotasContent"></div>
@@ -1572,7 +1591,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.5</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.6</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
@@ -2864,13 +2883,21 @@
                 
                 // Mostrar botón "Ver notas" si hay notas
                 const hasNotas = libroLeyendo.citas && libroLeyendo.citas.trim() !== '';
+                const notasEl = document.getElementById('leyendoNotas');
+                const ojoIcono = document.getElementById('ojoIcono');
+                const verNotasTexto = document.getElementById('verNotasTexto');
+                
                 if (hasNotas) {
                     verNotasBtn.style.display = 'inline-flex';
                     notasContent.innerHTML = formatCitas(libroLeyendo.citas);
+                    // Resetear estado del botón
+                    notasEl.classList.remove('visible');
+                    ojoIcono.textContent = '👁️';
+                    verNotasTexto.textContent = ' Nota';
                 } else {
                     verNotasBtn.style.display = 'none';
                     notasContent.innerHTML = '';
-                    document.getElementById('leyendoNotas').classList.remove('visible');
+                    notasEl.classList.remove('visible');
                 }
                 
                 section.classList.add('visible');
@@ -2881,14 +2908,17 @@
 
         function toggleVerNotas() {
             const notasEl = document.getElementById('leyendoNotas');
-            const btn = document.getElementById('verNotasBtn');
+            const ojoIcono = document.getElementById('ojoIcono');
+            const verNotasTexto = document.getElementById('verNotasTexto');
             
             if (notasEl.classList.contains('visible')) {
                 notasEl.classList.remove('visible');
-                btn.textContent = '📝 Ver notas';
+                ojoIcono.textContent = '👁️';
+                verNotasTexto.textContent = ' Nota';
             } else {
                 notasEl.classList.add('visible');
-                btn.textContent = '📝 Ocultar notas';
+                ojoIcono.textContent = '🚫';
+                verNotasTexto.textContent = ' Ocultar';
             }
         }
 
