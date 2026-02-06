@@ -668,8 +668,12 @@
         }
 
         .citas-btn {
-            background: linear-gradient(135deg, var(--star) 0%, #ffa500 100%) !important;
-            color: #1a1a2e !important;
+            background: transparent !important;
+            color: var(--star) !important;
+        }
+
+        .citas-btn:hover {
+            color: #ffa500 !important;
         }
 
         .book-actions {
@@ -1568,7 +1572,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.4</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.5</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
