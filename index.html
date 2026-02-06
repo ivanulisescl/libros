@@ -1493,7 +1493,7 @@
             <div class="leyendo-autor" id="leyendoAutor"></div>
             <div class="leyendo-actions">
                 <button class="leyendo-btn cita" onclick="abrirCitaRapida()"><span class="icono-plus" style="color: #ffd700; text-shadow: 0 0 4px rgba(255, 215, 0, 0.8);">➕</span> Nota</button>
-                <button class="leyendo-btn ver-notas" id="verNotasBtn" onclick="toggleVerNotas()" style="display: none;"><span id="ojoIcono">👁️</span><span id="verNotasTexto"> Nota</span></button>
+                <button class="leyendo-btn ver-notas" id="verNotasBtn" onclick="toggleVerNotas()" style="display: none;">Notas</button>
                 <button class="leyendo-btn editar" onclick="editarLeyendo()">✏️</button>
             </div>
             <div class="leyendo-notas" id="leyendoNotas">
@@ -1591,7 +1591,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.6</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.7</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
@@ -2881,19 +2881,16 @@
                 document.getElementById('leyendoTitulo').textContent = libroLeyendo.titulo;
                 document.getElementById('leyendoAutor').textContent = libroLeyendo.autor;
                 
-                // Mostrar botón "Ver notas" si hay notas
+                // Mostrar botón "Notas" si hay notas
                 const hasNotas = libroLeyendo.citas && libroLeyendo.citas.trim() !== '';
                 const notasEl = document.getElementById('leyendoNotas');
-                const ojoIcono = document.getElementById('ojoIcono');
-                const verNotasTexto = document.getElementById('verNotasTexto');
                 
                 if (hasNotas) {
                     verNotasBtn.style.display = 'inline-flex';
                     notasContent.innerHTML = formatCitas(libroLeyendo.citas);
                     // Resetear estado del botón
                     notasEl.classList.remove('visible');
-                    ojoIcono.textContent = '👁️';
-                    verNotasTexto.textContent = ' Nota';
+                    verNotasBtn.textContent = 'Notas';
                 } else {
                     verNotasBtn.style.display = 'none';
                     notasContent.innerHTML = '';
@@ -2908,17 +2905,14 @@
 
         function toggleVerNotas() {
             const notasEl = document.getElementById('leyendoNotas');
-            const ojoIcono = document.getElementById('ojoIcono');
-            const verNotasTexto = document.getElementById('verNotasTexto');
+            const btn = document.getElementById('verNotasBtn');
             
             if (notasEl.classList.contains('visible')) {
                 notasEl.classList.remove('visible');
-                ojoIcono.textContent = '👁️';
-                verNotasTexto.textContent = ' Nota';
+                btn.textContent = 'Notas';
             } else {
                 notasEl.classList.add('visible');
-                ojoIcono.textContent = '🚫';
-                verNotasTexto.textContent = ' Ocultar';
+                btn.textContent = 'Ocultar';
             }
         }
 
