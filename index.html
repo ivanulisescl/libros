@@ -1192,6 +1192,60 @@
             box-shadow: 0 4px 15px var(--shadow);
         }
 
+        .leyendo-btn.ver-notas {
+            background: rgba(255, 212, 168, 0.2);
+            color: #ffd4a8;
+            border: 1px solid rgba(255, 212, 168, 0.4);
+        }
+
+        .leyendo-btn.ver-notas:hover {
+            background: rgba(255, 212, 168, 0.3);
+            border-color: rgba(255, 212, 168, 0.6);
+        }
+
+        .leyendo-notas {
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .leyendo-notas.visible {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .leyendo-notas-content {
+            padding: 1rem;
+            background: var(--secondary);
+            border-radius: 10px;
+            border-left: 3px solid var(--star);
+        }
+
+        .leyendo-notas-content .cita-item {
+            margin: 0 0 1rem 0;
+            padding: 0.75rem 1rem;
+            background: transparent !important;
+            border: none !important;
+            border-radius: 8px;
+            font-style: italic;
+            color: var(--text);
+            line-height: 1.6;
+            position: relative;
+        }
+
+        .leyendo-notas-content .cita-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .leyendo-notas-content .cita-item::before {
+            content: "❝";
+            position: absolute;
+            left: -5px;
+            top: -5px;
+            font-size: 1.5rem;
+            color: var(--star);
+            font-style: normal;
+        }
+
         /* Modal de opciones */
         .options-modal {
             position: fixed;
@@ -1416,7 +1470,11 @@
             <div class="leyendo-autor" id="leyendoAutor"></div>
             <div class="leyendo-actions">
                 <button class="leyendo-btn cita" onclick="abrirCitaRapida()">💡 Añadir nota</button>
+                <button class="leyendo-btn ver-notas" id="verNotasBtn" onclick="toggleVerNotas()" style="display: none;">📝 Ver notas</button>
                 <button class="leyendo-btn editar" onclick="editarLeyendo()">✏️ Editar</button>
+            </div>
+            <div class="leyendo-notas" id="leyendoNotas">
+                <div class="leyendo-notas-content" id="leyendoNotasContent"></div>
             </div>
         </div>
     </section>
@@ -1510,7 +1568,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.3</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.4</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
@@ -2793,12 +2851,40 @@
 
         function renderLeyendo() {
             const section = document.getElementById('leyendoSection');
+            const verNotasBtn = document.getElementById('verNotasBtn');
+            const notasContent = document.getElementById('leyendoNotasContent');
+            
             if (libroLeyendo) {
                 document.getElementById('leyendoTitulo').textContent = libroLeyendo.titulo;
                 document.getElementById('leyendoAutor').textContent = libroLeyendo.autor;
+                
+                // Mostrar botón "Ver notas" si hay notas
+                const hasNotas = libroLeyendo.citas && libroLeyendo.citas.trim() !== '';
+                if (hasNotas) {
+                    verNotasBtn.style.display = 'inline-flex';
+                    notasContent.innerHTML = formatCitas(libroLeyendo.citas);
+                } else {
+                    verNotasBtn.style.display = 'none';
+                    notasContent.innerHTML = '';
+                    document.getElementById('leyendoNotas').classList.remove('visible');
+                }
+                
                 section.classList.add('visible');
             } else {
                 section.classList.remove('visible');
+            }
+        }
+
+        function toggleVerNotas() {
+            const notasEl = document.getElementById('leyendoNotas');
+            const btn = document.getElementById('verNotasBtn');
+            
+            if (notasEl.classList.contains('visible')) {
+                notasEl.classList.remove('visible');
+                btn.textContent = '📝 Ver notas';
+            } else {
+                notasEl.classList.add('visible');
+                btn.textContent = '📝 Ocultar notas';
             }
         }
 
@@ -2827,6 +2913,7 @@
                 libroLeyendo.citas = nuevaCita;
             }
             saveLeyendo();
+            renderLeyendo();
             cerrarCitaRapida();
             showToast('Nota guardada 💡');
         }
