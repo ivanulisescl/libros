@@ -458,6 +458,8 @@
 
         /* Book Card */
         .book-card {
+            display: flex;
+            flex-direction: column;
             background: var(--card-bg);
             border-radius: 20px;
             padding: 1.5rem;
@@ -677,11 +679,11 @@
         }
 
         .book-actions {
-            position: absolute;
-            bottom: 1rem;
-            right: 1rem;
+            margin-top: auto;
             display: flex;
+            justify-content: flex-end;
             gap: 0.5rem;
+            padding-top: 0.75rem;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -731,7 +733,7 @@
         }
 
         .books-grid.list-view .book-header { display: none; }
-        .books-grid.list-view .book-actions { opacity: 1; position: static; }
+        .books-grid.list-view .book-actions { opacity: 1; position: static; margin-top: 0; padding-top: 0; }
         .books-grid.list-view .book-extras { display: none; }
 
         .books-grid.list-view .book-title {
@@ -1154,7 +1156,33 @@
         .leyendo-autor {
             color: var(--text-muted);
             font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .leyendo-porcentaje {
+            font-size: 0.95rem;
+            color: var(--accent);
             margin-bottom: 1rem;
+            cursor: pointer;
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+            transition: background 0.2s ease;
+        }
+
+        .leyendo-porcentaje:hover {
+            background: rgba(233, 69, 96, 0.15);
+        }
+
+        .leyendo-porcentaje input {
+            width: 3.5rem;
+            font-size: inherit;
+            color: inherit;
+            background: var(--card-bg);
+            border: 1px solid var(--accent);
+            border-radius: 6px;
+            padding: 0.2rem 0.4rem;
+            text-align: center;
         }
 
         .leyendo-actions {
@@ -1445,7 +1473,7 @@
             <div class="operaciones-container">
                 <button class="btn-icon" id="operacionesBtn">⚙️ Operaciones</button>
                 <div class="operaciones-menu" id="operacionesMenu">
-                    <button class="btn-icon btn-soft-add" id="addBookBtn">➕ Añadir Libro</button>
+                    <button class="btn-icon" id="addBookBtn">➕ Añadir Libro</button>
                     <button class="btn-icon" id="exportBtn">📤 Exportar</button>
                     <button class="btn-icon" id="importBtn">📥 Importar</button>
                     <input type="file" id="importFile" accept=".json" style="display: none;">
@@ -1491,8 +1519,9 @@
             <div class="leyendo-header">📖 Leyendo ahora</div>
             <div class="leyendo-titulo" id="leyendoTitulo"></div>
             <div class="leyendo-autor" id="leyendoAutor"></div>
+            <div class="leyendo-porcentaje" id="leyendoPorcentaje" title="Clic para editar">0%</div>
             <div class="leyendo-actions">
-                <button class="leyendo-btn cita" onclick="abrirCitaRapida()"><span class="icono-plus" style="color: #ffd700; text-shadow: 0 0 4px rgba(255, 215, 0, 0.8);">➕</span> Nota</button>
+                <button class="leyendo-btn cita" onclick="abrirCitaRapida()"><span class="icono-plus" style="color: #ffd700; text-shadow: 0 0 4px rgba(255, 215, 0, 0.8);">➕</span></button>
                 <button class="leyendo-btn ver-notas" id="verNotasBtn" onclick="toggleVerNotas()" style="display: none;">Notas</button>
                 <button class="leyendo-btn editar" onclick="editarLeyendo()">✏️</button>
             </div>
@@ -1584,14 +1613,14 @@
             <option value="pages-asc">Menos páginas</option>
         </select>
         <div class="view-toggle">
-            <button class="view-btn active" data-view="grid" title="Vista cuadrícula">▦</button>
-            <button class="view-btn" data-view="list" title="Vista lista">☰</button>
+            <button class="view-btn" data-view="grid" title="Vista cuadrícula">▦</button>
+            <button class="view-btn active" data-view="list" title="Vista lista">☰</button>
         </div>
     </div>
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.7</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.8</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
@@ -2198,10 +2227,6 @@
                 
                 return `
                 <div class="book-card" data-index="${realIndex}">
-                    <div class="book-actions">
-                        <button class="btn-edit" onclick="editBook(${realIndex})" title="Editar">✏️</button>
-                        <button class="btn-delete" onclick="deleteBook(${realIndex})" title="Eliminar">🗑️</button>
-                    </div>
                     <div class="book-header">
                         <span class="book-date">${book.fecha}</span>
                         <span class="book-pages"><span>${book.paginas}</span> págs.</span>
@@ -2221,6 +2246,10 @@
                         ${hasCitas ? `<div class="extra-text citas" id="citas-${realIndex}">${formatCitas(book.citas)}</div>` : ''}
                     </div>
                     ` : ''}
+                    <div class="book-actions">
+                        <button class="btn-edit" onclick="editBook(${realIndex})" title="Editar">✏️</button>
+                        <button class="btn-delete" onclick="deleteBook(${realIndex})" title="Eliminar">🗑️</button>
+                    </div>
                 </div>
             `}).join('');
 
@@ -2452,6 +2481,12 @@
             const viewBtns = document.querySelectorAll('.view-btn');
             const grid = document.getElementById('booksGrid');
 
+            // Aplicar vista por defecto según el botón activo
+            const activeBtn = document.querySelector('.view-btn.active');
+            if (activeBtn) {
+                grid.classList.toggle('list-view', activeBtn.dataset.view === 'list');
+            }
+
             viewBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     viewBtns.forEach(b => b.classList.remove('active'));
@@ -2514,6 +2549,9 @@
         document.getElementById('sortFilter').addEventListener('change', filterAndSortBooks);
 
         document.getElementById('addBookBtn').addEventListener('click', () => openModal('Añadir Libro'));
+        document.getElementById('leyendoSection').addEventListener('click', (e) => {
+            if (e.target.id === 'leyendoPorcentaje') editarPorcentajeLeyendo();
+        });
         document.getElementById('modalClose').addEventListener('click', closeModal);
         document.getElementById('cancelBtn').addEventListener('click', closeModal);
         document.getElementById('modalOverlay').addEventListener('click', (e) => {
@@ -2780,11 +2818,12 @@
                 autor: autor.toUpperCase(),
                 sinopsis: sinopsis,
                 citas: '',
-                fechaInicio: new Date().toISOString()
+                fechaInicio: new Date().toISOString(),
+                porcentaje: 0
             };
             saveLeyendo();
             renderLeyendo();
-            
+
             proximasLecturas.splice(currentEditProximaIndex, 1);
             saveProximas(proximasLecturas);
             renderProximas();
@@ -2817,7 +2856,8 @@
                 autor: proximaPendiente.autor.toUpperCase(),
                 sinopsis: proximaPendiente.sinopsis,
                 citas: '',
-                fechaInicio: new Date().toISOString()
+                fechaInicio: new Date().toISOString(),
+                porcentaje: 0
             };
             saveLeyendo();
             renderLeyendo();
@@ -2880,6 +2920,10 @@
             if (libroLeyendo) {
                 document.getElementById('leyendoTitulo').textContent = libroLeyendo.titulo;
                 document.getElementById('leyendoAutor').textContent = libroLeyendo.autor;
+                const pct = libroLeyendo.porcentaje ?? 0;
+                const pctEl = document.getElementById('leyendoPorcentaje');
+                pctEl.textContent = pct + '%';
+                pctEl.title = 'Clic para editar';
                 
                 // Mostrar botón "Notas" si hay notas
                 const hasNotas = libroLeyendo.citas && libroLeyendo.citas.trim() !== '';
@@ -2913,6 +2957,45 @@
             } else {
                 notasEl.classList.add('visible');
                 btn.textContent = 'Ocultar';
+            }
+        }
+
+        function editarPorcentajeLeyendo() {
+            if (!libroLeyendo) return;
+            const div = document.getElementById('leyendoPorcentaje');
+            if (!div || div.querySelector('input')) return;
+            const actual = libroLeyendo.porcentaje ?? 0;
+            const input = document.createElement('input');
+            input.type = 'number';
+            input.min = 0;
+            input.max = 100;
+            input.value = actual;
+            input.addEventListener('blur', guardarPorcentaje);
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') { e.preventDefault(); guardarPorcentaje(e); }
+                if (e.key === 'Escape') { cancelarEdicionPorcentaje(); }
+            });
+            div.textContent = '';
+            div.appendChild(input);
+            input.focus();
+            input.select();
+
+            function guardarPorcentaje() {
+                let n = parseInt(input.value, 10);
+                if (isNaN(n)) n = actual;
+                n = Math.max(0, Math.min(100, n));
+                libroLeyendo.porcentaje = n;
+                saveLeyendo();
+                div.textContent = n + '%';
+                div.title = 'Clic para editar';
+                input.removeEventListener('blur', guardarPorcentaje);
+            }
+
+            function cancelarEdicionPorcentaje() {
+                input.removeEventListener('blur', guardarPorcentaje);
+                div.textContent = (libroLeyendo.porcentaje ?? 0) + '%';
+                div.title = 'Clic para editar';
+                input.remove();
             }
         }
 
