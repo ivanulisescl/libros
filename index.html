@@ -750,6 +750,11 @@
             margin: 0.5rem 0;
         }
 
+        /* Lista reducida: como lista pero sin puntuación */
+        .books-grid.list-reduced-view .book-rating {
+            display: none;
+        }
+
         /* No Results */
         .no-results {
             text-align: center;
@@ -1615,12 +1620,13 @@
         <div class="view-toggle">
             <button class="view-btn" data-view="grid" title="Vista cuadrícula">▦</button>
             <button class="view-btn active" data-view="list" title="Vista lista">☰</button>
+            <button class="view-btn" data-view="list-reduced" title="Lista reducida">▬</button>
         </div>
     </div>
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.8</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.9</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
@@ -2481,17 +2487,24 @@
             const viewBtns = document.querySelectorAll('.view-btn');
             const grid = document.getElementById('booksGrid');
 
+            function applyView(view) {
+                const isList = view === 'list' || view === 'list-reduced';
+                const isReduced = view === 'list-reduced';
+                grid.classList.toggle('list-view', isList);
+                grid.classList.toggle('list-reduced-view', isReduced);
+            }
+
             // Aplicar vista por defecto según el botón activo
             const activeBtn = document.querySelector('.view-btn.active');
             if (activeBtn) {
-                grid.classList.toggle('list-view', activeBtn.dataset.view === 'list');
+                applyView(activeBtn.dataset.view);
             }
 
             viewBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     viewBtns.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
-                    grid.classList.toggle('list-view', btn.dataset.view === 'list');
+                    applyView(btn.dataset.view);
                 });
             });
         }
