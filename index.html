@@ -750,8 +750,12 @@
             margin: 0.5rem 0;
         }
 
-        /* Lista reducida: como lista pero sin puntuación */
+        /* Lista reducida: como lista pero sin puntuación ni botones editar/papelera */
         .books-grid.list-reduced-view .book-rating {
+            display: none;
+        }
+
+        .books-grid.list-reduced-view .book-actions {
             display: none;
         }
 
@@ -1626,7 +1630,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.9</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.10</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
