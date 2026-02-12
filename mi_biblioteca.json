@@ -665,8 +665,9 @@
   ],
   "proximas": [
     {
-      "titulo": "LOS TRES MUNDOS",
-      "autor": "SANTIAGO POSTEGUILLO"
+      "titulo": "GRAN SOL",
+      "autor": "IGNACIO ALDECOA",
+      "sinopsis": "Desde niño, Ignacio Aldecoa nunca dejó de soñar con el mar. Para él representaba la libertad, y ésta, en sus propias palabras, era «tener un lugar en el sol», porque la libertad es el estado natural del escritor. En alta mar, las fuerzas naturales se oponen a los hombres con extrema crudeza. Esa realidad aparece retratada en esta novela ya clásica de nuestra literatura, a veces triste y siempre auténtica, en la que se dignifica la miseria de un oficio duro y peligroso.\n\nAldecoa escribió Gran Sol después de compartir la intensa experiencia de la pesca de altura con los marineros del Cantábrico. Testigo del sacrificio y la pobreza, consigue acercar al lector con singular talento su día a día, sus conflictos laborales, sus dificultades y sus conversaciones cotidianas, sin perder nunca de vista la constante amenaza de la fatalidad. El íntimo vínculo entre los pescadores y la naturaleza queda al descubierto por medio de un lenguaje luminoso y colorista de una maestría indiscutible."
     },
     {
       "titulo": "COLOQUIOS DE INVIERNO",
@@ -674,9 +675,8 @@
       "sinopsis": "Siete personajes atrapados por un temporal deciden animar la espera contándose historias que nunca antes habían confesado."
     },
     {
-      "titulo": "GRAN SOL",
-      "autor": "IGNACIO ALDECOA",
-      "sinopsis": "Desde niño, Ignacio Aldecoa nunca dejó de soñar con el mar. Para él representaba la libertad, y ésta, en sus propias palabras, era «tener un lugar en el sol», porque la libertad es el estado natural del escritor. En alta mar, las fuerzas naturales se oponen a los hombres con extrema crudeza. Esa realidad aparece retratada en esta novela ya clásica de nuestra literatura, a veces triste y siempre auténtica, en la que se dignifica la miseria de un oficio duro y peligroso.\n\nAldecoa escribió Gran Sol después de compartir la intensa experiencia de la pesca de altura con los marineros del Cantábrico. Testigo del sacrificio y la pobreza, consigue acercar al lector con singular talento su día a día, sus conflictos laborales, sus dificultades y sus conversaciones cotidianas, sin perder nunca de vista la constante amenaza de la fatalidad. El íntimo vínculo entre los pescadores y la naturaleza queda al descubierto por medio de un lenguaje luminoso y colorista de una maestría indiscutible."
+      "titulo": "LOS TRES MUNDOS",
+      "autor": "SANTIAGO POSTEGUILLO"
     },
     {
       "titulo": "CORAZÓN TAN BLANCO",
@@ -733,8 +733,8 @@
     "titulo": "NOS QUEDA LO MEJOR",
     "autor": "ISABEL GONZÁLEZ",
     "sinopsis": "Esta obra es una mezcla de crónica generacional, ensayo y memoria personal que reflexiona sobre la madurez y el paso del tiempo. Vázquez se aleja de los discursos catastrofistas sobre envejecer y propone una mirada luminosa y honesta hacia la etapa que comienza a partir de los cuarenta y cincuenta años, explorando cómo las experiencias acumuladas permiten vivir con mayor libertad y menos máscaras.\n\nA través de anécdotas propias y referencias culturales —desde el cine y las series hasta la música y la literatura—, la autora aborda temas como la amistad, el cuerpo, las expectativas frustradas y los nuevos deseos. Es un libro que invita a celebrar la \"segunda mitad\" de la vida como un momento de plenitud, donde, una vez superada la presión de la juventud, realmente nos queda lo mejor por disfrutar desde la consciencia y el humor",
-    "citas": "",
+    "citas": "Página 20. Ayer de carencias, presente con rasmia.\n\nPágina 23. Batían récords de demora en completar un largo.",
     "fechaInicio": "2026-02-10T22:09:35.282Z",
-    "porcentaje": 0
+    "porcentaje": 21
   }
 }
