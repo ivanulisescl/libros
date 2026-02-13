@@ -79,21 +79,10 @@
             background: linear-gradient(180deg, var(--secondary) 0%, transparent 100%);
         }
 
-        .header-left h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.3rem;
-            background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .header-left p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            font-weight: 300;
+        .header-logo {
+            height: 112px;
+            width: auto;
+            display: block;
         }
 
         .header-right {
@@ -1442,7 +1431,7 @@
         /* Responsive */
         @media (max-width: 768px) {
             header { flex-direction: column; text-align: center; }
-            .header-left h1 { font-size: 2rem; }
+            .header-logo { height: 88px; }
             .header-right { justify-content: center; }
             .operaciones-menu {
                 right: auto;
@@ -1473,8 +1462,7 @@
 <body>
     <header>
         <div class="header-left">
-            <h1>Mi Biblioteca Personal</h1>
-            <p>Colección de lecturas desde 2023</p>
+            <img src="icon-192.png" alt="Mi Biblioteca Personal" class="header-logo">
         </div>
         <div class="header-right">
             <button class="btn-icon btn-proximas-accent" id="proximasBtn">📚 Próximas Lecturas</button>
@@ -1630,7 +1618,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.12</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.13</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
