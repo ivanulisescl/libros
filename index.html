@@ -1157,19 +1157,51 @@
             margin-bottom: 0.5rem;
         }
 
-        .leyendo-porcentaje {
-            font-size: 0.95rem;
-            color: var(--accent);
+        .leyendo-progress-wrap {
             margin-bottom: 1rem;
+        }
+
+        .leyendo-progress-bar {
+            position: relative;
+            height: 40px;
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
+        }
+
+        .leyendo-progress-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, var(--accent) 0%, #ff6b8a 100%);
+            border-radius: 10px 0 0 10px;
+            transition: width 0.4s ease;
+            width: 0%;
+        }
+
+        .leyendo-porcentaje {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
             cursor: pointer;
-            display: inline-block;
-            padding: 0.2rem 0.5rem;
-            border-radius: 6px;
+            z-index: 2;
+            text-shadow: 0 0 2px rgba(255,255,255,0.8), 0 1px 2px rgba(0,0,0,0.2);
             transition: background 0.2s ease;
         }
 
         .leyendo-porcentaje:hover {
-            background: rgba(233, 69, 96, 0.15);
+            background: rgba(0, 0, 0, 0.06);
         }
 
         .leyendo-porcentaje input {
@@ -1516,7 +1548,12 @@
             <div class="leyendo-header">📖 Leyendo ahora</div>
             <div class="leyendo-titulo" id="leyendoTitulo"></div>
             <div class="leyendo-autor" id="leyendoAutor"></div>
-            <div class="leyendo-porcentaje" id="leyendoPorcentaje" title="Clic para editar">0%</div>
+            <div class="leyendo-progress-wrap">
+                <div class="leyendo-progress-bar">
+                    <div class="leyendo-progress-fill" id="leyendoProgressFill"></div>
+                    <div class="leyendo-porcentaje" id="leyendoPorcentaje" title="Clic para editar">0%</div>
+                </div>
+            </div>
             <div class="leyendo-actions">
                 <button class="leyendo-btn cita" onclick="abrirCitaRapida()"><span class="icono-plus" style="color: #ffd700; text-shadow: 0 0 4px rgba(255, 215, 0, 0.8);">➕</span></button>
                 <button class="leyendo-btn ver-notas" id="verNotasBtn" onclick="toggleVerNotas()" style="display: none;">Notas</button>
@@ -1618,7 +1655,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.13</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.14</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
@@ -2929,6 +2966,8 @@
                 const pctEl = document.getElementById('leyendoPorcentaje');
                 pctEl.textContent = pct + '%';
                 pctEl.title = 'Clic para editar';
+                const progressFill = document.getElementById('leyendoProgressFill');
+                if (progressFill) progressFill.style.width = pct + '%';
                 
                 // Mostrar botón "Notas" si hay notas
                 const hasNotas = libroLeyendo.citas && libroLeyendo.citas.trim() !== '';
@@ -2993,6 +3032,8 @@
                 saveLeyendo();
                 div.textContent = n + '%';
                 div.title = 'Clic para editar';
+                const progressFill = document.getElementById('leyendoProgressFill');
+                if (progressFill) progressFill.style.width = n + '%';
                 input.removeEventListener('blur', guardarPorcentaje);
             }
 
