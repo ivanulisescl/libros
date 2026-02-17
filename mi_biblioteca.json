@@ -661,6 +661,17 @@
       "sinopsis": "En esta novela, a través de su forma original —y única— de expresarse, nos adentra en una aventura que, además de hacernos soñar, nos permitirá ver el mundo desde una perspectiva diferente.",
       "comentario": "Captó mi atención desde el principio y se mantuvo hasta el final. Muy imaginativo y con un estilo reconocible donde cabe lo poético, tierno y grotesco a la vez.",
       "citas": "Página 11. Un sueño cumplido es un deseo muerto.\n\nPágina 27. A las tristezas no les gusta estar solas y desaparecen si no encuentran a nadie que las piense.\n\nPágina 28. A los amigos se les va a buscar, o se les espera, o se les llama, o se les piensa\n\nPágina 39. Cuando asimilamos una situación, llega un momento en que no parece tan grave.\n\nPágina 180. Menudo giro el de la aparición de la pandilla del bosque. Buenísimo.\n\nPágina212. Si se altera uno solo de los componentes de un conjunto, el conjunto resultante ya no es el mismo, es distinto, es otro. Si usted cambia, sólo con eso, el mundo ya será diferente.\n\nPágina 248. Con los movimientos tan rápidos y los cambios tan bruscos pasa lo mismo que con los movimientos cuya lentitud hace inapreciables: que hace falta que transcurra el tiempo para poder notarlos, para cobrar conciencia de que han ocurrido."
+    },
+    {
+      "titulo": "NOS QUEDA LO MEJOR",
+      "autor": "ISABEL GONZÁLEZ",
+      "fecha": "Febrero de 2026",
+      "paginas": 104,
+      "editorial": "Páginas de espuma",
+      "puntuacion": 6,
+      "sinopsis": "Esta obra es una mezcla de crónica generacional, ensayo y memoria personal que reflexiona sobre la madurez y el paso del tiempo. Vázquez se aleja de los discursos catastrofistas sobre envejecer y propone una mirada luminosa y honesta hacia la etapa que comienza a partir de los cuarenta y cincuenta años, explorando cómo las experiencias acumuladas permiten vivir con mayor libertad y menos máscaras.\n\nA través de anécdotas propias y referencias culturales —desde el cine y las series hasta la música y la literatura—, la autora aborda temas como la amistad, el cuerpo, las expectativas frustradas y los nuevos deseos. Es un libro que invita a celebrar la \"segunda mitad\" de la vida como un momento de plenitud, donde, una vez superada la presión de la juventud, realmente nos queda lo mejor por disfrutar desde la consciencia y el humor",
+      "comentario": "Se me hizo entretenido, aunque la mayoría de las historias no las entendí o me resultaron indiferentes. Si hay un par de ellas, sobre todo la de las madres en la piscina, que me resultaron graciosas. Forma particular de escribir, no siempre me gustó.",
+      "citas": "Página 20. Ayer de carencias, presente con rasmia.\n\nPágina 23. Batían récords de demora en completar un largo.\n\nPágina 23. Un largo de su abuela Paquita? Más de una hora. Nadie había batido esa marca"
     }
   ],
   "proximas": [
@@ -729,12 +740,5 @@
       "sinopsis": "Los Ángeles, 1981. A sus diecisiete años, Bret está a punto de empezar su último curso de secundaria en Buckley junto a su exclusivo y sofisticado grupo de amigos: Thom, Susan y Debbie, novia de Bret, experimentan con el sexo, el alcohol y las drogas mientras aprovechan los últimos días de verano. Pero este sueño paradisiaco se desmorona con la llegada de un nuevo alumno: Robert Mallory es brillante, guapo y carismático, pero algo en él no encaja, y nadie más que Bret parece darse cuenta de que ese algo podría estar relacionado con la aparición del Arrastrero, un asesino en serie que amenaza a los adolescentes de la ciudad y a sus mascotas."
     }
   ],
-  "leyendo": {
-    "titulo": "NOS QUEDA LO MEJOR",
-    "autor": "ISABEL GONZÁLEZ",
-    "sinopsis": "Esta obra es una mezcla de crónica generacional, ensayo y memoria personal que reflexiona sobre la madurez y el paso del tiempo. Vázquez se aleja de los discursos catastrofistas sobre envejecer y propone una mirada luminosa y honesta hacia la etapa que comienza a partir de los cuarenta y cincuenta años, explorando cómo las experiencias acumuladas permiten vivir con mayor libertad y menos máscaras.\n\nA través de anécdotas propias y referencias culturales —desde el cine y las series hasta la música y la literatura—, la autora aborda temas como la amistad, el cuerpo, las expectativas frustradas y los nuevos deseos. Es un libro que invita a celebrar la \"segunda mitad\" de la vida como un momento de plenitud, donde, una vez superada la presión de la juventud, realmente nos queda lo mejor por disfrutar desde la consciencia y el humor",
-    "citas": "Página 20. Ayer de carencias, presente con rasmia.\n\nPágina 23. Batían récords de demora en completar un largo.\n\nPágina 23. Un largo de su abuela Paquita? Más de una hora. Nadie había batido esa marca",
-    "fechaInicio": "2026-02-10T22:09:35.282Z",
-    "porcentaje": 38
-  }
+  "leyendo": null
 }
