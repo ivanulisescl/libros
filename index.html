@@ -168,9 +168,15 @@
 
         .header-right {
             display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: flex-end;
+        }
+
+        .header-actions-row {
+            display: flex;
             gap: 0.75rem;
             align-items: center;
-            flex-wrap: wrap;
         }
 
         /* Buttons */
@@ -1550,7 +1556,7 @@
         @media (max-width: 768px) {
             header { flex-direction: column; text-align: center; }
             .header-logo { height: 88px; }
-            .header-right { justify-content: center; }
+            .header-right { align-items: center; }
             .operaciones-menu {
                 right: auto;
                 left: 50%;
@@ -1583,23 +1589,27 @@
             <img src="icon-192.png" alt="Mi Biblioteca Personal" class="header-logo">
         </div>
         <div class="header-right">
-            <button class="btn-icon" id="proximasBtn">📚 Próximas Lecturas</button>
-            <button class="btn-icon" id="statsToggle">📊 Estadísticas</button>
-            <div class="operaciones-container">
-                <button class="btn-icon" id="operacionesBtn">⚙️ Operaciones</button>
-                <div class="operaciones-menu" id="operacionesMenu">
-                    <button class="btn-icon" id="addBookBtn">➕ Añadir Libro</button>
-                    <button class="btn-icon" id="exportBtn">📤 Exportar</button>
-                    <button class="btn-icon" id="importBtn">📥 Importar</button>
-                    <input type="file" id="importFile" accept=".json" style="display: none;">
-                    <button class="btn-icon" id="resetBtn" title="Recargar datos desde el servidor">🔄 Resetear</button>
-                    <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">🔄 Actualizar</button>
-                </div>
+            <div class="header-actions-row">
+                <button class="btn-icon" id="proximasBtn">📚 Próximas Lecturas</button>
+                <button class="btn-icon" id="statsToggle">📊 Estadísticas</button>
             </div>
-            <div class="theme-toggle" id="themeToggle">
-                <span class="theme-label">Tema</span>
-                <div class="theme-toggle-track">
-                    <div class="theme-toggle-thumb">🌙</div>
+            <div class="header-actions-row">
+                <div class="operaciones-container">
+                    <button class="btn-icon" id="operacionesBtn">⚙️ Operaciones</button>
+                    <div class="operaciones-menu" id="operacionesMenu">
+                        <button class="btn-icon" id="addBookBtn">➕ Añadir Libro</button>
+                        <button class="btn-icon" id="exportBtn">📤 Exportar</button>
+                        <button class="btn-icon" id="importBtn">📥 Importar</button>
+                        <input type="file" id="importFile" accept=".json" style="display: none;">
+                        <button class="btn-icon" id="resetBtn" title="Recargar datos desde el servidor">🔄 Resetear</button>
+                        <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">🔄 Actualizar</button>
+                    </div>
+                </div>
+                <div class="theme-toggle" id="themeToggle">
+                    <span class="theme-label">Tema</span>
+                    <div class="theme-toggle-track">
+                        <div class="theme-toggle-thumb">🌙</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1741,7 +1751,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.15</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.16</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
