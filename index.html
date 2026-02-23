@@ -200,6 +200,17 @@
             background: var(--card-hover);
         }
 
+        .btn-icon.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .btn-icon.active:hover {
+            background: var(--accent-light);
+            border-color: var(--accent-light);
+        }
+
         .btn-icon.primary {
             background: var(--gradient-1);
             color: white;
@@ -391,6 +402,36 @@
             letter-spacing: 1px;
         }
 
+        /* Modo estadísticas: oculta resumen, Leyendo ahora, filtros y grid; muestra gráficos */
+        body.stats-mode .stats-bar,
+        body.stats-mode .leyendo-section,
+        body.stats-mode .controls,
+        body.stats-mode .books-grid,
+        body.stats-mode .data-info,
+        body.stats-mode .proximas-section {
+            display: none !important;
+        }
+
+        body.stats-mode .charts-section {
+            display: block !important;
+            animation: slideDown 0.4s ease;
+        }
+
+        /* Modo próximas: oculta resumen, Leyendo ahora, filtros y grid; muestra lista próximas */
+        body.proximas-mode .stats-bar,
+        body.proximas-mode .leyendo-section,
+        body.proximas-mode .controls,
+        body.proximas-mode .books-grid,
+        body.proximas-mode .data-info,
+        body.proximas-mode .charts-section {
+            display: none !important;
+        }
+
+        body.proximas-mode .proximas-section {
+            display: block !important;
+            animation: slideDown 0.4s ease;
+        }
+
         /* Charts Section */
         .charts-section {
             display: none;
@@ -401,6 +442,30 @@
         .charts-section.visible {
             display: block;
             animation: slideDown 0.4s ease;
+        }
+
+        /* Próximas section (inline, como estadísticas) */
+        .proximas-section {
+            display: none;
+            padding: 0 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .proximas-section .proximas-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .proximas-section #proximasList {
+            margin-bottom: 1rem;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .proximas-section .btn-add-proxima {
+            width: 100%;
         }
 
         @keyframes slideDown {
@@ -1715,6 +1780,13 @@
         </div>
     </section>
 
+    <!-- Sección Próximas Lecturas (inline, como Estadísticas) -->
+    <section class="proximas-section" id="proximasSection">
+        <h2 class="proximas-header">📚 Próximas Lecturas</h2>
+        <div id="proximasList"></div>
+        <button type="button" class="btn-icon primary btn-add-proxima" id="showAddProximaBtn">➕ Añadir nuevo libro</button>
+    </section>
+
     <div class="controls">
         <div class="search-box">
             <input type="text" id="searchInput" placeholder="Buscar por título, autor o editorial...">
@@ -1751,7 +1823,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.16</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.17</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
@@ -1827,18 +1899,6 @@
                     <button type="submit" class="btn-save">Guardar</button>
                 </div>
             </form>
-        </div>
-    </div>
-
-    <!-- Modal Próximas Lecturas - Lista -->
-    <div class="modal-overlay" id="proximasOverlay">
-        <div class="modal" style="max-width: 650px;">
-            <div class="modal-header">
-                <h2>📚 Próximas Lecturas</h2>
-                <button class="modal-close" id="proximasClose">×</button>
-            </div>
-            <div id="proximasList" style="margin-bottom: 1rem; max-height: 450px; overflow-y: auto;"></div>
-            <button type="button" class="btn-icon primary" id="showAddProximaBtn" style="width: 100%;">➕ Añadir nuevo libro</button>
         </div>
     </div>
 
@@ -2687,20 +2747,44 @@
             });
         }
 
-        // Stats toggle
+        // Stats toggle: muestra estado pulsado, siempre "Estadísticas". Al pulsar: oculta resumen, Leyendo ahora y filtros; muestra gráficos.
         function initStatsToggle() {
             const btn = document.getElementById('statsToggle');
-            const section = document.getElementById('chartsSection');
+            const proximasBtn = document.getElementById('proximasBtn');
 
             btn.addEventListener('click', () => {
-                const isVisible = section.classList.contains('visible');
-                if (isVisible) {
-                    section.classList.remove('visible');
-                    btn.innerHTML = '📊 Estadísticas';
+                const isStatsMode = document.body.classList.contains('stats-mode');
+                if (isStatsMode) {
+                    document.body.classList.remove('stats-mode');
+                    btn.classList.remove('active');
                 } else {
-                    section.classList.add('visible');
-                    btn.innerHTML = '📊 Ocultar';
+                    document.body.classList.remove('proximas-mode');
+                    if (proximasBtn) proximasBtn.classList.remove('active');
+                    document.body.classList.add('stats-mode');
+                    btn.classList.add('active');
                     if (!chartsInitialized) initCharts();
+                }
+            });
+        }
+
+        // Próximas toggle: igual que Estadísticas, muestra lista inline
+        function initProximasToggle() {
+            const btn = document.getElementById('proximasBtn');
+            const statsBtn = document.getElementById('statsToggle');
+
+            if (!btn) return;
+            btn.addEventListener('click', async () => {
+                const isProximasMode = document.body.classList.contains('proximas-mode');
+                if (isProximasMode) {
+                    document.body.classList.remove('proximas-mode');
+                    btn.classList.remove('active');
+                } else {
+                    document.body.classList.remove('stats-mode');
+                    if (statsBtn) statsBtn.classList.remove('active');
+                    document.body.classList.add('proximas-mode');
+                    btn.classList.add('active');
+                    proximasLecturas = await loadProximas();
+                    renderProximas();
                 }
             });
         }
@@ -2994,7 +3078,6 @@
             renderProximas();
             
             document.getElementById('editProximaOverlay').classList.remove('visible');
-            document.getElementById('proximasOverlay').classList.remove('visible');
             showToast('¡A disfrutar de la lectura! 📖');
         }
 
@@ -3033,16 +3116,13 @@
             renderProximas();
             
             cerrarOpciones();
-            document.getElementById('proximasOverlay').classList.remove('visible');
             showToast('¡A disfrutar de la lectura! 📖');
         }
 
         function yaTerminado() {
             if (!proximaPendiente) return;
             
-            // Close options and próximas modals
             cerrarOpciones();
-            document.getElementById('proximasOverlay').classList.remove('visible');
             
             // Open add book modal with pre-filled data
             document.getElementById('modalTitle').textContent = 'Añadir Libro Leído';
@@ -3238,23 +3318,7 @@
             document.getElementById('editProximaOverlay').classList.add('visible');
         }
 
-        // Próximas list modal events
-        document.getElementById('proximasBtn').addEventListener('click', async () => {
-            proximasLecturas = await loadProximas();
-            renderProximas();
-            document.getElementById('proximasOverlay').classList.add('visible');
-        });
-
-        document.getElementById('proximasClose').addEventListener('click', () => {
-            document.getElementById('proximasOverlay').classList.remove('visible');
-        });
-
-        document.getElementById('proximasOverlay').addEventListener('click', (e) => {
-            if (e.target.id === 'proximasOverlay') {
-                document.getElementById('proximasOverlay').classList.remove('visible');
-            }
-        });
-
+        initProximasToggle();
         document.getElementById('showAddProximaBtn').addEventListener('click', addNuevaProxima);
 
         // Edit próxima modal events
