@@ -48,6 +48,69 @@
             --border-hover: rgba(0,0,0,0.15);
         }
 
+        /* Alternativa: tonos tierra / cálidos */
+        [data-theme="warm"] {
+            --primary: #252119;
+            --secondary: #3d3328;
+            --accent: #c17f59;
+            --accent-light: #e0a87a;
+            --text: #f5f0e8;
+            --text-muted: #b5a898;
+            --card-bg: #1e1a14;
+            --card-hover: #2a251e;
+            --gradient-1: linear-gradient(135deg, #a67c52 0%, #8b6914 100%);
+            --gradient-2: linear-gradient(135deg, #c17f59 0%, #d4a574 100%);
+            --gradient-3: linear-gradient(135deg, #8b7355 0%, #a89070 100%);
+            --shadow: rgba(0,0,0,0.35);
+            --border: rgba(255,255,255,0.06);
+            --border-hover: rgba(255,255,255,0.12);
+            --success: #6b9b6b;
+            --danger: #c75c5c;
+            --star: #e8c547;
+        }
+
+        /* Naranja oscuro */
+        [data-theme="fresh"] {
+            --primary: #2a2520;
+            --secondary: #3d3630;
+            --accent: #e87c2d;
+            --accent-light: #f0a050;
+            --text: #f5f0e6;
+            --text-muted: #b8b0a0;
+            --card-bg: #221e1a;
+            --card-hover: #302c26;
+            --gradient-1: linear-gradient(135deg, #e07c3a 0%, #e87c2d 100%);
+            --gradient-2: linear-gradient(135deg, #e87c2d 0%, #f09a50 100%);
+            --gradient-3: linear-gradient(135deg, #d4843c 0%, #e89a52 100%);
+            --shadow: rgba(0,0,0,0.35);
+            --border: rgba(255,255,255,0.07);
+            --border-hover: rgba(255,255,255,0.14);
+            --success: #6b9b6b;
+            --danger: #c75c5c;
+            --star: #f0a050;
+        }
+
+        /* Naranja claro */
+        [data-theme="fresh-light"] {
+            --primary: #faf6f0;
+            --secondary: #f0e8dc;
+            --accent: #d46b1f;
+            --accent-light: #e87c2d;
+            --text: #2d2520;
+            --text-muted: #6b5d50;
+            --card-bg: #ffffff;
+            --card-hover: #faf6f0;
+            --gradient-1: linear-gradient(135deg, #e07c3a 0%, #e87c2d 100%);
+            --gradient-2: linear-gradient(135deg, #e87c2d 0%, #f09a50 100%);
+            --gradient-3: linear-gradient(135deg, #d4843c 0%, #e89a52 100%);
+            --shadow: rgba(0,0,0,0.1);
+            --border: rgba(0,0,0,0.08);
+            --border-hover: rgba(0,0,0,0.15);
+            --success: #5a8b5a;
+            --danger: #b54c4c;
+            --star: #e89a50;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -66,6 +129,24 @@
             background-image: 
                 radial-gradient(ellipse at 10% 20%, rgba(233, 69, 96, 0.1) 0%, transparent 50%),
                 radial-gradient(ellipse at 90% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 50%);
+        }
+
+        body[data-theme="warm"] {
+            background-image: 
+                radial-gradient(ellipse at 10% 20%, rgba(193, 127, 89, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 90% 80%, rgba(139, 115, 85, 0.1) 0%, transparent 50%);
+        }
+
+        body[data-theme="fresh"] {
+            background-image: 
+                radial-gradient(ellipse at 10% 20%, rgba(232, 124, 45, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 90% 80%, rgba(240, 160, 80, 0.1) 0%, transparent 50%);
+        }
+
+        body[data-theme="fresh-light"] {
+            background-image: 
+                radial-gradient(ellipse at 10% 20%, rgba(232, 124, 45, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 90% 80%, rgba(240, 160, 80, 0.06) 0%, transparent 50%);
         }
 
         /* Header */
@@ -171,13 +252,15 @@
             border-color: rgba(255, 228, 220, 0.45);
         }
 
-        [data-theme="light"] .btn-proximas-accent {
+        [data-theme="light"] .btn-proximas-accent,
+        [data-theme="fresh-light"] .btn-proximas-accent {
             background: #c0392b;
             color: #fff0ee;
             border: 1px solid rgba(192, 57, 43, 0.35);
         }
 
-        [data-theme="light"] .btn-proximas-accent:hover {
+        [data-theme="light"] .btn-proximas-accent:hover,
+        [data-theme="fresh-light"] .btn-proximas-accent:hover {
             background: #d35400;
             border-color: rgba(211, 84, 0, 0.45);
         }
@@ -261,7 +344,8 @@
             font-size: 12px;
         }
 
-        [data-theme="light"] .theme-toggle-thumb {
+        [data-theme="light"] .theme-toggle-thumb,
+        [data-theme="fresh-light"] .theme-toggle-thumb {
             transform: translateX(24px);
         }
 
@@ -1176,7 +1260,7 @@
             left: 0;
             top: 0;
             bottom: 0;
-            background: linear-gradient(90deg, var(--accent) 0%, #ff6b8a 100%);
+            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
             border-radius: 10px 0 0 10px;
             transition: width 0.4s ease;
             width: 0%;
@@ -1272,13 +1356,15 @@
             border-color: rgba(255, 212, 168, 0.6);
         }
 
-        [data-theme="light"] .leyendo-btn.ver-notas {
+        [data-theme="light"] .leyendo-btn.ver-notas,
+        [data-theme="fresh-light"] .leyendo-btn.ver-notas {
             background: rgba(192, 57, 43, 0.15) !important;
             color: #a93226 !important;
             border-color: rgba(192, 57, 43, 0.4) !important;
         }
 
-        [data-theme="light"] .leyendo-btn.ver-notas:hover {
+        [data-theme="light"] .leyendo-btn.ver-notas:hover,
+        [data-theme="fresh-light"] .leyendo-btn.ver-notas:hover {
             background: rgba(192, 57, 43, 0.22) !important;
             border-color: rgba(192, 57, 43, 0.55) !important;
             color: #922b21 !important;
@@ -1497,7 +1583,7 @@
             <img src="icon-192.png" alt="Mi Biblioteca Personal" class="header-logo">
         </div>
         <div class="header-right">
-            <button class="btn-icon btn-proximas-accent" id="proximasBtn">📚 Próximas Lecturas</button>
+            <button class="btn-icon" id="proximasBtn">📚 Próximas Lecturas</button>
             <button class="btn-icon" id="statsToggle">📊 Estadísticas</button>
             <div class="operaciones-container">
                 <button class="btn-icon" id="operacionesBtn">⚙️ Operaciones</button>
@@ -1655,7 +1741,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.14</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.15</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
@@ -1945,26 +2031,62 @@
             }, {});
         }
 
-        // Get chart colors
-        function getChartColors(count) {
-            const colors = [
-                '#e94560', '#667eea', '#4facfe', '#f093fb', '#00f2fe',
-                '#ff6b6b', '#764ba2', '#f5576c', '#43e97b', '#fa709a',
-                '#fee140', '#6a11cb', '#fc4a1a', '#7f7fd5', '#86a8e7'
-            ];
-            return colors.slice(0, count);
+        function getThemeVar(name) {
+            return getComputedStyle(document.documentElement).getPropertyValue('--' + name).trim();
         }
 
-        function isLightMode() {
-            return document.body.getAttribute('data-theme') === 'light';
+        function hexToRgb(hex) {
+            const m = hex.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i);
+            return m ? { r: parseInt(m[1], 16), g: parseInt(m[2], 16), b: parseInt(m[3], 16) } : null;
+        }
+
+        function hexToHsl(hex) {
+            const rgb = hexToRgb(hex);
+            if (!rgb) return { h: 0, s: 0, l: 50 };
+            const r = rgb.r / 255, g = rgb.g / 255, b = rgb.b / 255;
+            const max = Math.max(r, g, b), min = Math.min(r, g, b);
+            let h, s, l = (max + min) / 2;
+            if (max === min) h = s = 0;
+            else {
+                const d = max - min;
+                s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+                switch (max) {
+                    case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+                    case g: h = ((b - r) / d + 2) / 6; break;
+                    default: h = ((r - g) / d + 4) / 6;
+                }
+            }
+            return { h: Math.round(h * 360), s: Math.round(s * 100), l: Math.round(l * 100) };
+        }
+
+        function hslToHex(h, s, l) {
+            s /= 100; l /= 100;
+            const a = s * Math.min(l, 1 - l);
+            const f = n => { const k = (n + h / 30) % 12; return l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1); };
+            return '#' + [0, 8, 4].map(i => Math.round(255 * f(i)).toString(16).padStart(2, '0')).join('');
+        }
+
+        function getChartColors(count) {
+            const accent = getThemeVar('accent') || '#e94560';
+            const accentLight = getThemeVar('accent-light') || '#ff6b6b';
+            const hsl = hexToHsl(accent);
+            const colors = [];
+            for (let i = 0; i < count; i++) {
+                const t = count > 1 ? i / (count - 1) : 0;
+                const h = (hsl.h + i * 25) % 360;
+                const s = Math.max(50, Math.min(85, hsl.s + i * 2));
+                const l = 45 + t * 15;
+                colors.push(hslToHex(h, s, l));
+            }
+            return colors;
         }
 
         function getChartTextColor() {
-            return isLightMode() ? '#2d3748' : '#eaeaea';
+            return getThemeVar('text') || '#eaeaea';
         }
 
         function getChartGridColor() {
-            return isLightMode() ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)';
+            return 'rgba(255,255,255,0.1)';
         }
 
         // Render stars
@@ -2014,11 +2136,11 @@
                     datasets: [{
                         label: 'Libros',
                         data: sortedMonths.map(m => monthlyData[m]),
-                        borderColor: '#e94560',
-                        backgroundColor: 'rgba(233, 69, 96, 0.1)',
+                        borderColor: getThemeVar('accent') || '#e94560',
+                        backgroundColor: (() => { const c = hexToRgb(getThemeVar('accent') || '#e94560'); return c ? `rgba(${c.r},${c.g},${c.b},0.15)` : 'rgba(233,69,96,0.1)'; })(),
                         fill: true,
                         tension: 0.4,
-                        pointBackgroundColor: '#e94560',
+                        pointBackgroundColor: getThemeVar('accent') || '#e94560',
                         pointRadius: 4
                     }]
                 },
@@ -2117,7 +2239,7 @@
                     datasets: [{
                         label: 'Libros',
                         data: ratingData,
-                        backgroundColor: ratingLabels.map(r => `hsl(${(r - 1) * 12}, 70%, 50%)`),
+                        backgroundColor: getChartColors(10),
                         borderRadius: 8
                     }]
                 },
@@ -2142,7 +2264,7 @@
                 type: 'pie',
                 data: {
                     labels: Object.keys(lengthRanges),
-                    datasets: [{ data: Object.values(lengthRanges), backgroundColor: ['#4facfe', '#667eea', '#e94560', '#f093fb'], borderWidth: 0 }]
+                    datasets: [{ data: Object.values(lengthRanges), backgroundColor: getChartColors(4), borderWidth: 0 }]
                 },
                 options: {
                     responsive: true,
@@ -2161,21 +2283,10 @@
         }
 
         function updateChartsTheme() {
-            const textColor = getChartTextColor();
-            const gridColor = getChartGridColor();
-            Object.values(charts).forEach(chart => {
-                chart.options.scales && Object.values(chart.options.scales).forEach(scale => {
-                    scale.ticks = scale.ticks || {};
-                    scale.ticks.color = textColor;
-                    scale.grid = scale.grid || {};
-                    scale.grid.color = gridColor;
-                });
-                if (chart.options.plugins?.legend) {
-                    chart.options.plugins.legend.labels = chart.options.plugins.legend.labels || {};
-                    chart.options.plugins.legend.labels.color = textColor;
-                }
-                chart.update();
-            });
+            if (chartsInitialized) {
+                destroyCharts();
+                initCharts();
+            }
         }
 
         // Initialize filters
@@ -2538,27 +2649,29 @@
             });
         }
 
-        // Theme toggle
+        // Theme toggle: naranja en modo oscuro y claro
         function initThemeToggle() {
             const toggle = document.getElementById('themeToggle');
             const thumb = toggle.querySelector('.theme-toggle-thumb');
-            
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'light') {
-                document.body.setAttribute('data-theme', 'light');
+            const savedTheme = localStorage.getItem('theme') || 'fresh';
+            if (savedTheme === 'fresh-light') {
+                document.body.setAttribute('data-theme', 'fresh-light');
                 thumb.textContent = '☀️';
+            } else {
+                document.body.setAttribute('data-theme', 'fresh');
+                thumb.textContent = '🌙';
             }
 
             toggle.addEventListener('click', () => {
-                const isLight = document.body.getAttribute('data-theme') === 'light';
-                if (isLight) {
-                    document.body.removeAttribute('data-theme');
-                    thumb.textContent = '🌙';
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    document.body.setAttribute('data-theme', 'light');
+                const isDark = document.body.getAttribute('data-theme') === 'fresh';
+                if (isDark) {
+                    document.body.setAttribute('data-theme', 'fresh-light');
                     thumb.textContent = '☀️';
-                    localStorage.setItem('theme', 'light');
+                    localStorage.setItem('theme', 'fresh-light');
+                } else {
+                    document.body.setAttribute('data-theme', 'fresh');
+                    thumb.textContent = '🌙';
+                    localStorage.setItem('theme', 'fresh');
                 }
                 if (chartsInitialized) updateChartsTheme();
             });
