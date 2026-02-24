@@ -168,28 +168,26 @@
             align-items: center;
             justify-content: flex-end;
             flex: 1;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 0.25rem;
-            gap: 0;
+            gap: 0.5rem;
         }
 
         .header-right .btn-icon {
-            border: none;
-            border-radius: 8px;
-            padding: 0.5rem 0.9rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 0.5rem 1rem;
             font-size: 0.85rem;
-            background: transparent;
+            background: var(--card-bg);
         }
 
         .header-right .btn-icon:hover {
+            border-color: var(--accent);
             background: var(--card-hover);
         }
 
         .header-right .btn-icon.active {
             background: var(--accent);
             color: white;
+            border-color: var(--accent);
         }
 
         .header-right .operaciones-container {
@@ -197,18 +195,18 @@
         }
 
         .header-right .operaciones-container .btn-icon {
-            border-radius: 8px;
+            border-radius: 10px;
         }
 
         .header-right .theme-toggle {
-            margin-left: 0.25rem;
-            padding: 0.35rem 0.6rem;
-            border: none;
-            background: transparent;
-            border-radius: 8px;
+            padding: 0.4rem 0.75rem;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            border-radius: 10px;
         }
 
         .header-right .theme-toggle:hover {
+            border-color: var(--accent);
             background: var(--card-hover);
         }
 
@@ -1842,7 +1840,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.18</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.19</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
