@@ -672,6 +672,17 @@
       "sinopsis": "Esta obra es una mezcla de crónica generacional, ensayo y memoria personal que reflexiona sobre la madurez y el paso del tiempo. Vázquez se aleja de los discursos catastrofistas sobre envejecer y propone una mirada luminosa y honesta hacia la etapa que comienza a partir de los cuarenta y cincuenta años, explorando cómo las experiencias acumuladas permiten vivir con mayor libertad y menos máscaras.\n\nA través de anécdotas propias y referencias culturales —desde el cine y las series hasta la música y la literatura—, la autora aborda temas como la amistad, el cuerpo, las expectativas frustradas y los nuevos deseos. Es un libro que invita a celebrar la \"segunda mitad\" de la vida como un momento de plenitud, donde, una vez superada la presión de la juventud, realmente nos queda lo mejor por disfrutar desde la consciencia y el humor",
       "comentario": "Se me hizo entretenido, aunque la mayoría de las historias no las entendí o me resultaron indiferentes. Si hay un par de ellas, sobre todo la de las madres en la piscina, que me resultaron graciosas. Forma particular de escribir, no siempre me gustó.",
       "citas": "Página 20. Ayer de carencias, presente con rasmia.\n\nPágina 23. Batían récords de demora en completar un largo.\n\nPágina 23. Un largo de su abuela Paquita? Más de una hora. Nadie había batido esa marca"
+    },
+    {
+      "titulo": "CORAZÓN TAN BLANCO",
+      "autor": "JAVIER MARÍAS",
+      "fecha": "Marzo de 2026",
+      "paginas": 320,
+      "editorial": "Debolsillo",
+      "puntuacion": 7,
+      "sinopsis": "La historia comienza con un impactante suicidio en el pasado familiar, pero se centra en el presente de Juan Ranz, un traductor e intérprete recién casado. A través de una atmósfera de suspense psicológico, Juan empieza a descubrir los secretos oscuros sobre el pasado de su padre, Ranz, y sus matrimonios anteriores. El título, extraído de Macbeth, alude a la transferencia de la culpa: \"Mis manos son de tu color, pero me avergonzaría de tener un corazón tan blanco\".\n\nEs una profunda meditación sobre el secreto, la sospecha y el matrimonio. Marías explora cómo el saber —o el preferir no saber— altera nuestras relaciones, y cómo las palabras dichas o escuchadas pueden ser tan letales como las acciones. La novela destaca por su estilo hipnótico, lleno de digresiones inteligentes y una prosa elegante que disecciona la imposibilidad de conocer realmente a quienes amamos.",
+      "comentario": "De menos a más. La forma de escribir es muy reconocible.",
+      "citas": "…nunca ha sido viejo, ni siquiera ahora. Lleva toda una vida aplazando ese estado, dejándolo para más adelante o acaso desentendiéndose de él\n\nPero los hijos lo ignoramos todo sobre los padres, o tardamos en interesarnos.\n\nLa juventud se oculta, la juventud es secreta para quienes no nos conocen jóvenes."
     }
   ],
   "proximas": [
@@ -701,9 +712,19 @@
       "sinopsis": "Aquí tienes la sinopsis de El mundo después de Gaza, de Pankaj Mishra:\n\nEn este ensayo incisivo y urgente, el intelectual indio Pankaj Mishra analiza cómo la guerra actual en Gaza y la respuesta internacional ante el conflicto están marcando el fin de la autoridad moral de Occidente. El autor sostiene que el orden global posterior a 1945, construido sobre la memoria del Holocausto como la \"atrocidad de referencia\", ha entrado en crisis al chocar con las realidades de un Sur Global que ve en la descolonización el eje central de su historia y su justicia.\n\nMishra reevalúa dos narrativas opuestas: el relato triunfal del Norte Global sobre el capitalismo liberal y la visión del Sur Global que busca igualdad racial y libertad frente al dominio colonial. A través de una mirada desprovista de eurocentrismo, el libro aborda cuestiones fundamentales como la construcción de la identidad, el papel de las naciones y el impacto de la deshumanización en la era digital, convirtiéndose en una guía necesaria para entender el cambio de equilibrio en el poder mundial."
     },
     {
+      "titulo": "EL FIN DEL HOMO SOVIETICUS",
+      "autor": "SVETLANA ALEKSIÉVICH",
+      "sinopsis": "Con la sola ayuda de una grabadora y una pluma, Svetlana Aleksiévich se empeña en mantener viva la memoria de la tragedia que fue la URSS, en narrar las microhistorias de una gran utopía. «El comunismo se propuso la insensatez de transformar al hombre antiguo, al viejo Adán. Y lo consiguió []. En setenta y pocos años, el laboratorio del marxismo-leninismo creó un singular tipo de hombre: el Homo\nsovieticus», condenado a desaparecer con la implosión de la URSS. En este magnífico réquiem, la autora reinventa una forma literaria polifónica muy singular que le permite dar voz a cientos de damnificados: a los humillados y a los ofendidos, a madres deportadas con sus hijos, a estalinistas irredentos a pesar del Gulag, a entusiastas de la perestroika anonadados ante el triunfo del capitalismo, a ciudadanos que plantan cara a la instauración de nuevas dictaduras\nUn texto extraordinario por su sencillez, que describe de un modo conmovedor la sobrecogedora condición humana."
+    },
+    {
       "titulo": "EL CUADERNO GRIS",
       "autor": "JOSEP PLA",
       "sinopsis": "Considerado uno de los diarios más importantes de la literatura europea, comienza en 1918, cuando un joven Pla regresa a su pueblo natal, Palafrugell, debido al cierre de la universidad por la epidemia de gripe española. Lo que empieza como un ejercicio para combatir el aburrimiento y practicar el estilo literario, se convierte en un vasto retrato de la vida cotidiana, el paisaje ampurdanés, las tertulias madrileñas y la evolución intelectual del autor.\n\nLa obra destaca por su ironía escéptica y una capacidad de observación prodigiosa. A través de sus anotaciones, Pla eleva lo banal a la categoría de arte, analizando con una prosa precisa y adjetivación perfecta tanto la gastronomía local como la psicología de sus vecinos y las tensiones políticas de la época. Es, en definitiva, el autorretrato de un joven que decide convertir la mirada y la escritura en su única forma de estar en el mundo."
+    },
+    {
+      "titulo": "PNIN",
+      "autor": "NABOKOV",
+      "sinopsis": ""
     },
     {
       "titulo": "ITALO CALVINO",
@@ -736,22 +757,17 @@
       "sinopsis": "Los Ángeles, 1981. A sus diecisiete años, Bret está a punto de empezar su último curso de secundaria en Buckley junto a su exclusivo y sofisticado grupo de amigos: Thom, Susan y Debbie, novia de Bret, experimentan con el sexo, el alcohol y las drogas mientras aprovechan los últimos días de verano. Pero este sueño paradisiaco se desmorona con la llegada de un nuevo alumno: Robert Mallory es brillante, guapo y carismático, pero algo en él no encaja, y nadie más que Bret parece darse cuenta de que ese algo podría estar relacionado con la aparición del Arrastrero, un asesino en serie que amenaza a los adolescentes de la ciudad y a sus mascotas."
     },
     {
-      "titulo": "LA MÁQUINA DE FOLLAR",
-      "autor": "CHARLES BUKOWSKI",
-      "sinopsis": "Al igual que en sus otros libros de relatos, Bukowski en La máquina de follar nos revela el mundo de los perdedores, los marginales de la Norteamérica oscura: Bares, pensiones de mala muerte, hombres y mujeres al borde de la locura, sexo, alcohol, caballos, personajes excéntricos son los elementos que configuran este libro de relatos salvajes y hermosos. Otras obras de Charles Bukowski son: Erecciones, eyaculaciones, exhibiciones. Escritos de un viejo indecente. Se busca una mujer Música de cañerías Hijo de Satanás."
-    },
-    {
-      "titulo": "PNIN",
-      "autor": "NABOKOV",
+      "titulo": "CINCO HORAS CON MARIO",
+      "autor": "MIGUEL DELIBES",
       "sinopsis": ""
     }
   ],
   "leyendo": {
-    "titulo": "CORAZÓN TAN BLANCO",
-    "autor": "JAVIER MARÍAS",
-    "sinopsis": "La historia comienza con un impactante suicidio en el pasado familiar, pero se centra en el presente de Juan Ranz, un traductor e intérprete recién casado. A través de una atmósfera de suspense psicológico, Juan empieza a descubrir los secretos oscuros sobre el pasado de su padre, Ranz, y sus matrimonios anteriores. El título, extraído de Macbeth, alude a la transferencia de la culpa: \"Mis manos son de tu color, pero me avergonzaría de tener un corazón tan blanco\".\n\nEs una profunda meditación sobre el secreto, la sospecha y el matrimonio. Marías explora cómo el saber —o el preferir no saber— altera nuestras relaciones, y cómo las palabras dichas o escuchadas pueden ser tan letales como las acciones. La novela destaca por su estilo hipnótico, lleno de digresiones inteligentes y una prosa elegante que disecciona la imposibilidad de conocer realmente a quienes amamos.",
-    "citas": "…nunca ha sido viejo, ni siquiera ahora. Lleva toda una vida aplazando ese estado, dejándolo para más adelante o acaso desentendiéndose de él\n\nPero los hijos lo ignoramos todo sobre los padres, o tardamos en interesarnos.\n\nLa juventud se oculta, la juventud es secreta para quienes no nos conocen jóvenes.",
-    "fechaInicio": "2026-02-18T21:51:26.434Z",
-    "porcentaje": 77
+    "titulo": "LA MÁQUINA DE FOLLAR",
+    "autor": "CHARLES BUKOWSKI",
+    "sinopsis": "Al igual que en sus otros libros de relatos, Bukowski en La máquina de follar nos revela el mundo de los perdedores, los marginales de la Norteamérica oscura: Bares, pensiones de mala muerte, hombres y mujeres al borde de la locura, sexo, alcohol, caballos, personajes excéntricos son los elementos que configuran este libro de relatos salvajes y hermosos. Otras obras de Charles Bukowski son: Erecciones, eyaculaciones, exhibiciones. Escritos de un viejo indecente. Se busca una mujer Música de cañerías Hijo de Satanás.",
+    "citas": "",
+    "fechaInicio": "2026-03-06T19:29:48.765Z",
+    "porcentaje": 71
   }
 }
