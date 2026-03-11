@@ -697,9 +697,24 @@
       "sinopsis": "Siete personajes atrapados por un temporal deciden animar la espera contándose historias que nunca antes habían confesado."
     },
     {
+      "titulo": "PNIN",
+      "autor": "NABOKOV",
+      "sinopsis": ""
+    },
+    {
+      "titulo": "EL FIN DEL HOMO SOVIETICUS",
+      "autor": "SVETLANA ALEKSIÉVICH",
+      "sinopsis": "Con la sola ayuda de una grabadora y una pluma, Svetlana Aleksiévich se empeña en mantener viva la memoria de la tragedia que fue la URSS, en narrar las microhistorias de una gran utopía. «El comunismo se propuso la insensatez de transformar al hombre antiguo, al viejo Adán. Y lo consiguió []. En setenta y pocos años, el laboratorio del marxismo-leninismo creó un singular tipo de hombre: el Homo\nsovieticus», condenado a desaparecer con la implosión de la URSS. En este magnífico réquiem, la autora reinventa una forma literaria polifónica muy singular que le permite dar voz a cientos de damnificados: a los humillados y a los ofendidos, a madres deportadas con sus hijos, a estalinistas irredentos a pesar del Gulag, a entusiastas de la perestroika anonadados ante el triunfo del capitalismo, a ciudadanos que plantan cara a la instauración de nuevas dictaduras\nUn texto extraordinario por su sencillez, que describe de un modo conmovedor la sobrecogedora condición humana."
+    },
+    {
       "titulo": "LOS TRES MUNDOS",
       "autor": "SANTIAGO POSTEGUILLO",
       "sinopsis": "En el 58 a. C., Roma, la Galia y Egipto eran tres mundos distintos que, sin saberlo, iban camino de un único destino…\n\nSi en Roma soy yo conocíamos los orígenes de Julio César y enMaldita Roma asistíamos a su ascenso político, ahora César se enfrenta a uno de los mayores desafíos históricos de todos los tiempos: la conquista de las Galias, un territorio siempre hostil a Roma, vasto, inmenso y, a ojos de los enemigos de César, un lugar inconquistable destinado a ser su tumba.\n\nCon una rigurosa documentación y un ritmo soberbio vivimos el sufrimiento y la épica de la guerra de las Galias, pero también presenciamos la lucha política fratricida en Roma y viajamos al exilio con el faraón Tolomeo XII, expulsado de Egipto en compañía de su hija, la joven y mítica Cleopatra.\n\nLa Galia, Roma y Egipto, una colisión inexorable de tres mundos legendarios en la que culmina la Trilogía del Ascenso, el primer ciclo de la serie sobre Julio César."
+    },
+    {
+      "titulo": "LA SENDA DEL PERDEDOR",
+      "autor": "CHARLES BUKOWSKI",
+      "sinopsis": ""
     },
     {
       "titulo": "LA PENÍNSULA DE LAS CASAS VACÍAS",
@@ -712,19 +727,9 @@
       "sinopsis": "Aquí tienes la sinopsis de El mundo después de Gaza, de Pankaj Mishra:\n\nEn este ensayo incisivo y urgente, el intelectual indio Pankaj Mishra analiza cómo la guerra actual en Gaza y la respuesta internacional ante el conflicto están marcando el fin de la autoridad moral de Occidente. El autor sostiene que el orden global posterior a 1945, construido sobre la memoria del Holocausto como la \"atrocidad de referencia\", ha entrado en crisis al chocar con las realidades de un Sur Global que ve en la descolonización el eje central de su historia y su justicia.\n\nMishra reevalúa dos narrativas opuestas: el relato triunfal del Norte Global sobre el capitalismo liberal y la visión del Sur Global que busca igualdad racial y libertad frente al dominio colonial. A través de una mirada desprovista de eurocentrismo, el libro aborda cuestiones fundamentales como la construcción de la identidad, el papel de las naciones y el impacto de la deshumanización en la era digital, convirtiéndose en una guía necesaria para entender el cambio de equilibrio en el poder mundial."
     },
     {
-      "titulo": "EL FIN DEL HOMO SOVIETICUS",
-      "autor": "SVETLANA ALEKSIÉVICH",
-      "sinopsis": "Con la sola ayuda de una grabadora y una pluma, Svetlana Aleksiévich se empeña en mantener viva la memoria de la tragedia que fue la URSS, en narrar las microhistorias de una gran utopía. «El comunismo se propuso la insensatez de transformar al hombre antiguo, al viejo Adán. Y lo consiguió []. En setenta y pocos años, el laboratorio del marxismo-leninismo creó un singular tipo de hombre: el Homo\nsovieticus», condenado a desaparecer con la implosión de la URSS. En este magnífico réquiem, la autora reinventa una forma literaria polifónica muy singular que le permite dar voz a cientos de damnificados: a los humillados y a los ofendidos, a madres deportadas con sus hijos, a estalinistas irredentos a pesar del Gulag, a entusiastas de la perestroika anonadados ante el triunfo del capitalismo, a ciudadanos que plantan cara a la instauración de nuevas dictaduras\nUn texto extraordinario por su sencillez, que describe de un modo conmovedor la sobrecogedora condición humana."
-    },
-    {
       "titulo": "EL CUADERNO GRIS",
       "autor": "JOSEP PLA",
       "sinopsis": "Considerado uno de los diarios más importantes de la literatura europea, comienza en 1918, cuando un joven Pla regresa a su pueblo natal, Palafrugell, debido al cierre de la universidad por la epidemia de gripe española. Lo que empieza como un ejercicio para combatir el aburrimiento y practicar el estilo literario, se convierte en un vasto retrato de la vida cotidiana, el paisaje ampurdanés, las tertulias madrileñas y la evolución intelectual del autor.\n\nLa obra destaca por su ironía escéptica y una capacidad de observación prodigiosa. A través de sus anotaciones, Pla eleva lo banal a la categoría de arte, analizando con una prosa precisa y adjetivación perfecta tanto la gastronomía local como la psicología de sus vecinos y las tensiones políticas de la época. Es, en definitiva, el autorretrato de un joven que decide convertir la mirada y la escritura en su única forma de estar en el mundo."
-    },
-    {
-      "titulo": "PNIN",
-      "autor": "NABOKOV",
-      "sinopsis": ""
     },
     {
       "titulo": "ITALO CALVINO",
@@ -768,6 +773,6 @@
     "sinopsis": "Al igual que en sus otros libros de relatos, Bukowski en La máquina de follar nos revela el mundo de los perdedores, los marginales de la Norteamérica oscura: Bares, pensiones de mala muerte, hombres y mujeres al borde de la locura, sexo, alcohol, caballos, personajes excéntricos son los elementos que configuran este libro de relatos salvajes y hermosos. Otras obras de Charles Bukowski son: Erecciones, eyaculaciones, exhibiciones. Escritos de un viejo indecente. Se busca una mujer Música de cañerías Hijo de Satanás.",
     "citas": "",
     "fechaInicio": "2026-03-06T19:29:48.765Z",
-    "porcentaje": 71
+    "porcentaje": 95
   }
 }
