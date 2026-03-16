@@ -442,21 +442,6 @@
             animation: slideDown 0.4s ease;
         }
 
-        /* Modo próximas: oculta resumen, Leyendo ahora, filtros y grid; muestra lista próximas */
-        body.proximas-mode .stats-bar,
-        body.proximas-mode .leyendo-section,
-        body.proximas-mode .controls,
-        body.proximas-mode .books-grid,
-        body.proximas-mode .data-info,
-        body.proximas-mode .charts-section {
-            display: none !important;
-        }
-
-        body.proximas-mode .proximas-section {
-            display: block !important;
-            animation: slideDown 0.4s ease;
-        }
-
         /* Charts Section */
         .charts-section {
             display: none;
@@ -1919,7 +1904,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.25</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.26</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
@@ -2053,6 +2038,7 @@
         let bookModalMode = 'leido'; // 'leido' | 'abandonado'
         let abandonoDesdeLeyendo = null;
         let abandonadosVisible = false;
+        let proximasVisible = false;
 
         // Clean old localStorage versions on load
         (function cleanOldStorage() {
@@ -2183,6 +2169,7 @@
                 // Load currently reading book
                 loadLeyendo();
                 renderLeyendo();
+                renderProximas();
                 renderAbandonados();
                 
                 initFilters();
@@ -2901,8 +2888,11 @@
                     document.body.classList.remove('stats-mode');
                     btn.classList.remove('active');
                 } else {
-                    document.body.classList.remove('proximas-mode');
+                    // Salir del modo próximas al entrar en estadísticas
+                    proximasVisible = false;
                     if (proximasBtn) proximasBtn.classList.remove('active');
+                    renderProximas();
+
                     document.body.classList.add('stats-mode');
                     btn.classList.add('active');
                     if (!chartsInitialized) initCharts();
@@ -2910,25 +2900,32 @@
             });
         }
 
-        // Próximas toggle: igual que Estadísticas, muestra lista inline
+        // Próximas toggle: muestra/oculta la sección de próximas debajo de "Leyendo ahora"
         function initProximasToggle() {
             const btn = document.getElementById('proximasBtn');
             const statsBtn = document.getElementById('statsToggle');
 
             if (!btn) return;
             btn.addEventListener('click', async () => {
-                const isProximasMode = document.body.classList.contains('proximas-mode');
-                if (isProximasMode) {
-                    document.body.classList.remove('proximas-mode');
-                    btn.classList.remove('active');
-                } else {
+                // Si no hay próximas cargadas, intenta cargarlas desde storage/JSON
+                if (!proximasLecturas || proximasLecturas.length === 0) {
+                    const loaded = await loadProximas();
+                    if (loaded && Array.isArray(loaded)) {
+                        proximasLecturas = loaded;
+                        saveProximas(proximasLecturas);
+                    }
+                }
+
+                proximasVisible = !proximasVisible;
+
+                // Salir del modo estadísticas si estaba activo
+                if (document.body.classList.contains('stats-mode')) {
                     document.body.classList.remove('stats-mode');
                     if (statsBtn) statsBtn.classList.remove('active');
-                    document.body.classList.add('proximas-mode');
-                    btn.classList.add('active');
-                    proximasLecturas = await loadProximas();
-                    renderProximas();
                 }
+
+                btn.classList.toggle('active', proximasVisible);
+                renderProximas();
             });
         }
 
@@ -3101,11 +3098,18 @@
 
         // Render próximas list
         function renderProximas() {
+            const section = document.getElementById('proximasSection');
             const container = document.getElementById('proximasList');
-            if (proximasLecturas.length === 0) {
+            if (!section || !container) return;
+
+            if (!proximasLecturas || proximasLecturas.length === 0) {
+                section.style.display = 'none';
                 container.innerHTML = '<div class="proximas-empty">No hay libros en la lista</div>';
                 return;
             }
+
+            section.style.display = proximasVisible ? 'block' : 'none';
+
             container.innerHTML = proximasLecturas.map((libro, index) => `
                 <div class="proxima-item" onclick="editarProxima(${index})" style="cursor: pointer;">
                     <div class="proxima-info">
