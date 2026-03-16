@@ -560,25 +560,7 @@
             font-size: 0.85rem;
         }
 
-        .abandonados-toggle-wrap {
-            display: flex;
-            justify-content: flex-end;
-            padding: 0 2rem;
-            margin-top: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .abandonados-toggle-btn {
-            font-size: 0.8rem;
-            padding: 0.3rem 0.75rem;
-            border-radius: 999px;
-            border: 1px solid var(--border);
-            background: var(--card-bg);
-            color: var(--muted-text);
-            cursor: pointer;
-        }
-
-        .abandonados-toggle-btn.active {
+        .header-right #abandonadosBtn.active {
             border-color: var(--accent);
             color: var(--accent);
         }
@@ -1766,6 +1748,7 @@
     <header>
         <div class="header-right">
             <button class="btn-icon" id="proximasBtn">Próximas Lecturas</button>
+            <button class="btn-icon" id="abandonadosBtn">Abandonados</button>
             <button class="btn-icon" id="statsToggle">Estadísticas</button>
             <div class="operaciones-container">
                 <button class="btn-icon" id="operacionesBtn">Operaciones</button>
@@ -1898,12 +1881,6 @@
         <button type="button" class="btn-icon primary btn-add-proxima" id="showAddProximaBtn">➕ Añadir nuevo libro</button>
     </section>
 
-    <div class="abandonados-toggle-wrap">
-        <button type="button" class="abandonados-toggle-btn" id="toggleAbandonadosBtn" style="display: none;">
-            ⏸️ Mostrar abandonados
-        </button>
-    </div>
-
     <!-- Sección Libros Abandonados -->
     <section class="abandonados-section" id="abandonadosSection">
         <h2 class="abandonados-header">⏸️ Libros abandonados</h2>
@@ -1946,7 +1923,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.22</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.23</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
@@ -3171,24 +3148,18 @@
         function renderAbandonados() {
             const section = document.getElementById('abandonadosSection');
             const container = document.getElementById('abandonadosList');
-            const toggleBtn = document.getElementById('toggleAbandonadosBtn');
-            if (!section || !container) return;
+            const btn = document.getElementById('abandonadosBtn');
+            if (!section || !container || !btn) return;
 
             if (!abandonados || abandonados.length === 0) {
                 section.style.display = 'none';
-                if (toggleBtn) {
-                    toggleBtn.style.display = 'none';
-                }
+                btn.style.display = 'none';
                 container.innerHTML = '';
                 return;
             }
 
-            if (toggleBtn) {
-                toggleBtn.style.display = 'inline-flex';
-                toggleBtn.classList.toggle('active', abandonadosVisible);
-                toggleBtn.textContent = abandonadosVisible ? '⏸️ Ocultar abandonados' : '⏸️ Mostrar abandonados';
-            }
-
+            btn.style.display = 'inline-flex';
+            btn.classList.toggle('active', abandonadosVisible);
             section.style.display = abandonadosVisible ? 'block' : 'none';
 
             const formatFecha = (fechaStr) => {
@@ -3633,9 +3604,9 @@
             dejarLectura();
         });
 
-        const toggleAbandonadosBtn = document.getElementById('toggleAbandonadosBtn');
-        if (toggleAbandonadosBtn) {
-            toggleAbandonadosBtn.addEventListener('click', () => {
+        const abandonadosBtn = document.getElementById('abandonadosBtn');
+        if (abandonadosBtn) {
+            abandonadosBtn.addEventListener('click', () => {
                 abandonadosVisible = !abandonadosVisible;
                 renderAbandonados();
             });
