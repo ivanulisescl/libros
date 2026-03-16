@@ -1718,6 +1718,10 @@
             <div class="stat-value" id="totalEditorials">0</div>
             <div class="stat-label">Editoriales</div>
         </div>
+        <div class="stat">
+            <div class="stat-value" id="totalAbandoned">0</div>
+            <div class="stat-label">Abandonados</div>
+        </div>
     </div>
 
     <!-- Sección Leyendo Ahora -->
@@ -1840,7 +1844,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.19</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.20</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
@@ -1944,6 +1948,7 @@
                     <button type="button" class="btn-cancel btn-proxima-eliminar" id="deleteProximaBtn">🗑️ Eliminar</button>
                     <button type="button" class="btn-proxima-empezar" id="marcarLeidoBtn">📖 Empezar a leer</button>
                     <button type="button" class="btn-proxima-terminado" id="terminadoLeyendoBtn" style="display: none;">✓ Terminado</button>
+                    <button type="button" class="btn-proxima-terminado" id="dejarLeyendoBtn" style="display: none;">⏸️ Dejar de leer</button>
                     <button type="submit" class="btn-proxima-guardar" id="guardarProximaBtn">💾 Guardar</button>
                 </div>
             </form>
@@ -1960,14 +1965,18 @@
         // Storage keys
         const STORAGE_KEY = 'biblioteca_libros_v7';
         const PROXIMAS_KEY = 'biblioteca_proximas_v2';
+        const ABANDONADOS_KEY = 'biblioteca_abandonados_v1';
         const JSON_URL = 'mi_biblioteca.json';
 
         // Current data
         let libros = [];
         let proximasLecturas = [];
+        let abandonados = [];
         let libroLeyendo = null;
         let proximaPendiente = null; // Para guardar datos de la próxima lectura temporalmente
         const LEYENDO_KEY = 'biblioteca_leyendo_v1';
+        let bookModalMode = 'leido'; // 'leido' | 'abandonado'
+        let abandonoDesdeLeyendo = null;
 
         // Clean old localStorage versions on load
         (function cleanOldStorage() {
@@ -1985,6 +1994,10 @@
 
         function saveProximas(data) {
             localStorage.setItem(PROXIMAS_KEY, JSON.stringify(data));
+        }
+
+        function saveAbandonados(data) {
+            localStorage.setItem(ABANDONADOS_KEY, JSON.stringify(data));
         }
 
         // Load all data from mi_biblioteca.json
@@ -2034,6 +2047,21 @@
             return null; // Will be loaded from JSON in initApp
         }
 
+        // Load abandonados: localStorage first, then JSON file
+        async function loadAbandonados() {
+            const stored = localStorage.getItem(ABANDONADOS_KEY);
+            if (stored) {
+                try {
+                    const parsed = JSON.parse(stored);
+                    if (parsed && Array.isArray(parsed) && parsed.length > 0) {
+                        console.log('Abandonados desde localStorage:', parsed.length);
+                        return parsed;
+                    }
+                } catch (e) {}
+            }
+            return null; // Will be loaded from JSON in initApp
+        }
+
         // Initialize the app
         async function initApp() {
             try {
@@ -2042,9 +2070,10 @@
                 // Try localStorage first
                 libros = await loadData();
                 proximasLecturas = await loadProximas();
+                abandonados = await loadAbandonados();
                 
-                // If either is empty, load from JSON
-                if (!libros || !proximasLecturas) {
+                // If any is empty, load from JSON
+                if (!libros || !proximasLecturas || !abandonados) {
                     const jsonData = await loadFromJSON();
                     if (jsonData) {
                         if (!libros && jsonData.libros) {
@@ -2054,6 +2083,10 @@
                         if (!proximasLecturas && jsonData.proximas) {
                             proximasLecturas = jsonData.proximas;
                             saveProximas(proximasLecturas);
+                        }
+                        if (!abandonados && jsonData.abandonados) {
+                            abandonados = jsonData.abandonados;
+                            saveAbandonados(abandonados);
                         }
                         if (jsonData.hasOwnProperty('leyendo')) {
                             libroLeyendo = jsonData.leyendo;
@@ -2065,9 +2098,11 @@
                 // Ensure arrays
                 libros = libros || [];
                 proximasLecturas = proximasLecturas || [];
+                abandonados = abandonados || [];
                 
                 console.log('Total libros:', libros.length);
                 console.log('Total próximas:', proximasLecturas.length);
+                console.log('Total abandonados:', abandonados.length);
                 
                 // Load currently reading book
                 loadLeyendo();
@@ -2407,6 +2442,10 @@
             document.getElementById('totalPages').textContent = books.reduce((sum, b) => sum + b.paginas, 0).toLocaleString();
             document.getElementById('totalAuthors').textContent = getUniqueValues(books, 'autor').length;
             document.getElementById('totalEditorials').textContent = getUniqueValues(books, 'editorial').length;
+            const abandonedEl = document.getElementById('totalAbandoned');
+            if (abandonedEl) {
+                abandonedEl.textContent = abandonados.length;
+            }
             
             // Calculate average rating
             const ratedBooks = books.filter(b => b.puntuacion !== null && b.puntuacion > 0);
@@ -2548,6 +2587,8 @@
 
         // Modal functions
         function openModal(title = 'Añadir Libro') {
+            bookModalMode = 'leido';
+            abandonoDesdeLeyendo = null;
             document.getElementById('modalTitle').textContent = title;
             document.getElementById('modalOverlay').classList.add('visible');
         }
@@ -2632,6 +2673,7 @@
             const dataStr = JSON.stringify({ 
                 libros: libros,
                 proximas: proximasLecturas,
+                abandonados: abandonados,
                 leyendo: libroLeyendo
             }, null, 2);
             const blob = new Blob([dataStr], { type: 'application/json' });
@@ -2642,7 +2684,8 @@
             a.click();
             URL.revokeObjectURL(url);
             const leyendoMsg = libroLeyendo ? ' + leyendo' : '';
-            showToast(`Exportados: ${libros.length} libros + ${proximasLecturas.length} próximas${leyendoMsg}`);
+            const abandonadosMsg = abandonados.length ? ` + ${abandonados.length} abandonados` : '';
+            showToast(`Exportados: ${libros.length} libros + ${proximasLecturas.length} próximas${leyendoMsg}${abandonadosMsg}`);
         }
 
         // Import data
@@ -2653,6 +2696,7 @@
                     const data = JSON.parse(e.target.result);
                     let importedBooks = 0;
                     let importedProximas = 0;
+                    let importedAbandonados = 0;
 
                     // Import libros
                     if (data.libros && Array.isArray(data.libros)) {
@@ -2689,6 +2733,13 @@
                         importedProximas = data.proximas.length;
                     }
 
+                    // Import abandonados
+                    if (data.abandonados && Array.isArray(data.abandonados)) {
+                        abandonados = data.abandonados;
+                        saveAbandonados(abandonados);
+                        importedAbandonados = data.abandonados.length;
+                    }
+
                     // Import leyendo ahora
                     if (data.hasOwnProperty('leyendo')) {
                         libroLeyendo = data.leyendo;
@@ -2696,9 +2747,10 @@
                         renderLeyendo();
                     }
 
-                    if (importedBooks > 0 || importedProximas > 0 || data.hasOwnProperty('leyendo')) {
+                    if (importedBooks > 0 || importedProximas > 0 || importedAbandonados > 0 || data.hasOwnProperty('leyendo')) {
                         const leyendoMsg = data.leyendo ? ' + leyendo' : '';
-                        showToast(`Importados: ${importedBooks} libros + ${importedProximas} próximas${leyendoMsg}`);
+                        const abandonadosMsg = importedAbandonados ? ` + ${importedAbandonados} abandonados` : '';
+                        showToast(`Importados: ${importedBooks} libros + ${importedProximas} próximas${leyendoMsg}${abandonadosMsg}`);
                     } else {
                         showToast('Formato de archivo no válido', 'error');
                     }
@@ -2840,11 +2892,27 @@
             };
             
             const bookId = document.getElementById('bookId').value;
-            if (bookId !== '') {
-                updateBook(parseInt(bookId), book);
+            if (bookModalMode === 'abandonado') {
+                const porcentajeAbandono = (abandonoDesdeLeyendo && typeof abandonoDesdeLeyendo.porcentaje === 'number')
+                    ? abandonoDesdeLeyendo.porcentaje
+                    : (libroLeyendo && typeof libroLeyendo.porcentaje === 'number' ? libroLeyendo.porcentaje : 0);
+                const abandono = {
+                    ...book,
+                    porcentajeAbandono,
+                    fechaAbandono: new Date().toISOString()
+                };
+                abandonados.push(abandono);
+                saveAbandonados(abandonados);
+                showToast('Libro marcado como abandonado');
             } else {
-                addBook(book);
+                if (bookId !== '') {
+                    updateBook(parseInt(bookId), book);
+                } else {
+                    addBook(book);
+                }
             }
+            bookModalMode = 'leido';
+            abandonoDesdeLeyendo = null;
             closeModal();
         });
 
@@ -2886,6 +2954,7 @@
                 localStorage.removeItem(STORAGE_KEY);
                 localStorage.removeItem(PROXIMAS_KEY);
                 localStorage.removeItem(LEYENDO_KEY);
+                localStorage.removeItem(ABANDONADOS_KEY);
                 
                 // Reload from JSON
                 try {
@@ -2898,6 +2967,13 @@
                         if (jsonData.proximas) {
                             proximasLecturas = jsonData.proximas;
                             saveProximas(proximasLecturas);
+                        }
+                        if (jsonData.abandonados) {
+                            abandonados = jsonData.abandonados;
+                            saveAbandonados(abandonados);
+                        } else {
+                            abandonados = [];
+                            saveAbandonados(abandonados);
                         }
                         if (jsonData.hasOwnProperty('leyendo')) {
                             libroLeyendo = jsonData.leyendo;
@@ -2996,6 +3072,7 @@
             document.getElementById('deleteProximaBtn').style.display = 'inline-flex';
             document.getElementById('marcarLeidoBtn').style.display = 'inline-flex';
             document.getElementById('terminadoLeyendoBtn').style.display = 'none';
+            document.getElementById('dejarLeyendoBtn').style.display = 'none';
             document.getElementById('editProximaOverlay').classList.add('visible');
         }
 
@@ -3008,6 +3085,7 @@
             document.getElementById('deleteProximaBtn').style.display = 'none';
             document.getElementById('marcarLeidoBtn').style.display = 'none';
             document.getElementById('terminadoLeyendoBtn').style.display = 'none';
+            document.getElementById('dejarLeyendoBtn').style.display = 'none';
             document.getElementById('editProximaOverlay').classList.add('visible');
             document.getElementById('editProximaTitulo').focus();
         }
@@ -3291,9 +3369,39 @@
             showToast('Nota guardada 💡');
         }
 
+        function dejarLectura() {
+            if (!libroLeyendo) return;
+            bookModalMode = 'abandonado';
+            abandonoDesdeLeyendo = { ...libroLeyendo };
+
+            // Open add book modal with pre-filled data (igual que un libro leído)
+            document.getElementById('modalTitle').textContent = 'Marcar Libro como Abandonado';
+            document.getElementById('bookForm').reset();
+            document.getElementById('bookId').value = '';
+            document.getElementById('titulo').value = libroLeyendo.titulo;
+            document.getElementById('autor').value = libroLeyendo.autor;
+            document.getElementById('sinopsis').value = libroLeyendo.sinopsis || '';
+            document.getElementById('citas').value = libroLeyendo.citas || '';
+            
+            // Set current month/year
+            const now = new Date();
+            document.getElementById('mes').value = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'][now.getMonth()];
+            document.getElementById('anio').value = now.getFullYear();
+            document.getElementById('puntuacion').value = 0;
+            updateRatingDisplay(0);
+            document.getElementById('modalOverlay').classList.add('visible');
+
+            // Clear leyendo
+            libroLeyendo = null;
+            localStorage.removeItem(LEYENDO_KEY);
+            renderLeyendo();
+        }
+
         function terminarLectura() {
             if (!libroLeyendo) return;
-            
+            bookModalMode = 'leido';
+            abandonoDesdeLeyendo = null;
+
             // Open add book modal with pre-filled data
             document.getElementById('modalTitle').textContent = 'Añadir Libro Leído';
             document.getElementById('bookForm').reset();
@@ -3326,6 +3434,7 @@
             document.getElementById('deleteProximaBtn').style.display = 'none';
             document.getElementById('marcarLeidoBtn').style.display = 'none';
             document.getElementById('terminadoLeyendoBtn').style.display = 'inline-flex';
+            document.getElementById('dejarLeyendoBtn').style.display = 'inline-flex';
             
             currentEditProximaIndex = -999;
             document.getElementById('editProximaOverlay').classList.add('visible');
@@ -3355,6 +3464,10 @@
         document.getElementById('terminadoLeyendoBtn').addEventListener('click', () => {
             document.getElementById('editProximaOverlay').classList.remove('visible');
             terminarLectura();
+        });
+        document.getElementById('dejarLeyendoBtn').addEventListener('click', () => {
+            document.getElementById('editProximaOverlay').classList.remove('visible');
+            dejarLectura();
         });
 
         // Close modals on overlay click
