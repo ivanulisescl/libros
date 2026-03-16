@@ -493,6 +493,73 @@
             width: 100%;
         }
 
+        /* Abandonados section */
+        .abandonados-section {
+            display: none;
+            padding: 0 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .abandonados-section .abandonados-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .abandonados-section #abandonadosList {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            max-height: 50vh;
+            overflow-y: auto;
+        }
+
+        .abandonado-item {
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 1rem 1.25rem;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            font-size: 0.9rem;
+        }
+
+        .abandonado-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .abandonado-titulo {
+            font-weight: 600;
+        }
+
+        .abandonado-autor {
+            color: var(--muted-text);
+            font-size: 0.85rem;
+        }
+
+        .abandonado-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--muted-text);
+        }
+
+        .abandonado-porcentaje {
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .abandonado-comentario {
+            margin-top: 0.25rem;
+            font-size: 0.85rem;
+        }
+
         @keyframes slideDown {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -1808,6 +1875,12 @@
         <button type="button" class="btn-icon primary btn-add-proxima" id="showAddProximaBtn">➕ Añadir nuevo libro</button>
     </section>
 
+    <!-- Sección Libros Abandonados -->
+    <section class="abandonados-section" id="abandonadosSection">
+        <h2 class="abandonados-header">⏸️ Libros abandonados</h2>
+        <div id="abandonadosList"></div>
+    </section>
+
     <div class="controls">
         <div class="search-box">
             <input type="text" id="searchInput" placeholder="Buscar por título, autor o editorial...">
@@ -1844,7 +1917,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.20</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.21</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
@@ -2107,6 +2180,7 @@
                 // Load currently reading book
                 loadLeyendo();
                 renderLeyendo();
+                renderAbandonados();
                 
                 initFilters();
                 initViewToggle();
@@ -2754,6 +2828,7 @@
                     } else {
                         showToast('Formato de archivo no válido', 'error');
                     }
+                    renderAbandonados();
                 } catch (err) {
                     showToast('Error al leer el archivo', 'error');
                 }
@@ -2982,6 +3057,7 @@
                             libroLeyendo = null;
                         }
                         renderLeyendo();
+                        renderAbandonados();
                         initFilters();
                         filterAndSortBooks();
                         if (chartsInitialized) {
@@ -3058,6 +3134,52 @@
             saveProximas(proximasLecturas);
             renderProximas();
             showToast(`Libro movido ${direccion === 'arriba' ? 'arriba' : 'abajo'}`);
+        }
+
+        // ========== ABANDONADOS - UI ==========
+
+        function renderAbandonados() {
+            const section = document.getElementById('abandonadosSection');
+            const container = document.getElementById('abandonadosList');
+            if (!section || !container) return;
+
+            if (!abandonados || abandonados.length === 0) {
+                section.style.display = 'none';
+                container.innerHTML = '';
+                return;
+            }
+
+            section.style.display = 'block';
+
+            const formatFecha = (fechaStr) => {
+                if (!fechaStr) return '';
+                const d = new Date(fechaStr);
+                if (isNaN(d)) return '';
+                return d.toLocaleDateString('es-ES', { year: 'numeric', month: 'short' });
+            };
+
+            container.innerHTML = abandonados.map((libro) => {
+                const pct = typeof libro.porcentajeAbandono === 'number' ? libro.porcentajeAbandono : null;
+                const fechaAbandono = formatFecha(libro.fechaAbandono);
+                const comentario = (libro.comentario || '').trim();
+                return `
+                    <article class="abandonado-item">
+                        <div class="abandonado-item-header">
+                            <div>
+                                <div class="abandonado-titulo">${libro.titulo}</div>
+                                <div class="abandonado-autor">${libro.autor}</div>
+                            </div>
+                            ${pct !== null ? `<div class="abandonado-porcentaje">${pct}%</div>` : ''}
+                        </div>
+                        <div class="abandonado-meta">
+                            ${libro.paginas ? `<span>${libro.paginas} págs.</span>` : ''}
+                            ${libro.editorial ? `<span>${libro.editorial}</span>` : ''}
+                            ${fechaAbandono ? `<span>Abandonado: ${fechaAbandono}</span>` : ''}
+                        </div>
+                        ${comentario ? `<div class="abandonado-comentario">${comentario}</div>` : ''}
+                    </article>
+                `;
+            }).join('');
         }
 
         // Open edit modal for a próxima
@@ -3395,6 +3517,7 @@
             libroLeyendo = null;
             localStorage.removeItem(LEYENDO_KEY);
             renderLeyendo();
+            renderAbandonados();
         }
 
         function terminarLectura() {
