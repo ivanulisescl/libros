@@ -698,6 +698,11 @@
   ],
   "proximas": [
     {
+      "titulo": "EL FIN DEL HOMO SOVIETICUS",
+      "autor": "SVETLANA ALEKSIÉVICH",
+      "sinopsis": "Con la sola ayuda de una grabadora y una pluma, Svetlana Aleksiévich se empeña en mantener viva la memoria de la tragedia que fue la URSS, en narrar las microhistorias de una gran utopía. «El comunismo se propuso la insensatez de transformar al hombre antiguo, al viejo Adán. Y lo consiguió []. En setenta y pocos años, el laboratorio del marxismo-leninismo creó un singular tipo de hombre: el Homo\nsovieticus», condenado a desaparecer con la implosión de la URSS. En este magnífico réquiem, la autora reinventa una forma literaria polifónica muy singular que le permite dar voz a cientos de damnificados: a los humillados y a los ofendidos, a madres deportadas con sus hijos, a estalinistas irredentos a pesar del Gulag, a entusiastas de la perestroika anonadados ante el triunfo del capitalismo, a ciudadanos que plantan cara a la instauración de nuevas dictaduras\nUn texto extraordinario por su sencillez, que describe de un modo conmovedor la sobrecogedora condición humana."
+    },
+    {
       "titulo": "GRAN SOL",
       "autor": "IGNACIO ALDECOA",
       "sinopsis": "Desde niño, Ignacio Aldecoa nunca dejó de soñar con el mar. Para él representaba la libertad, y ésta, en sus propias palabras, era «tener un lugar en el sol», porque la libertad es el estado natural del escritor. En alta mar, las fuerzas naturales se oponen a los hombres con extrema crudeza. Esa realidad aparece retratada en esta novela ya clásica de nuestra literatura, a veces triste y siempre auténtica, en la que se dignifica la miseria de un oficio duro y peligroso.\n\nAldecoa escribió Gran Sol después de compartir la intensa experiencia de la pesca de altura con los marineros del Cantábrico. Testigo del sacrificio y la pobreza, consigue acercar al lector con singular talento su día a día, sus conflictos laborales, sus dificultades y sus conversaciones cotidianas, sin perder nunca de vista la constante amenaza de la fatalidad. El íntimo vínculo entre los pescadores y la naturaleza queda al descubierto por medio de un lenguaje luminoso y colorista de una maestría indiscutible."
@@ -706,11 +711,6 @@
       "titulo": "COLOQUIO DE INVIERNO",
       "autor": "LUIS LANDERO",
       "sinopsis": "Siete personajes atrapados por un temporal deciden animar la espera contándose historias que nunca antes habían confesado."
-    },
-    {
-      "titulo": "EL FIN DEL HOMO SOVIETICUS",
-      "autor": "SVETLANA ALEKSIÉVICH",
-      "sinopsis": "Con la sola ayuda de una grabadora y una pluma, Svetlana Aleksiévich se empeña en mantener viva la memoria de la tragedia que fue la URSS, en narrar las microhistorias de una gran utopía. «El comunismo se propuso la insensatez de transformar al hombre antiguo, al viejo Adán. Y lo consiguió []. En setenta y pocos años, el laboratorio del marxismo-leninismo creó un singular tipo de hombre: el Homo\nsovieticus», condenado a desaparecer con la implosión de la URSS. En este magnífico réquiem, la autora reinventa una forma literaria polifónica muy singular que le permite dar voz a cientos de damnificados: a los humillados y a los ofendidos, a madres deportadas con sus hijos, a estalinistas irredentos a pesar del Gulag, a entusiastas de la perestroika anonadados ante el triunfo del capitalismo, a ciudadanos que plantan cara a la instauración de nuevas dictaduras\nUn texto extraordinario por su sencillez, que describe de un modo conmovedor la sobrecogedora condición humana."
     },
     {
       "titulo": "LOS TRES MUNDOS",
@@ -794,6 +794,6 @@
     "sinopsis": "Antes de que su nombre se convirtiera en una referencia ineludible para pensar las grandes preguntas de la ciencia y sus relaciones con el vértigo, la destrucción y la locura, Benjamín Labatut escribió La Antártica empieza aquí, su primer libro, una colección de cuentos que contenía, en estado larvario, las obsesiones que iban a marcar su literatura posterior.\n\nPublicados originalmente en 2010, y revisados por el autor para esta nueva edición, los cuentos presentan historias en las cuales la realidad se descompone y la experiencia humana se vuelve extraña. Seis narraciones atravesadas por una sensación de amenaza difusa y de violencia latente en las que una decisión mínima lo puede trastornar todo. Algo se quiebra sin estruendo: una certeza, una relación, una identidad. Aquí, la Antártica, más que un lugar o un destino físico, es una frontera: el límite tras el cual se encuentra la muerte o la revelación, el umbral donde el lenguaje comienza a fallar y el ser humano se expone a su enorme fragilidad.",
     "citas": "",
     "fechaInicio": "2026-03-16T07:32:56.918Z",
-    "porcentaje": 8
+    "porcentaje": 17
   }
 }
