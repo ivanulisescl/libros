@@ -1736,6 +1736,8 @@
                 <div class="operaciones-menu" id="operacionesMenu">
                     <button class="btn-icon" id="addBookBtn">Añadir Libro</button>
                     <button class="btn-icon" id="exportBtn">Exportar</button>
+                    <button class="btn-icon" id="uploadGitHubBtn" title="Subir mi_biblioteca.json a GitHub">Subir a GitHub</button>
+                    <button class="btn-icon" id="configGitHubTokenBtn" title="Guardar o cambiar tu token de GitHub">Configurar token GitHub</button>
                     <button class="btn-icon" id="importBtn">Importar</button>
                     <input type="file" id="importFile" accept=".json" style="display: none;">
                     <button class="btn-icon" id="resetBtn" title="Recargar datos desde el servidor">Resetear</button>
@@ -1904,7 +1906,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.26</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.27</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
@@ -2027,6 +2029,10 @@
         const PROXIMAS_KEY = 'biblioteca_proximas_v2';
         const ABANDONADOS_KEY = 'biblioteca_abandonados_v1';
         const JSON_URL = 'mi_biblioteca.json';
+
+        // GitHub upload (Contents API)
+        const GITHUB_TOKEN_STORAGE_KEY = 'runningGitHubToken';
+        const GITHUB_REPO = 'ivanulisescl/libros';
 
         // Current data
         let libros = [];
@@ -2734,12 +2740,7 @@
 
         // Export data
         function exportData() {
-            const dataStr = JSON.stringify({ 
-                libros: libros,
-                proximas: proximasLecturas,
-                abandonados: abandonados,
-                leyendo: libroLeyendo
-            }, null, 2);
+            const dataStr = JSON.stringify(getExportObject(), null, 2);
             const blob = new Blob([dataStr], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -2750,6 +2751,15 @@
             const leyendoMsg = libroLeyendo ? ' + leyendo' : '';
             const abandonadosMsg = abandonados.length ? ` + ${abandonados.length} abandonados` : '';
             showToast(`Exportados: ${libros.length} libros + ${proximasLecturas.length} próximas${leyendoMsg}${abandonadosMsg}`);
+        }
+
+        function getExportObject() {
+            return {
+                libros,
+                proximas: proximasLecturas,
+                abandonados,
+                leyendo: libroLeyendo
+            };
         }
 
         // Import data
@@ -2824,6 +2834,70 @@
                 }
             };
             reader.readAsText(file);
+        }
+
+        /**
+         * Sube un archivo al repositorio de GitHub vía Contents API.
+         * @param {string} filename - Nombre del archivo (ej: "datos.json")
+         * @param {string|object} content - Contenido (string o objeto que se convierte a JSON)
+         * @param {string} tokenStorageKey - Clave en localStorage para el token
+         * @param {string} repo - Repo en formato "usuario/repo"
+         * @param {function} onStatus - (opcional) callback(msg, isError) para mostrar estado
+         */
+        async function uploadToGitHub(filename, content, tokenStorageKey, repo, onStatus) {
+            let token = localStorage.getItem(tokenStorageKey);
+            if (!token || !token.trim()) {
+                token = prompt('Introduce tu GitHub Personal Access Token (permiso repo):');
+                if (!token || !token.trim()) return;
+                token = token.trim();
+                localStorage.setItem(tokenStorageKey, token);
+            }
+            if (onStatus) onStatus(`Subiendo ${filename}...`, false);
+            try {
+                const contentStr = typeof content === 'object' ? JSON.stringify(content, null, 2) : content;
+                const contentBase64 = btoa(unescape(encodeURIComponent(contentStr)));
+                const apiUrl = `https://api.github.com/repos/${repo}/contents/${filename}`;
+                const headers = {
+                    'Authorization': `Bearer ${token}`,
+                    'Accept': 'application/vnd.github+json',
+                    'X-GitHub-Api-Version': '2022-11-28',
+                    'Content-Type': 'application/json'
+                };
+                let sha = null;
+                const getRes = await fetch(apiUrl, { headers });
+                if (getRes.ok) {
+                    const getData = await getRes.json();
+                    sha = getData.sha;
+                } else if (getRes.status !== 404) {
+                    const errData = await getRes.json().catch(() => ({}));
+                    if (getRes.status === 401) {
+                        localStorage.removeItem(tokenStorageKey);
+                        throw new Error('Token inválido o expirado. Configura uno nuevo.');
+                    }
+                    throw new Error(errData.message || `Error ${getRes.status}: ${getRes.statusText}`);
+                }
+                const putBody = {
+                    message: `Actualizar ${filename} (${new Date().toISOString().slice(0, 10)})`,
+                    content: contentBase64
+                };
+                if (sha) putBody.sha = sha;
+                const putRes = await fetch(apiUrl, {
+                    method: 'PUT',
+                    headers,
+                    body: JSON.stringify(putBody)
+                });
+                if (!putRes.ok) {
+                    const errData = await putRes.json().catch(() => ({}));
+                    if (putRes.status === 401) {
+                        localStorage.removeItem(tokenStorageKey);
+                        throw new Error('Token inválido o expirado. Configura uno nuevo.');
+                    }
+                    throw new Error(errData.message || `Error ${putRes.status}: ${putRes.statusText}`);
+                }
+                if (onStatus) onStatus(`✅ ${filename} subido.`, false);
+            } catch (err) {
+                if (onStatus) onStatus(`❌ ${err.message}`, true);
+            }
         }
 
         // View toggle
@@ -3010,6 +3084,37 @@
         document.getElementById('exportBtn').addEventListener('click', () => {
             exportData();
             document.getElementById('operacionesMenu').classList.remove('visible');
+        });
+
+        document.getElementById('uploadGitHubBtn').addEventListener('click', async () => {
+            document.getElementById('operacionesMenu').classList.remove('visible');
+            await uploadToGitHub(
+                'mi_biblioteca.json',
+                getExportObject(),
+                GITHUB_TOKEN_STORAGE_KEY,
+                GITHUB_REPO,
+                (msg, isError) => showToast(msg, isError ? 'error' : 'success')
+            );
+        });
+
+        document.getElementById('configGitHubTokenBtn').addEventListener('click', () => {
+            document.getElementById('operacionesMenu').classList.remove('visible');
+            const actual = (localStorage.getItem(GITHUB_TOKEN_STORAGE_KEY) || '').trim();
+            const nuevo = prompt(
+                `Pega tu GitHub Personal Access Token.\n\n` +
+                `- Aceptar: guardar/cambiar token\n` +
+                `- Vacío: borrar token guardado\n\n` +
+                `Token actual: ${actual ? '(guardado)' : '(no hay)'}`
+            );
+            if (nuevo === null) return; // cancel
+            const trimmed = nuevo.trim();
+            if (!trimmed) {
+                localStorage.removeItem(GITHUB_TOKEN_STORAGE_KEY);
+                showToast('Token de GitHub borrado');
+                return;
+            }
+            localStorage.setItem(GITHUB_TOKEN_STORAGE_KEY, trimmed);
+            showToast('Token de GitHub guardado');
         });
         document.getElementById('importBtn').addEventListener('click', () => {
             document.getElementById('importFile').click();
