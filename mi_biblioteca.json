@@ -792,11 +792,6 @@
       "titulo": "VOCES DE CHERNÓBIL",
       "autor": "SVETLANA ALEXIEVICH",
       "sinopsis": ""
-    },
-    {
-      "titulo": "DE LA MINA A LA GUERRA",
-      "autor": "AQUILINO PÉREZ SUÁREZ",
-      "sinopsis": ""
     }
   ],
   "abandonados": [
@@ -815,11 +810,11 @@
     }
   ],
   "leyendo": {
-    "titulo": "JOVELLANOS Y LA MINERÍA EN ASTURIAS",
-    "autor": "LUIS ADARO RUIZ",
+    "titulo": "DE LA MINA A LA GUERRA",
+    "autor": "AQUILINO PÉREZ SUÁREZ",
     "sinopsis": "",
     "citas": "",
-    "fechaInicio": "2026-03-21T14:53:31.172Z",
-    "porcentaje": 0
+    "fechaInicio": "2026-03-21T16:21:09.134Z",
+    "porcentaje": 7
   }
 }
