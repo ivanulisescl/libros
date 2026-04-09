@@ -705,6 +705,17 @@
       "sinopsis": "Antes de que su nombre se convirtiera en una referencia ineludible para pensar las grandes preguntas de la ciencia y sus relaciones con el vértigo, la destrucción y la locura, Benjamín Labatut escribió La Antártica empieza aquí, su primer libro, una colección de cuentos que contenía, en estado larvario, las obsesiones que iban a marcar su literatura posterior.\n\nPublicados originalmente en 2010, y revisados por el autor para esta nueva edición, los cuentos presentan historias en las cuales la realidad se descompone y la experiencia humana se vuelve extraña. Seis narraciones atravesadas por una sensación de amenaza difusa y de violencia latente en las que una decisión mínima lo puede trastornar todo. Algo se quiebra sin estruendo: una certeza, una relación, una identidad. Aquí, la Antártica, más que un lugar o un destino físico, es una frontera: el límite tras el cual se encuentra la muerte o la revelación, el umbral donde el lenguaje comienza a fallar y el ser humano se expone a su enorme fragilidad.",
       "comentario": "Son seis historias. De más a menos, la mejor con diferencia la que da nombre al libro. Las últimas me dejaron indiferente, no las entendí.",
       "citas": "La juventud servía para sufrir, endurecerse, juntar materiales y construir un castillo. Desde que había dejado la casa de mis padres vivía con una amiga sin pagarle arriendo. Tenía veinticinco años, no había escrito ni siquiera un cuento, no tenía plata, no tenía polola, descuidaba mi salud y fumaba pitos todos los días, pero supongo que de alguna forma lograba sentirme como un hombre valiente, cuando en realidad no era más que un pendejo."
+    },
+    {
+      "titulo": "DE LA MINA A LA GUERRA",
+      "autor": "AQUILINO PÉREZ SUÁREZ",
+      "fecha": "Abril de 2026",
+      "paginas": 482,
+      "editorial": "Círculo Rojo",
+      "puntuacion": 6,
+      "sinopsis": "",
+      "comentario": "Entretenido sin más. Esperaba más de la mina, que era lo que más me interesaba, pero fue la menor parte. Al menos aprendí algo de la guerra de España en Vietnam, que desconocía, y de la forma de luchar de la época.",
+      "citas": "Llama azulada y larga como indicadora de presencia de grisú\n\nGuerra de Cochinchina. Campaña de castigo por ataques a clérigos y para establecer colonia francesa. Dio lugar al dicho para referirse a un sitio lejano y exótico"
     }
   ],
   "proximas": [
@@ -792,6 +803,11 @@
       "titulo": "VOCES DE CHERNÓBIL",
       "autor": "SVETLANA ALEXIEVICH",
       "sinopsis": ""
+    },
+    {
+      "titulo": "EL IMPOSTOR",
+      "autor": "JAVIER CERCAS",
+      "sinopsis": ""
     }
   ],
   "abandonados": [
@@ -809,12 +825,5 @@
       "fechaAbandono": "2026-03-16T07:32:09.781Z"
     }
   ],
-  "leyendo": {
-    "titulo": "DE LA MINA A LA GUERRA",
-    "autor": "AQUILINO PÉREZ SUÁREZ",
-    "sinopsis": "",
-    "citas": "",
-    "fechaInicio": "2026-03-21T16:21:09.134Z",
-    "porcentaje": 87
-  }
+  "leyendo": null
 }
