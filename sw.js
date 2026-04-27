@@ -1,4 +1,4 @@
-const CACHE_NAME = 'biblioteca-v3.8';
+const CACHE_NAME = 'biblioteca-v3.28';
 const ASSETS = [
   './',
   './index.html',

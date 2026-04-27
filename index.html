@@ -1906,7 +1906,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.27</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.28</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
@@ -2629,7 +2629,14 @@
             });
 
             switch(sortBy) {
-                case 'date-desc': filtered.sort((a, b) => parseDate(b.fecha) - parseDate(a.fecha)); break;
+                case 'date-desc':
+                    filtered.sort((a, b) => {
+                        const dateDiff = parseDate(b.fecha) - parseDate(a.fecha);
+                        if (dateDiff !== 0) return dateDiff;
+                        // For same month/year, show newest inserted first.
+                        return libros.indexOf(b) - libros.indexOf(a);
+                    });
+                    break;
                 case 'date-asc': filtered.sort((a, b) => parseDate(a.fecha) - parseDate(b.fecha)); break;
                 case 'rating-desc': filtered.sort((a, b) => (b.puntuacion || 0) - (a.puntuacion || 0)); break;
                 case 'rating-asc': filtered.sort((a, b) => (a.puntuacion || 0) - (b.puntuacion || 0)); break;
