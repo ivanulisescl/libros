@@ -771,6 +771,17 @@
       "sinopsis": "",
       "comentario": "Hubo un par de poemas que me llegaron, relativos al futuro y a la cara que se te pone a los cuarenta y pico. Posiblemente por mi estado de ánimo actual.",
       "citas": ""
+    },
+    {
+      "titulo": "FACTOTUM",
+      "autor": "CHARLES BUKOWSKI",
+      "fecha": "Mayo de 2026",
+      "paginas": 192,
+      "editorial": "Anagrama",
+      "puntuacion": 8,
+      "sinopsis": "En esta novela autobiográfica de sus años de juventud, el autor nos describe la vida de su alter ego Henry Chinaski saltando de un empleo a otro, todos sórdidos, duros, sin sentido, emborrachándose a muerte, con la obsesión de follar, intentando materializar su vida de escritor y nos ofrece una visión brutalmente divertida y melancólicamente horrorizada de la ética del trabajo, de cómo doblega el «alma» de los hombres. Se ha dicho que Bukowski con su prosa lacónica, escueta y contundente como un uppercut es el novelista atroz de la gran selva urbana, de los desheredados, las prostitutas, los borrachos, los desechos humanos del Sueño Americano a nivel del arroyo, y se le ha comparado con Henry Miller, Céline y Hemingway.",
+      "comentario": "Me resulta curioso por la temática lo magnética que me resulta la lectura de este autor. Me gusta mucho el estilo e interesantes las historias.",
+      "citas": ""
     }
   ],
   "proximas": [
@@ -893,12 +904,5 @@
       "fechaAbandono": "2026-05-10T14:50:09.995Z"
     }
   ],
-  "leyendo": {
-    "titulo": "FACTOTUM",
-    "autor": "CHARLES BUKOWSKI",
-    "sinopsis": "En esta novela autobiográfica de sus años de juventud, el autor nos describe la vida de su alter ego Henry Chinaski saltando de un empleo a otro, todos sórdidos, duros, sin sentido, emborrachándose a muerte, con la obsesión de follar, intentando materializar su vida de escritor y nos ofrece una visión brutalmente divertida y melancólicamente horrorizada de la ética del trabajo, de cómo doblega el «alma» de los hombres. Se ha dicho que Bukowski con su prosa lacónica, escueta y contundente como un uppercut es el novelista atroz de la gran selva urbana, de los desheredados, las prostitutas, los borrachos, los desechos humanos del Sueño Americano a nivel del arroyo, y se le ha comparado con Henry Miller, Céline y Hemingway.",
-    "citas": "",
-    "fechaInicio": "2026-05-10T15:05:23.309Z",
-    "porcentaje": 90
-  }
+  "leyendo": null
 }
