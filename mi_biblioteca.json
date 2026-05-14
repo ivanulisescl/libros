@@ -874,6 +874,16 @@
       "titulo": "EL PERIÓDICO DE LA DEMOCRACIA",
       "autor": "JAVIER CERCAS",
       "sinopsis": "El nuevo libro de Javier Cercas relata los últimos 50 años de la historia de España, que son los del diario El País, a través de un recorrido personal y una lúcida reflexión sobre los vínculos entre periodismo, literatura, política y libertades.\n\nEl diario El País salió a la calle el 4 de mayo de 1976, menos de seis meses después de la muerte de Franco, cuando el camino a la democracia apenas empezaba a atisbarse. La idea del periódico se incubó entre un grupo de editores e intelectuales que, en las postrimerías del franquismo, buscaba un instrumento de reforma del régimen, de talante liberal y vocación europeísta, que contribuyera a suturar las heridas provocadas por la guerra civil y la dictadura y a hallar una salida sin traumas del franquismo. Su éxito fue fulgurante. A los 50 años de ese momento fundacional de la historia reciente española, Javier Cercas asumió el reto de contar la historia de un país a través de la de su periódico de referencia; pero El periódico de la democracia no es solo una historia personal de ese periodo: es también una reflexión acerca de la relación del periodismo con la literatura, una crónica de la formación intelectual de un escritor y un homenaje a la importancia de la prensa en la construcción y la defensa de las libertades."
+    },
+    {
+      "titulo": "ESCORIA",
+      "autor": "IRVINE WELSH",
+      "sinopsis": "El sargento Robertson es un policía corrupto, violento, sexista y racista, un consumidor compulsivo de pornografía, alcohol y cocaína, que practica con una de sus amantes peligrosos juegos eróticos que incluyen la asfixia y es capaz de inducir a una menor a que le haga una felación. Debido a sus excesos, a Robertson le ha aparecido un sarpullido en los genitales y un parásito en el intestino, que se convierte en la voz de su conciencia."
+    },
+    {
+      "titulo": "CARNE DE PERRO",
+      "autor": "PEDRO JUAN GUTIÉRREZ",
+      "sinopsis": ""
     }
   ],
   "abandonados": [
@@ -904,5 +914,12 @@
       "fechaAbandono": "2026-05-10T14:50:09.995Z"
     }
   ],
-  "leyendo": null
+  "leyendo": {
+    "titulo": "PREGÚNTALE AL POLVO",
+    "autor": "JOHN FANTE",
+    "sinopsis": "Los Ángeles en la década de los treinta. Instalado en un sórdido hotel en los barrios marginales, el joven aprendiz de escritor Arturo Bandini lucha por la dura supervivencia, mientras sueña con el triunfo tras haber conseguido publicar un relato en una pequeña revista. Guiado por su mentor y editor J. C. Hackmuth, Arturo proclama que es un genio de las letras mientras se enfrenta a una compleja relación amorosa con Camila, una chica mexicana que trabaja como camarera. Incapaz de mostrarle sus auténticos sentimientos, Arturo se ve abocado a una destructiva relación de amor-odio, mientras sigue soñando con alcanzar la gloria.\nNovela de supervivientes urbanos que entusiasmó a Bukowski, Préguntale al polvo es un nuevo volumen de la saga protagonizada por Arturo Bandini, alter ego de John Fante, cuya infancia se narra en Espera a la primavera, Bandini, publicado también en esta colección.",
+    "citas": "",
+    "fechaInicio": "2026-05-14T14:53:07.343Z",
+    "porcentaje": 25
+  }
 }
