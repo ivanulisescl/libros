@@ -793,6 +793,17 @@
       "sinopsis": "Los Ángeles en la década de los treinta. Instalado en un sórdido hotel en los barrios marginales, el joven aprendiz de escritor Arturo Bandini lucha por la dura supervivencia, mientras sueña con el triunfo tras haber conseguido publicar un relato en una pequeña revista. Guiado por su mentor y editor J. C. Hackmuth, Arturo proclama que es un genio de las letras mientras se enfrenta a una compleja relación amorosa con Camila, una chica mexicana que trabaja como camarera. Incapaz de mostrarle sus auténticos sentimientos, Arturo se ve abocado a una destructiva relación de amor-odio, mientras sigue soñando con alcanzar la gloria.\nNovela de supervivientes urbanos que entusiasmó a Bukowski, Préguntale al polvo es un nuevo volumen de la saga protagonizada por Arturo Bandini, alter ego de John Fante, cuya infancia se narra en Espera a la primavera, Bandini, publicado también en esta colección.",
       "comentario": "Entretenido en general. El giro de Camila no parecía muy coherente, y aunque el desenlace fue de lo más interesante del libro, resultó un poco desolador. Lo leí por referencia de Bukowski pero nada que ver a mi juicio.",
       "citas": ""
+    },
+    {
+      "titulo": "CUENTOS PARA PENSAR",
+      "autor": "JORGE BUCAY",
+      "fecha": "Mayo de 2026",
+      "paginas": 187,
+      "editorial": "RBA",
+      "puntuacion": 5,
+      "sinopsis": "En los relatos que integran este libro, Jorge Bucay, reconocido psicoterapeuta y psicodramaturgo gestáltico con más de tres millones de ejemplares vendidos en el mundo, habla al lector de tú a tú, ofreciéndole, a través de historias inspiradoras y reveladoras, un saber sobre la vida. Para que cada uno construya la suya, conociendo sus debilidades y sus fortalezas.",
+      "comentario": "Lo que más me gustó la introducción y el cuento de la contraportada. De los cuentos el mejor con diferencia uno que ya conocía, El cuento dentro del cuento.",
+      "citas": "Verdades:\n1-Lo que es, es\n2-Nada que sea bueno es gratis\n3-Nunca hacer lo que no quiero\n\nEl buscador: que encuentra un cementerio donde se anota sólo el tiempo de vida de disfrute.\n\nEl temido enemigo: el rey que por envidia quiere matar al mago del reino y este le dice que el rey morirá un día después del mago y finalmente se hacen amigos.\n\nEl cuento dentro del cuento."
     }
   ],
   "proximas": [
@@ -930,12 +941,5 @@
       "fechaAbandono": "2026-05-10T14:50:09.995Z"
     }
   ],
-  "leyendo": {
-    "titulo": "CUENTOS PARA PENSAR",
-    "autor": "JORGE BUCAY",
-    "sinopsis": "En los relatos que integran este libro, Jorge Bucay, reconocido psicoterapeuta y psicodramaturgo gestáltico con más de tres millones de ejemplares vendidos en el mundo, habla al lector de tú a tú, ofreciéndole, a través de historias inspiradoras y reveladoras, un saber sobre la vida. Para que cada uno construya la suya, conociendo sus debilidades y sus fortalezas.",
-    "citas": "Verdades:\n1-Lo que es, es\n2-Nada que sea bueno es gratis\n3-Nunca hacer lo que no quiero\n\nEl buscador: que encuentra un cementerio donde se anota sólo el tiempo de vida de disfrute.\n\nEl temido enemigo: el rey que por envidia quiere matar al mago del reino y este le dice que el rey morirá un día después del mago y finalmente se hacen amigos.\n\nEl cuento dentro del cuento.",
-    "fechaInicio": "2026-05-20T07:48:44.333Z",
-    "porcentaje": 60
-  }
+  "leyendo": null
 }
