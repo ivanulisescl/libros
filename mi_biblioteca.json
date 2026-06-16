@@ -834,11 +834,6 @@
       "sinopsis": "Siete personajes atrapados por un temporal deciden animar la espera contándose historias que nunca antes habían confesado."
     },
     {
-      "titulo": "LOS TRES MUNDOS",
-      "autor": "SANTIAGO POSTEGUILLO",
-      "sinopsis": "En el 58 a. C., Roma, la Galia y Egipto eran tres mundos distintos que, sin saberlo, iban camino de un único destino…\n\nSi en Roma soy yo conocíamos los orígenes de Julio César y enMaldita Roma asistíamos a su ascenso político, ahora César se enfrenta a uno de los mayores desafíos históricos de todos los tiempos: la conquista de las Galias, un territorio siempre hostil a Roma, vasto, inmenso y, a ojos de los enemigos de César, un lugar inconquistable destinado a ser su tumba.\n\nCon una rigurosa documentación y un ritmo soberbio vivimos el sufrimiento y la épica de la guerra de las Galias, pero también presenciamos la lucha política fratricida en Roma y viajamos al exilio con el faraón Tolomeo XII, expulsado de Egipto en compañía de su hija, la joven y mítica Cleopatra.\n\nLa Galia, Roma y Egipto, una colisión inexorable de tres mundos legendarios en la que culmina la Trilogía del Ascenso, el primer ciclo de la serie sobre Julio César."
-    },
-    {
       "titulo": "EL IMPOSTOR",
       "autor": "JAVIER CERCAS",
       "sinopsis": ""
@@ -947,5 +942,12 @@
       "fechaAbandono": "2026-05-10T14:50:09.995Z"
     }
   ],
-  "leyendo": null
+  "leyendo": {
+    "titulo": "LOS TRES MUNDOS",
+    "autor": "SANTIAGO POSTEGUILLO",
+    "sinopsis": "En el 58 a. C., Roma, la Galia y Egipto eran tres mundos distintos que, sin saberlo, iban camino de un único destino…\n\nSi en Roma soy yo conocíamos los orígenes de Julio César y enMaldita Roma asistíamos a su ascenso político, ahora César se enfrenta a uno de los mayores desafíos históricos de todos los tiempos: la conquista de las Galias, un territorio siempre hostil a Roma, vasto, inmenso y, a ojos de los enemigos de César, un lugar inconquistable destinado a ser su tumba.\n\nCon una rigurosa documentación y un ritmo soberbio vivimos el sufrimiento y la épica de la guerra de las Galias, pero también presenciamos la lucha política fratricida en Roma y viajamos al exilio con el faraón Tolomeo XII, expulsado de Egipto en compañía de su hija, la joven y mítica Cleopatra.\n\nLa Galia, Roma y Egipto, una colisión inexorable de tres mundos legendarios en la que culmina la Trilogía del Ascenso, el primer ciclo de la serie sobre Julio César.",
+    "citas": "Libro primero. César expulsa a Ariovisto de la Galia, de la que Roma es aliado y ocupador, en una campaña dura contra un ejército enorme de tribus germanas. Cleopatra llega con su padre a Roma, exiliados por el complot de su hermana, para buscar apoyos en Roma. Pompeyo (casado con su hija) y Craso, los otros dos del triunvirato, esperan que César muera en la batalla. Catón y Cicerón y sus otros enemigos conspiran para recuperar el poder.",
+    "fechaInicio": "2026-06-16T13:55:10.240Z",
+    "porcentaje": 13
+  }
 }
