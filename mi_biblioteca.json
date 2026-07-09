@@ -837,6 +837,17 @@
       "sinopsis": "Esta obra es una serie de 50 relatos de carácter filosófico, pero donde también hay nociones autobiográficas, y mucha muchísima reflexión personal. Comienza hablando de los inicios del autor, sus primeras impresiones sobre la sociedad, la gente y el mundo que le rodea, y su primer contacto con los libros. En los primeros capítulos se van reuniendo los detalles de lo que después se revelará como un joven enérgico, un tanto retraído, especialmente misántropo, que busca alcanzar la sublimación mediante la literatura.",
       "comentario": "Difícil de describir. Me atrae ese cinismo y desencanto general del libro, aunque a veces se hace difícil de seguir el hilo. Me gustó saber acerca de su vida intelectual, una búsqueda incesante e infructuosa finalmente para sus fines. Viendo el resto de sus lecturas creo que Gog y El libro negro va a ser lo más interesante para mí de su obra.",
       "citas": "II. Cita como una de sus obras preferidas El elogio de la locura de Erasmo de Rotterdam\n\nSe imaginaba que la vida se le ofrecería como piedra limpia y mármol de buena grana para esculpir su imagen con el duro escalpelo de la voluntad, y en cambio tiene entre las manos una masa de barro y de mierda que no se deja moldear y modelada no se tiene en pie"
+    },
+    {
+      "titulo": "CARTERO",
+      "autor": "CHARLES BUKOWSKI",
+      "fecha": "Julio de 2026",
+      "paginas": 192,
+      "editorial": "Anagrama ",
+      "puntuacion": 7,
+      "sinopsis": "Charles Bukowski, escritor eminentemente autobiográfico, nos cuenta en esta obra otro fragmento de la vida de su alter ego Chinaski. En \"Cartero\" describe los doce años en que estuvo empleado en una sórdida oficina de correos de Los Ángeles. El libro termina cuando Chinaski/Bukowski abandona la miserable seguridad de su empleo, a los 49 años, para dedicarse exclusivamente a escribir. Y escribe \"Cartero\", su primera novela.",
+      "comentario": "Quizá el más blando de los que llevo hasta ahora. Igualmente hipnótico y adictivo.",
+      "citas": "Capítulo 1. Betsy\n\nCapítulo II. Joyce\n\nCapítulo IV. Fay y su hija Marina."
     }
   ],
   "proximas": [
@@ -969,12 +980,5 @@
       "fechaAbandono": "2026-05-10T14:50:09.995Z"
     }
   ],
-  "leyendo": {
-    "titulo": "CARTERO",
-    "autor": "CHARLES BUKOWSKI",
-    "sinopsis": "Charles Bukowski, escritor eminentemente autobiográfico, nos cuenta en esta obra otro fragmento de la vida de su alter ego Chinaski. En \"Cartero\" describe los doce años en que estuvo empleado en una sórdida oficina de correos de Los Ángeles. El libro termina cuando Chinaski/Bukowski abandona la miserable seguridad de su empleo, a los 49 años, para dedicarse exclusivamente a escribir. Y escribe \"Cartero\", su primera novela.",
-    "citas": "Capítulo 1. Betsy\n\nCapítulo II. Joyce\n\nCapítulo IV. Fay y su hija Marina.",
-    "fechaInicio": "2026-06-28T16:43:49.611Z",
-    "porcentaje": 83
-  }
+  "leyendo": null
 }
