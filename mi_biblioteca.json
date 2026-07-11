@@ -980,5 +980,12 @@
       "fechaAbandono": "2026-05-10T14:50:09.995Z"
     }
   ],
-  "leyendo": null
+  "leyendo": {
+    "titulo": "AMPLIACIÓN DEL CAMPO DE BATALLA",
+    "autor": "MICHEL HOULLEBECQ",
+    "sinopsis": "En 'Ampliación del campo de batalla', Michel Houellebecq nos presenta a un ingeniero informático de 30 años, desilusionado por su trabajo y la sociedad neoliberal. A través de una narrativa precisa y a menudo cruda, el protagonista describe su entorno, marcado por la soledad, la depresión y la falta de conexión humana. La novela explora la ampliación del campo de batalla a todas las edades y clases sociales, mostrando a los perdedores tanto en el ámbito económico como en el sexual. Con un estilo directo y sin concesiones, Houellebecq ofrece una visión crítica y a menudo satírica de la sociedad contemporánea.",
+    "citas": "",
+    "fechaInicio": "2026-07-10T18:23:39.708Z",
+    "porcentaje": 8
+  }
 }
