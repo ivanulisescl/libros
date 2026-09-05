@@ -885,16 +885,6 @@
   ],
   "proximas": [
     {
-      "titulo": "EL FIN DEL HOMO SOVIETICUS",
-      "autor": "SVETLANA ALEKSIÉVICH",
-      "sinopsis": "Con la sola ayuda de una grabadora y una pluma, Svetlana Aleksiévich se empeña en mantener viva la memoria de la tragedia que fue la URSS, en narrar las microhistorias de una gran utopía. «El comunismo se propuso la insensatez de transformar al hombre antiguo, al viejo Adán. Y lo consiguió []. En setenta y pocos años, el laboratorio del marxismo-leninismo creó un singular tipo de hombre: el Homo\nsovieticus», condenado a desaparecer con la implosión de la URSS. En este magnífico réquiem, la autora reinventa una forma literaria polifónica muy singular que le permite dar voz a cientos de damnificados: a los humillados y a los ofendidos, a madres deportadas con sus hijos, a estalinistas irredentos a pesar del Gulag, a entusiastas de la perestroika anonadados ante el triunfo del capitalismo, a ciudadanos que plantan cara a la instauración de nuevas dictaduras\nUn texto extraordinario por su sencillez, que describe de un modo conmovedor la sobrecogedora condición humana."
-    },
-    {
-      "titulo": "GRAN SOL",
-      "autor": "IGNACIO ALDECOA",
-      "sinopsis": "Desde niño, Ignacio Aldecoa nunca dejó de soñar con el mar. Para él representaba la libertad, y ésta, en sus propias palabras, era «tener un lugar en el sol», porque la libertad es el estado natural del escritor. En alta mar, las fuerzas naturales se oponen a los hombres con extrema crudeza. Esa realidad aparece retratada en esta novela ya clásica de nuestra literatura, a veces triste y siempre auténtica, en la que se dignifica la miseria de un oficio duro y peligroso.\n\nAldecoa escribió Gran Sol después de compartir la intensa experiencia de la pesca de altura con los marineros del Cantábrico. Testigo del sacrificio y la pobreza, consigue acercar al lector con singular talento su día a día, sus conflictos laborales, sus dificultades y sus conversaciones cotidianas, sin perder nunca de vista la constante amenaza de la fatalidad. El íntimo vínculo entre los pescadores y la naturaleza queda al descubierto por medio de un lenguaje luminoso y colorista de una maestría indiscutible."
-    },
-    {
       "titulo": "COLOQUIO DE INVIERNO",
       "autor": "LUIS LANDERO",
       "sinopsis": "Siete personajes atrapados por un temporal deciden animar la espera contándose historias que nunca antes habían confesado."
@@ -903,6 +893,21 @@
       "titulo": "EL IMPOSTOR",
       "autor": "JAVIER CERCAS",
       "sinopsis": "¿Quién es Enric Marco? Un nonagenario barcelonés que se hizo pasar por superviviente de los campos nazis y que fue desenmascarado en mayo de 2005, después de presidir durante tres años la asociación española de los supervivientes, pronunciar centenares de conferencias, conceder decenas de entrevistas, recibir importantes distinciones y conmover en algún caso hasta las lágrimas a los parlamentarios españoles reunidos para rendir homenaje por vez primera a los republicanos deportados por el III Reich.\n\nEl caso dio la vuelta al mundo y convirtió a Marco en el gran impostor y el gran maldito. Ahora, casi una década más tarde, Javier Cercas asedia, en este thriller hipnótico que es también un banquete con muchos platos -narración, crónica, ensayo, biografía y autobiografía-, el enigma del personaje, su verdad y sus falsedades y, a través de esa indagación que recorre casi un siglo de historia de España, bucea con una pasión de kamikaze y una honestidad desgarradora en lo más profundo de nosotros mismos: en nuestra infinita capacidad de autoengaño, en nuestro conformismo y nuestras mentiras, en nuestra sed insaciable de afecto, en nuestras necesidades contrapuestas de ficción y de realidad, en las zonas más dolorosas de nuestro pasado reciente.\n\nEl resultado es un libro que no habla de Enric Marco sino de usted, lector; también el libro más insumiso y radical de Javier Cercas: un libro asombroso que, con una audacia inédita, ensancha los límites del género novelesco y explora las últimas fronteras de nuestra humanidad."
+    },
+    {
+      "titulo": "LO DEMÁS ES AIRE",
+      "autor": "JUAN GÓMEZ BÁRCENA",
+      "sinopsis": "La novela es una ambiciosa biografía de un lugar concreto: Toñanes, un pequeño pueblo de Cantabria. A través de una estructura narrativa innovadora que rompe la linealidad del tiempo, el autor entrelaza siglos de historia en una sola página, permitiendo que personajes del siglo XVI, de la posguerra y de la actualidad convivan y compartan las mismas calles y miedos.\n\nEs una reflexión profunda sobre la memoria, el arraigo y la huella que dejamos en la tierra. Gómez Bárcena convierte un punto minúsculo en el mapa en un microcosmos universal, explorando cómo las vidas de los habitantes —con sus amores, nacimientos y muertes— se superponen para formar el alma de un pueblo que sobrevive al paso de los años."
+    },
+    {
+      "titulo": "EL FIN DEL HOMO SOVIETICUS",
+      "autor": "SVETLANA ALEKSIÉVICH",
+      "sinopsis": "Con la sola ayuda de una grabadora y una pluma, Svetlana Aleksiévich se empeña en mantener viva la memoria de la tragedia que fue la URSS, en narrar las microhistorias de una gran utopía. «El comunismo se propuso la insensatez de transformar al hombre antiguo, al viejo Adán. Y lo consiguió []. En setenta y pocos años, el laboratorio del marxismo-leninismo creó un singular tipo de hombre: el Homo\nsovieticus», condenado a desaparecer con la implosión de la URSS. En este magnífico réquiem, la autora reinventa una forma literaria polifónica muy singular que le permite dar voz a cientos de damnificados: a los humillados y a los ofendidos, a madres deportadas con sus hijos, a estalinistas irredentos a pesar del Gulag, a entusiastas de la perestroika anonadados ante el triunfo del capitalismo, a ciudadanos que plantan cara a la instauración de nuevas dictaduras\nUn texto extraordinario por su sencillez, que describe de un modo conmovedor la sobrecogedora condición humana."
+    },
+    {
+      "titulo": "GRAN SOL",
+      "autor": "IGNACIO ALDECOA",
+      "sinopsis": "Desde niño, Ignacio Aldecoa nunca dejó de soñar con el mar. Para él representaba la libertad, y ésta, en sus propias palabras, era «tener un lugar en el sol», porque la libertad es el estado natural del escritor. En alta mar, las fuerzas naturales se oponen a los hombres con extrema crudeza. Esa realidad aparece retratada en esta novela ya clásica de nuestra literatura, a veces triste y siempre auténtica, en la que se dignifica la miseria de un oficio duro y peligroso.\n\nAldecoa escribió Gran Sol después de compartir la intensa experiencia de la pesca de altura con los marineros del Cantábrico. Testigo del sacrificio y la pobreza, consigue acercar al lector con singular talento su día a día, sus conflictos laborales, sus dificultades y sus conversaciones cotidianas, sin perder nunca de vista la constante amenaza de la fatalidad. El íntimo vínculo entre los pescadores y la naturaleza queda al descubierto por medio de un lenguaje luminoso y colorista de una maestría indiscutible."
     },
     {
       "titulo": "LA PENÍNSULA DE LAS CASAS VACÍAS",
@@ -933,11 +938,6 @@
       "titulo": "REFERENCIAS PERSONALES",
       "autor": "MATÍAS RIVAS",
       "sinopsis": "Este libro es una colección de fragmentos y apuntes que transitan entre el ensayo, el diario personal y la autobiografía. En él, Rivas —quien se desempeña como poeta, editor y crítico literario— construye un mosaico de sus obsesiones intelectuales y estéticas, abordando temas universales como el ocio, el miedo, el deseo, la belleza y el valor de la poesía. A través de una mirada directa y a menudo sarcástica, el autor reflexiona sobre su pasado, la incomodidad del propio cuerpo y la naturaleza acelerada de la vida contemporánea.\n\nLa obra funciona como un testimonio de su relación con la lectura y el pensamiento, donde las confidencias personales dialogan con juicios sobre el arte, las costumbres de la sociedad y las derivas de un presente incierto. Es, en esencia, un ejercicio de introspección de un hombre maduro que utiliza la palabra escrita para dar sentido a la cotidianeidad y rescatar la curiosidad y la quietud frente al ruido de la información actual."
-    },
-    {
-      "titulo": "LO DEMÁS ES AIRE",
-      "autor": "JUAN GÓMEZ BÁRCENA",
-      "sinopsis": "La novela es una ambiciosa biografía de un lugar concreto: Toñanes, un pequeño pueblo de Cantabria. A través de una estructura narrativa innovadora que rompe la linealidad del tiempo, el autor entrelaza siglos de historia en una sola página, permitiendo que personajes del siglo XVI, de la posguerra y de la actualidad convivan y compartan las mismas calles y miedos.\n\nEs una reflexión profunda sobre la memoria, el arraigo y la huella que dejamos en la tierra. Gómez Bárcena convierte un punto minúsculo en el mapa en un microcosmos universal, explorando cómo las vidas de los habitantes —con sus amores, nacimientos y muertes— se superponen para formar el alma de un pueblo que sobrevive al paso de los años."
     },
     {
       "titulo": "EL HOLOCAUSTO ESPAÑOL",
@@ -1036,5 +1036,12 @@
       "fechaAbandono": "2026-08-02T17:40:17.897Z"
     }
   ],
-  "leyendo": null
+  "leyendo": {
+    "titulo": "TRILOGÍA SUCIA DE LA HABANA",
+    "autor": "PEDRO JUAN GUTIÉRREZ",
+    "sinopsis": "Éste es el testimonio de un habanero descreído. Un hombre que regresa extenuado de un largo camino que finalmente no lo condujo a sitio alguno. Pero no es pesimista. Pedro Juan sabe que tiene que seguir adelante. Y lo mejor es hacerlo sonriendo, a golpe de ron, música y sexo.\nPedro Juan Gutiérrez hace catarsis en este libro, duro y en gran medida autobiográfico, que reúne tres libros de cuentos: Anclado en tierra de nadie, Nada que hacer y Sabor a mí. Un lenguaje fuerte y apretado es el único capaz de expresar la rabia de quien habita en el vórtice del huracán. Pedro Juan vive al borde del precipicio. Marginal, aunque su covacha está en el corazón de La Habana de hoy. Disecciona sus alrededores con habilidad de cirujano experto. Sin temor hinca su bisturí afilado, escarba en las entrañas, y lo revuelca todo, irrespetuosamente: sexo, hambre, política, erotismo, desencanto, anhelos, ron y buen humor.\nEscrita con un ritmo implacable, a medio camino entre la exuberancia tropical y la negra desolación de un Bukowski, la Trilogía sucia de La Habana es un deslumbrante conjunto de relatos orquestados como una novela.",
+    "citas": "",
+    "fechaInicio": "2026-09-05T16:59:08.945Z",
+    "porcentaje": 0
+  }
 }
