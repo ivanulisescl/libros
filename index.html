@@ -2,13 +2,14 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, interactive-widget=resizes-content">
     <title>Mi Biblioteca Personal</title>
     <!-- PWA -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#e94560">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Biblioteca">
     <link rel="apple-touch-icon" href="icon-192.png">
@@ -117,11 +118,19 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            height: 100%;
+            min-height: 100%;
+            min-height: 100dvh;
+            width: 100%;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background: var(--primary);
             color: var(--text);
             min-height: 100vh;
+            min-height: 100dvh;
             transition: background 0.3s ease, color 0.3s ease;
         }
 
@@ -155,7 +164,7 @@
             justify-content: space-between;
             align-items: center;
             gap: 1rem;
-            padding: 0.5rem 1.25rem;
+            padding: calc(0.5rem + env(safe-area-inset-top, 0px)) 1.25rem 0.5rem;
             background: var(--secondary);
             border-bottom: 1px solid var(--border);
             flex-wrap: wrap;
@@ -1008,7 +1017,7 @@
             align-items: center;
             justify-content: center;
             backdrop-filter: blur(5px);
-            padding: 1rem;
+            padding: calc(1rem + env(safe-area-inset-top, 0px)) 1rem calc(1rem + env(safe-area-inset-bottom, 0px));
         }
 
         .modal-overlay.visible {
@@ -1205,7 +1214,7 @@
         /* Toast Notification */
         .toast {
             position: fixed;
-            bottom: 2rem;
+            bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
             right: 2rem;
             padding: 1rem 1.5rem;
             background: var(--card-bg);
@@ -1233,6 +1242,7 @@
         .data-info {
             text-align: center;
             padding: 0.5rem;
+            padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px));
             font-size: 0.75rem;
             color: var(--text-muted);
         }
@@ -1697,7 +1707,7 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            header { padding: 0.5rem 1rem; }
+            header { padding: calc(0.5rem + env(safe-area-inset-top, 0px)) 1rem 0.5rem; }
             .header-right { justify-content: center; }
             .operaciones-menu {
                 right: auto;
@@ -1906,7 +1916,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.28</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.29</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
