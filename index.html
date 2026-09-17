@@ -1911,7 +1911,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.30</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.31</span></div>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
@@ -2147,26 +2147,28 @@
                 libros = await loadData();
                 proximasLecturas = await loadProximas();
                 abandonados = await loadAbandonados();
-                
-                // If any is empty, load from JSON
-                if (!libros || !proximasLecturas || !abandonados) {
-                    const jsonData = await loadFromJSON();
-                    if (jsonData) {
-                        if (!libros && jsonData.libros) {
-                            libros = jsonData.libros;
-                            saveData(libros);
-                        }
-                        if (!proximasLecturas && jsonData.proximas) {
-                            proximasLecturas = jsonData.proximas;
-                            saveProximas(proximasLecturas);
-                        }
-                        if (!abandonados && jsonData.abandonados) {
-                            abandonados = jsonData.abandonados;
-                            saveAbandonados(abandonados);
-                        }
-                        if (jsonData.hasOwnProperty('leyendo')) {
+                const teniaLeyendoLocal = loadLeyendo();
+
+                const jsonData = await loadFromJSON();
+                if (jsonData) {
+                    if (!libros && jsonData.libros) {
+                        libros = jsonData.libros;
+                        saveData(libros);
+                    }
+                    if (!proximasLecturas && jsonData.proximas) {
+                        proximasLecturas = jsonData.proximas;
+                        saveProximas(proximasLecturas);
+                    }
+                    if (!abandonados && jsonData.abandonados) {
+                        abandonados = jsonData.abandonados;
+                        saveAbandonados(abandonados);
+                    }
+                    if (jsonData.hasOwnProperty('leyendo')) {
+                        if (!teniaLeyendoLocal) {
                             librosLeyendo = normalizarLeyendo(jsonData.leyendo);
                             saveLeyendo();
+                        } else {
+                            enriquecerLeyendo(jsonData.leyendo);
                         }
                     }
                 }
@@ -2180,8 +2182,6 @@
                 console.log('Total próximas:', proximasLecturas.length);
                 console.log('Total abandonados:', abandonados.length);
                 
-                // Load currently reading book
-                loadLeyendo();
                 renderLeyendo();
                 renderProximas();
                 renderAbandonados();
@@ -3521,15 +3521,46 @@
             const data = localStorage.getItem(LEYENDO_KEY);
             if (!data) {
                 librosLeyendo = [];
-                return;
+                return false;
             }
             try {
                 const parsed = JSON.parse(data);
                 librosLeyendo = normalizarLeyendo(parsed);
                 if (!Array.isArray(parsed)) saveLeyendo();
+                return true;
             } catch (e) {
                 librosLeyendo = [];
+                return false;
             }
+        }
+
+        function enriquecerLeyendo(dataRemota) {
+            const remotos = normalizarLeyendo(dataRemota);
+            if (!remotos.length) return;
+            let cambiado = false;
+            for (const remoto of remotos) {
+                const local = librosLeyendo.find(l => l.titulo === remoto.titulo && l.autor === remoto.autor);
+                if (!local) continue;
+                const citasLocal = (local.citas || '').trim();
+                const citasRemoto = (remoto.citas || '').trim();
+                if (citasRemoto.length > citasLocal.length) {
+                    local.citas = remoto.citas;
+                    cambiado = true;
+                }
+                if ((remoto.porcentaje ?? 0) > (local.porcentaje ?? 0)) {
+                    local.porcentaje = remoto.porcentaje;
+                    cambiado = true;
+                }
+                if (!(local.sinopsis || '').trim() && (remoto.sinopsis || '').trim()) {
+                    local.sinopsis = remoto.sinopsis;
+                    cambiado = true;
+                }
+                if (!local.fechaInicio && remoto.fechaInicio) {
+                    local.fechaInicio = remoto.fechaInicio;
+                    cambiado = true;
+                }
+            }
+            if (cambiado) saveLeyendo();
         }
 
         function renderLeyendo() {
