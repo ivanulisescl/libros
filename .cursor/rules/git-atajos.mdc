@@ -1,0 +1,37 @@
+---
+description: Atajos para subir mi_biblioteca.json y actualizar versión del proyecto
+alwaysApply: true
+---
+
+# Atajos Git para este proyecto
+
+Estas reglas definen qué debe hacer el asistente cuando le des ciertas órdenes cortas en español.
+
+## Palabra clave: subir JSON
+
+- Cuando el usuario diga algo como **"sube mi_biblioteca.json"** o **"sube el json"**:
+  - Interpretar que quiere **subir al repo sólo `mi_biblioteca.json`**.
+  - Pasos a seguir (sin pedir confirmación adicional salvo que haya conflicto evidente):
+    - Comprobar diferencias actuales de `mi_biblioteca.json`.
+    - Ejecutar `git add mi_biblioteca.json`.
+    - Crear un commit con un mensaje sencillo del estilo: `Actualizar mi_biblioteca.json`.
+    - Hacer `git push` a la rama actual (normalmente `main`).
+    - Avisar al usuario de:
+      - Hash del commit.
+      - Rama a la que se ha hecho push.
+
+## Palabra clave: nueva versión
+
+- Cuando el usuario diga algo como **"nueva versión"**, **"sube versión"** o explícitamente pida **"actualiza versión y súbelo"**:
+  - Interpretar que quiere:
+    - Actualizar el número de versión de la aplicación donde corresponda (por ejemplo en `index.html` u otros archivos de configuración que use el proyecto).
+    - Crear un commit y subirlo al remoto.
+  - Comportamiento esperado:
+    - Preguntar **sólo si es necesario** cuál es el nuevo número de versión (si no se deduce claramente del mensaje).
+    - Localizar y actualizar la(s) referencia(s) de versión en los archivos del proyecto.
+    - Ejecutar `git status` para verificar qué archivos cambian.
+    - Ejecutar `git add` únicamente sobre los archivos relacionados con el cambio de versión.
+    - Crear un commit con un mensaje tipo `Actualizar versión a X.Y.Z` o similar.
+    - Ejecutar `git push` a la rama actual.
+    - Confirmar al usuario versión final, archivos tocados y hash del commit.
+
