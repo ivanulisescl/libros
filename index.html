@@ -7,7 +7,16 @@
     <!-- PWA -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#e94560">
+    <meta name="theme-color" content="#3d3630">
+    <script>
+        (function () {
+            try {
+                var light = localStorage.getItem('theme') === 'fresh-light';
+                var meta = document.querySelector('meta[name="theme-color"]');
+                if (meta) meta.setAttribute('content', light ? '#f0e8dc' : '#3d3630');
+            } catch (e) {}
+        })();
+    </script>
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -2231,6 +2240,8 @@
         }
 
         function getThemeVar(name) {
+            const fromBody = getComputedStyle(document.body).getPropertyValue('--' + name).trim();
+            if (fromBody) return fromBody;
             return getComputedStyle(document.documentElement).getPropertyValue('--' + name).trim();
         }
 
@@ -2266,26 +2277,30 @@
         }
 
         function getChartColors(count) {
-            const accent = getThemeVar('accent') || '#e94560';
-            const accentLight = getThemeVar('accent-light') || '#ff6b6b';
+            const accent = getThemeVar('accent') || '#e87c2d';
             const hsl = hexToHsl(accent);
+            const isLight = document.body.getAttribute('data-theme') === 'fresh-light';
+            const lMin = isLight ? 34 : 40;
+            const lMax = isLight ? 58 : 70;
             const colors = [];
             for (let i = 0; i < count; i++) {
-                const t = count > 1 ? i / (count - 1) : 0;
-                const h = (hsl.h + i * 25) % 360;
-                const s = Math.max(50, Math.min(85, hsl.s + i * 2));
-                const l = 45 + t * 15;
+                const t = count > 1 ? i / (count - 1) : 0.5;
+                const h = (hsl.h - 6 + t * 14 + 360) % 360;
+                const s = Math.max(55, Math.min(82, hsl.s - 6));
+                const l = lMin + t * (lMax - lMin);
                 colors.push(hslToHex(h, s, l));
             }
             return colors;
         }
 
         function getChartTextColor() {
-            return getThemeVar('text') || '#eaeaea';
+            return getThemeVar('text') || '#f5f0e6';
         }
 
         function getChartGridColor() {
-            return 'rgba(255,255,255,0.1)';
+            const text = hexToRgb(getChartTextColor());
+            if (!text) return 'rgba(245,240,230,0.12)';
+            return `rgba(${text.r},${text.g},${text.b},0.14)`;
         }
 
         // Render stars
@@ -2313,6 +2328,7 @@
         function initCharts() {
             const textColor = getChartTextColor();
             Chart.defaults.color = textColor;
+            Chart.defaults.borderColor = getChartGridColor();
 
             // Monthly data
             const monthlyData = {};
@@ -2335,11 +2351,11 @@
                     datasets: [{
                         label: 'Libros',
                         data: sortedMonths.map(m => monthlyData[m]),
-                        borderColor: getThemeVar('accent') || '#e94560',
-                        backgroundColor: (() => { const c = hexToRgb(getThemeVar('accent') || '#e94560'); return c ? `rgba(${c.r},${c.g},${c.b},0.15)` : 'rgba(233,69,96,0.1)'; })(),
+                        borderColor: getThemeVar('accent') || '#e87c2d',
+                        backgroundColor: (() => { const c = hexToRgb(getThemeVar('accent') || '#e87c2d'); return c ? `rgba(${c.r},${c.g},${c.b},0.18)` : 'rgba(232,124,45,0.18)'; })(),
                         fill: true,
                         tension: 0.4,
-                        pointBackgroundColor: getThemeVar('accent') || '#e94560',
+                        pointBackgroundColor: getThemeVar('accent') || '#e87c2d',
                         pointRadius: 4
                     }]
                 },
@@ -2942,25 +2958,24 @@
         }
 
         // Theme toggle: naranja en modo oscuro y claro
+        function syncThemeBar(theme) {
+            const meta = document.querySelector('meta[name="theme-color"]');
+            if (meta) meta.setAttribute('content', theme === 'fresh-light' ? '#f0e8dc' : '#3d3630');
+        }
+
         function initThemeToggle() {
             const toggle = document.getElementById('themeToggle');
-            const thumb = toggle.querySelector('.theme-toggle-thumb');
             const savedTheme = localStorage.getItem('theme') || 'fresh';
-            if (savedTheme === 'fresh-light') {
-                document.body.setAttribute('data-theme', 'fresh-light');
-            } else {
-                document.body.setAttribute('data-theme', 'fresh');
-            }
+            const theme = savedTheme === 'fresh-light' ? 'fresh-light' : 'fresh';
+            document.body.setAttribute('data-theme', theme);
+            syncThemeBar(theme);
 
             toggle.addEventListener('click', () => {
                 const isDark = document.body.getAttribute('data-theme') === 'fresh';
-                if (isDark) {
-                    document.body.setAttribute('data-theme', 'fresh-light');
-                    localStorage.setItem('theme', 'fresh-light');
-                } else {
-                    document.body.setAttribute('data-theme', 'fresh');
-                    localStorage.setItem('theme', 'fresh');
-                }
+                const next = isDark ? 'fresh-light' : 'fresh';
+                document.body.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+                syncThemeBar(next);
                 if (chartsInitialized) updateChartsTheme();
             });
         }

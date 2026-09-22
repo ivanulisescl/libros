@@ -4,8 +4,8 @@
   "description": "Gestión de lecturas personales",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#1a1a2e",
-  "theme_color": "#e94560",
+  "background_color": "#2a2520",
+  "theme_color": "#3d3630",
   "orientation": "portrait-primary",
   "icons": [
     {
