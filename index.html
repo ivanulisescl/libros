@@ -610,7 +610,9 @@
 
         .chart-title svg,
         .proximas-header svg,
-        .abandonados-header svg {
+        .abandonados-header svg,
+        .leyendo-section > .leyendo-header svg,
+        .proxima-has-sinopsis svg {
             width: 1.05em;
             height: 1.05em;
             flex: 0 0 auto;
@@ -620,6 +622,11 @@
             stroke-width: 1.75;
             stroke-linecap: round;
             stroke-linejoin: round;
+        }
+
+        .leyendo-section > .leyendo-header svg {
+            width: 1.15rem;
+            height: 1.15rem;
         }
 
         .chart-container {
@@ -1367,6 +1374,9 @@
         }
 
         .proxima-has-sinopsis {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
             font-size: 0.75rem;
             color: var(--accent);
             margin-top: 0.25rem;
@@ -1813,7 +1823,7 @@
 
     <!-- Sección Leyendo Ahora -->
     <section class="leyendo-section" id="leyendoSection">
-        <div class="leyendo-header" id="leyendoSectionTitle">📖 Leyendo ahora</div>
+        <div class="leyendo-header" id="leyendoSectionTitle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6.5C10.3 5.3 7.8 4.9 4.8 5.4V18.2c3-.5 5.5-.1 7.2 1.1"/><path d="M12 6.5c1.7-1.2 4.2-1.6 7.2-1.1V18.2c-3-.5-5.5-.1-7.2 1.1"/><path d="M12 6.5V19.3"/></svg><span id="leyendoSectionLabel">Leyendo ahora</span></div>
         <div class="leyendo-cards" id="leyendoCards"></div>
     </section>
 
@@ -3272,7 +3282,7 @@
                     <div class="proxima-info">
                         <div class="proxima-titulo">${libro.titulo}</div>
                         <div class="proxima-autor">${libro.autor}</div>
-                        ${libro.sinopsis ? '<div class="proxima-has-sinopsis">📖 Tiene sinopsis</div>' : ''}
+                        ${libro.sinopsis ? '<div class="proxima-has-sinopsis"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3.5" width="12" height="17" rx="1.5"/><path d="M9 8.5h6M9 12h6M9 15.5h4"/></svg>Tiene sinopsis</div>' : ''}
                     </div>
                     <div class="proxima-actions">
                         <button class="proxima-btn order" onclick="event.stopPropagation(); moverProxima(${index}, 'arriba')" title="Subir" ${index === 0 ? 'disabled' : ''}>▲</button>
@@ -3606,9 +3616,12 @@
                 return;
             }
 
-            titleEl.textContent = librosLeyendo.length > 1
-                ? `📖 Leyendo ahora (${librosLeyendo.length})`
-                : '📖 Leyendo ahora';
+            const labelEl = document.getElementById('leyendoSectionLabel');
+            if (labelEl) {
+                labelEl.textContent = librosLeyendo.length > 1
+                    ? `Leyendo ahora (${librosLeyendo.length})`
+                    : 'Leyendo ahora';
+            }
 
             cardsEl.innerHTML = librosLeyendo.map((libro, i) => {
                 const pct = libro.porcentaje ?? 0;
