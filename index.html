@@ -445,17 +445,25 @@
             letter-spacing: 1px;
         }
 
-        /* Modo estadísticas: oculta Leyendo ahora, filtros y grid; muestra resumen y gráficos */
+        /* Estadísticas, próximas y abandonados sustituyen la vista principal */
         body.stats-mode .leyendo-section,
         body.stats-mode .controls,
         body.stats-mode .books-grid,
         body.stats-mode .data-info,
-        body.stats-mode .proximas-section,
-        body.stats-mode .abandonados-section {
+        body.proximas-mode .leyendo-section,
+        body.proximas-mode .controls,
+        body.proximas-mode .books-grid,
+        body.proximas-mode .data-info,
+        body.abandonados-mode .leyendo-section,
+        body.abandonados-mode .controls,
+        body.abandonados-mode .books-grid,
+        body.abandonados-mode .data-info {
             display: none !important;
         }
 
-        body.stats-mode .charts-section {
+        body.stats-mode .charts-section,
+        body.proximas-mode .proximas-section,
+        body.abandonados-mode .abandonados-section {
             display: block !important;
             animation: slideDown 0.4s ease;
         }
@@ -484,12 +492,13 @@
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
             color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
         }
 
         .proximas-section #proximasList {
             margin-bottom: 1rem;
-            max-height: 60vh;
-            overflow-y: auto;
         }
 
         .proximas-section .btn-add-proxima {
@@ -508,14 +517,15 @@
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
             color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
         }
 
         .abandonados-section #abandonadosList {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1rem;
-            max-height: 50vh;
-            overflow-y: auto;
         }
 
         .abandonado-item {
@@ -593,6 +603,23 @@
             font-size: 1.2rem;
             margin-bottom: 1rem;
             color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+        }
+
+        .chart-title svg,
+        .proximas-header svg,
+        .abandonados-header svg {
+            width: 1.05em;
+            height: 1.05em;
+            flex: 0 0 auto;
+            color: var(--accent);
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 1.75;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         .chart-container {
@@ -1844,27 +1871,27 @@
         </div>
         <div class="charts-grid">
             <div class="chart-card">
-                <h3 class="chart-title">📅 Libros por Mes</h3>
+                <h3 class="chart-title"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3.5v3M16 3.5v3"/><circle cx="12" cy="15" r="1.35" fill="currentColor" stroke="none"/></svg>Libros por Mes</h3>
                 <div class="chart-container"><canvas id="monthlyChart"></canvas></div>
             </div>
             <div class="chart-card">
-                <h3 class="chart-title">📆 Libros por Año</h3>
+                <h3 class="chart-title"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="12" width="4.5" height="8" rx="0.8"/><rect x="9.75" y="5" width="4.5" height="15" rx="0.8"/><rect x="16" y="9" width="4.5" height="11" rx="0.8"/></svg>Libros por Año</h3>
                 <div class="chart-container"><canvas id="yearlyChart"></canvas></div>
             </div>
             <div class="chart-card">
-                <h3 class="chart-title">✍️ Top 10 Autores</h3>
+                <h3 class="chart-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4.2-1.1L19.2 8a2.3 2.3 0 0 0-3.2-3.2L5 15.7 4 20z"/><path d="M13.8 6.2l3.8 3.8"/></svg>Top 10 Autores</h3>
                 <div class="chart-container"><canvas id="authorsChart"></canvas></div>
             </div>
             <div class="chart-card">
-                <h3 class="chart-title">🏢 Top 10 Editoriales</h3>
+                <h3 class="chart-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5h11.2A1.3 1.3 0 0 1 19.5 5.8V20H8.4A2.4 2.4 0 0 0 6 22.2V6A1.5 1.5 0 0 1 7.5 4.5z"/><path d="M9.2 4.5V19"/></svg>Top 10 Editoriales</h3>
                 <div class="chart-container"><canvas id="editorialsChart"></canvas></div>
             </div>
             <div class="chart-card">
-                <h3 class="chart-title">⭐ Distribución de Puntuaciones</h3>
+                <h3 class="chart-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.6l2.15 4.55 5 .7-3.65 3.5.9 5.05L12 15.1l-4.4 2.3.9-5.05L4.85 8.85l5-.7L12 3.6z"/></svg>Distribución de Puntuaciones</h3>
                 <div class="chart-container"><canvas id="ratingsChart"></canvas></div>
             </div>
             <div class="chart-card">
-                <h3 class="chart-title">📏 Distribución por Extensión</h3>
+                <h3 class="chart-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4.2h10"/><path d="M7 7.4h12"/><rect x="5" y="10.4" width="14" height="10" rx="1.4"/></svg>Distribución por Extensión</h3>
                 <div class="chart-container"><canvas id="lengthChart"></canvas></div>
             </div>
         </div>
@@ -1872,14 +1899,14 @@
 
     <!-- Sección Próximas Lecturas (inline, como Estadísticas) -->
     <section class="proximas-section" id="proximasSection">
-        <h2 class="proximas-header">📚 Próximas Lecturas</h2>
+        <h2 class="proximas-header"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6.5C10.3 5.3 7.8 4.9 4.8 5.4V18.2c3-.5 5.5-.1 7.2 1.1"/><path d="M12 6.5c1.7-1.2 4.2-1.6 7.2-1.1V18.2c-3-.5-5.5-.1-7.2 1.1"/><path d="M12 6.5V19.3"/></svg>Próximas Lecturas</h2>
         <div id="proximasList"></div>
         <button type="button" class="btn-icon primary btn-add-proxima" id="showAddProximaBtn">➕ Añadir nuevo libro</button>
     </section>
 
     <!-- Sección Libros Abandonados -->
     <section class="abandonados-section" id="abandonadosSection">
-        <h2 class="abandonados-header">⏸️ Libros abandonados</h2>
+        <h2 class="abandonados-header"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.2 5.2h8.4A1.3 1.3 0 0 1 13.9 6.5V19H6A1.8 1.8 0 0 0 4.2 20.8V5.2z"/><path d="M6.8 5.2V18.2"/><path d="M16.6 8.2v7.2M19.6 8.2v7.2"/></svg>Libros abandonados</h2>
         <div id="abandonadosList"></div>
     </section>
 
@@ -2980,37 +3007,38 @@
             });
         }
 
+        // Una sola vista a la vez: biblioteca, estadísticas, próximas o abandonados.
+        function setViewMode(mode) {
+            document.body.classList.toggle('stats-mode', mode === 'stats');
+            document.body.classList.toggle('proximas-mode', mode === 'proximas');
+            document.body.classList.toggle('abandonados-mode', mode === 'abandonados');
+            proximasVisible = mode === 'proximas';
+            abandonadosVisible = mode === 'abandonados';
+            document.getElementById('statsToggle')?.classList.toggle('active', mode === 'stats');
+            document.getElementById('proximasBtn')?.classList.toggle('active', mode === 'proximas');
+            document.getElementById('abandonadosBtn')?.classList.toggle('active', mode === 'abandonados');
+        }
+
         // Stats toggle: muestra estado pulsado, siempre "Estadísticas". Al pulsar: oculta Leyendo ahora y filtros; muestra resumen y gráficos.
         function initStatsToggle() {
             const btn = document.getElementById('statsToggle');
-            const proximasBtn = document.getElementById('proximasBtn');
 
             btn.addEventListener('click', () => {
-                const isStatsMode = document.body.classList.contains('stats-mode');
-                if (isStatsMode) {
-                    document.body.classList.remove('stats-mode');
-                    btn.classList.remove('active');
+                if (document.body.classList.contains('stats-mode')) {
+                    setViewMode(null);
                 } else {
-                    // Salir del modo próximas al entrar en estadísticas
-                    proximasVisible = false;
-                    if (proximasBtn) proximasBtn.classList.remove('active');
-                    renderProximas();
-
-                    document.body.classList.add('stats-mode');
-                    btn.classList.add('active');
+                    setViewMode('stats');
                     if (!chartsInitialized) initCharts();
                 }
             });
         }
 
-        // Próximas toggle: muestra/oculta la sección de próximas debajo de "Leyendo ahora"
+        // Próximas: sustituye la biblioteca, igual que Estadísticas.
         function initProximasToggle() {
             const btn = document.getElementById('proximasBtn');
-            const statsBtn = document.getElementById('statsToggle');
 
             if (!btn) return;
             btn.addEventListener('click', async () => {
-                // Si no hay próximas cargadas, intenta cargarlas desde storage/JSON
                 if (!proximasLecturas || proximasLecturas.length === 0) {
                     const loaded = await loadProximas();
                     if (loaded && Array.isArray(loaded)) {
@@ -3019,15 +3047,7 @@
                     }
                 }
 
-                proximasVisible = !proximasVisible;
-
-                // Salir del modo estadísticas si estaba activo
-                if (document.body.classList.contains('stats-mode')) {
-                    document.body.classList.remove('stats-mode');
-                    if (statsBtn) statsBtn.classList.remove('active');
-                }
-
-                btn.classList.toggle('active', proximasVisible);
+                setViewMode(document.body.classList.contains('proximas-mode') ? null : 'proximas');
                 renderProximas();
             });
         }
@@ -3243,12 +3263,9 @@
             if (!section || !container) return;
 
             if (!proximasLecturas || proximasLecturas.length === 0) {
-                section.style.display = 'none';
                 container.innerHTML = '<div class="proximas-empty">No hay libros en la lista</div>';
                 return;
             }
-
-            section.style.display = proximasVisible ? 'block' : 'none';
 
             container.innerHTML = proximasLecturas.map((libro, index) => `
                 <div class="proxima-item" onclick="editarProxima(${index})" style="cursor: pointer;">
@@ -3299,8 +3316,8 @@
             }
 
             btn.style.display = 'inline-flex';
+            section.style.display = '';
             btn.classList.toggle('active', abandonadosVisible);
-            section.style.display = abandonadosVisible ? 'block' : 'none';
 
             const formatFecha = (fechaStr) => {
                 if (!fechaStr) return '';
@@ -3822,7 +3839,7 @@
         const abandonadosBtn = document.getElementById('abandonadosBtn');
         if (abandonadosBtn) {
             abandonadosBtn.addEventListener('click', () => {
-                abandonadosVisible = !abandonadosVisible;
+                setViewMode(document.body.classList.contains('abandonados-mode') ? null : 'abandonados');
                 renderAbandonados();
             });
         }
