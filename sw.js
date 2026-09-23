@@ -1,4 +1,4 @@
-const CACHE_NAME = 'biblioteca-v3.33-sinopsis-icon';
+const CACHE_NAME = 'biblioteca-v3.34-token-persist';
 const ASSETS = [
   './',
   './index.html',
