@@ -885,9 +885,19 @@
   ],
   "proximas": [
     {
+      "titulo": "REVANCHA",
+      "autor": "KIKI AMAT",
+      "sinopsis": ""
+    },
+    {
       "titulo": "COLOQUIO DE INVIERNO",
       "autor": "LUIS LANDERO",
       "sinopsis": "Siete personajes atrapados por un temporal deciden animar la espera contándose historias que nunca antes habían confesado."
+    },
+    {
+      "titulo": "MANTECA COLORÁ",
+      "autor": "MONTERO GLEZ",
+      "sinopsis": ""
     },
     {
       "titulo": "EL IMPOSTOR",
@@ -908,16 +918,6 @@
       "titulo": "GRAN SOL",
       "autor": "IGNACIO ALDECOA",
       "sinopsis": "Desde niño, Ignacio Aldecoa nunca dejó de soñar con el mar. Para él representaba la libertad, y ésta, en sus propias palabras, era «tener un lugar en el sol», porque la libertad es el estado natural del escritor. En alta mar, las fuerzas naturales se oponen a los hombres con extrema crudeza. Esa realidad aparece retratada en esta novela ya clásica de nuestra literatura, a veces triste y siempre auténtica, en la que se dignifica la miseria de un oficio duro y peligroso.\n\nAldecoa escribió Gran Sol después de compartir la intensa experiencia de la pesca de altura con los marineros del Cantábrico. Testigo del sacrificio y la pobreza, consigue acercar al lector con singular talento su día a día, sus conflictos laborales, sus dificultades y sus conversaciones cotidianas, sin perder nunca de vista la constante amenaza de la fatalidad. El íntimo vínculo entre los pescadores y la naturaleza queda al descubierto por medio de un lenguaje luminoso y colorista de una maestría indiscutible."
-    },
-    {
-      "titulo": "REVANCHA",
-      "autor": "KIKI AMAT",
-      "sinopsis": ""
-    },
-    {
-      "titulo": "MANTECA COLORÁ",
-      "autor": "MONTERO GLEZ",
-      "sinopsis": ""
     },
     {
       "titulo": "EL MUNDO DESPUÉS DE GAZA",
