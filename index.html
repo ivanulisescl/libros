@@ -1503,12 +1503,14 @@
             z-index: 2000;
             transform: translateY(100px);
             opacity: 0;
+            pointer-events: none;
             transition: all 0.3s ease;
         }
 
         .toast.visible {
             transform: translateY(0);
             opacity: 1;
+            pointer-events: auto;
         }
 
         .toast.success { border-left: 4px solid var(--success); }
@@ -3389,6 +3391,8 @@
             document.getElementById('statsToggle')?.classList.toggle('active', mode === 'stats');
             document.getElementById('proximasBtn')?.classList.toggle('active', mode === 'proximas');
             document.getElementById('abandonadosBtn')?.classList.toggle('active', mode === 'abandonados');
+            const scroller = document.querySelector('.page-scroll');
+            if (scroller) scroller.scrollTop = 0;
         }
 
         // Stats toggle: muestra estado pulsado, siempre "Estadísticas". Al pulsar: oculta Leyendo ahora y filtros; muestra resumen y gráficos.
