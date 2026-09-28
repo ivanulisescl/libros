@@ -217,7 +217,7 @@
         }
 
         .header-right .theme-toggle {
-            padding: 0.4rem 0.75rem;
+            padding: 0.35rem 0.4rem;
             border: 1px solid var(--border);
             background: var(--card-bg);
             border-radius: 10px;
@@ -226,6 +226,38 @@
         .header-right .theme-toggle:hover {
             border-color: var(--accent);
             background: var(--card-hover);
+        }
+
+        .header-symbol-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.4rem;
+            height: 2.4rem;
+            padding: 0;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            color: var(--text);
+            cursor: pointer;
+            flex: 0 0 auto;
+        }
+
+        .header-symbol-btn svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            display: block;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2.25;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .header-symbol-btn:hover {
+            border-color: var(--accent);
+            background: var(--card-hover);
+            color: var(--accent);
         }
 
         /* Buttons */
@@ -373,8 +405,7 @@
         .theme-toggle {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 0.6rem;
+            padding: 0.35rem 0.4rem;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -401,17 +432,36 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
+            color: #fff;
         }
+
+        .theme-toggle-thumb svg {
+            width: 13px;
+            height: 13px;
+            display: block;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .theme-toggle-thumb .theme-icon-moon {
+            fill: currentColor;
+            stroke: none;
+        }
+
+        .theme-toggle-thumb .theme-icon-sun { display: none; }
+
+        [data-theme="light"] .theme-toggle-thumb .theme-icon-moon,
+        [data-theme="fresh-light"] .theme-toggle-thumb .theme-icon-moon { display: none; }
+
+        [data-theme="light"] .theme-toggle-thumb .theme-icon-sun,
+        [data-theme="fresh-light"] .theme-toggle-thumb .theme-icon-sun { display: block; }
 
         [data-theme="light"] .theme-toggle-thumb,
         [data-theme="fresh-light"] .theme-toggle-thumb {
             transform: translateX(24px);
-        }
-
-        .theme-label {
-            font-size: 0.85rem;
-            color: var(--text-muted);
         }
 
         /* Stats Bar (solo visible en la pestaña Estadísticas) */
@@ -1305,6 +1355,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 0.85rem;
             padding: 1rem;
             background: var(--secondary);
             border-radius: 10px;
@@ -1317,8 +1368,34 @@
             border-color: var(--accent);
         }
 
+        .proxima-posicion-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.2rem;
+            flex: 0 0 auto;
+        }
+
+        .proxima-posicion-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            line-height: 1;
+        }
+
+        select.proxima-posicion {
+            min-width: 3.6rem;
+            padding: 0.35rem 0.4rem;
+            text-align: center;
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+            border-radius: 8px;
+        }
+
         .proxima-info {
             flex: 1;
+            min-width: 0;
         }
 
         .proxima-titulo {
@@ -1353,24 +1430,6 @@
 
         .proxima-btn.edit:hover {
             transform: scale(1.05);
-        }
-
-        .proxima-btn.order {
-            background: var(--secondary);
-            color: var(--text);
-            border: 1px solid var(--border);
-            padding: 0.4rem 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .proxima-btn.order:hover {
-            background: var(--card-hover);
-            border-color: var(--accent);
-        }
-
-        .proxima-btn.order:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
         }
 
         .proxima-has-sinopsis {
@@ -1812,10 +1871,15 @@
                     <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar</button>
                 </div>
             </div>
-            <div class="theme-toggle" id="themeToggle">
-                <span class="theme-label">Tema</span>
+            <button type="button" class="header-symbol-btn" id="uploadGitHubHeaderBtn" title="Subir mi_biblioteca.json a GitHub" aria-label="Subir mi_biblioteca.json a GitHub">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 13V3"/><path d="M7 8l5-5 5 5"/><path d="M4 16v5h16v-5"/></svg>
+            </button>
+            <div class="theme-toggle" id="themeToggle" role="button" tabindex="0" title="Cambiar tema claro u oscuro" aria-label="Cambiar tema claro u oscuro">
                 <div class="theme-toggle-track">
-                    <div class="theme-toggle-thumb"></div>
+                    <div class="theme-toggle-thumb">
+                        <svg class="theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 14.5A8.5 8.5 0 1 1 9.5 3a7 7 0 0 0 11.5 11.5z"/></svg>
+                        <svg class="theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></svg>
+                    </div>
                 </div>
             </div>
         </div>
@@ -3254,7 +3318,7 @@
             document.getElementById('operacionesMenu').classList.remove('visible');
         });
 
-        document.getElementById('uploadGitHubBtn').addEventListener('click', async () => {
+        async function subirBibliotecaAGitHub() {
             document.getElementById('operacionesMenu').classList.remove('visible');
             await uploadToGitHub(
                 'mi_biblioteca.json',
@@ -3263,7 +3327,10 @@
                 GITHUB_REPO,
                 (msg, isError) => showToast(msg, isError ? 'error' : 'success')
             );
-        });
+        }
+
+        document.getElementById('uploadGitHubBtn').addEventListener('click', subirBibliotecaAGitHub);
+        document.getElementById('uploadGitHubHeaderBtn').addEventListener('click', subirBibliotecaAGitHub);
 
         document.getElementById('configGitHubTokenBtn').addEventListener('click', async () => {
             document.getElementById('operacionesMenu').classList.remove('visible');
@@ -3381,37 +3448,47 @@
                 return;
             }
 
-            container.innerHTML = proximasLecturas.map((libro, index) => `
+            const total = proximasLecturas.length;
+            container.innerHTML = proximasLecturas.map((libro, index) => {
+                const posicion = index + 1;
+                const opciones = Array.from({ length: total }, (_, i) => {
+                    const n = i + 1;
+                    return `<option value="${n}"${n === posicion ? ' selected' : ''}>${n}</option>`;
+                }).join('');
+                return `
                 <div class="proxima-item" onclick="editarProxima(${index})" style="cursor: pointer;">
+                    <label class="proxima-posicion-wrap" onclick="event.stopPropagation()" title="Cambiar posición">
+                        <span class="proxima-posicion-label">Pos.</span>
+                        <select class="proxima-posicion" aria-label="Posición ${posicion} de ${total}" onchange="cambiarPosicionProxima(${index}, this.value)">
+                            ${opciones}
+                        </select>
+                    </label>
                     <div class="proxima-info">
                         <div class="proxima-titulo">${libro.titulo}</div>
                         <div class="proxima-autor">${libro.autor}</div>
                         ${libro.sinopsis ? '<div class="proxima-has-sinopsis"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3.5" width="12" height="17" rx="1.5"/><path d="M9 8.5h6M9 12h6M9 15.5h4"/></svg>Tiene sinopsis</div>' : ''}
                     </div>
                     <div class="proxima-actions">
-                        <button class="proxima-btn order" onclick="event.stopPropagation(); moverProxima(${index}, 'arriba')" title="Subir" ${index === 0 ? 'disabled' : ''}>▲</button>
-                        <button class="proxima-btn order" onclick="event.stopPropagation(); moverProxima(${index}, 'abajo')" title="Bajar" ${index === proximasLecturas.length - 1 ? 'disabled' : ''}>▼</button>
                         <button class="proxima-btn edit" onclick="event.stopPropagation(); editarProxima(${index})" title="Editar">✏️ Editar</button>
                     </div>
                 </div>
-            `).join('');
+            `;
+            }).join('');
         }
 
-        // Mover próxima lectura arriba o abajo
-        function moverProxima(index, direccion) {
-            if (direccion === 'arriba' && index === 0) return;
-            if (direccion === 'abajo' && index === proximasLecturas.length - 1) return;
-            
-            const nuevoIndex = direccion === 'arriba' ? index - 1 : index + 1;
-            const libro = proximasLecturas[index];
-            
-            // Intercambiar posiciones
-            proximasLecturas[index] = proximasLecturas[nuevoIndex];
-            proximasLecturas[nuevoIndex] = libro;
-            
+        // Inserta el libro en la posición elegida (1..n) y desplaza el resto hacia abajo desde ahí.
+        function cambiarPosicionProxima(index, nuevaPosicion) {
+            const destino = Number(nuevaPosicion) - 1;
+            if (!Number.isInteger(destino) || destino < 0 || destino >= proximasLecturas.length || destino === index) {
+                return;
+            }
+
+            const [libro] = proximasLecturas.splice(index, 1);
+            proximasLecturas.splice(destino, 0, libro);
+
             saveProximas(proximasLecturas);
             renderProximas();
-            showToast(`Libro movido ${direccion === 'arriba' ? 'arriba' : 'abajo'}`);
+            showToast(`«${libro.titulo}» pasa a la posición ${destino + 1}`);
         }
 
         // ========== ABANDONADOS - UI ==========
