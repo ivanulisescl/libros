@@ -129,7 +129,6 @@
 
         html, body {
             height: 100%;
-            min-height: 100%;
             min-height: 100dvh;
             width: 100%;
         }
@@ -138,10 +137,21 @@
             font-family: 'Inter', sans-serif;
             background: var(--primary);
             color: var(--text);
-            min-height: 100vh;
-            min-height: 100dvh;
-            padding-bottom: calc(6.4rem + env(safe-area-inset-bottom, 0px));
+            height: 100dvh;
+            max-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
             transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .page-scroll {
+            order: 2;
+            flex: 1 1 auto;
+            min-height: 0;
+            overflow-x: hidden;
+            overflow-y: auto;
+            padding-bottom: 1.25rem;
         }
 
         body:not([data-theme="light"]) {
@@ -173,8 +183,9 @@
             display: flex;
             align-items: center;
             gap: 0.65rem;
-            position: sticky;
-            top: 0.4rem;
+            position: relative;
+            order: 1;
+            flex: 0 0 auto;
             z-index: 30;
             margin: 0.4rem 0.5rem 0;
             padding: 0.4rem 0.65rem;
@@ -249,17 +260,16 @@
         }
 
         .bottom-bar {
-            position: fixed;
-            left: 50%;
-            bottom: calc(0.55rem + env(safe-area-inset-bottom, 0px));
-            transform: translateX(-50%);
+            position: relative;
+            order: 3;
+            flex: 0 0 auto;
             z-index: 40;
             display: flex;
             align-items: center;
             justify-content: space-evenly;
             gap: 0.3rem;
             width: min(34rem, calc(100% - 1.2rem));
-            margin: 0;
+            margin: 0.35rem auto calc(0.45rem + env(safe-area-inset-bottom, 0px));
             padding: 0.45rem 0.4rem;
             background: var(--secondary);
             border: 1px solid var(--border);
@@ -1480,7 +1490,7 @@
         /* Toast Notification */
         .toast {
             position: fixed;
-            bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+            bottom: calc(7.4rem + env(safe-area-inset-bottom, 0px));
             right: 2rem;
             padding: 1rem 1.5rem;
             background: var(--card-bg);
@@ -2067,6 +2077,7 @@
         </div>
     </nav>
 
+    <main class="page-scroll">
     <!-- Sección Leyendo Ahora -->
     <section class="leyendo-section" id="leyendoSection">
         <div class="leyendo-header" id="leyendoSectionTitle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6.5C10.3 5.3 7.8 4.9 4.8 5.4V18.2c3-.5 5.5-.1 7.2 1.1"/><path d="M12 6.5c1.7-1.2 4.2-1.6 7.2-1.1V18.2c-3-.5-5.5-.1-7.2 1.1"/><path d="M12 6.5V19.3"/></svg><span id="leyendoSectionLabel">Leyendo ahora</span></div>
@@ -2203,6 +2214,7 @@
     <div class="books-grid" id="booksGrid"></div>
     
     <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.34</span></div>
+    </main>
 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
