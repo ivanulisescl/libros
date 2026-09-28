@@ -140,6 +140,7 @@
             color: var(--text);
             min-height: 100vh;
             min-height: 100dvh;
+            padding-bottom: calc(6.4rem + env(safe-area-inset-bottom, 0px));
             transition: background 0.3s ease, color 0.3s ease;
         }
 
@@ -173,83 +174,124 @@
             align-items: center;
             gap: 0.65rem;
             position: sticky;
-            top: 0.45rem;
+            top: 0.4rem;
             z-index: 30;
-            width: fit-content;
-            max-width: calc(100% - 1.2rem);
-            margin: 0.55rem 0.6rem 0;
-            padding: 0.55rem 0.7rem;
+            margin: 0.4rem 0.5rem 0;
+            padding: 0.4rem 0.65rem;
+            min-height: 4.1rem;
+            overflow: hidden;
+            background: #120e0c;
+            border: 1px solid rgba(232, 124, 45, 0.28);
+            border-radius: 1.15rem;
+            box-shadow: 0 10px 24px var(--shadow);
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 72% 130% at 36% 50%, rgba(255, 156, 48, 0.95) 0%, rgba(232, 98, 18, 0.55) 24%, rgba(90, 32, 8, 0.18) 52%, transparent 72%);
+            pointer-events: none;
+        }
+
+        header > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        [data-theme="fresh-light"] header,
+        [data-theme="light"] header {
+            background: #fff7f0;
+            border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+        }
+
+        [data-theme="fresh-light"] header::before,
+        [data-theme="light"] header::before {
+            background:
+                radial-gradient(ellipse 72% 130% at 36% 50%, rgba(232, 124, 45, 0.38) 0%, rgba(232, 124, 45, 0.12) 40%, transparent 72%);
+        }
+
+        .header-logo {
+            width: 3.15rem;
+            height: 3.15rem;
+            border-radius: 0.85rem;
+            flex: 0 0 auto;
+            display: block;
+            object-fit: cover;
+            box-shadow: 0 0 0 2px var(--accent), 0 0 16px rgba(232, 124, 45, 0.65);
+        }
+
+        .header-title {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            line-height: 1.1;
+            color: #fff;
+            white-space: nowrap;
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        [data-theme="fresh-light"] .header-title,
+        [data-theme="light"] .header-title {
+            color: #2a2520;
+            text-shadow: none;
+        }
+
+        .header-tools {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.4rem;
+            margin-left: auto;
+            flex: 0 0 auto;
+        }
+
+        .bottom-bar {
+            position: fixed;
+            left: 50%;
+            bottom: calc(0.55rem + env(safe-area-inset-bottom, 0px));
+            transform: translateX(-50%);
+            z-index: 40;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            gap: 0.3rem;
+            width: min(34rem, calc(100% - 1.2rem));
+            margin: 0;
+            padding: 0.45rem 0.4rem;
             background: var(--secondary);
             border: 1px solid var(--border);
             border-radius: 1.35rem;
             box-shadow: 0 10px 24px var(--shadow);
         }
 
-        .header-logo {
-            width: 4rem;
-            height: 4rem;
-            border-radius: 1rem;
-            flex: 0 0 auto;
-            display: block;
-            object-fit: cover;
-            box-shadow: 0 0 0 2px var(--accent), 0 0 14px color-mix(in srgb, var(--accent) 45%, transparent);
-        }
-
-        .header-actions {
-            flex: 1;
-            min-width: 0;
-            display: flex;
-            align-items: center;
-            gap: 0.55rem;
-        }
-
-        .header-nav {
-            display: flex;
+        .bottom-bar > .btn-icon,
+        .bottom-bar .operaciones-container > .btn-icon {
             flex-direction: column;
-            gap: 0.4rem;
-            min-width: 0;
-        }
-
-        .header-row {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            min-width: 0;
-        }
-
-        .header-divider {
-            width: 1px;
-            align-self: stretch;
-            margin: 0.15rem 0;
-            background: var(--border-hover);
-        }
-
-        .header-tools {
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-            flex: 0 0 auto;
-        }
-
-        .header-row > .btn-icon,
-        .header-row .operaciones-container > .btn-icon {
-            border: 1px solid var(--border-hover);
-            border-radius: 999px;
-            padding: 0.42rem 0.85rem;
-            font-size: 0.82rem;
+            border: 1px solid transparent;
+            border-radius: 0.9rem;
+            padding: 0.35rem 0.15rem;
+            font-size: 0.58rem;
             font-weight: 600;
+            line-height: 1.05;
             background: transparent;
-            color: var(--text);
-            flex: 0 0 auto;
+            color: var(--text-muted);
+            flex: 0 0 4.55rem;
+            width: 4.55rem;
+            height: 4.55rem;
+            min-width: 0;
             white-space: nowrap;
             justify-content: center;
+            gap: 0.22rem;
             box-shadow: none;
         }
 
-        .header-row > .btn-icon svg,
-        .header-row .operaciones-container > .btn-icon svg {
-            width: 1rem;
-            height: 1rem;
+        .bottom-bar > .btn-icon svg,
+        .bottom-bar .operaciones-container > .btn-icon svg {
+            width: 1.2rem;
+            height: 1.2rem;
             flex: 0 0 auto;
             stroke: currentColor;
             fill: none;
@@ -258,38 +300,68 @@
             stroke-linejoin: round;
         }
 
-        .header-row > .btn-icon svg.icon-filled {
+        .bottom-bar > .btn-icon svg.icon-filled {
             fill: currentColor;
             stroke: none;
         }
 
-        .header-row > .btn-icon:hover,
-        .header-row .operaciones-container > .btn-icon:hover {
-            border-color: var(--accent);
+        .bottom-bar > .btn-icon:hover,
+        .bottom-bar .operaciones-container > .btn-icon:hover {
+            color: var(--text);
             background: color-mix(in srgb, var(--accent) 12%, transparent);
         }
 
-        .header-row > .btn-icon.active,
-        .header-row .operaciones-container > .btn-icon.active {
+        .bottom-bar > .btn-icon.active,
+        .bottom-bar .operaciones-container > .btn-icon.active {
             background: linear-gradient(180deg, var(--accent-light), var(--accent));
             color: #fff;
             border-color: transparent;
-            box-shadow: 0 0 16px color-mix(in srgb, var(--accent) 55%, transparent);
+            border-radius: 0.85rem;
+            box-shadow: 0 6px 14px color-mix(in srgb, var(--accent) 45%, transparent);
         }
 
-        header .operaciones-container {
+        .bottom-bar .operaciones-container {
             display: flex;
-            flex: 0 0 auto;
+            flex: 0 0 4.55rem;
+            width: 4.55rem;
+            height: 4.55rem;
+            min-width: 0;
+            position: relative;
+        }
+
+        .bottom-bar .operaciones-container > .btn-icon {
+            width: 100%;
+            height: 100%;
+        }
+
+        .bottom-bar .operaciones-menu {
+            top: auto;
+            bottom: calc(100% + 0.45rem);
+            right: 0;
+            left: auto;
+        }
+
+        .bottom-bar .operaciones-menu.visible {
+            transform: translateY(0);
         }
 
         header .theme-toggle {
-            width: 2.45rem;
-            height: 2.45rem;
+            width: 2.55rem;
+            height: 2.55rem;
             padding: 0;
-            border: 1px solid var(--border-hover);
-            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            background: rgba(0, 0, 0, 0.38);
             border-radius: 50%;
             justify-content: center;
+        }
+
+        [data-theme="fresh-light"] header .theme-toggle,
+        [data-theme="light"] header .theme-toggle,
+        [data-theme="fresh-light"] .header-symbol-btn,
+        [data-theme="light"] .header-symbol-btn {
+            background: rgba(255, 255, 255, 0.72);
+            border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+            color: var(--text);
         }
 
         header .theme-toggle:hover {
@@ -327,9 +399,9 @@
             height: 2.45rem;
             padding: 0;
             border-radius: 50%;
-            border: 1px solid var(--border-hover);
-            background: transparent;
-            color: var(--text);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            background: rgba(0, 0, 0, 0.38);
+            color: #fff;
             cursor: pointer;
             flex: 0 0 auto;
         }
@@ -1925,25 +1997,18 @@
         /* Responsive */
         @media (max-width: 768px) {
             header {
-                width: auto;
-                padding: calc(0.45rem + env(safe-area-inset-top, 0px)) 0.5rem 0.45rem;
+                padding: calc(0.4rem + env(safe-area-inset-top, 0px)) 0.55rem 0.4rem;
             }
-            .header-logo {
-                width: 3.55rem;
-                height: 3.55rem;
-            }
-            .header-nav { flex: 1; }
-            .header-row > .btn-icon,
-            .header-row .operaciones-container,
-            .header-row .operaciones-container > .btn-icon {
-                flex: 1 1 0;
-                min-width: 0;
-            }
-            .header-row .operaciones-container > .btn-icon { width: 100%; }
-            .header-row > .btn-icon,
-            .header-row .operaciones-container > .btn-icon {
-                padding: 0.4rem 0.45rem;
-                font-size: 0.74rem;
+            .header-title { font-size: 1.05rem; }
+            .bottom-bar > .btn-icon,
+            .bottom-bar .operaciones-container,
+            .bottom-bar .operaciones-container > .btn-icon {
+                flex-basis: 4.35rem;
+                width: 4.35rem;
+                height: 4.35rem;
+                font-size: 0.54rem;
+                padding: 0.28rem 0.08rem;
+                gap: 0.16rem;
             }
             .stats-bar { gap: 1rem; padding: 1rem; }
             .stat-value { font-size: 1.5rem; }
@@ -1966,46 +2031,41 @@
 </head>
 <body>
     <header>
-        <img class="header-logo" src="icon-192.png?v=libro" alt="Biblioteca">
-        <div class="header-actions">
-            <div class="header-nav">
-                <div class="header-row">
-                    <button class="btn-icon" id="proximasBtn" title="Próximas Lecturas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 5.2h12a1 1 0 0 1 1 1v1.4a1 1 0 0 1-1 1h-12a1 1 0 0 1-1-1V6.2a1 1 0 0 1 1-1z"/><path d="M7.5 10.6h12a1 1 0 0 1 1 1v1.4a1 1 0 0 1-1 1h-12a1 1 0 0 1-1-1v-1.4a1 1 0 0 1 1-1z"/><path d="M4.5 16h12a1 1 0 0 1 1 1v1.4a1 1 0 0 1-1 1h-12a1 1 0 0 1-1-1V17a1 1 0 0 1 1-1z"/></svg>En cola</button>
-                    <button class="btn-icon" id="abandonadosBtn"><svg class="icon-filled" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M6.2 3.2h11.6c.7 0 1.2.5 1.2 1.2v16.3l-7-3.7-7 3.7V4.4c0-.7.5-1.2 1.2-1.2zm3.05 5.1 2.75 2.75 2.75-2.75 1.2 1.2-2.75 2.75 2.75 2.75-1.2 1.2-2.75-2.75-2.75 2.75-1.2-1.2 2.75-2.75-2.75-2.75z"/></svg>Abandonados</button>
-                </div>
-                <div class="header-row">
-                    <button class="btn-icon" id="statsToggle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19V11M12 19V5M19 19v-8"/></svg>Estadísticas</button>
-                    <div class="operaciones-container">
-                        <button class="btn-icon" id="operacionesBtn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9c.3.6.9 1 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Operaciones</button>
-                        <div class="operaciones-menu" id="operacionesMenu">
-                            <button class="btn-icon" id="addBookBtn">Añadir Libro</button>
-                            <button class="btn-icon" id="exportBtn">Exportar</button>
-                            <button class="btn-icon" id="uploadGitHubBtn" title="Subir mi_biblioteca.json a GitHub">Subir a GitHub</button>
-                            <button class="btn-icon" id="configGitHubTokenBtn" title="Guardar o cambiar tu token de GitHub">Configurar token GitHub</button>
-                            <button class="btn-icon" id="importBtn">Importar</button>
-                            <input type="file" id="importFile" accept=".json" style="display: none;">
-                            <button class="btn-icon" id="resetBtn" title="Recargar datos desde el servidor">Resetear</button>
-                            <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar</button>
-                        </div>
+        <img class="header-logo" src="icon-192.png?v=libro" alt="">
+        <h1 class="header-title">Mi biblioteca</h1>
+        <div class="header-tools">
+            <div class="theme-toggle" id="themeToggle" role="button" tabindex="0" title="Cambiar tema claro u oscuro" aria-label="Cambiar tema claro u oscuro">
+                <div class="theme-toggle-track">
+                    <div class="theme-toggle-thumb">
+                        <svg class="theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 14.5A8.5 8.5 0 1 1 9.5 3a7 7 0 0 0 11.5 11.5z"/></svg>
+                        <svg class="theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></svg>
                     </div>
                 </div>
             </div>
-            <span class="header-divider" aria-hidden="true"></span>
-            <div class="header-tools">
-                <div class="theme-toggle" id="themeToggle" role="button" tabindex="0" title="Cambiar tema claro u oscuro" aria-label="Cambiar tema claro u oscuro">
-                    <div class="theme-toggle-track">
-                        <div class="theme-toggle-thumb">
-                            <svg class="theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 14.5A8.5 8.5 0 1 1 9.5 3a7 7 0 0 0 11.5 11.5z"/></svg>
-                            <svg class="theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></svg>
-                        </div>
-                    </div>
-                </div>
-                <button type="button" class="header-symbol-btn" id="uploadGitHubHeaderBtn" title="Subir mi_biblioteca.json a GitHub" aria-label="Subir mi_biblioteca.json a GitHub">
-                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 13V3"/><path d="M7 8l5-5 5 5"/><path d="M4 16v5h16v-5"/></svg>
-                </button>
-            </div>
+            <button type="button" class="header-symbol-btn" id="uploadGitHubHeaderBtn" title="Subir mi_biblioteca.json a GitHub" aria-label="Subir mi_biblioteca.json a GitHub">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 13V3"/><path d="M7 8l5-5 5 5"/><path d="M4 16v5h16v-5"/></svg>
+            </button>
         </div>
     </header>
+
+    <nav class="bottom-bar" aria-label="Secciones">
+        <button class="btn-icon" id="proximasBtn" title="Próximas Lecturas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 5.2h12a1 1 0 0 1 1 1v1.4a1 1 0 0 1-1 1h-12a1 1 0 0 1-1-1V6.2a1 1 0 0 1 1-1z"/><path d="M7.5 10.6h12a1 1 0 0 1 1 1v1.4a1 1 0 0 1-1 1h-12a1 1 0 0 1-1-1v-1.4a1 1 0 0 1 1-1z"/><path d="M4.5 16h12a1 1 0 0 1 1 1v1.4a1 1 0 0 1-1 1h-12a1 1 0 0 1-1-1V17a1 1 0 0 1 1-1z"/></svg>En cola</button>
+        <button class="btn-icon" id="abandonadosBtn"><svg class="icon-filled" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M6.2 3.2h11.6c.7 0 1.2.5 1.2 1.2v16.3l-7-3.7-7 3.7V4.4c0-.7.5-1.2 1.2-1.2zm3.05 5.1 2.75 2.75 2.75-2.75 1.2 1.2-2.75 2.75 2.75 2.75-1.2 1.2-2.75-2.75-2.75 2.75-1.2-1.2 2.75-2.75-2.75-2.75z"/></svg>Abandonados</button>
+        <button class="btn-icon" id="statsToggle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19V11M12 19V5M19 19v-8"/></svg>Estadísticas</button>
+        <div class="operaciones-container">
+            <button class="btn-icon" id="operacionesBtn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9c.3.6.9 1 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Operaciones</button>
+            <div class="operaciones-menu" id="operacionesMenu">
+                <button class="btn-icon" id="addBookBtn">Añadir Libro</button>
+                <button class="btn-icon" id="exportBtn">Exportar</button>
+                <button class="btn-icon" id="uploadGitHubBtn" title="Subir mi_biblioteca.json a GitHub">Subir a GitHub</button>
+                <button class="btn-icon" id="configGitHubTokenBtn" title="Guardar o cambiar tu token de GitHub">Configurar token GitHub</button>
+                <button class="btn-icon" id="importBtn">Importar</button>
+                <input type="file" id="importFile" accept=".json" style="display: none;">
+                <button class="btn-icon" id="resetBtn" title="Recargar datos desde el servidor">Resetear</button>
+                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar</button>
+            </div>
+        </div>
+    </nav>
 
     <!-- Sección Leyendo Ahora -->
     <section class="leyendo-section" id="leyendoSection">
