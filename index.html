@@ -167,80 +167,114 @@
                 radial-gradient(ellipse at 90% 80%, rgba(240, 160, 80, 0.06) 0%, transparent 50%);
         }
 
-        /* Header: banda compacta superior */
+        /* Header: panel redondeado */
         header {
             display: flex;
             align-items: center;
             gap: 0.65rem;
             position: sticky;
-            top: 0;
+            top: 0.45rem;
             z-index: 30;
-            padding: calc(0.5rem + env(safe-area-inset-top, 0px)) 1rem 0.65rem;
+            width: fit-content;
+            max-width: calc(100% - 1.2rem);
+            margin: 0.55rem 0.6rem 0;
+            padding: 0.55rem 0.7rem;
             background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 1.35rem;
             box-shadow: 0 10px 24px var(--shadow);
         }
 
-        header::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent 0%, var(--accent) 16%, var(--accent-light) 50%, var(--accent) 84%, transparent 100%);
-            pointer-events: none;
-        }
-
         .header-logo {
-            width: 4.25rem;
-            height: 4.25rem;
-            border-radius: 16px;
+            width: 4rem;
+            height: 4rem;
+            border-radius: 1rem;
             flex: 0 0 auto;
             display: block;
             object-fit: cover;
-            box-shadow: 0 0 0 2px var(--accent), 0 6px 14px var(--shadow);
+            box-shadow: 0 0 0 2px var(--accent), 0 0 14px color-mix(in srgb, var(--accent) 45%, transparent);
         }
 
         .header-actions {
             flex: 1;
             min-width: 0;
             display: flex;
+            align-items: center;
+            gap: 0.55rem;
+        }
+
+        .header-nav {
+            display: flex;
             flex-direction: column;
             gap: 0.4rem;
+            min-width: 0;
         }
 
         .header-row {
             display: flex;
             align-items: center;
-            gap: 0.45rem;
+            gap: 0.4rem;
             min-width: 0;
         }
 
-        .header-row > .theme-toggle,
-        .header-row > .header-symbol-btn {
-            margin-left: auto;
+        .header-divider {
+            width: 1px;
+            align-self: stretch;
+            margin: 0.15rem 0;
+            background: var(--border-hover);
+        }
+
+        .header-tools {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            flex: 0 0 auto;
         }
 
         .header-row > .btn-icon,
         .header-row .operaciones-container > .btn-icon {
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 0.5rem 1rem;
-            font-size: 0.85rem;
-            background: var(--card-bg);
+            border: 1px solid var(--border-hover);
+            border-radius: 999px;
+            padding: 0.42rem 0.85rem;
+            font-size: 0.82rem;
+            font-weight: 600;
+            background: transparent;
+            color: var(--text);
             flex: 0 0 auto;
+            white-space: nowrap;
+            justify-content: center;
+            box-shadow: none;
+        }
+
+        .header-row > .btn-icon svg,
+        .header-row .operaciones-container > .btn-icon svg {
+            width: 1rem;
+            height: 1rem;
+            flex: 0 0 auto;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .header-row > .btn-icon svg.icon-filled {
+            fill: currentColor;
+            stroke: none;
         }
 
         .header-row > .btn-icon:hover,
         .header-row .operaciones-container > .btn-icon:hover {
             border-color: var(--accent);
-            background: var(--card-hover);
+            background: color-mix(in srgb, var(--accent) 12%, transparent);
         }
 
-        .header-row > .btn-icon.active {
-            background: var(--accent);
-            color: white;
-            border-color: var(--accent);
+        .header-row > .btn-icon.active,
+        .header-row .operaciones-container > .btn-icon.active {
+            background: linear-gradient(180deg, var(--accent-light), var(--accent));
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 0 16px color-mix(in srgb, var(--accent) 55%, transparent);
         }
 
         header .operaciones-container {
@@ -249,27 +283,52 @@
         }
 
         header .theme-toggle {
-            padding: 0.35rem 0.4rem;
-            border: 1px solid var(--border);
-            background: var(--card-bg);
-            border-radius: 10px;
+            width: 2.45rem;
+            height: 2.45rem;
+            padding: 0;
+            border: 1px solid var(--border-hover);
+            background: transparent;
+            border-radius: 50%;
+            justify-content: center;
         }
 
         header .theme-toggle:hover {
             border-color: var(--accent);
-            background: var(--card-hover);
+            background: color-mix(in srgb, var(--accent) 12%, transparent);
+        }
+
+        header .theme-toggle-track {
+            width: auto;
+            height: auto;
+            background: none;
+            border-radius: 0;
+        }
+
+        header .theme-toggle-thumb {
+            position: static;
+            width: auto;
+            height: auto;
+            background: none;
+            transform: none;
+            color: var(--accent);
+            filter: drop-shadow(0 0 6px color-mix(in srgb, var(--accent) 70%, transparent));
+        }
+
+        header .theme-toggle-thumb svg {
+            width: 1.2rem;
+            height: 1.2rem;
         }
 
         .header-symbol-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 2.4rem;
-            height: 2.4rem;
+            width: 2.45rem;
+            height: 2.45rem;
             padding: 0;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            background: var(--card-bg);
+            border-radius: 50%;
+            border: 1px solid var(--border-hover);
+            background: transparent;
             color: var(--text);
             cursor: pointer;
             flex: 0 0 auto;
@@ -496,6 +555,14 @@
         [data-theme="light"] .theme-toggle-thumb,
         [data-theme="fresh-light"] .theme-toggle-thumb {
             transform: translateX(24px);
+        }
+
+        [data-theme="light"] header .theme-toggle-thumb,
+        [data-theme="fresh-light"] header .theme-toggle-thumb {
+            position: static;
+            top: auto;
+            left: auto;
+            transform: none;
         }
 
         /* Stats Bar (solo visible en la pestaña Estadísticas) */
@@ -1858,11 +1925,25 @@
         /* Responsive */
         @media (max-width: 768px) {
             header {
-                padding: calc(0.5rem + env(safe-area-inset-top, 0px)) 0.75rem 0.5rem;
+                width: auto;
+                padding: calc(0.45rem + env(safe-area-inset-top, 0px)) 0.5rem 0.45rem;
             }
+            .header-logo {
+                width: 3.55rem;
+                height: 3.55rem;
+            }
+            .header-nav { flex: 1; }
+            .header-row > .btn-icon,
+            .header-row .operaciones-container,
+            .header-row .operaciones-container > .btn-icon {
+                flex: 1 1 0;
+                min-width: 0;
+            }
+            .header-row .operaciones-container > .btn-icon { width: 100%; }
             .header-row > .btn-icon,
             .header-row .operaciones-container > .btn-icon {
-                padding: 0.45rem 0.7rem;
+                padding: 0.4rem 0.45rem;
+                font-size: 0.74rem;
             }
             .stats-bar { gap: 1rem; padding: 1rem; }
             .stat-value { font-size: 1.5rem; }
@@ -1887,31 +1968,36 @@
     <header>
         <img class="header-logo" src="icon-192.png?v=libro" alt="Biblioteca">
         <div class="header-actions">
-            <div class="header-row">
-                <button class="btn-icon" id="proximasBtn" title="Próximas Lecturas">Próximas</button>
-                <button class="btn-icon" id="abandonadosBtn">Abandonados</button>
+            <div class="header-nav">
+                <div class="header-row">
+                    <button class="btn-icon" id="proximasBtn" title="Próximas Lecturas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 5.2h12a1 1 0 0 1 1 1v1.4a1 1 0 0 1-1 1h-12a1 1 0 0 1-1-1V6.2a1 1 0 0 1 1-1z"/><path d="M7.5 10.6h12a1 1 0 0 1 1 1v1.4a1 1 0 0 1-1 1h-12a1 1 0 0 1-1-1v-1.4a1 1 0 0 1 1-1z"/><path d="M4.5 16h12a1 1 0 0 1 1 1v1.4a1 1 0 0 1-1 1h-12a1 1 0 0 1-1-1V17a1 1 0 0 1 1-1z"/></svg>En cola</button>
+                    <button class="btn-icon" id="abandonadosBtn"><svg class="icon-filled" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M6.2 3.2h11.6c.7 0 1.2.5 1.2 1.2v16.3l-7-3.7-7 3.7V4.4c0-.7.5-1.2 1.2-1.2zm3.05 5.1 2.75 2.75 2.75-2.75 1.2 1.2-2.75 2.75 2.75 2.75-1.2 1.2-2.75-2.75-2.75 2.75-1.2-1.2 2.75-2.75-2.75-2.75z"/></svg>Abandonados</button>
+                </div>
+                <div class="header-row">
+                    <button class="btn-icon" id="statsToggle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19V11M12 19V5M19 19v-8"/></svg>Estadísticas</button>
+                    <div class="operaciones-container">
+                        <button class="btn-icon" id="operacionesBtn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9c.3.6.9 1 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Operaciones</button>
+                        <div class="operaciones-menu" id="operacionesMenu">
+                            <button class="btn-icon" id="addBookBtn">Añadir Libro</button>
+                            <button class="btn-icon" id="exportBtn">Exportar</button>
+                            <button class="btn-icon" id="uploadGitHubBtn" title="Subir mi_biblioteca.json a GitHub">Subir a GitHub</button>
+                            <button class="btn-icon" id="configGitHubTokenBtn" title="Guardar o cambiar tu token de GitHub">Configurar token GitHub</button>
+                            <button class="btn-icon" id="importBtn">Importar</button>
+                            <input type="file" id="importFile" accept=".json" style="display: none;">
+                            <button class="btn-icon" id="resetBtn" title="Recargar datos desde el servidor">Resetear</button>
+                            <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span class="header-divider" aria-hidden="true"></span>
+            <div class="header-tools">
                 <div class="theme-toggle" id="themeToggle" role="button" tabindex="0" title="Cambiar tema claro u oscuro" aria-label="Cambiar tema claro u oscuro">
                     <div class="theme-toggle-track">
                         <div class="theme-toggle-thumb">
                             <svg class="theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 14.5A8.5 8.5 0 1 1 9.5 3a7 7 0 0 0 11.5 11.5z"/></svg>
                             <svg class="theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></svg>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="header-row">
-                <button class="btn-icon" id="statsToggle">Estadísticas</button>
-                <div class="operaciones-container">
-                    <button class="btn-icon" id="operacionesBtn">Operaciones</button>
-                    <div class="operaciones-menu" id="operacionesMenu">
-                        <button class="btn-icon" id="addBookBtn">Añadir Libro</button>
-                        <button class="btn-icon" id="exportBtn">Exportar</button>
-                        <button class="btn-icon" id="uploadGitHubBtn" title="Subir mi_biblioteca.json a GitHub">Subir a GitHub</button>
-                        <button class="btn-icon" id="configGitHubTokenBtn" title="Guardar o cambiar tu token de GitHub">Configurar token GitHub</button>
-                        <button class="btn-icon" id="importBtn">Importar</button>
-                        <input type="file" id="importFile" accept=".json" style="display: none;">
-                        <button class="btn-icon" id="resetBtn" title="Recargar datos desde el servidor">Resetear</button>
-                        <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar</button>
                     </div>
                 </div>
                 <button type="button" class="header-symbol-btn" id="uploadGitHubHeaderBtn" title="Subir mi_biblioteca.json a GitHub" aria-label="Subir mi_biblioteca.json a GitHub">
