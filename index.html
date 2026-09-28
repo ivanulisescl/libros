@@ -170,60 +170,63 @@
         /* Header: banda compacta superior */
         header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            gap: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
             padding: calc(0.5rem + env(safe-area-inset-top, 0px)) 1.25rem 0.5rem;
             background: var(--secondary);
             border-bottom: 1px solid var(--border);
-            flex-wrap: wrap;
         }
 
-        .header-right {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: flex-end;
-            flex: 1;
-            gap: 0.5rem;
+        .header-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            flex: 0 0 auto;
+            margin-right: auto;
+            display: block;
+            object-fit: cover;
         }
 
-        .header-right .btn-icon {
+        .header-break {
+            display: none;
+        }
+
+        header > .btn-icon,
+        header .operaciones-container > .btn-icon {
             border: 1px solid var(--border);
             border-radius: 10px;
             padding: 0.5rem 1rem;
             font-size: 0.85rem;
             background: var(--card-bg);
+            flex: 0 0 auto;
         }
 
-        .header-right .btn-icon:hover {
+        header > .btn-icon:hover,
+        header .operaciones-container > .btn-icon:hover {
             border-color: var(--accent);
             background: var(--card-hover);
         }
 
-        .header-right .btn-icon.active {
+        header > .btn-icon.active {
             background: var(--accent);
             color: white;
             border-color: var(--accent);
         }
 
-        .header-right .operaciones-container {
+        header .operaciones-container {
             display: flex;
+            flex: 0 0 auto;
         }
 
-        .header-right .operaciones-container .btn-icon {
-            border-radius: 10px;
-        }
-
-        .header-right .theme-toggle {
+        header .theme-toggle {
             padding: 0.35rem 0.4rem;
             border: 1px solid var(--border);
             background: var(--card-bg);
             border-radius: 10px;
         }
 
-        .header-right .theme-toggle:hover {
+        header .theme-toggle:hover {
             border-color: var(--accent);
             background: var(--card-hover);
         }
@@ -395,6 +398,8 @@
             width: 100%;
             justify-content: flex-start;
             margin-bottom: 0.25rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
         }
 
         .operaciones-menu .btn-icon:last-child {
@@ -1823,8 +1828,23 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            header { padding: calc(0.5rem + env(safe-area-inset-top, 0px)) 1rem 0.5rem; }
-            .header-right { justify-content: center; }
+            header {
+                justify-content: center;
+                padding: calc(0.5rem + env(safe-area-inset-top, 0px)) 1rem 0.5rem;
+            }
+            .header-logo { order: 1; margin-right: 0; }
+            #proximasBtn { order: 2; }
+            #abandonadosBtn { order: 3; }
+            .header-break {
+                display: block;
+                order: 4;
+                flex-basis: 100%;
+                height: 0;
+            }
+            #statsToggle { order: 5; }
+            header .operaciones-container { order: 6; }
+            #uploadGitHubHeaderBtn { order: 7; }
+            #themeToggle { order: 8; }
             .operaciones-menu {
                 right: auto;
                 left: 50%;
@@ -1854,11 +1874,12 @@
 </head>
 <body>
     <header>
-        <div class="header-right">
-            <button class="btn-icon" id="proximasBtn">Próximas Lecturas</button>
-            <button class="btn-icon" id="abandonadosBtn">Abandonados</button>
-            <button class="btn-icon" id="statsToggle">Estadísticas</button>
-            <div class="operaciones-container">
+        <img class="header-logo" src="icon-192.png?v=libro" alt="Biblioteca">
+        <button class="btn-icon" id="proximasBtn" title="Próximas Lecturas">Próximas</button>
+        <button class="btn-icon" id="statsToggle">Estadísticas</button>
+        <button class="btn-icon" id="abandonadosBtn">Abandonados</button>
+        <span class="header-break" aria-hidden="true"></span>
+        <div class="operaciones-container">
                 <button class="btn-icon" id="operacionesBtn">Operaciones</button>
                 <div class="operaciones-menu" id="operacionesMenu">
                     <button class="btn-icon" id="addBookBtn">Añadir Libro</button>
@@ -1882,7 +1903,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </header>
 
     <!-- Sección Leyendo Ahora -->
