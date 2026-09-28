@@ -1657,22 +1657,43 @@
         }
 
         .leyendo-card {
-            background: linear-gradient(135deg, var(--card-bg) 0%, var(--secondary) 100%);
-            border: 2px solid var(--accent);
-            border-radius: 16px;
-            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: 6.2rem minmax(0, 1fr);
+            column-gap: 0.85rem;
+            row-gap: 0.7rem;
+            align-items: start;
+            background: var(--card-bg);
+            border: 1px solid color-mix(in srgb, var(--accent) 65%, transparent);
+            border-radius: 1.15rem;
+            padding: 0.85rem;
             position: relative;
-            overflow: hidden;
+            box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 18%, transparent);
         }
 
-        .leyendo-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-2);
+        .leyendo-cover {
+            grid-column: 1;
+            grid-row: 1 / 3;
+            width: 100%;
+            aspect-ratio: 2 / 3;
+            border-radius: 0.7rem;
+            overflow: hidden;
+            background:
+                linear-gradient(160deg, color-mix(in srgb, var(--accent) 28%, var(--secondary)), var(--secondary));
+            border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+            align-self: start;
+        }
+
+        .leyendo-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .leyendo-main {
+            grid-column: 2;
+            grid-row: 1;
+            min-width: 0;
         }
 
         .leyendo-header {
@@ -1689,16 +1710,20 @@
 
         .leyendo-titulo {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 700;
+            line-height: 1.15;
             color: var(--text);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.35rem;
+            text-transform: uppercase;
         }
 
         .leyendo-autor {
             color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
+            font-size: 0.72rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 0.65rem;
         }
 
         .leyendo-progress-wrap {
@@ -1707,12 +1732,11 @@
 
         .leyendo-progress-bar {
             position: relative;
-            height: 40px;
-            background: var(--secondary);
-            border: 2px solid var(--border);
-            border-radius: 12px;
+            height: 1.7rem;
+            background: color-mix(in srgb, var(--secondary) 80%, #000);
+            border: none;
+            border-radius: 999px;
             overflow: hidden;
-            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
         }
 
         .leyendo-progress-fill {
@@ -1721,7 +1745,7 @@
             top: 0;
             bottom: 0;
             background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
-            border-radius: 10px 0 0 10px;
+            border-radius: 999px;
             transition: width 0.4s ease;
             width: 0%;
         }
@@ -1735,12 +1759,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            font-size: 0.85rem;
             font-weight: 600;
-            color: var(--text);
+            color: #fff;
             cursor: pointer;
             z-index: 2;
-            text-shadow: 0 0 2px rgba(255,255,255,0.8), 0 1px 2px rgba(0,0,0,0.2);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
             transition: background 0.2s ease;
         }
 
@@ -1760,22 +1784,39 @@
         }
 
         .leyendo-actions {
+            grid-column: 2;
+            grid-row: 2;
             display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
+            gap: 0.45rem;
+            flex-wrap: nowrap;
+            margin: 0;
         }
 
         .leyendo-btn {
-            padding: 0.6rem 1rem;
-            border-radius: 8px;
+            flex: 1 1 0;
+            min-width: 0;
+            padding: 0.45rem 0.2rem;
+            border-radius: 0.75rem;
             border: none;
             cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            font-size: 0.68rem;
+            font-weight: 600;
+            transition: filter 0.2s ease;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 0.4rem;
+            justify-content: center;
+            gap: 0.15rem;
+        }
+
+        .leyendo-btn svg {
+            width: 1.15rem;
+            height: 1.15rem;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         .leyendo-btn.cita {
@@ -1801,14 +1842,13 @@
         }
 
         .leyendo-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px var(--shadow);
+            filter: brightness(1.08);
         }
 
         .leyendo-btn.ver-notas {
-            background: rgba(255, 212, 168, 0.2);
-            color: #ffd4a8;
-            border: 1px solid rgba(255, 212, 168, 0.4);
+            background: color-mix(in srgb, var(--secondary) 75%, #000);
+            color: var(--text-muted);
+            border: none;
         }
 
         .leyendo-btn.ver-notas:hover {
@@ -1831,8 +1871,15 @@
         }
 
         .leyendo-notas {
-            margin-top: 1rem;
+            grid-column: 1 / -1;
+            margin-top: 0.15rem;
             display: none;
+        }
+
+        [data-theme="fresh-light"] .leyendo-porcentaje,
+        [data-theme="light"] .leyendo-porcentaje {
+            color: var(--text);
+            text-shadow: none;
         }
 
         .leyendo-notas.visible {
@@ -3983,6 +4030,16 @@
             if (cambiado) saveLeyendo();
         }
 
+        function portadaLeyendoSrc(titulo) {
+            const slug = String(titulo || '')
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-+|-+$/g, '');
+            return `portadas/${slug}.jpg`;
+        }
+
         function renderLeyendo() {
             const section = document.getElementById('leyendoSection');
             const cardsEl = document.getElementById('leyendoCards');
@@ -4005,20 +4062,26 @@
             cardsEl.innerHTML = librosLeyendo.map((libro, i) => {
                 const pct = libro.porcentaje ?? 0;
                 const hasNotas = libro.citas && libro.citas.trim() !== '';
+                const portada = portadaLeyendoSrc(libro.titulo);
                 return `
                 <div class="leyendo-card" data-index="${i}">
-                    <div class="leyendo-titulo">${libro.titulo}</div>
-                    <div class="leyendo-autor">${libro.autor}</div>
-                    <div class="leyendo-progress-wrap">
-                        <div class="leyendo-progress-bar">
-                            <div class="leyendo-progress-fill" style="width: ${pct}%"></div>
-                            <div class="leyendo-porcentaje" title="Clic para editar">${pct}%</div>
+                    <div class="leyendo-cover">
+                        <img src="${portada}" alt="" onerror="this.remove()">
+                    </div>
+                    <div class="leyendo-main">
+                        <div class="leyendo-titulo">${libro.titulo}</div>
+                        <div class="leyendo-autor">${libro.autor}</div>
+                        <div class="leyendo-progress-wrap">
+                            <div class="leyendo-progress-bar">
+                                <div class="leyendo-progress-fill" style="width: ${pct}%"></div>
+                                <div class="leyendo-porcentaje" title="Clic para editar">${pct}%</div>
+                            </div>
                         </div>
                     </div>
                     <div class="leyendo-actions">
-                        <button class="leyendo-btn cita" onclick="abrirCitaRapida(${i})"><span class="icono-plus" style="color: #ffd700; text-shadow: 0 0 4px rgba(255, 215, 0, 0.8);">➕</span></button>
-                        <button class="leyendo-btn ver-notas" onclick="toggleVerNotas(${i})" ${hasNotas ? '' : 'style="display: none;"'}>Notas</button>
-                        <button class="leyendo-btn editar" onclick="editarLeyendo(${i})">✏️</button>
+                        <button class="leyendo-btn cita" onclick="abrirCitaRapida(${i})"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="leyendo-btn-label">Añadir</span></button>
+                        <button class="leyendo-btn ver-notas" onclick="toggleVerNotas(${i})"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h8l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M15 3v5h5M9 13h6M9 17h6"/></svg><span class="leyendo-btn-label">Notas</span></button>
+                        <button class="leyendo-btn editar" onclick="editarLeyendo(${i})"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4 11.5-11.5z"/></svg><span class="leyendo-btn-label">Editar</span></button>
                     </div>
                     <div class="leyendo-notas">
                         <div class="leyendo-notas-content">${hasNotas ? formatCitas(libro.citas) : ''}</div>
@@ -4038,10 +4101,12 @@
 
             if (notasEl.classList.contains('visible')) {
                 notasEl.classList.remove('visible');
-                btn.textContent = 'Notas';
+                const label = btn.querySelector('.leyendo-btn-label');
+                if (label) label.textContent = 'Notas';
             } else {
                 notasEl.classList.add('visible');
-                btn.textContent = 'Ocultar';
+                const label = btn.querySelector('.leyendo-btn-label');
+                if (label) label.textContent = 'Ocultar';
             }
         }
 
