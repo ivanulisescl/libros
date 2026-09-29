@@ -1,4 +1,4 @@
-const CACHE_NAME = 'biblioteca-v3.35-token-persist';
+const CACHE_NAME = 'biblioteca-v3.36-token-persist';
 const ASSETS = [
   './',
   './index.html',
@@ -36,21 +36,31 @@ self.addEventListener('fetch', (e) => {
   if (e.request.method !== 'GET') return;
   if (!e.request.url.startsWith('http')) return;
   
+  const url = new URL(e.request.url);
+  const esPortada = url.pathname.includes('/portadas/');
+  if (esPortada && url.pathname.endsWith('/historia-de-langreo.jpg')) {
+    url.searchParams.set('v', '2');
+  }
+  const destino = esPortada ? new Request(url.toString(), { method: 'GET' }) : e.request;
+
   e.respondWith(
-    caches.match(e.request).then((cached) => {
-      // Return cached version or fetch from network
-      const fetched = fetch(e.request).then((response) => {
-        // Cache successful responses (only same-origin)
-        if (response && response.status === 200 && response.type === 'basic') {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(e.request, clone);
-          });
-        }
-        return response;
-      }).catch(() => cached);
-      
-      return cached || fetched;
-    })
+    (esPortada
+      ? fetch(destino).then((response) => {
+          if (response && response.status === 200 && response.type === 'basic') {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(destino, clone));
+          }
+          return response;
+        }).catch(() => caches.match(destino))
+      : caches.match(e.request).then((cached) => {
+          const fetched = fetch(e.request).then((response) => {
+            if (response && response.status === 200 && response.type === 'basic') {
+              const clone = response.clone();
+              caches.open(CACHE_NAME).then((cache) => cache.put(e.request, clone));
+            }
+            return response;
+          }).catch(() => cached);
+          return cached || fetched;
+        }))
   );
 });

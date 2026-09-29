@@ -2825,7 +2825,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.35</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.36</span></div>
     </main>
 
     <!-- Modal -->
@@ -4264,6 +4264,10 @@
                 const regs = await navigator.serviceWorker.getRegistrations();
                 for (const reg of regs) await reg.unregister();
             }
+            if ('caches' in window) {
+                const keys = await caches.keys();
+                await Promise.all(keys.map((key) => caches.delete(key)));
+            }
             showToast('Actualizando...');
             setTimeout(() => window.location.reload(true), 500);
         });
@@ -4659,7 +4663,9 @@
                 .toLowerCase()
                 .replace(/[^a-z0-9]+/g, '-')
                 .replace(/^-+|-+$/g, '');
-            return `portadas/${slug}.jpg`;
+            const versiones = { 'historia-de-langreo': '2' };
+            const version = versiones[slug] ? `?v=${versiones[slug]}` : '';
+            return `portadas/${slug}.jpg${version}`;
         }
 
         function renderLeyendo() {
