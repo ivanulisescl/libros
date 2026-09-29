@@ -3414,20 +3414,27 @@
             updateStats(books);
         }
 
+        function sinTildes(texto) {
+            return String(texto || '')
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .toLowerCase();
+        }
+
         // Filter and sort books
         function filterAndSortBooks() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const searchTerm = sinTildes(document.getElementById('searchInput').value);
             const authorFilter = document.getElementById('authorFilter').value;
             const ratingFilter = document.getElementById('ratingFilter').value;
             const sortBy = document.getElementById('sortFilter').value;
 
             let filtered = libros.filter(book => {
                 const matchesSearch = !searchTerm || 
-                    book.titulo.toLowerCase().includes(searchTerm) ||
-                    book.autor.toLowerCase().includes(searchTerm) ||
-                    book.editorial.toLowerCase().includes(searchTerm) ||
-                    (book.sinopsis && book.sinopsis.toLowerCase().includes(searchTerm)) ||
-                    (book.comentario && book.comentario.toLowerCase().includes(searchTerm));
+                    sinTildes(book.titulo).includes(searchTerm) ||
+                    sinTildes(book.autor).includes(searchTerm) ||
+                    sinTildes(book.editorial).includes(searchTerm) ||
+                    (book.sinopsis && sinTildes(book.sinopsis).includes(searchTerm)) ||
+                    (book.comentario && sinTildes(book.comentario).includes(searchTerm));
                 const matchesAuthor = !authorFilter || book.autor === authorFilter;
                 
                 let matchesRating = true;
