@@ -895,25 +895,39 @@
         /* Controls */
         .controls {
             display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            padding: 0 2rem;
-            margin-bottom: 2rem;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.85rem;
+            width: min(42rem, calc(100% - 4rem));
+            margin: 0 auto 1.5rem;
+            padding: 0;
         }
 
         .search-box {
             position: relative;
-            flex: 1;
-            max-width: 400px;
+            width: 100%;
+        }
+
+        .search-box .search-icon {
+            position: absolute;
+            left: 0.95rem;
+            top: 50%;
+            width: 1.15rem;
+            height: 1.15rem;
+            transform: translateY(-50%);
+            stroke: #7eb6ff;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            pointer-events: none;
         }
 
         .search-box input {
             width: 100%;
-            padding: 1rem 1rem 1rem 3rem;
+            padding: 0.95rem 1rem 0.95rem 2.8rem;
             border: none;
-            border-radius: 12px;
+            border-radius: 14px;
             background: var(--card-bg);
             color: var(--text);
             font-size: 1rem;
@@ -927,13 +941,63 @@
             box-shadow: 0 0 20px rgba(233, 69, 96, 0.2);
         }
 
-        .search-box::before {
-            content: "🔍";
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
+        .filters-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .filters-head h2 {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0;
+        }
+
+        .filters-clear {
+            background: none;
+            border: none;
+            padding: 0;
+            color: var(--accent);
             font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .filters-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.65rem;
+        }
+
+        .filters-grid select,
+        .sort-row select {
+            width: 100%;
+            appearance: none;
+            padding: 0.85rem 2.1rem 0.85rem 1rem;
+            border-radius: 12px;
+            background-color: var(--card-bg);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b8b0a0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1rem;
+        }
+
+        .sort-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .sort-label {
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .controls .view-toggle {
+            align-self: center;
         }
 
         select {
@@ -2437,8 +2501,7 @@
             }
             .stats-bar { gap: 1rem; padding: 1rem; }
             .stat-value { font-size: 1.5rem; }
-            .controls { flex-direction: column; }
-            .search-box { width: 100%; max-width: none; }
+            .controls { width: min(42rem, calc(100% - 2rem)); }
             .leyendo-section { margin-top: 1.25rem; padding: 0 1rem; }
             .proximas-section { padding: 0 1rem; }
             .books-grid { grid-template-columns: 1fr; padding: 0 1rem 2rem; }
@@ -2594,32 +2657,40 @@
     </section>
 
     <div class="controls">
+        <div class="filters-head">
+            <h2>Filtros</h2>
+            <button type="button" class="filters-clear" id="clearFiltersBtn">Limpiar</button>
+        </div>
         <div class="search-box">
+            <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16.5L20 20.5"/></svg>
             <input type="text" id="searchInput" placeholder="Buscar por título, autor o editorial...">
         </div>
-        <select id="authorFilter"><option value="">Todos los autores</option></select>
-        <select id="editorialFilter"><option value="">Todas las editoriales</option></select>
-        <select id="yearFilter"><option value="">Todos los años</option></select>
-        <select id="ratingFilter">
-            <option value="">Todas las puntuaciones</option>
-            <option value="10">⭐ 10 - Obra maestra</option>
-            <option value="9">⭐ 9+</option>
-            <option value="8">⭐ 8+</option>
-            <option value="7">⭐ 7+</option>
-            <option value="6">⭐ 6+</option>
-            <option value="5">⭐ 5+</option>
-            <option value="0">Sin puntuar</option>
-        </select>
-        <select id="sortFilter">
-            <option value="date-desc">Más recientes</option>
-            <option value="date-asc">Más antiguos</option>
-            <option value="rating-desc">Mejor puntuación</option>
-            <option value="rating-asc">Peor puntuación</option>
-            <option value="title">Título A-Z</option>
-            <option value="author">Autor A-Z</option>
-            <option value="pages-desc">Más páginas</option>
-            <option value="pages-asc">Menos páginas</option>
-        </select>
+        <div class="filters-grid">
+            <select id="authorFilter" aria-label="Autor"><option value="">Autor</option></select>
+            <select id="ratingFilter" aria-label="Puntuación">
+                <option value="">Puntuación</option>
+                <option value="10">⭐ 10 - Obra maestra</option>
+                <option value="9">⭐ 9+</option>
+                <option value="8">⭐ 8+</option>
+                <option value="7">⭐ 7+</option>
+                <option value="6">⭐ 6+</option>
+                <option value="5">⭐ 5+</option>
+                <option value="0">Sin puntuar</option>
+            </select>
+        </div>
+        <div class="sort-row">
+            <span class="sort-label">Ordenar por</span>
+            <select id="sortFilter" aria-label="Ordenar por">
+                <option value="date-desc">Más recientes</option>
+                <option value="date-asc">Más antiguos</option>
+                <option value="rating-desc">Mejor puntuación</option>
+                <option value="rating-asc">Peor puntuación</option>
+                <option value="title">Título A-Z</option>
+                <option value="author">Autor A-Z</option>
+                <option value="pages-desc">Más páginas</option>
+                <option value="pages-asc">Menos páginas</option>
+            </select>
+        </div>
         <div class="view-toggle">
             <button class="view-btn active" data-view="grid" title="Vista cuadrícula">▦</button>
             <button class="view-btn" data-view="list" title="Vista lista">☰</button>
@@ -3234,25 +3305,11 @@
         // Initialize filters
         function initFilters() {
             const authorSelect = document.getElementById('authorFilter');
-            const editorialSelect = document.getElementById('editorialFilter');
-            const yearSelect = document.getElementById('yearFilter');
 
-            authorSelect.innerHTML = '<option value="">Todos los autores</option>';
-            editorialSelect.innerHTML = '<option value="">Todas las editoriales</option>';
-            yearSelect.innerHTML = '<option value="">Todos los años</option>';
+            authorSelect.innerHTML = '<option value="">Autor</option>';
 
-            const authors = getUniqueValues(libros, 'autor');
-            const editorials = getUniqueValues(libros, 'editorial');
-            const years = getYears(libros);
-
-            authors.forEach(author => {
+            getUniqueValues(libros, 'autor').forEach(author => {
                 authorSelect.innerHTML += `<option value="${author}">${author}</option>`;
-            });
-            editorials.forEach(editorial => {
-                editorialSelect.innerHTML += `<option value="${editorial}">${editorial}</option>`;
-            });
-            years.forEach(year => {
-                yearSelect.innerHTML += `<option value="${year}">${year}</option>`;
             });
         }
 
@@ -3351,8 +3408,6 @@
         function filterAndSortBooks() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
             const authorFilter = document.getElementById('authorFilter').value;
-            const editorialFilter = document.getElementById('editorialFilter').value;
-            const yearFilter = document.getElementById('yearFilter').value;
             const ratingFilter = document.getElementById('ratingFilter').value;
             const sortBy = document.getElementById('sortFilter').value;
 
@@ -3364,8 +3419,6 @@
                     (book.sinopsis && book.sinopsis.toLowerCase().includes(searchTerm)) ||
                     (book.comentario && book.comentario.toLowerCase().includes(searchTerm));
                 const matchesAuthor = !authorFilter || book.autor === authorFilter;
-                const matchesEditorial = !editorialFilter || book.editorial === editorialFilter;
-                const matchesYear = !yearFilter || book.fecha.includes(yearFilter);
                 
                 let matchesRating = true;
                 if (ratingFilter === '0') {
@@ -3374,7 +3427,7 @@
                     matchesRating = book.puntuacion !== null && book.puntuacion >= parseInt(ratingFilter);
                 }
                 
-                return matchesSearch && matchesAuthor && matchesEditorial && matchesYear && matchesRating;
+                return matchesSearch && matchesAuthor && matchesRating;
             });
 
             switch(sortBy) {
@@ -3858,10 +3911,15 @@
         // Event listeners
         document.getElementById('searchInput').addEventListener('input', filterAndSortBooks);
         document.getElementById('authorFilter').addEventListener('change', filterAndSortBooks);
-        document.getElementById('editorialFilter').addEventListener('change', filterAndSortBooks);
-        document.getElementById('yearFilter').addEventListener('change', filterAndSortBooks);
         document.getElementById('ratingFilter').addEventListener('change', filterAndSortBooks);
         document.getElementById('sortFilter').addEventListener('change', filterAndSortBooks);
+        document.getElementById('clearFiltersBtn').addEventListener('click', () => {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('authorFilter').value = '';
+            document.getElementById('ratingFilter').value = '';
+            document.getElementById('sortFilter').value = 'date-desc';
+            filterAndSortBooks();
+        });
 
         document.getElementById('addBookBtn').addEventListener('click', () => openModal('Añadir Libro'));
         document.getElementById('leyendoSection').addEventListener('click', (e) => {
