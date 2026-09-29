@@ -1337,6 +1337,10 @@
             align-self: start;
         }
 
+        .books-grid:not(.list-view) .book-cover img {
+            cursor: pointer;
+        }
+
         .books-grid:not(.list-view) .book-main {
             grid-column: 2;
             grid-row: 2;
@@ -2125,11 +2129,6 @@
             stroke-linejoin: round;
         }
 
-        .leyendo-btn.cita {
-            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-            color: #1a1a2e;
-        }
-
         .leyendo-btn.cita .icono-plus {
             display: inline-block;
             color: #ffd700 !important;
@@ -2142,34 +2141,41 @@
             color: #1a1a2e;
         }
 
-        .leyendo-btn.editar {
-            background: var(--gradient-1);
-            color: white;
-        }
-
         .leyendo-btn:hover {
             filter: brightness(1.08);
         }
 
+        .leyendo-btn.cita,
+        .leyendo-btn.editar,
         .leyendo-btn.ver-notas {
             background: color-mix(in srgb, var(--secondary) 75%, #000);
             color: var(--text-muted);
             border: none;
         }
 
+        .leyendo-btn.cita:hover,
+        .leyendo-btn.editar:hover,
         .leyendo-btn.ver-notas:hover {
             background: rgba(255, 212, 168, 0.3);
             border-color: rgba(255, 212, 168, 0.6);
         }
 
+        [data-theme="light"] .leyendo-btn.cita,
+        [data-theme="light"] .leyendo-btn.editar,
         [data-theme="light"] .leyendo-btn.ver-notas,
+        [data-theme="fresh-light"] .leyendo-btn.cita,
+        [data-theme="fresh-light"] .leyendo-btn.editar,
         [data-theme="fresh-light"] .leyendo-btn.ver-notas {
             background: rgba(192, 57, 43, 0.15) !important;
             color: #a93226 !important;
             border-color: rgba(192, 57, 43, 0.4) !important;
         }
 
+        [data-theme="light"] .leyendo-btn.cita:hover,
+        [data-theme="light"] .leyendo-btn.editar:hover,
         [data-theme="light"] .leyendo-btn.ver-notas:hover,
+        [data-theme="fresh-light"] .leyendo-btn.cita:hover,
+        [data-theme="fresh-light"] .leyendo-btn.editar:hover,
         [data-theme="fresh-light"] .leyendo-btn.ver-notas:hover {
             background: rgba(192, 57, 43, 0.22) !important;
             border-color: rgba(192, 57, 43, 0.55) !important;
@@ -2564,9 +2570,9 @@
             <option value="pages-asc">Menos páginas</option>
         </select>
         <div class="view-toggle">
-            <button class="view-btn" data-view="grid" title="Vista cuadrícula">▦</button>
+            <button class="view-btn active" data-view="grid" title="Vista cuadrícula">▦</button>
             <button class="view-btn" data-view="list" title="Vista lista">☰</button>
-            <button class="view-btn active" data-view="list-reduced" title="Lista reducida">▬</button>
+            <button class="view-btn" data-view="list-reduced" title="Lista reducida">▬</button>
         </div>
     </div>
 
@@ -3269,7 +3275,7 @@
                     </div>
                     <div class="book-body">
                         <div class="book-cover">
-                            <img src="${portadaLeyendoSrc(book.titulo)}" alt="" onerror="this.remove()">
+                            <img src="${portadaLeyendoSrc(book.titulo)}" alt="" onclick="ampliarPortada(this)" onerror="this.remove()">
                         </div>
                         <div class="book-main">
                             <h3 class="book-title">${book.titulo}</h3>
