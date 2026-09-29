@@ -230,17 +230,22 @@
             flex: 0 0 auto;
             display: block;
             object-fit: cover;
+            cursor: pointer;
             box-shadow: 0 0 0 2px var(--accent), 0 0 16px rgba(232, 124, 45, 0.65);
         }
 
         .header-title {
             margin: 0;
+            min-width: 0;
+            flex: 1 1 auto;
             font-family: 'Playfair Display', serif;
             font-size: 1.6rem;
             font-weight: 600;
             line-height: 1.1;
             color: #fff;
             white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
             text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
         }
 
@@ -704,7 +709,7 @@
         /* Charts Section */
         .charts-section {
             display: none;
-            padding: 0 2rem;
+            padding: 0.85rem 2rem 0;
             margin-bottom: 2rem;
             min-width: 0;
             max-width: 100%;
@@ -718,7 +723,7 @@
         /* Próximas section (inline, como estadísticas) */
         .proximas-section {
             display: none;
-            padding: 0 2rem;
+            padding: 0.85rem 2rem 0;
             margin-bottom: 2rem;
         }
 
@@ -743,7 +748,7 @@
         /* Abandonados section */
         .abandonados-section {
             display: none;
-            padding: 0 2rem 2rem;
+            padding: 0.85rem 2rem 2rem;
             margin-bottom: 0;
         }
 
@@ -2623,9 +2628,10 @@
             .stat-value { font-size: 1.5rem; }
             .controls { width: min(42rem, calc(100% - 2rem)); }
             .leyendo-section { margin-top: 1.25rem; padding: 0 1rem; }
-            .proximas-section { padding: 0 1rem; }
+            .proximas-section { padding: 0.85rem 1rem 0; }
+            .abandonados-section { padding: 0.85rem 1rem 2rem; }
             .books-grid { grid-template-columns: 1fr; padding: 0 1rem 2rem; }
-            .charts-section { padding: 0 1rem; }
+            .charts-section { padding: 0.85rem 1rem 0; }
             .charts-grid { grid-template-columns: minmax(0, 1fr); }
             .chart-container { height: 250px; }
             .form-row, .form-row-3 { grid-template-columns: 1fr; }
@@ -2641,8 +2647,8 @@
 </head>
 <body>
     <header>
-        <img class="header-logo" src="icon-192.png?v=libro" alt="">
-        <h1 class="header-title">Mi biblioteca</h1>
+        <img class="header-logo" id="headerLogo" src="icon-192.png?v=libro" alt="" role="button" tabindex="0" title="Volver al inicio" aria-label="Volver al inicio">
+        <h1 class="header-title" id="headerTitle">Mi biblioteca</h1>
         <div class="header-tools">
             <div class="theme-toggle" id="themeToggle" role="button" tabindex="0" title="Cambiar tema claro u oscuro" aria-label="Cambiar tema claro u oscuro">
                 <div class="theme-toggle-track">
@@ -2766,14 +2772,12 @@
 
     <!-- Sección Próximas Lecturas (inline, como Estadísticas) -->
     <section class="proximas-section" id="proximasSection">
-        <h2 class="proximas-header"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6.5C10.3 5.3 7.8 4.9 4.8 5.4V18.2c3-.5 5.5-.1 7.2 1.1"/><path d="M12 6.5c1.7-1.2 4.2-1.6 7.2-1.1V18.2c-3-.5-5.5-.1-7.2 1.1"/><path d="M12 6.5V19.3"/></svg>Próximas Lecturas</h2>
         <div id="proximasList"></div>
         <button type="button" class="btn-icon primary btn-add-proxima" id="showAddProximaBtn">➕ Añadir nuevo libro</button>
     </section>
 
     <!-- Sección Libros Abandonados -->
     <section class="abandonados-section" id="abandonadosSection">
-        <h2 class="abandonados-header"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.2 5.2h8.4A1.3 1.3 0 0 1 13.9 6.5V19H6A1.8 1.8 0 0 0 4.2 20.8V5.2z"/><path d="M6.8 5.2V18.2"/><path d="M16.6 8.2v7.2M19.6 8.2v7.2"/></svg>Libros abandonados</h2>
         <div id="abandonadosList"></div>
     </section>
 
@@ -3117,6 +3121,7 @@
                 initViewToggle();
                 initThemeToggle();
                 initStatsToggle();
+                initHeaderHome();
                 filterAndSortBooks();
                 console.log('App inicializada correctamente');
             } catch (e) {
@@ -3999,8 +4004,27 @@
             document.getElementById('statsToggle')?.classList.toggle('active', mode === 'stats');
             document.getElementById('proximasBtn')?.classList.toggle('active', mode === 'proximas');
             document.getElementById('abandonadosBtn')?.classList.toggle('active', mode === 'abandonados');
+            const headerTitle = document.getElementById('headerTitle');
+            const titulos = { proximas: 'En cola', abandonados: 'Abandonados', stats: 'Estadísticas' };
+            if (headerTitle) headerTitle.textContent = titulos[mode] || 'Mi biblioteca';
             const scroller = document.querySelector('.page-scroll');
             if (scroller) scroller.scrollTop = 0;
+        }
+
+        function initHeaderHome() {
+            const logo = document.getElementById('headerLogo');
+            if (!logo) return;
+            const goHome = () => {
+                document.getElementById('operacionesMenu')?.classList.remove('visible');
+                setViewMode(null);
+            };
+            logo.addEventListener('click', goHome);
+            logo.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    goHome();
+                }
+            });
         }
 
         // Stats toggle: muestra estado pulsado, siempre "Estadísticas". Al pulsar: oculta Leyendo ahora y filtros; muestra resumen y gráficos.
