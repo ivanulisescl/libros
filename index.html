@@ -706,6 +706,8 @@
             display: none;
             padding: 0 2rem;
             margin-bottom: 2rem;
+            min-width: 0;
+            max-width: 100%;
         }
 
         .charts-section.visible {
@@ -839,8 +841,9 @@
 
         .charts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
             gap: 1.5rem;
+            min-width: 0;
         }
 
         .chart-card {
@@ -849,6 +852,9 @@
             padding: 1.5rem;
             border: 1px solid var(--border);
             transition: all 0.3s ease;
+            min-width: 0;
+            max-width: 100%;
+            overflow: hidden;
         }
 
         .chart-card:hover {
@@ -890,6 +896,12 @@
         .chart-container {
             position: relative;
             height: 280px;
+            min-width: 0;
+            max-width: 100%;
+        }
+
+        .chart-container canvas {
+            max-width: 100%;
         }
 
         /* Controls */
@@ -2613,7 +2625,8 @@
             .leyendo-section { margin-top: 1.25rem; padding: 0 1rem; }
             .proximas-section { padding: 0 1rem; }
             .books-grid { grid-template-columns: 1fr; padding: 0 1rem 2rem; }
-            .charts-grid { grid-template-columns: 1fr; }
+            .charts-section { padding: 0 1rem; }
+            .charts-grid { grid-template-columns: minmax(0, 1fr); }
             .chart-container { height: 250px; }
             .form-row, .form-row-3 { grid-template-columns: 1fr; }
             .book-actions { opacity: 1; }
@@ -2808,7 +2821,7 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.34</span></div>
+    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.35</span></div>
     </main>
 
     <!-- Modal -->
