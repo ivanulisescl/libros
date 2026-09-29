@@ -1237,7 +1237,7 @@
         }
 
         .extra-text.sinopsis {
-            border-left: 3px solid #667eea;
+            border-left: 3px solid var(--accent);
         }
 
         .extra-text.comment {
@@ -1827,11 +1827,88 @@
             background: var(--accent-light);
         }
 
-        /* Botones modal Próximas */
-        .btn-proxima-eliminar { background: var(--danger) !important; color: white !important; }
-        .btn-proxima-empezar { background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%) !important; color: white !important; border: none !important; }
-        .btn-proxima-guardar { background: var(--success) !important; color: #1a1a2e !important; border: none !important; }
-        .btn-proxima-terminado { background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%) !important; color: white !important; border: none !important; padding: 0.6rem 1rem; border-radius: 8px; cursor: pointer; font-weight: 500; }
+        /* Botones de Editar próxima lectura y Editar libro en lectura */
+        #editProximaOverlay .modal-footer {
+            gap: 0.45rem;
+        }
+        #editProximaOverlay #deleteProximaBtn,
+        #editProximaOverlay #marcarLeidoBtn,
+        #editProximaOverlay #terminadoLeyendoBtn,
+        #editProximaOverlay #dejarLeyendoBtn,
+        #editProximaOverlay #guardarProximaBtn {
+            flex: 1 1 0;
+            min-width: 0;
+            margin: 0;
+            padding: 0.55rem 0.3rem;
+            border: none;
+            border-radius: 0.75rem;
+            background: color-mix(in srgb, var(--secondary) 75%, #000) !important;
+            color: var(--text-muted) !important;
+            font-size: 0.72rem;
+            font-weight: 600;
+            line-height: 1.15;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.22rem;
+            text-align: center;
+        }
+        #editProximaOverlay #deleteProximaBtn span,
+        #editProximaOverlay #marcarLeidoBtn span,
+        #editProximaOverlay #terminadoLeyendoBtn span,
+        #editProximaOverlay #dejarLeyendoBtn span,
+        #editProximaOverlay #guardarProximaBtn span {
+            white-space: normal;
+        }
+        #editProximaOverlay #deleteProximaBtn svg,
+        #editProximaOverlay #marcarLeidoBtn svg,
+        #editProximaOverlay #terminadoLeyendoBtn svg,
+        #editProximaOverlay #dejarLeyendoBtn svg,
+        #editProximaOverlay #guardarProximaBtn svg {
+            width: 1.15rem;
+            height: 1.15rem;
+            flex: 0 0 auto;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        #editProximaOverlay #deleteProximaBtn:hover,
+        #editProximaOverlay #marcarLeidoBtn:hover,
+        #editProximaOverlay #terminadoLeyendoBtn:hover,
+        #editProximaOverlay #dejarLeyendoBtn:hover,
+        #editProximaOverlay #guardarProximaBtn:hover {
+            background: rgba(255, 212, 168, 0.3) !important;
+            color: var(--text) !important;
+        }
+        [data-theme="light"] #editProximaOverlay #deleteProximaBtn,
+        [data-theme="light"] #editProximaOverlay #marcarLeidoBtn,
+        [data-theme="light"] #editProximaOverlay #terminadoLeyendoBtn,
+        [data-theme="light"] #editProximaOverlay #dejarLeyendoBtn,
+        [data-theme="light"] #editProximaOverlay #guardarProximaBtn,
+        [data-theme="fresh-light"] #editProximaOverlay #deleteProximaBtn,
+        [data-theme="fresh-light"] #editProximaOverlay #marcarLeidoBtn,
+        [data-theme="fresh-light"] #editProximaOverlay #terminadoLeyendoBtn,
+        [data-theme="fresh-light"] #editProximaOverlay #dejarLeyendoBtn,
+        [data-theme="fresh-light"] #editProximaOverlay #guardarProximaBtn {
+            background: rgba(192, 57, 43, 0.15) !important;
+            color: #a93226 !important;
+        }
+        [data-theme="light"] #editProximaOverlay #deleteProximaBtn:hover,
+        [data-theme="light"] #editProximaOverlay #marcarLeidoBtn:hover,
+        [data-theme="light"] #editProximaOverlay #terminadoLeyendoBtn:hover,
+        [data-theme="light"] #editProximaOverlay #dejarLeyendoBtn:hover,
+        [data-theme="light"] #editProximaOverlay #guardarProximaBtn:hover,
+        [data-theme="fresh-light"] #editProximaOverlay #deleteProximaBtn:hover,
+        [data-theme="fresh-light"] #editProximaOverlay #marcarLeidoBtn:hover,
+        [data-theme="fresh-light"] #editProximaOverlay #terminadoLeyendoBtn:hover,
+        [data-theme="fresh-light"] #editProximaOverlay #dejarLeyendoBtn:hover,
+        [data-theme="fresh-light"] #editProximaOverlay #guardarProximaBtn:hover {
+            background: rgba(192, 57, 43, 0.22) !important;
+            color: #922b21 !important;
+        }
         .textarea-sinopsis { min-height: 140px; resize: vertical; }
 
         /* Toast Notification */
@@ -1997,25 +2074,46 @@
 
         .proxima-btn.edit {
             display: inline-flex;
+            flex-direction: column;
             align-items: center;
-            gap: 0.4rem;
-            background: var(--gradient-1);
-            color: white;
+            justify-content: center;
+            gap: 0.15rem;
+            min-width: 4.4rem;
+            padding: 0.32rem 0.45rem;
+            border-radius: 0.75rem;
+            background: color-mix(in srgb, var(--secondary) 75%, #000);
+            color: var(--text-muted);
+            font-size: 0.68rem;
+            font-weight: 600;
+            line-height: 1.1;
         }
 
         .proxima-btn.edit svg {
-            width: 1.05rem;
-            height: 1.05rem;
+            width: 1.15rem;
+            height: 1.15rem;
             flex: 0 0 auto;
             stroke: currentColor;
             fill: none;
-            stroke-width: 2;
+            stroke-width: 1.8;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
 
         .proxima-btn.edit:hover {
-            transform: scale(1.05);
+            background: rgba(255, 212, 168, 0.3);
+            color: var(--text);
+        }
+
+        [data-theme="light"] .proxima-btn.edit,
+        [data-theme="fresh-light"] .proxima-btn.edit {
+            background: rgba(192, 57, 43, 0.15);
+            color: #a93226;
+        }
+
+        [data-theme="light"] .proxima-btn.edit:hover,
+        [data-theme="fresh-light"] .proxima-btn.edit:hover {
+            background: rgba(192, 57, 43, 0.22);
+            color: #922b21;
         }
 
         .proxima-has-sinopsis {
@@ -2826,11 +2924,11 @@
                     <textarea id="editProximaSinopsis" placeholder="Resumen o descripción del libro..." rows="6" class="textarea-sinopsis"></textarea>
                 </div>
                 <div class="modal-footer" style="flex-wrap: wrap; gap: 0.5rem;">
-                    <button type="button" class="btn-cancel btn-proxima-eliminar" id="deleteProximaBtn">🗑️ Eliminar</button>
-                    <button type="button" class="btn-proxima-empezar" id="marcarLeidoBtn">📖 Empezar a leer</button>
-                    <button type="button" class="btn-proxima-terminado" id="terminadoLeyendoBtn" style="display: none;">✓ Terminado</button>
-                    <button type="button" class="btn-proxima-terminado" id="dejarLeyendoBtn" style="display: none;">⏸️ Dejar de leer</button>
-                    <button type="submit" class="btn-proxima-guardar" id="guardarProximaBtn">💾 Guardar</button>
+                    <button type="button" class="btn-proxima-eliminar" id="deleteProximaBtn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16"/><path d="M9 7V5h6v2"/><path d="M7 7l1 12h8l1-12"/></svg><span>Eliminar</span></button>
+                    <button type="button" class="btn-proxima-empezar" id="marcarLeidoBtn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.2h6.2A2.2 2.2 0 0 1 12.4 7.4V19H6.2A2.2 2.2 0 0 0 4 16.8z"/><path d="M20 5.2h-6.2A2.2 2.2 0 0 0 11.6 7.4V19h6.2A2.2 2.2 0 0 1 20 16.8z"/></svg><span>Empezar a leer</span></button>
+                    <button type="button" class="btn-leyendo-hecho" id="terminadoLeyendoBtn" style="display: none;"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Leído</span></button>
+                    <button type="button" class="btn-leyendo-dejar" id="dejarLeyendoBtn" style="display: none;"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Abandonar</span></button>
+                    <button type="submit" class="btn-proxima-guardar" id="guardarProximaBtn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11l3 3v13H5z"/><path d="M8 4v5h8V4M8 20v-6h8v6"/></svg><span>Guardar</span></button>
                 </div>
             </form>
         </div>
@@ -4168,7 +4266,7 @@
                         <div class="proxima-autor">${libro.autor}</div>
                         ${libro.sinopsis ? `<button type="button" class="proxima-has-sinopsis" onclick="mostrarSinopsisProxima(${index})"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3.5" width="12" height="17" rx="1.5"/><path d="M9 8.5h6M9 12h6M9 15.5h4"/></svg>Sinopsis</button>` : ''}
                         <div class="proxima-actions">
-                            <button class="proxima-btn edit" onclick="event.stopPropagation(); editarProxima(${index})" title="Editar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>Editar</button>
+                            <button class="proxima-btn edit" onclick="event.stopPropagation(); editarProxima(${index})" title="Editar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4 11.5-11.5z"/></svg><span>Editar</span></button>
                         </div>
                     </div>
                 </div>
@@ -4285,6 +4383,7 @@
             document.getElementById('marcarLeidoBtn').style.display = 'inline-flex';
             document.getElementById('terminadoLeyendoBtn').style.display = 'none';
             document.getElementById('dejarLeyendoBtn').style.display = 'none';
+            document.getElementById('editProximaOverlay').classList.remove('leyendo-edit');
             document.getElementById('editProximaOverlay').classList.add('visible');
         }
 
@@ -4299,6 +4398,7 @@
             document.getElementById('marcarLeidoBtn').style.display = 'none';
             document.getElementById('terminadoLeyendoBtn').style.display = 'none';
             document.getElementById('dejarLeyendoBtn').style.display = 'none';
+            document.getElementById('editProximaOverlay').classList.remove('leyendo-edit');
             document.getElementById('editProximaOverlay').classList.add('visible');
             document.getElementById('editProximaTitulo').focus();
         }
@@ -4745,7 +4845,7 @@
             document.getElementById('dejarLeyendoBtn').style.display = 'inline-flex';
             
             currentEditProximaIndex = -1;
-            document.getElementById('editProximaOverlay').classList.add('visible');
+            document.getElementById('editProximaOverlay').classList.add('leyendo-edit', 'visible');
         }
 
         initProximasToggle();
