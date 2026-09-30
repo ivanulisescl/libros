@@ -692,15 +692,12 @@
         body.stats-mode .leyendo-section,
         body.stats-mode .controls,
         body.stats-mode .books-grid,
-        body.stats-mode .data-info,
         body.proximas-mode .leyendo-section,
         body.proximas-mode .controls,
         body.proximas-mode .books-grid,
-        body.proximas-mode .data-info,
         body.abandonados-mode .leyendo-section,
         body.abandonados-mode .controls,
-        body.abandonados-mode .books-grid,
-        body.abandonados-mode .data-info {
+        body.abandonados-mode .books-grid {
             display: none !important;
         }
 
@@ -2011,15 +2008,6 @@
         .toast.success { border-left: 4px solid var(--success); }
         .toast.error { border-left: 4px solid var(--danger); }
 
-        /* Data info */
-        .data-info {
-            text-align: center;
-            padding: 0.5rem;
-            padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px));
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
         /* Animations */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
@@ -2737,7 +2725,7 @@
                 <button class="btn-icon" id="importBtn">Importar</button>
                 <input type="file" id="importFile" accept=".json" style="display: none;">
                 <button class="btn-icon" id="resetBtn" title="Recargar datos desde el servidor">Resetear</button>
-                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar</button>
+                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.37)</button>
             </div>
         </div>
     </nav>
@@ -2885,7 +2873,6 @@
 
     <div class="books-grid" id="booksGrid"></div>
     
-    <div class="data-info">💾 Los datos se guardan automáticamente en tu navegador (localStorage) · <span id="appVersion">v3.36</span></div>
     </main>
 
     <!-- Modal -->
