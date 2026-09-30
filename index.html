@@ -666,6 +666,11 @@
             flex-wrap: wrap;
         }
 
+        .stats-bar > .stats-since {
+            flex: 1 0 100%;
+            margin: 0 0 0.35rem;
+        }
+
         .stat {
             text-align: center;
         }
@@ -875,6 +880,22 @@
             display: flex;
             align-items: center;
             gap: 0.55rem;
+        }
+
+        .chart-year-select {
+            margin-left: auto;
+            width: auto;
+            appearance: none;
+            padding: 0.28rem 1.7rem 0.28rem 0.7rem;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            background-color: color-mix(in srgb, var(--secondary) 65%, var(--card-bg));
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b8b0a0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.4rem center;
+            background-size: 0.85rem;
         }
 
         .chart-title svg,
@@ -1547,9 +1568,10 @@
             color: var(--text) !important;
         }
 
-        .books-grid:not(.list-view) .book-toolbar button.active {
-            background: rgba(255, 212, 168, 0.3);
-            color: var(--text);
+        .books-grid:not(.list-view) .book-toolbar button.active,
+        .books-grid:not(.list-view) .book-toolbar .extra-toggle.citas-btn.active {
+            background: rgba(255, 212, 168, 0.3) !important;
+            color: var(--text) !important;
         }
 
         .books-grid:not(.list-view) .book-toolbar button:disabled {
@@ -1565,6 +1587,38 @@
         .books-grid:not(.list-view) .btn-delete {
             background: #6a3030;
             color: #f3d0d0;
+        }
+
+        [data-theme="light"] .books-grid:not(.list-view) .book-toolbar button,
+        [data-theme="fresh-light"] .books-grid:not(.list-view) .book-toolbar button,
+        [data-theme="light"] .books-grid:not(.list-view) .book-sinopsis-btn,
+        [data-theme="fresh-light"] .books-grid:not(.list-view) .book-sinopsis-btn,
+        [data-theme="light"] .books-grid:not(.list-view) .book-toolbar .extra-toggle.citas-btn,
+        [data-theme="fresh-light"] .books-grid:not(.list-view) .book-toolbar .extra-toggle.citas-btn {
+            background: rgba(192, 57, 43, 0.15) !important;
+            color: #a93226 !important;
+        }
+
+        [data-theme="light"] .books-grid:not(.list-view) .book-toolbar button.active,
+        [data-theme="fresh-light"] .books-grid:not(.list-view) .book-toolbar button.active,
+        [data-theme="light"] .books-grid:not(.list-view) .book-sinopsis-btn.active,
+        [data-theme="fresh-light"] .books-grid:not(.list-view) .book-sinopsis-btn.active,
+        [data-theme="light"] .books-grid:not(.list-view) .book-toolbar .extra-toggle.citas-btn.active,
+        [data-theme="fresh-light"] .books-grid:not(.list-view) .book-toolbar .extra-toggle.citas-btn.active {
+            background: rgba(192, 57, 43, 0.22) !important;
+            color: #922b21 !important;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            [data-theme="light"] .books-grid:not(.list-view) .book-toolbar button:hover,
+            [data-theme="fresh-light"] .books-grid:not(.list-view) .book-toolbar button:hover,
+            [data-theme="light"] .books-grid:not(.list-view) .book-sinopsis-btn:hover,
+            [data-theme="fresh-light"] .books-grid:not(.list-view) .book-sinopsis-btn:hover,
+            [data-theme="light"] .books-grid:not(.list-view) .book-toolbar .extra-toggle.citas-btn:hover,
+            [data-theme="fresh-light"] .books-grid:not(.list-view) .book-toolbar .extra-toggle.citas-btn:hover {
+                background: rgba(192, 57, 43, 0.22) !important;
+                color: #922b21 !important;
+            }
         }
 
         .books-grid:not(.list-view) .book-extra-panels {
@@ -2238,6 +2292,7 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            cursor: pointer;
         }
 
         .leyendo-main {
@@ -2381,10 +2436,6 @@
             color: #1a1a2e;
         }
 
-        .leyendo-btn:hover {
-            filter: brightness(1.08);
-        }
-
         .leyendo-btn.cita,
         .leyendo-btn.editar,
         .leyendo-btn.ver-notas {
@@ -2393,11 +2444,17 @@
             border: none;
         }
 
-        .leyendo-btn.cita:hover,
-        .leyendo-btn.editar:hover,
-        .leyendo-btn.ver-notas:hover {
-            background: rgba(255, 212, 168, 0.3);
-            border-color: rgba(255, 212, 168, 0.6);
+        @media (hover: hover) and (pointer: fine) {
+            .leyendo-btn:hover {
+                filter: brightness(1.08);
+            }
+
+            .leyendo-btn.cita:hover,
+            .leyendo-btn.editar:hover,
+            .leyendo-btn.ver-notas:hover {
+                background: rgba(255, 212, 168, 0.3);
+                border-color: rgba(255, 212, 168, 0.6);
+            }
         }
 
         [data-theme="light"] .leyendo-btn.cita,
@@ -2411,15 +2468,17 @@
             border-color: rgba(192, 57, 43, 0.4) !important;
         }
 
-        [data-theme="light"] .leyendo-btn.cita:hover,
-        [data-theme="light"] .leyendo-btn.editar:hover,
-        [data-theme="light"] .leyendo-btn.ver-notas:hover,
-        [data-theme="fresh-light"] .leyendo-btn.cita:hover,
-        [data-theme="fresh-light"] .leyendo-btn.editar:hover,
-        [data-theme="fresh-light"] .leyendo-btn.ver-notas:hover {
-            background: rgba(192, 57, 43, 0.22) !important;
-            border-color: rgba(192, 57, 43, 0.55) !important;
-            color: #922b21 !important;
+        @media (hover: hover) and (pointer: fine) {
+            [data-theme="light"] .leyendo-btn.cita:hover,
+            [data-theme="light"] .leyendo-btn.editar:hover,
+            [data-theme="light"] .leyendo-btn.ver-notas:hover,
+            [data-theme="fresh-light"] .leyendo-btn.cita:hover,
+            [data-theme="fresh-light"] .leyendo-btn.editar:hover,
+            [data-theme="fresh-light"] .leyendo-btn.ver-notas:hover {
+                background: rgba(192, 57, 43, 0.22) !important;
+                border-color: rgba(192, 57, 43, 0.55) !important;
+                color: #922b21 !important;
+            }
         }
 
         .leyendo-notas {
@@ -2717,6 +2776,7 @@
 
     <section class="charts-section" id="chartsSection">
         <div class="stats-bar">
+            <h3 class="chart-title stats-since">Totales desde octubre de 2023</h3>
             <div class="stat">
                 <div class="stat-value" id="totalBooks">0</div>
                 <div class="stat-label">Libros</div>
@@ -2744,12 +2804,12 @@
         </div>
         <div class="charts-grid">
             <div class="chart-card">
-                <h3 class="chart-title"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3.5v3M16 3.5v3"/><circle cx="12" cy="15" r="1.35" fill="currentColor" stroke="none"/></svg>Libros por Mes</h3>
-                <div class="chart-container"><canvas id="monthlyChart"></canvas></div>
-            </div>
-            <div class="chart-card">
                 <h3 class="chart-title"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="12" width="4.5" height="8" rx="0.8"/><rect x="9.75" y="5" width="4.5" height="15" rx="0.8"/><rect x="16" y="9" width="4.5" height="11" rx="0.8"/></svg>Libros por Año</h3>
                 <div class="chart-container"><canvas id="yearlyChart"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <h3 class="chart-title"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3.5v3M16 3.5v3"/><circle cx="12" cy="15" r="1.35" fill="currentColor" stroke="none"/></svg><span>Libros por Mes</span><select id="monthlyYearSelect" class="chart-year-select" aria-label="Año de libros por mes"></select></h3>
+                <div class="chart-container"><canvas id="monthlyChart"></canvas></div>
             </div>
             <div class="chart-card">
                 <h3 class="chart-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4.2-1.1L19.2 8a2.3 2.3 0 0 0-3.2-3.2L5 15.7 4 20z"/><path d="M13.8 6.2l3.8 3.8"/></svg>Top 10 Autores</h3>
@@ -3132,6 +3192,8 @@
         // Chart instances
         let charts = {};
         let chartsInitialized = false;
+        const STATS_MONTH_YEAR_KEY = 'statsMonthlyYear';
+        const MONTH_SHORT = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
 
         // Parse date for sorting
         function parseDate(dateStr) {
@@ -3153,6 +3215,43 @@
 
         function getYears(arr) {
             return [...new Set(arr.map(item => item.fecha.split(' de ')[1]))].sort();
+        }
+
+        function bookYear(book) {
+            const year = parseInt(String(book.fecha || '').split(' de ')[1], 10);
+            return Number.isFinite(year) ? year : null;
+        }
+
+        function availableStatsYears() {
+            const years = new Set(libros.map(bookYear).filter(Boolean));
+            years.add(new Date().getFullYear());
+            const saved = parseInt(localStorage.getItem(STATS_MONTH_YEAR_KEY), 10);
+            if (Number.isFinite(saved)) years.add(saved);
+            return [...years].sort((a, b) => b - a);
+        }
+
+        function selectedMonthlyYear() {
+            const saved = parseInt(localStorage.getItem(STATS_MONTH_YEAR_KEY), 10);
+            const years = availableStatsYears();
+            return years.includes(saved) ? saved : new Date().getFullYear();
+        }
+
+        function fillMonthlyYearSelect() {
+            const select = document.getElementById('monthlyYearSelect');
+            const year = selectedMonthlyYear();
+            if (!select) return year;
+            select.innerHTML = availableStatsYears().map(y => `<option value="${y}">${y}</option>`).join('');
+            select.value = String(year);
+            return year;
+        }
+
+        function monthlyCountsForYear(year) {
+            const counts = Array(12).fill(0);
+            libros.forEach(book => {
+                const date = parseDate(book.fecha);
+                if (date.getFullYear() === year) counts[date.getMonth()]++;
+            });
+            return counts;
         }
 
         // Count occurrences
@@ -3254,40 +3353,28 @@
             Chart.defaults.color = textColor;
             Chart.defaults.borderColor = getChartGridColor();
 
-            // Monthly data
-            const monthlyData = {};
-            libros.forEach(book => {
-                const date = parseDate(book.fecha);
-                const key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
-                monthlyData[key] = (monthlyData[key] || 0) + 1;
-            });
-            const sortedMonths = Object.keys(monthlyData).sort();
-            const monthLabels = sortedMonths.map(m => {
-                const [year, month] = m.split('-');
-                const monthNames = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
-                return `${monthNames[parseInt(month) - 1]} ${year.slice(2)}`;
-            });
+            const monthlyYear = fillMonthlyYearSelect();
+            const accent = getThemeVar('accent') || '#e87c2d';
 
             charts.monthly = new Chart(document.getElementById('monthlyChart'), {
-                type: 'line',
+                type: 'bar',
                 data: {
-                    labels: monthLabels,
+                    labels: MONTH_SHORT,
                     datasets: [{
                         label: 'Libros',
-                        data: sortedMonths.map(m => monthlyData[m]),
-                        borderColor: getThemeVar('accent') || '#e87c2d',
-                        backgroundColor: (() => { const c = hexToRgb(getThemeVar('accent') || '#e87c2d'); return c ? `rgba(${c.r},${c.g},${c.b},0.18)` : 'rgba(232,124,45,0.18)'; })(),
-                        fill: true,
-                        tension: 0.4,
-                        pointBackgroundColor: getThemeVar('accent') || '#e87c2d',
-                        pointRadius: 4
+                        data: monthlyCountsForYear(monthlyYear),
+                        backgroundColor: accent,
+                        borderRadius: 8
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: { legend: { display: false } },
-                    scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
+                    scales: {
+                        x: { ticks: { autoSkip: false, maxRotation: 0, font: { size: 11 } } },
+                        y: { beginAtZero: true, ticks: { stepSize: 1, precision: 0 } }
+                    }
                 }
             });
 
@@ -3297,6 +3384,25 @@
             
             charts.yearly = new Chart(document.getElementById('yearlyChart'), {
                 type: 'bar',
+                plugins: [{
+                    id: 'yearlyBarValues',
+                    afterDraw(chart) {
+                        const { ctx } = chart;
+                        const meta = chart.getDatasetMeta(0);
+                        if (!meta || meta.hidden) return;
+                        ctx.save();
+                        ctx.fillStyle = getChartTextColor();
+                        ctx.font = '600 13px Inter, sans-serif';
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'bottom';
+                        meta.data.forEach((bar, index) => {
+                            const value = chart.data.datasets[0].data[index];
+                            if (value == null) return;
+                            ctx.fillText(String(value), bar.x, bar.y - 6);
+                        });
+                        ctx.restore();
+                    }
+                }],
                 data: {
                     labels: years,
                     datasets: [{
@@ -3309,8 +3415,16 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    layout: { padding: { top: 8 } },
                     plugins: { legend: { display: false } },
-                    scales: { y: { beginAtZero: true, ticks: { stepSize: 5 } } }
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grace: '15%',
+                            ticks: { display: false },
+                            border: { display: false }
+                        }
+                    }
                 }
             });
 
@@ -3511,8 +3625,8 @@
                     </div>
                     <div class="book-toolbar">
                         <div class="extras-buttons">
-                            <button class="extra-toggle" id="toggle-comment-${realIndex}" ${hasComment ? `onclick="toggleExtra(${realIndex}, 'comment')"` : 'disabled'}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z"/></svg><span class="extra-label">Comentario</span></button>
-                            <button class="extra-toggle citas-btn" id="toggle-citas-${realIndex}" ${hasCitas ? `onclick="toggleExtra(${realIndex}, 'citas')"` : 'disabled'}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.2 11.1c.5.4 1.2 1.1 1.2 1.9h4c0-.8.7-1.5 1.2-1.9A6 6 0 0 0 12 3z"/></svg><span class="extra-label">Notas</span></button>
+                            <button class="extra-toggle" id="toggle-comment-${realIndex}" ${hasComment ? `onclick="toggleExtra(${realIndex}, 'comment')"` : 'disabled'}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z"/></svg><span class="extra-label">Opinión</span></button>
+                            <button class="extra-toggle citas-btn" id="toggle-citas-${realIndex}" ${hasCitas ? `onclick="toggleExtra(${realIndex}, 'citas')"` : 'disabled'}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h8l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M15 3v5h5M9 13h6M9 17h6"/></svg><span class="extra-label">Notas</span></button>
                         </div>
                         <div class="book-actions">
                             <button class="btn-edit" onclick="editBook(${realIndex})" title="Editar" aria-label="Editar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4 11.5-11.5z"/></svg><span class="btn-label">Editar</span></button>
@@ -4061,6 +4175,15 @@
         }
 
         // Event listeners
+        document.getElementById('monthlyYearSelect').addEventListener('change', () => {
+            const year = parseInt(document.getElementById('monthlyYearSelect').value, 10);
+            if (!Number.isFinite(year)) return;
+            localStorage.setItem(STATS_MONTH_YEAR_KEY, String(year));
+            if (charts.monthly) {
+                charts.monthly.data.datasets[0].data = monthlyCountsForYear(year);
+                charts.monthly.update();
+            }
+        });
         document.getElementById('searchInput').addEventListener('input', filterAndSortBooks);
         document.getElementById('authorFilter').addEventListener('change', filterAndSortBooks);
         document.getElementById('ratingFilter').addEventListener('change', filterAndSortBooks);
@@ -4694,7 +4817,7 @@
                 return `
                 <div class="leyendo-card" data-index="${i}">
                     <div class="leyendo-cover">
-                        <img src="${portada}" alt="" onerror="this.remove()">
+                        <img src="${portada}" alt="" onclick="ampliarPortada(this)" onerror="this.remove()">
                     </div>
                     <div class="leyendo-main">
                         <div class="leyendo-titulo">${libro.titulo}</div>
@@ -4736,6 +4859,7 @@
                 const label = btn.querySelector('.leyendo-btn-label');
                 if (label) label.textContent = 'Ocultar';
             }
+            btn.blur();
         }
 
         function editarPorcentajeLeyendo(index) {
