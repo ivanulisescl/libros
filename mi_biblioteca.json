@@ -885,19 +885,24 @@
   ],
   "proximas": [
     {
-      "titulo": "REVANCHA",
-      "autor": "KIKI AMAT",
-      "sinopsis": "Amador es el consejero y número dos de la facción cri­minal de Lokos, el grupo ultra del FC Barcelona. Extor­sionan, pegan palizas por encargo, mueven droga y des­truyen a bandas de traficantes o ultras enemigos. Su kapo es Alberto Cid, alias el Cid, un psicópata catalán sin alma ni escrúpulos. Amador y el Cid, legendarios skinheads neonazis del gol sur durante los ochenta y noventa, fueron inseparables durante años, hasta que algo les separó. Amador acarrea muchos secretos, y el mayor de ellos es su homosexualidad. César «Jabalí» Beltrán fue rugbista y ahora se gana la vida vengando por encargo a víctimas de pederastas y atropelladores en fuga. Un secuestro, una redada y un botín desapare­cido hacen que la vida de César y la de Amador se entre­crucen, con resultados imprevisibles para ambos."
-    },
-    {
       "titulo": "TRÓPICO DE CÁNCER",
       "autor": "HENRY MILLER",
       "sinopsis": "Henry Miller fue un lector voraz y autodidacta. Pensaba, siguiendo a Emerson, que la literatura del futuro sería autobiográfica. \"Trópico de Cáncer\" inicia con su publicación en 1934 la explosión literaria y editorial de Miller. A pesar de que dio lugar a que se celebraran más de sesenta juicios a propósito de su legalización, no fue escrito para escandalizar a los \"burgueses bien pensantes\"; su cuidada elaboración prueba la aspiración literaria de su autor, que logró hacer de ella un emblema de la desolada condición del artista en aquellos tiempos."
     },
     {
+      "titulo": "REVANCHA",
+      "autor": "KIKI AMAT",
+      "sinopsis": "Amador es el consejero y número dos de la facción cri­minal de Lokos, el grupo ultra del FC Barcelona. Extor­sionan, pegan palizas por encargo, mueven droga y des­truyen a bandas de traficantes o ultras enemigos. Su kapo es Alberto Cid, alias el Cid, un psicópata catalán sin alma ni escrúpulos. Amador y el Cid, legendarios skinheads neonazis del gol sur durante los ochenta y noventa, fueron inseparables durante años, hasta que algo les separó. Amador acarrea muchos secretos, y el mayor de ellos es su homosexualidad. César «Jabalí» Beltrán fue rugbista y ahora se gana la vida vengando por encargo a víctimas de pederastas y atropelladores en fuga. Un secuestro, una redada y un botín desapare­cido hacen que la vida de César y la de Amador se entre­crucen, con resultados imprevisibles para ambos."
+    },
+    {
       "titulo": "EL CLUB DE LA LUCHA",
       "autor": "CHUCK PALAHNIUK",
       "sinopsis": "La primera regla del club de la lucha es no hablar del club de la lucha. Cada fin de semana, un puñado de jóvenes oficinistas se quita los zapatos y las camisas y pelean entre sí hasta la extenuación. Los lunes vuelven a sus despachos con los ojos amoratados y un embriagador sentimiento de omnipotencia. Pero estas reuniones son solo el comienzo del plan con el que Tyler Durden, proyeccionista, camarero y oscuro genio anárquico, aspira a vengarse de una sociedad paralizada por el consumismo exacerbado."
+    },
+    {
+      "titulo": "LO DEMÁS ES AIRE",
+      "autor": "JUAN GÓMEZ BÁRCENA",
+      "sinopsis": "La novela es una ambiciosa biografía de un lugar concreto: Toñanes, un pequeño pueblo de Cantabria. A través de una estructura narrativa innovadora que rompe la linealidad del tiempo, el autor entrelaza siglos de historia en una sola página, permitiendo que personajes del siglo XVI, de la posguerra y de la actualidad convivan y compartan las mismas calles y miedos.\n\nEs una reflexión profunda sobre la memoria, el arraigo y la huella que dejamos en la tierra. Gómez Bárcena convierte un punto minúsculo en el mapa en un microcosmos universal, explorando cómo las vidas de los habitantes —con sus amores, nacimientos y muertes— se superponen para formar el alma de un pueblo que sobrevive al paso de los años."
     },
     {
       "titulo": "MANTECA COLORÁ",
@@ -918,11 +923,6 @@
       "titulo": "EL IMPOSTOR",
       "autor": "JAVIER CERCAS",
       "sinopsis": "¿Quién es Enric Marco? Un nonagenario barcelonés que se hizo pasar por superviviente de los campos nazis y que fue desenmascarado en mayo de 2005, después de presidir durante tres años la asociación española de los supervivientes, pronunciar centenares de conferencias, conceder decenas de entrevistas, recibir importantes distinciones y conmover en algún caso hasta las lágrimas a los parlamentarios españoles reunidos para rendir homenaje por vez primera a los republicanos deportados por el III Reich.\n\nEl caso dio la vuelta al mundo y convirtió a Marco en el gran impostor y el gran maldito. Ahora, casi una década más tarde, Javier Cercas asedia, en este thriller hipnótico que es también un banquete con muchos platos -narración, crónica, ensayo, biografía y autobiografía-, el enigma del personaje, su verdad y sus falsedades y, a través de esa indagación que recorre casi un siglo de historia de España, bucea con una pasión de kamikaze y una honestidad desgarradora en lo más profundo de nosotros mismos: en nuestra infinita capacidad de autoengaño, en nuestro conformismo y nuestras mentiras, en nuestra sed insaciable de afecto, en nuestras necesidades contrapuestas de ficción y de realidad, en las zonas más dolorosas de nuestro pasado reciente.\n\nEl resultado es un libro que no habla de Enric Marco sino de usted, lector; también el libro más insumiso y radical de Javier Cercas: un libro asombroso que, con una audacia inédita, ensancha los límites del género novelesco y explora las últimas fronteras de nuestra humanidad."
-    },
-    {
-      "titulo": "LO DEMÁS ES AIRE",
-      "autor": "JUAN GÓMEZ BÁRCENA",
-      "sinopsis": "La novela es una ambiciosa biografía de un lugar concreto: Toñanes, un pequeño pueblo de Cantabria. A través de una estructura narrativa innovadora que rompe la linealidad del tiempo, el autor entrelaza siglos de historia en una sola página, permitiendo que personajes del siglo XVI, de la posguerra y de la actualidad convivan y compartan las mismas calles y miedos.\n\nEs una reflexión profunda sobre la memoria, el arraigo y la huella que dejamos en la tierra. Gómez Bárcena convierte un punto minúsculo en el mapa en un microcosmos universal, explorando cómo las vidas de los habitantes —con sus amores, nacimientos y muertes— se superponen para formar el alma de un pueblo que sobrevive al paso de los años."
     },
     {
       "titulo": "EL FIN DEL HOMO SOVIETICUS",
@@ -1063,7 +1063,7 @@
       "sinopsis": "Éste es el testimonio de un habanero descreído. Un hombre que regresa extenuado de un largo camino que finalmente no lo condujo a sitio alguno. Pero no es pesimista. Pedro Juan sabe que tiene que seguir adelante. Y lo mejor es hacerlo sonriendo, a golpe de ron, música y sexo.\nPedro Juan Gutiérrez hace catarsis en este libro, duro y en gran medida autobiográfico, que reúne tres libros de cuentos: Anclado en tierra de nadie, Nada que hacer y Sabor a mí. Un lenguaje fuerte y apretado es el único capaz de expresar la rabia de quien habita en el vórtice del huracán. Pedro Juan vive al borde del precipicio. Marginal, aunque su covacha está en el corazón de La Habana de hoy. Disecciona sus alrededores con habilidad de cirujano experto. Sin temor hinca su bisturí afilado, escarba en las entrañas, y lo revuelca todo, irrespetuosamente: sexo, hambre, política, erotismo, desencanto, anhelos, ron y buen humor.\nEscrita con un ritmo implacable, a medio camino entre la exuberancia tropical y la negra desolación de un Bukowski, la Trilogía sucia de La Habana es un deslumbrante conjunto de relatos orquestados como una novela.",
       "citas": "1. Anclado en tierra de nadie\n\nYo, revolcador de mierda\n\n2. Nada que hacer",
       "fechaInicio": "2026-09-05T16:59:08.945Z",
-      "porcentaje": 89
+      "porcentaje": 99
     },
     {
       "titulo": "EXTREMODURO: DE PROFUNDIS",
