@@ -2079,24 +2079,68 @@
             gap: 0.28rem;
         }
 
-        select.proxima-posicion {
+        button.proxima-posicion {
             position: absolute;
             right: 0.5rem;
             bottom: 0.5rem;
             z-index: 1;
-            appearance: none;
-            -webkit-appearance: none;
             width: 1.85rem;
             min-width: 1.85rem;
             margin: 0;
             padding: 0.16rem 0;
             text-align: center;
-            text-align-last: center;
             font-size: 0.72rem;
             font-weight: 700;
             line-height: 1.2;
             font-variant-numeric: tabular-nums;
+            font-family: inherit;
+            color: var(--text);
+            background: var(--card-bg);
+            border: 1px solid var(--border);
             border-radius: 0.4rem;
+            cursor: pointer;
+        }
+
+        .proxima-posicion-menu {
+            position: fixed;
+            z-index: 50;
+            display: grid;
+            grid-template-columns: repeat(5, 2.15rem);
+            gap: 0.35rem;
+            width: max-content;
+            max-height: min(14rem, 46vh);
+            overflow: auto;
+            padding: 0.45rem;
+            background: var(--card-bg);
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            box-shadow: 0 12px 28px var(--shadow);
+        }
+
+        .proxima-posicion-menu[hidden] {
+            display: none;
+        }
+
+        .proxima-posicion-menu button {
+            width: 2.15rem;
+            height: 2.15rem;
+            padding: 0;
+            border: 1px solid var(--border);
+            border-radius: 0.45rem;
+            background: color-mix(in srgb, var(--secondary) 70%, var(--card-bg));
+            color: var(--text);
+            font: inherit;
+            font-size: 0.85rem;
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+            cursor: pointer;
+        }
+
+        .proxima-posicion-menu button.actual {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
         }
 
         .proxima-titulo {
@@ -4258,7 +4302,11 @@
             if (container && menu && !container.contains(e.target)) {
                 menu.classList.remove('visible');
             }
+            if (!e.target.closest('.proxima-posicion') && !e.target.closest('#proximaPosicionMenu')) {
+                cerrarPosicionProxima();
+            }
         });
+        document.querySelector('.page-scroll')?.addEventListener('scroll', cerrarPosicionProxima, { passive: true });
 
         document.getElementById('exportBtn').addEventListener('click', () => {
             exportData();
@@ -4400,20 +4448,15 @@
             }
 
             const total = proximasLecturas.length;
+            cerrarPosicionProxima();
             container.innerHTML = proximasLecturas.map((libro, index) => {
                 const posicion = index + 1;
-                const opciones = Array.from({ length: total }, (_, i) => {
-                    const n = i + 1;
-                    return `<option value="${n}"${n === posicion ? ' selected' : ''}>${n}</option>`;
-                }).join('');
                 return `
                 <div class="proxima-item">
                     <div class="proxima-cover-slot">
                         <img class="proxima-cover" src="${portadaLeyendoSrc(libro.titulo)}" alt="" onclick="ampliarPortada(this)" onerror="this.remove()">
                     </div>
-                    <select class="proxima-posicion" aria-label="Posición ${posicion} de ${total}" title="Cambiar posición" onclick="event.stopPropagation()" onchange="cambiarPosicionProxima(${index}, this.value)">
-                        ${opciones}
-                    </select>
+                    <button type="button" class="proxima-posicion" aria-label="Posición ${posicion} de ${total}" aria-haspopup="listbox" title="Cambiar posición" onclick="event.stopPropagation(); abrirPosicionProxima(this, ${index})">${posicion}</button>
                     <div class="proxima-body">
                         <div class="proxima-titulo">${libro.titulo}</div>
                         <div class="proxima-autor">${libro.autor}</div>
@@ -4452,8 +4495,70 @@
             document.getElementById('sinopsisOverlay').classList.remove('visible');
         }
 
+        function menuPosicionProxima() {
+            let menu = document.getElementById('proximaPosicionMenu');
+            if (!menu) {
+                menu = document.createElement('div');
+                menu.id = 'proximaPosicionMenu';
+                menu.className = 'proxima-posicion-menu';
+                menu.hidden = true;
+                menu.setAttribute('role', 'listbox');
+                menu.setAttribute('aria-label', 'Elegir posición');
+                menu.addEventListener('click', (e) => e.stopPropagation());
+                document.body.appendChild(menu);
+            }
+            return menu;
+        }
+
+        function cerrarPosicionProxima() {
+            const menu = document.getElementById('proximaPosicionMenu');
+            if (!menu) return;
+            menu.hidden = true;
+            menu.dataset.index = '';
+            document.querySelectorAll('.proxima-posicion[aria-expanded="true"]').forEach((btn) => {
+                btn.setAttribute('aria-expanded', 'false');
+            });
+        }
+
+        function abrirPosicionProxima(btn, index) {
+            const menu = menuPosicionProxima();
+            if (!menu.hidden && menu.dataset.index === String(index)) {
+                cerrarPosicionProxima();
+                return;
+            }
+            const total = proximasLecturas.length;
+            const actual = index + 1;
+            menu.innerHTML = Array.from({ length: total }, (_, i) => {
+                const n = i + 1;
+                const marca = n === actual ? ' actual' : '';
+                return `<button type="button" class="${marca.trim()}" role="option" aria-selected="${n === actual}" onclick="cambiarPosicionProxima(${index}, ${n})">${n}</button>`;
+            }).join('');
+            menu.dataset.index = String(index);
+            menu.hidden = false;
+            document.querySelectorAll('.proxima-posicion[aria-expanded="true"]').forEach((abierto) => {
+                abierto.setAttribute('aria-expanded', 'false');
+            });
+            btn.setAttribute('aria-expanded', 'true');
+            const rect = btn.getBoundingClientRect();
+            const margen = 8;
+            const barra = 76;
+            let left = rect.right - menu.offsetWidth;
+            let top = rect.bottom + 6;
+            if (left < margen) left = margen;
+            if (left + menu.offsetWidth > window.innerWidth - margen) {
+                left = window.innerWidth - menu.offsetWidth - margen;
+            }
+            if (top + menu.offsetHeight > window.innerHeight - barra) {
+                top = rect.top - menu.offsetHeight - 6;
+            }
+            if (top < margen) top = margen;
+            menu.style.left = `${left}px`;
+            menu.style.top = `${top}px`;
+        }
+
         // Inserta el libro en la posición elegida (1..n) y desplaza el resto hacia abajo desde ahí.
         function cambiarPosicionProxima(index, nuevaPosicion) {
+            cerrarPosicionProxima();
             const destino = Number(nuevaPosicion) - 1;
             if (!Number.isInteger(destino) || destino < 0 || destino >= proximasLecturas.length || destino === index) {
                 return;
