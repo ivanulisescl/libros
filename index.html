@@ -1592,8 +1592,8 @@
         [data-theme="fresh-light"] .books-grid:not(.list-view) .book-sinopsis-btn,
         [data-theme="light"] .books-grid:not(.list-view) .book-toolbar .extra-toggle.citas-btn,
         [data-theme="fresh-light"] .books-grid:not(.list-view) .book-toolbar .extra-toggle.citas-btn {
-            background: rgba(192, 57, 43, 0.15) !important;
-            color: #a93226 !important;
+            background: color-mix(in srgb, var(--accent) 24%, var(--secondary)) !important;
+            color: var(--accent) !important;
         }
 
         [data-theme="light"] .books-grid:not(.list-view) .book-toolbar button.active,
@@ -1602,8 +1602,8 @@
         [data-theme="fresh-light"] .books-grid:not(.list-view) .book-sinopsis-btn.active,
         [data-theme="light"] .books-grid:not(.list-view) .book-toolbar .extra-toggle.citas-btn.active,
         [data-theme="fresh-light"] .books-grid:not(.list-view) .book-toolbar .extra-toggle.citas-btn.active {
-            background: rgba(192, 57, 43, 0.22) !important;
-            color: #922b21 !important;
+            background: color-mix(in srgb, var(--accent) 40%, var(--secondary)) !important;
+            color: color-mix(in srgb, var(--accent) 78%, #000) !important;
         }
 
         @media (hover: hover) and (pointer: fine) {
@@ -1613,8 +1613,8 @@
             [data-theme="fresh-light"] .books-grid:not(.list-view) .book-sinopsis-btn:hover,
             [data-theme="light"] .books-grid:not(.list-view) .book-toolbar .extra-toggle.citas-btn:hover,
             [data-theme="fresh-light"] .books-grid:not(.list-view) .book-toolbar .extra-toggle.citas-btn:hover {
-                background: rgba(192, 57, 43, 0.22) !important;
-                color: #922b21 !important;
+                background: color-mix(in srgb, var(--accent) 40%, var(--secondary)) !important;
+                color: color-mix(in srgb, var(--accent) 78%, #000) !important;
             }
         }
 
@@ -2165,14 +2165,16 @@
 
         [data-theme="light"] .proxima-btn.edit,
         [data-theme="fresh-light"] .proxima-btn.edit {
-            background: rgba(192, 57, 43, 0.15);
-            color: #a93226;
+            background: color-mix(in srgb, var(--accent) 24%, var(--secondary));
+            color: var(--accent);
         }
 
-        [data-theme="light"] .proxima-btn.edit:hover,
-        [data-theme="fresh-light"] .proxima-btn.edit:hover {
-            background: rgba(192, 57, 43, 0.22);
-            color: #922b21;
+        @media (hover: hover) and (pointer: fine) {
+            [data-theme="light"] .proxima-btn.edit:hover,
+            [data-theme="fresh-light"] .proxima-btn.edit:hover {
+                background: color-mix(in srgb, var(--accent) 40%, var(--secondary));
+                color: color-mix(in srgb, var(--accent) 78%, #000);
+            }
         }
 
         .proxima-has-sinopsis {
@@ -2451,9 +2453,9 @@
         [data-theme="fresh-light"] .leyendo-btn.cita,
         [data-theme="fresh-light"] .leyendo-btn.editar,
         [data-theme="fresh-light"] .leyendo-btn.ver-notas {
-            background: rgba(192, 57, 43, 0.15) !important;
-            color: #a93226 !important;
-            border-color: rgba(192, 57, 43, 0.4) !important;
+            background: color-mix(in srgb, var(--accent) 24%, var(--secondary)) !important;
+            color: var(--accent) !important;
+            border-color: color-mix(in srgb, var(--accent) 55%, transparent) !important;
         }
 
         @media (hover: hover) and (pointer: fine) {
@@ -2463,9 +2465,9 @@
             [data-theme="fresh-light"] .leyendo-btn.cita:hover,
             [data-theme="fresh-light"] .leyendo-btn.editar:hover,
             [data-theme="fresh-light"] .leyendo-btn.ver-notas:hover {
-                background: rgba(192, 57, 43, 0.22) !important;
-                border-color: rgba(192, 57, 43, 0.55) !important;
-                color: #922b21 !important;
+                background: color-mix(in srgb, var(--accent) 40%, var(--secondary)) !important;
+                border-color: color-mix(in srgb, var(--accent) 70%, transparent) !important;
+                color: color-mix(in srgb, var(--accent) 78%, #000) !important;
             }
         }
 
