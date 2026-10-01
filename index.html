@@ -1666,6 +1666,33 @@
             flex: 0 0 auto;
             width: 32px;
             height: 32px;
+            border-radius: 0.7rem;
+        }
+
+        .books-grid.list-view .btn-edit,
+        .books-grid.list-view .btn-edit:hover,
+        .books-grid.list-view .btn-delete,
+        .books-grid.list-view .btn-delete:hover {
+            background: color-mix(in srgb, var(--secondary) 72%, #000);
+            color: var(--text);
+        }
+
+        [data-theme="light"] .books-grid.list-view .btn-edit,
+        [data-theme="fresh-light"] .books-grid.list-view .btn-edit,
+        [data-theme="light"] .books-grid.list-view .btn-delete,
+        [data-theme="fresh-light"] .books-grid.list-view .btn-delete {
+            background: color-mix(in srgb, var(--accent) 24%, var(--secondary)) !important;
+            color: var(--accent) !important;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            [data-theme="light"] .books-grid.list-view .btn-edit:hover,
+            [data-theme="fresh-light"] .books-grid.list-view .btn-edit:hover,
+            [data-theme="light"] .books-grid.list-view .btn-delete:hover,
+            [data-theme="fresh-light"] .books-grid.list-view .btn-delete:hover {
+                background: color-mix(in srgb, var(--accent) 40%, var(--secondary)) !important;
+                color: color-mix(in srgb, var(--accent) 78%, #000) !important;
+            }
         }
 
         .books-grid.list-view .book-title {
