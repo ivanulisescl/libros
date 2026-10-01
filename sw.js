@@ -37,6 +37,7 @@ self.addEventListener('fetch', (e) => {
   if (!e.request.url.startsWith('http')) return;
   
   const url = new URL(e.request.url);
+  if (url.hostname === 'api.github.com') return;
   const esPortada = url.pathname.includes('/portadas/');
   if (esPortada && url.pathname.endsWith('/historia-de-langreo.jpg')) {
     url.searchParams.set('v', '2');

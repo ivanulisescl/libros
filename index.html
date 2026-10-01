@@ -3057,8 +3057,11 @@
         const ABANDONADOS_KEY = 'biblioteca_abandonados_v1';
         const JSON_URL = 'mi_biblioteca.json';
 
-        // GitHub upload (Contents API)
-        const GITHUB_TOKEN_STORAGE_KEY = 'runningGitHubToken';
+        // Token propio de esta app. No compartir la clave con RunMetrics: ambas
+        // viven en ivanulisescl.github.io y un token fino de un solo repositorio
+        // deja de valer aquí en cuanto la otra app lo sustituye.
+        const GITHUB_TOKEN_STORAGE_KEY = 'librosGitHubToken';
+        const GITHUB_TOKEN_DB = 'librosGitHubTokenDb';
         const GITHUB_REPO = 'ivanulisescl/libros';
 
         // Current data
@@ -3926,8 +3929,8 @@
         }
 
         // Chrome en Android puede borrar localStorage si falta espacio. El token se guarda
-        // también en IndexedDB (la misma base que RunMetrics, mismo origen en GitHub Pages)
-        // y se pide almacenamiento persistente para que no lo tire.
+        // también en IndexedDB, en una base solo de esta app, y se pide almacenamiento
+        // persistente para que no lo tire.
         function persistSiteStorage() {
             try {
                 if (navigator.storage && typeof navigator.storage.persist === 'function') {
@@ -3936,13 +3939,13 @@
             } catch (_) {}
         }
 
-        function openGitHubTokenDb() {
+        function openGitHubTokenDb(name = GITHUB_TOKEN_DB) {
             return new Promise((resolve, reject) => {
                 if (!window.indexedDB) {
                     reject(new Error('indexedDB'));
                     return;
                 }
-                const req = indexedDB.open('runningGitHubTokenDb', 1);
+                const req = indexedDB.open(name, 1);
                 req.onupgradeneeded = () => {
                     const db = req.result;
                     if (!db.objectStoreNames.contains('kv')) db.createObjectStore('kv');
@@ -4022,11 +4025,51 @@
             await deleteGitHubTokenFromDb();
         }
 
+        async function readLegacySharedToken() {
+            try {
+                const local = (localStorage.getItem('runningGitHubToken') || '').trim();
+                if (local) return local;
+            } catch (_) {}
+            try {
+                if (indexedDB.databases) {
+                    const dbs = await indexedDB.databases();
+                    if (!dbs.some((db) => db.name === 'runningGitHubTokenDb')) return '';
+                }
+                const db = await openGitHubTokenDb('runningGitHubTokenDb');
+                const value = await new Promise((resolve) => {
+                    const tx = db.transaction('kv', 'readonly');
+                    const req = tx.objectStore('kv').get('runningGitHubToken');
+                    req.onsuccess = () => resolve(typeof req.result === 'string' ? req.result.trim() : '');
+                    req.onerror = () => resolve('');
+                });
+                db.close();
+                return value;
+            } catch (_) {
+                return '';
+            }
+        }
+
         async function loadGitHubToken() {
             let token = readGitHubTokenFromLocalStorage();
             if (!token) token = await readGitHubTokenFromDb();
-            if (token) await saveGitHubToken(token);
+            if (!token) {
+                token = await readLegacySharedToken();
+                if (token) await saveGitHubToken(token);
+                return token;
+            }
+            await saveGitHubToken(token);
             return token;
+        }
+
+        function errorSubidaGitHub(status, errData) {
+            const message = (errData && errData.message) || '';
+            if (status === 401) {
+                return new Error('GitHub ha rechazado el token. Sigue guardado en el móvil. Si en GitHub sigue vigente, vuelve a intentar; si no, pega otro en Configurar token.');
+            }
+            if (status === 403 && /personal access token/i.test(message)) {
+                return new Error('El token guardado no puede modificar ivanulisescl/libros. En Configurar token pega el token de esta biblioteca, con escritura de código en ese repositorio.');
+            }
+            return new Error(message || `Error ${status}`);
         }
 
         /**
@@ -4057,16 +4100,13 @@
                     'Content-Type': 'application/json'
                 };
                 let sha = null;
-                const getRes = await fetch(apiUrl, { headers });
+                const getRes = await fetch(apiUrl, { headers, cache: 'no-store' });
                 if (getRes.ok) {
                     const getData = await getRes.json();
                     sha = getData.sha;
                 } else if (getRes.status !== 404) {
                     const errData = await getRes.json().catch(() => ({}));
-                    if (getRes.status === 401) {
-                        throw new Error('GitHub ha rechazado el token. Sigue guardado en el móvil. Si en GitHub sigue vigente, vuelve a intentar; si no, pega otro en Configurar token.');
-                    }
-                    throw new Error(errData.message || `Error ${getRes.status}: ${getRes.statusText}`);
+                    throw errorSubidaGitHub(getRes.status, errData);
                 }
                 const putBody = {
                     message: `Actualizar ${filename} (${new Date().toISOString().slice(0, 10)})`,
@@ -4076,14 +4116,12 @@
                 const putRes = await fetch(apiUrl, {
                     method: 'PUT',
                     headers,
+                    cache: 'no-store',
                     body: JSON.stringify(putBody)
                 });
                 if (!putRes.ok) {
                     const errData = await putRes.json().catch(() => ({}));
-                    if (putRes.status === 401) {
-                        throw new Error('GitHub ha rechazado el token. Sigue guardado en el móvil. Si en GitHub sigue vigente, vuelve a intentar; si no, pega otro en Configurar token.');
-                    }
-                    throw new Error(errData.message || `Error ${putRes.status}: ${putRes.statusText}`);
+                    throw errorSubidaGitHub(putRes.status, errData);
                 }
                 if (onStatus) onStatus(`✅ ${filename} subido.`, false);
             } catch (err) {
@@ -4331,7 +4369,7 @@
             document.getElementById('operacionesMenu').classList.remove('visible');
             const actual = await loadGitHubToken();
             const nuevo = prompt(
-                `Pega tu GitHub Personal Access Token.\n\n` +
+                `Pega el token de esta biblioteca (ivanulisescl/libros).\n\n` +
                 `- Aceptar: guardar/cambiar token\n` +
                 `- Vacío: borrar token guardado\n\n` +
                 `Token actual: ${actual ? '(guardado)' : '(no hay)'}`
