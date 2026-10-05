@@ -448,6 +448,43 @@
             color: var(--accent);
         }
 
+        .header-symbol-btn .upload-arrow {
+            transform-box: fill-box;
+            transform-origin: center;
+        }
+
+        .header-symbol-btn.uploading,
+        .header-symbol-btn.uploading:hover,
+        .header-symbol-btn.uploading:disabled {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: #fff;
+            cursor: progress;
+            opacity: 1;
+            animation: upload-btn-color 0.85s ease-in-out infinite;
+        }
+
+        .header-symbol-btn.uploading .upload-arrow {
+            animation: upload-arrow-bob 0.7s ease-in-out infinite;
+        }
+
+        @keyframes upload-arrow-bob {
+            0%, 100% { transform: translateY(22%); }
+            50% { transform: translateY(-38%); }
+        }
+
+        @keyframes upload-btn-color {
+            0%, 100% { background: var(--accent); border-color: var(--accent); }
+            50% { background: var(--accent-light); border-color: var(--accent-light); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .header-symbol-btn.uploading .upload-arrow,
+            .header-symbol-btn.uploading {
+                animation: none;
+            }
+        }
+
         /* Buttons */
         .btn-icon {
             display: flex;
@@ -2814,7 +2851,7 @@
                 </div>
             </div>
             <button type="button" class="header-symbol-btn" id="uploadGitHubHeaderBtn" title="Subir mi_biblioteca.json a GitHub" aria-label="Subir mi_biblioteca.json a GitHub">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 13V3"/><path d="M7 8l5-5 5 5"/><path d="M4 16v5h16v-5"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><g class="upload-arrow"><path d="M12 13V3"/><path d="M7 8l5-5 5 5"/></g><path d="M4 16v5h16v-5"/></svg>
             </button>
         </div>
     </header>
@@ -2833,7 +2870,7 @@
                 <button class="btn-icon" id="importBtn">Importar</button>
                 <input type="file" id="importFile" accept=".json" style="display: none;">
                 <button class="btn-icon" id="resetBtn" title="Recargar datos desde el servidor">Resetear</button>
-                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.37)</button>
+                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.38)</button>
             </div>
         </div>
     </nav>
@@ -4151,6 +4188,7 @@
                 await saveGitHubToken(token);
             }
             if (onStatus) onStatus(`Subiendo ${filename}...`, false);
+            setGitHubUploadBusy(true);
             try {
                 const contentStr = typeof content === 'object' ? JSON.stringify(content, null, 2) : content;
                 const contentBase64 = btoa(unescape(encodeURIComponent(contentStr)));
@@ -4188,7 +4226,17 @@
                 if (onStatus) onStatus(`✅ ${filename} subido.`, false);
             } catch (err) {
                 if (onStatus) onStatus(`❌ ${err.message}`, true);
+            } finally {
+                setGitHubUploadBusy(false);
             }
+        }
+
+        function setGitHubUploadBusy(busy) {
+            const btn = document.getElementById('uploadGitHubHeaderBtn');
+            if (!btn) return;
+            btn.classList.toggle('uploading', busy);
+            btn.disabled = busy;
+            btn.setAttribute('aria-busy', busy ? 'true' : 'false');
         }
 
         // View toggle

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'biblioteca-v3.37-token-persist';
+const CACHE_NAME = 'biblioteca-v3.38-token-persist';
 const ASSETS = [
   './',
   './index.html',
