@@ -2870,7 +2870,7 @@
                 <button class="btn-icon" id="importBtn">Importar</button>
                 <input type="file" id="importFile" accept=".json" style="display: none;">
                 <button class="btn-icon" id="resetBtn" title="Recargar datos desde el servidor">Resetear</button>
-                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.38)</button>
+                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.39)</button>
             </div>
         </div>
     </nav>
@@ -5028,7 +5028,7 @@
                 .toLowerCase()
                 .replace(/[^a-z0-9]+/g, '-')
                 .replace(/^-+|-+$/g, '');
-            const versiones = { 'historia-de-langreo': '2' };
+            const versiones = { 'historia-de-langreo': '2', 'tropico-de-cancer': '2' };
             const version = versiones[slug] ? `?v=${versiones[slug]}` : '';
             return `portadas/${slug}.jpg${version}`;
         }

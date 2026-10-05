@@ -1,4 +1,4 @@
-const CACHE_NAME = 'biblioteca-v3.38-token-persist';
+const CACHE_NAME = 'biblioteca-v3.39-token-persist';
 const ASSETS = [
   './',
   './index.html',
@@ -39,7 +39,7 @@ self.addEventListener('fetch', (e) => {
   const url = new URL(e.request.url);
   if (url.hostname === 'api.github.com') return;
   const esPortada = url.pathname.includes('/portadas/');
-  if (esPortada && url.pathname.endsWith('/historia-de-langreo.jpg')) {
+  if (esPortada && (url.pathname.endsWith('/historia-de-langreo.jpg') || url.pathname.endsWith('/tropico-de-cancer.jpg'))) {
     url.searchParams.set('v', '2');
   }
   const destino = esPortada ? new Request(url.toString(), { method: 'GET' }) : e.request;
