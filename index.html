@@ -3092,6 +3092,8 @@
                 <option value="5">⭐ 5+</option>
                 <option value="0">Sin puntuar</option>
             </select>
+            <select id="primaryCategoryFilter" aria-label="Categoría primaria"><option value="">Categoría primaria</option></select>
+            <select id="secondaryCategoryFilter" aria-label="Categoría secundaria"><option value="">Categoría secundaria</option></select>
         </div>
         <div class="sort-row">
             <span class="sort-label">Ordenar por</span>
@@ -3954,6 +3956,28 @@
             getUniqueValues(libros, 'autor').forEach(author => {
                 authorSelect.innerHTML += `<option value="${author}">${author}</option>`;
             });
+
+            fillCategoryFilter('primaryCategoryFilter', 'Categoría primaria', 'categoria_principal');
+            fillCategoryFilter('secondaryCategoryFilter', 'Categoría secundaria', 'categoria_secundaria');
+        }
+
+        function fillCategoryFilter(id, placeholder, field) {
+            const select = document.getElementById(id);
+            const current = select.value;
+            const values = [...new Set(libros.map(book => (book[field] || '').trim()).filter(Boolean))]
+                .sort((a, b) => a.localeCompare(b, 'es'));
+            select.replaceChildren();
+            const empty = document.createElement('option');
+            empty.value = '';
+            empty.textContent = placeholder;
+            select.appendChild(empty);
+            values.forEach(value => {
+                const option = document.createElement('option');
+                option.value = value;
+                option.textContent = value;
+                select.appendChild(option);
+            });
+            select.value = values.includes(current) ? current : '';
         }
 
         // Update stats
@@ -4059,6 +4083,8 @@
             const searchTerm = sinTildes(document.getElementById('searchInput').value);
             const authorFilter = document.getElementById('authorFilter').value;
             const ratingFilter = document.getElementById('ratingFilter').value;
+            const primaryCategoryFilter = document.getElementById('primaryCategoryFilter').value;
+            const secondaryCategoryFilter = document.getElementById('secondaryCategoryFilter').value;
             const sortBy = document.getElementById('sortFilter').value;
 
             let filtered = libros.filter(book => {
@@ -4069,6 +4095,8 @@
                     (book.sinopsis && sinTildes(book.sinopsis).includes(searchTerm)) ||
                     (book.comentario && sinTildes(book.comentario).includes(searchTerm));
                 const matchesAuthor = !authorFilter || book.autor === authorFilter;
+                const matchesPrimary = !primaryCategoryFilter || (book.categoria_principal || '') === primaryCategoryFilter;
+                const matchesSecondary = !secondaryCategoryFilter || (book.categoria_secundaria || '') === secondaryCategoryFilter;
                 
                 let matchesRating = true;
                 if (ratingFilter === '0') {
@@ -4077,7 +4105,7 @@
                     matchesRating = book.puntuacion !== null && book.puntuacion >= parseInt(ratingFilter);
                 }
                 
-                return matchesSearch && matchesAuthor && matchesRating;
+                return matchesSearch && matchesAuthor && matchesRating && matchesPrimary && matchesSecondary;
             });
 
             switch(sortBy) {
@@ -4651,11 +4679,15 @@
         document.getElementById('searchInput').addEventListener('input', filterAndSortBooks);
         document.getElementById('authorFilter').addEventListener('change', filterAndSortBooks);
         document.getElementById('ratingFilter').addEventListener('change', filterAndSortBooks);
+        document.getElementById('primaryCategoryFilter').addEventListener('change', filterAndSortBooks);
+        document.getElementById('secondaryCategoryFilter').addEventListener('change', filterAndSortBooks);
         document.getElementById('sortFilter').addEventListener('change', filterAndSortBooks);
         document.getElementById('clearFiltersBtn').addEventListener('click', () => {
             document.getElementById('searchInput').value = '';
             document.getElementById('authorFilter').value = '';
             document.getElementById('ratingFilter').value = '';
+            document.getElementById('primaryCategoryFilter').value = '';
+            document.getElementById('secondaryCategoryFilter').value = '';
             document.getElementById('sortFilter').value = 'date-desc';
             filterAndSortBooks();
         });
