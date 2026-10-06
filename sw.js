@@ -1,4 +1,4 @@
-const CACHE_NAME = 'biblioteca-v3.40';
+const CACHE_NAME = 'biblioteca-v3.41';
 const ASSETS = [
   './',
   './index.html',
@@ -42,7 +42,7 @@ self.addEventListener('fetch', (e) => {
   if (esPortada && !url.searchParams.has('v') && (url.pathname.endsWith('/historia-de-langreo.jpg') || url.pathname.endsWith('/tropico-de-cancer.jpg'))) {
     url.searchParams.set('v', '2');
   }
-  const destino = esPortada ? new Request(url.toString(), { method: 'GET' }) : e.request;
+  const destino = esPortada ? new Request(url.toString(), { method: 'GET', cache: 'reload' }) : e.request;
 
   e.respondWith(
     (esPortada

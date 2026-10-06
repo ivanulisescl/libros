@@ -2958,7 +2958,7 @@
                 <button class="btn-icon" id="importBtn">Importar</button>
                 <input type="file" id="importFile" accept=".json" style="display: none;">
                 <button class="btn-icon" id="resetBtn" title="Recargar datos desde el servidor">Resetear</button>
-                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.40)</button>
+                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.41)</button>
             </div>
         </div>
     </nav>
@@ -5197,8 +5197,31 @@
         }
 
         function versionPortada(slug) {
+            const sustituidas = {
+                'comer-y-correr': '20261006',
+                'cuentos-para-pensar': '20261006',
+                'despues-de-la-luz': '20261006',
+                'el-acontecimiento': '20261006',
+                'el-impostor': '20261006',
+                'el-viaje-intimo-de-la-locura': '20261006',
+                'en-la-colonia-penitenciaria': '20261006',
+                'escoria': '20261006',
+                'jose': '20261006',
+                'la-conquista-de-la-felicidad': '20261006',
+                'la-furia-y-el-silencio-asturias-primavera-de-1962': '20261006',
+                'la-increible-y-triste-historia': '20261006',
+                'la-ultima-del-domingo': '20261006',
+                'la-ultima-funcion': '20261006',
+                'lo-demas-es-aire': '20261006',
+                'los-ultimos-voces-de-la-laponia': '20261006',
+                'maestros-de-la-felicidad': '20261006',
+                'marianela': '20261006',
+                'niebla': '20261006',
+                'retrato-de-un-hombre-inmaduro': '20261006',
+                'viaje-al-fin-de-la-noche': '20261006'
+            };
             const fijas = { 'historia-de-langreo': '2', 'tropico-de-cancer': '2' };
-            return versionesPortadaGuardadas()[slug] || fijas[slug] || '';
+            return sustituidas[slug] || versionesPortadaGuardadas()[slug] || fijas[slug] || '';
         }
 
         function recordarVersionPortada(slug) {
