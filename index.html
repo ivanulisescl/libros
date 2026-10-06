@@ -11,9 +11,10 @@
     <script>
         (function () {
             try {
-                var light = localStorage.getItem('theme') === 'fresh-light';
+                var theme = localStorage.getItem('theme') === 'fresh-light' ? 'fresh-light' : 'fresh';
+                document.documentElement.setAttribute('data-theme', theme);
                 var meta = document.querySelector('meta[name="theme-color"]');
-                if (meta) meta.setAttribute('content', light ? '#f0e8dc' : '#3d3630');
+                if (meta) meta.setAttribute('content', theme === 'fresh-light' ? '#f0e8dc' : '#3d3630');
             } catch (e) {}
         })();
     </script>
@@ -154,7 +155,7 @@
             padding-bottom: 1.25rem;
         }
 
-        body:not([data-theme="light"]) {
+        html:not([data-theme]) body:not([data-theme="light"]) {
             background-image: 
                 radial-gradient(ellipse at 10% 20%, rgba(233, 69, 96, 0.1) 0%, transparent 50%),
                 radial-gradient(ellipse at 90% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 50%);
@@ -2958,7 +2959,7 @@
                 <button class="btn-icon" id="importBtn">Importar</button>
                 <input type="file" id="importFile" accept=".json" style="display: none;">
                 <button class="btn-icon" id="resetBtn" title="Recargar datos desde el servidor">Resetear</button>
-                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.41)</button>
+                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.42)</button>
             </div>
         </div>
     </nav>
@@ -4395,12 +4396,14 @@
             const toggle = document.getElementById('themeToggle');
             const savedTheme = localStorage.getItem('theme') || 'fresh';
             const theme = savedTheme === 'fresh-light' ? 'fresh-light' : 'fresh';
+            document.documentElement.setAttribute('data-theme', theme);
             document.body.setAttribute('data-theme', theme);
             syncThemeBar(theme);
 
             toggle.addEventListener('click', () => {
                 const isDark = document.body.getAttribute('data-theme') === 'fresh';
                 const next = isDark ? 'fresh-light' : 'fresh';
+                document.documentElement.setAttribute('data-theme', next);
                 document.body.setAttribute('data-theme', next);
                 localStorage.setItem('theme', next);
                 syncThemeBar(next);
