@@ -2959,7 +2959,7 @@
                 <button class="btn-icon" id="importBtn">Importar</button>
                 <input type="file" id="importFile" accept=".json" style="display: none;">
                 <button class="btn-icon" id="resetBtn" title="Recargar datos desde el servidor">Resetear</button>
-                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.42)</button>
+                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.43)</button>
             </div>
         </div>
     </nav>
@@ -3044,6 +3044,14 @@
             <div class="chart-card">
                 <h3 class="chart-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.6l2.15 4.55 5 .7-3.65 3.5.9 5.05L12 15.1l-4.4 2.3.9-5.05L4.85 8.85l5-.7L12 3.6z"/></svg>Distribución de Puntuaciones</h3>
                 <div class="chart-container"><canvas id="ratingsChart"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <h3 class="chart-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12.2 12 19.7l8.2-8.2L12.7 4H7A2.5 2.5 0 0 0 4.5 6.5z"/><circle cx="8.4" cy="8.4" r="1.15" fill="currentColor" stroke="none"/></svg>Distribución por Categoría Primaria</h3>
+                <div class="chart-container"><canvas id="primaryCategoryChart"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <h3 class="chart-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 8.2 9.2 13.9l6.4-6.4L10.2 2H6A2.5 2.5 0 0 0 3.5 4.5z"/><path d="M10.5 11.2 16.2 16.9 22 11.1 16.8 5.9h-4.2z"/></svg>Distribución por Categoría Secundaria</h3>
+                <div class="chart-container" id="secondaryCategoryContainer"><canvas id="secondaryCategoryChart"></canvas></div>
             </div>
             <div class="chart-card">
                 <h3 class="chart-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4.2h10"/><path d="M7 7.4h12"/><rect x="5" y="10.4" width="14" height="10" rx="1.4"/></svg>Distribución por Extensión</h3>
@@ -3166,6 +3174,18 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="categoriaPrincipal">Categoría principal (opcional)</label>
+                        <input type="text" id="categoriaPrincipal" list="listaCategoriaPrincipal" placeholder="Ej: Novela" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="categoriaSecundaria">Categoría secundaria (opcional)</label>
+                        <input type="text" id="categoriaSecundaria" list="listaCategoriaSecundaria" placeholder="Ej: Psicológica" autocomplete="off">
+                    </div>
+                </div>
+                <datalist id="listaCategoriaPrincipal"></datalist>
+                <datalist id="listaCategoriaSecundaria"></datalist>
                 <div class="form-group">
                     <label for="sinopsis">Sinopsis (opcional)</label>
                     <textarea id="sinopsis" placeholder="Resumen o sinopsis del libro..." rows="3"></textarea>
@@ -3225,6 +3245,16 @@
                 <div class="form-group">
                     <label for="editProximaAutor">Autor</label>
                     <input type="text" id="editProximaAutor" required placeholder="Nombre del autor">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="proximaCategoriaPrincipal">Categoría principal (opcional)</label>
+                        <input type="text" id="proximaCategoriaPrincipal" list="listaCategoriaPrincipal" placeholder="Ej: Novela" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="proximaCategoriaSecundaria">Categoría secundaria (opcional)</label>
+                        <input type="text" id="proximaCategoriaSecundaria" list="listaCategoriaSecundaria" placeholder="Ej: Psicológica" autocomplete="off">
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="editProximaSinopsis">Sinopsis (opcional)</label>
@@ -3390,13 +3420,19 @@
                     if (!libros && jsonData.libros) {
                         libros = jsonData.libros;
                         saveData(libros);
+                    } else if (completarCategorias(libros, jsonData.libros)) {
+                        saveData(libros);
                     }
                     if (!proximasLecturas && jsonData.proximas) {
                         proximasLecturas = jsonData.proximas;
                         saveProximas(proximasLecturas);
+                    } else if (completarCategorias(proximasLecturas, jsonData.proximas)) {
+                        saveProximas(proximasLecturas);
                     }
                     if (!abandonados && jsonData.abandonados) {
                         abandonados = jsonData.abandonados;
+                        saveAbandonados(abandonados);
+                    } else if (completarCategorias(abandonados, jsonData.abandonados)) {
                         saveAbandonados(abandonados);
                     }
                     if (jsonData.hasOwnProperty('leyendo')) {
@@ -3418,6 +3454,11 @@
                 console.log('Total próximas:', proximasLecturas.length);
                 console.log('Total abandonados:', abandonados.length);
                 
+                if (jsonData && jsonData.hasOwnProperty('leyendo') && completarCategorias(librosLeyendo, jsonData.leyendo)) {
+                    saveLeyendo();
+                }
+                rellenarSugerenciasCategorias();
+
                 renderLeyendo();
                 renderProximas();
                 renderAbandonados();
@@ -3505,6 +3546,79 @@
                 acc[item[key]] = (acc[item[key]] || 0) + 1;
                 return acc;
             }, {});
+        }
+
+        function conteoCategorias(campo) {
+            const counts = {};
+            libros.forEach(book => {
+                const valor = (book[campo] || '').trim() || 'Sin categoría';
+                counts[valor] = (counts[valor] || 0) + 1;
+            });
+            return Object.entries(counts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'es'));
+        }
+
+        function categoriasDe(libro) {
+            return {
+                categoria_principal: (libro && libro.categoria_principal || '').trim(),
+                categoria_secundaria: (libro && libro.categoria_secundaria || '').trim()
+            };
+        }
+
+        function leerCategorias(idPrincipal, idSecundaria) {
+            return {
+                categoria_principal: document.getElementById(idPrincipal).value.trim(),
+                categoria_secundaria: document.getElementById(idSecundaria).value.trim()
+            };
+        }
+
+        function escribirCategorias(idPrincipal, idSecundaria, libro) {
+            const categorias = categoriasDe(libro);
+            document.getElementById(idPrincipal).value = categorias.categoria_principal;
+            document.getElementById(idSecundaria).value = categorias.categoria_secundaria;
+        }
+
+        function rellenarSugerenciasCategorias() {
+            const principales = new Set();
+            const secundarias = new Set();
+            [libros, proximasLecturas, abandonados, librosLeyendo].forEach(lista => {
+                (lista || []).forEach(libro => {
+                    const categorias = categoriasDe(libro);
+                    if (categorias.categoria_principal) principales.add(categorias.categoria_principal);
+                    if (categorias.categoria_secundaria) secundarias.add(categorias.categoria_secundaria);
+                });
+            });
+            ponerOpcionesLista('listaCategoriaPrincipal', principales);
+            ponerOpcionesLista('listaCategoriaSecundaria', secundarias);
+        }
+
+        function ponerOpcionesLista(id, valores) {
+            const list = document.getElementById(id);
+            if (!list) return;
+            list.replaceChildren();
+            [...valores].sort((a, b) => a.localeCompare(b, 'es')).forEach(valor => {
+                const option = document.createElement('option');
+                option.value = valor;
+                list.appendChild(option);
+            });
+        }
+
+        function completarCategorias(locales, remotos) {
+            if (!Array.isArray(locales) || !Array.isArray(remotos)) return false;
+            const porClave = new Map(remotos.filter(libro => libro && libro.titulo).map(libro => [`${libro.titulo}||${libro.autor || ''}`, libro]));
+            let cambio = false;
+            locales.forEach(local => {
+                const remoto = porClave.get(`${local.titulo}||${local.autor || ''}`);
+                if (!remoto) return;
+                if (!(local.categoria_principal || '').trim() && (remoto.categoria_principal || '').trim()) {
+                    local.categoria_principal = remoto.categoria_principal;
+                    cambio = true;
+                }
+                if (!(local.categoria_secundaria || '').trim() && (remoto.categoria_secundaria || '').trim()) {
+                    local.categoria_secundaria = remoto.categoria_secundaria;
+                    cambio = true;
+                }
+            });
+            return cambio;
         }
 
         function getThemeVar(name) {
@@ -3729,6 +3843,50 @@
 
             const ratingLabels = [...Array(10).keys()].map(i => i + 1);
             const ratingData = ratingLabels.map(r => ratingCounts[r]);
+
+            const categoriasPrimarias = conteoCategorias('categoria_principal');
+            charts.primaryCategory = new Chart(document.getElementById('primaryCategoryChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: categoriasPrimarias.map(item => item[0]),
+                    datasets: [{
+                        data: categoriasPrimarias.map(item => item[1]),
+                        backgroundColor: getChartColors(categoriasPrimarias.length),
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'right', labels: { boxWidth: 12, padding: 8, font: { size: 11 } } } }
+                }
+            });
+
+            const categoriasSecundarias = conteoCategorias('categoria_secundaria');
+            const secondaryContainer = document.getElementById('secondaryCategoryContainer');
+            secondaryContainer.style.height = Math.max(280, categoriasSecundarias.length * 28) + 'px';
+            charts.secondaryCategory = new Chart(document.getElementById('secondaryCategoryChart'), {
+                type: 'bar',
+                data: {
+                    labels: categoriasSecundarias.map(item => item[0]),
+                    datasets: [{
+                        label: 'Libros',
+                        data: categoriasSecundarias.map(item => item[1]),
+                        backgroundColor: getChartColors(categoriasSecundarias.length),
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { beginAtZero: true, ticks: { stepSize: 1, precision: 0 } },
+                        y: { ticks: { autoSkip: false, font: { size: 11 } } }
+                    }
+                }
+            });
 
             charts.ratings = new Chart(document.getElementById('ratingsChart'), {
                 type: 'bar',
@@ -3991,6 +4149,7 @@
                 initCharts();
             }
             showToast('Libro añadido correctamente');
+            rellenarSugerenciasCategorias();
         }
 
         // Edit book
@@ -4009,6 +4168,7 @@
             document.getElementById('sinopsis').value = book.sinopsis || '';
             document.getElementById('comentario').value = book.comentario || '';
             document.getElementById('citas').value = book.citas || '';
+            escribirCategorias('categoriaPrincipal', 'categoriaSecundaria', book);
             updateRatingDisplay(book.puntuacion || 0);
             
             openModal('Editar Libro');
@@ -4026,6 +4186,7 @@
                 initCharts();
             }
             showToast('Libro actualizado correctamente');
+            rellenarSugerenciasCategorias();
         }
 
         // Delete book
@@ -4561,7 +4722,8 @@
                 puntuacion: puntuacionVal === 0 ? null : puntuacionVal,
                 sinopsis: document.getElementById('sinopsis').value.trim(),
                 comentario: document.getElementById('comentario').value.trim(),
-                citas: document.getElementById('citas').value.trim()
+                citas: document.getElementById('citas').value.trim(),
+                ...leerCategorias('categoriaPrincipal', 'categoriaSecundaria')
             };
             
             const bookId = document.getElementById('bookId').value;
@@ -4940,6 +5102,7 @@
             document.getElementById('editProximaTitulo').value = libro.titulo;
             document.getElementById('editProximaAutor').value = libro.autor;
             document.getElementById('editProximaSinopsis').value = libro.sinopsis || '';
+            escribirCategorias('proximaCategoriaPrincipal', 'proximaCategoriaSecundaria', libro);
             document.getElementById('deleteProximaBtn').style.display = 'inline-flex';
             document.getElementById('marcarLeidoBtn').style.display = 'inline-flex';
             document.getElementById('terminadoLeyendoBtn').style.display = 'none';
@@ -4981,6 +5144,7 @@
                 libro.titulo = titulo.toUpperCase();
                 libro.autor = autor.toUpperCase();
                 libro.sinopsis = sinopsis;
+                Object.assign(libro, leerCategorias('proximaCategoriaPrincipal', 'proximaCategoriaSecundaria'));
                 saveLeyendo();
                 renderLeyendo();
                 showToast('Libro actualizado');
@@ -4993,7 +5157,8 @@
             const libro = {
                 titulo: titulo.toUpperCase(),
                 autor: autor.toUpperCase(),
-                sinopsis: sinopsis
+                sinopsis: sinopsis,
+                ...leerCategorias('proximaCategoriaPrincipal', 'proximaCategoriaSecundaria')
             };
             
             if (currentEditProximaIndex >= 0) {
@@ -5032,7 +5197,7 @@
             const sinopsis = document.getElementById('editProximaSinopsis').value.trim();
             if (!titulo || !autor) return;
             
-            if (!anadirLibroLeyendo(titulo, autor, sinopsis)) return;
+            if (!anadirLibroLeyendo(titulo, autor, sinopsis, leerCategorias('proximaCategoriaPrincipal', 'proximaCategoriaSecundaria'))) return;
 
             proximasLecturas.splice(currentEditProximaIndex, 1);
             saveProximas(proximasLecturas);
@@ -5051,7 +5216,7 @@
         function empezarLectura() {
             if (!proximaPendiente) return;
 
-            if (!anadirLibroLeyendo(proximaPendiente.titulo, proximaPendiente.autor, proximaPendiente.sinopsis)) {
+            if (!anadirLibroLeyendo(proximaPendiente.titulo, proximaPendiente.autor, proximaPendiente.sinopsis, categoriasDe(proximaPendiente))) {
                 cerrarOpciones();
                 return;
             }
@@ -5077,6 +5242,7 @@
             document.getElementById('titulo').value = proximaPendiente.titulo.toUpperCase();
             document.getElementById('autor').value = proximaPendiente.autor.toUpperCase();
             document.getElementById('sinopsis').value = proximaPendiente.sinopsis;
+            escribirCategorias('categoriaPrincipal', 'categoriaSecundaria', proximaPendiente);
             
             // Set current month/year
             const now = new Date();
@@ -5103,19 +5269,20 @@
             return librosLeyendo.length === 1 ? ' + 1 leyendo' : ` + ${librosLeyendo.length} leyendo`;
         }
 
-        function crearLibroLeyendo(titulo, autor, sinopsis) {
+        function crearLibroLeyendo(titulo, autor, sinopsis, categorias) {
             return {
                 titulo: (titulo || '').toUpperCase(),
                 autor: (autor || '').toUpperCase(),
                 sinopsis: sinopsis || '',
                 citas: '',
                 fechaInicio: new Date().toISOString(),
-                porcentaje: 0
+                porcentaje: 0,
+                ...categoriasDe(categorias)
             };
         }
 
-        function anadirLibroLeyendo(titulo, autor, sinopsis) {
-            const nuevo = crearLibroLeyendo(titulo, autor, sinopsis);
+        function anadirLibroLeyendo(titulo, autor, sinopsis, categorias) {
+            const nuevo = crearLibroLeyendo(titulo, autor, sinopsis, categorias);
             const duplicado = librosLeyendo.some(l => l.titulo === nuevo.titulo && l.autor === nuevo.autor);
             if (duplicado) {
                 showToast('Ese libro ya está en lectura', 'error');
@@ -5177,6 +5344,7 @@
                     local.fechaInicio = remoto.fechaInicio;
                     cambiado = true;
                 }
+                if (completarCategorias([local], [remoto])) cambiado = true;
             }
             if (cambiado) saveLeyendo();
         }
@@ -5556,6 +5724,7 @@
             document.getElementById('autor').value = libro.autor;
             document.getElementById('sinopsis').value = libro.sinopsis || '';
             document.getElementById('citas').value = libro.citas || '';
+            escribirCategorias('categoriaPrincipal', 'categoriaSecundaria', libro);
             
             const now = new Date();
             document.getElementById('mes').value = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'][now.getMonth()];
@@ -5588,6 +5757,7 @@
             document.getElementById('autor').value = libro.autor;
             document.getElementById('sinopsis').value = libro.sinopsis || '';
             document.getElementById('citas').value = libro.citas || '';
+            escribirCategorias('categoriaPrincipal', 'categoriaSecundaria', libro);
             
             const now = new Date();
             document.getElementById('mes').value = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'][now.getMonth()];
@@ -5613,6 +5783,7 @@
             document.getElementById('editProximaTitulo').value = libro.titulo;
             document.getElementById('editProximaAutor').value = libro.autor;
             document.getElementById('editProximaSinopsis').value = libro.sinopsis || '';
+            escribirCategorias('proximaCategoriaPrincipal', 'proximaCategoriaSecundaria', libro);
             prepararPortadaEdicion(libro.titulo);
             
             document.getElementById('deleteProximaBtn').style.display = 'none';
