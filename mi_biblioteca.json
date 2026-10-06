@@ -34,7 +34,7 @@
       "sinopsis": "A diferencia de sus relatos psicológicos, esta es una leyenda de aliento histórico y místico. Narra el periplo de la Menorá (el candelabro de siete brazos), el objeto más sagrado del pueblo judío, tras ser saqueado de Jerusalén por los romanos y, siglos después, por los vándalos. La historia sigue al anciano Benjamín, quien dedica su vida a seguir el rastro del candelabro para evitar que caiga en el olvido o la profanación.\n\nEs una obra cargada de simbolismo sobre la identidad, el exilio y la resistencia espiritual de un pueblo. Zweig utiliza un tono casi bíblico y poético para reflexionar sobre la pertenencia y la búsqueda de la paz.",
       "comentario": "La historia engancha desde el principio.",
       "categoria_principal": "Relatos",
-      "categoria_secundaria": "Histórico y legendario"
+      "categoria_secundaria": "Histórica"
     },
     {
       "titulo": "EL ACONTECIMIENTO",
@@ -46,7 +46,7 @@
       "sinopsis": "La novela es un relato autobiográfico donde la autora reconstruye, con una honestidad casi quirúrgica, los meses de 1963 en los que, siendo una joven estudiante universitaria, descubrió que estaba embarazada. En una Francia donde el aborto era ilegal y estaba castigado con la cárcel y el ostracismo social, Ernaux narra su soledad y su determinación absoluta de no dejar que ese \"acontecimiento\" truncara su futuro y su libertad.\n\nLo que hace especial a este libro es su estilo: la \"escritura blanca\" de Ernaux. Evita cualquier sentimentalismo o adorno literario para centrarse en los hechos físicos, los detalles médicos y la indiferencia de una sociedad masculina y clasista. Es una poderosa reflexión sobre el cuerpo femenino, el acceso a los derechos y cómo la memoria es capaz de rescatar un trauma para convertirlo en un acto de resistencia política y literaria.",
       "comentario": "Para poner en valor que cuente ese episodio de su vida. EL libro no me marcó.",
       "categoria_principal": "Memorias",
-      "categoria_secundaria": "Testimonio personal"
+      "categoria_secundaria": "Autobiográfica"
     },
     {
       "titulo": "LA TIERRA MÁS DISPUTADA",
@@ -58,7 +58,7 @@
       "sinopsis": "La tierra más disputada: El pasado, el presente y el futuro de Palestina e Israel no es una novela, sino una de las crónicas periodísticas más completas y accesibles escritas en español sobre este conflicto. El libro huye de simplismos y se sumerge en las raíces históricas, religiosas y políticas que han convertido a este pequeño territorio en el epicentro de la tensión mundial.\n\nA través de un análisis riguroso, los autores explican:\n\nLa construcción de los relatos: Cómo tanto el sionismo como el nacionalismo palestino han forjado sus identidades y derechos sobre la tierra.\n\nLos momentos clave: Desde la declaración Balfour y la creación del Estado de Israel en 1948, hasta las Intifadas y el fracaso de los Acuerdos de Oslo.\n\nLa realidad sobre el terreno: El impacto de los asentamientos, el muro de separación y la vida cotidiana bajo la ocupación o la amenaza constante.\n\nEs una obra imprescindible para quien quiera entender el conflicto más allá de los titulares, analizando por qué las soluciones diplomáticas parecen siempre destinadas al fracaso y qué intereses internacionales mantienen la llama encendida.",
       "comentario": "Me pareció muy interesante y tomé muchas notas, aunque tal cantidad de información se me hizo un poco espesa.",
       "categoria_principal": "Historia",
-      "categoria_secundaria": "Conflicto palestino-israelí"
+      "categoria_secundaria": "Memoria"
     },
     {
       "titulo": "24 HORAS EN LA VIDA DE UNA MUJER",
@@ -142,7 +142,7 @@
       "sinopsis": "A una casa perdida metanes la nada lleguen dos matrimonios cola idea de cobrar una herencia. Los criaos de la casa, y la casa mesma, paecen sacaos d'una hestoria de mieu. Sobre la casa pesa una maldición, y cada vuelta que cacarexa una pita, muerre daquién de la casa. Homenax costumista a \"La ratonera\" d'Agatha Christie.",
       "comentario": "Por leer en asturiano.",
       "categoria_principal": "Teatro",
-      "categoria_secundaria": "Comedia de misterio"
+      "categoria_secundaria": "Negra"
     },
     {
       "titulo": "BONES NUECHES, MIO XENERAL",
@@ -154,7 +154,7 @@
       "sinopsis": "",
       "comentario": "Ni me acuerdo",
       "categoria_principal": "Teatro",
-      "categoria_secundaria": "Pendiente de precisar"
+      "categoria_secundaria": "Comedia"
     },
     {
       "titulo": "MANIAC",
@@ -166,7 +166,7 @@
       "sinopsis": "El libro es un tríptico que recorre la historia de la computación y la física moderna a través de figuras reales, pero narrado con la intensidad de un thriller existencial. El eje central es la figura de John von Neumann, considerado el ser humano más inteligente del siglo XX, un genio matemático que trabajó en el Proyecto Manhattan, diseñó la arquitectura de los ordenadores modernos y sentó las bases de la inteligencia artificial antes de morir prematuramente.\n\nLa narrativa se divide en tres partes:\n\nEl suicidio del físico Paul Ehrenfest: Un prólogo oscuro que muestra la desesperación de los científicos ante el fin de la física clásica y el ascenso del nazismo.\n\nLa vida de Von Neumann: Narrada a través de las voces de quienes lo conocieron (familiares, amigos y rivales), retratándolo como un hombre con una capacidad lógica sobrehumana, pero cuya visión de un mundo dominado por máquinas sembró las semillas de nuestra era actual.\n\nAlphaGo vs. Lee Sedol: La parte final salta al año 2016 para narrar el histórico duelo de Go entre la inteligencia artificial de Google y el campeón mundial, marcando el momento en que la máquina superó la intuición humana.",
       "comentario": "Me encantó, me resultó fascinante.",
       "categoria_principal": "Novela",
-      "categoria_secundaria": "Ficción biográfica"
+      "categoria_secundaria": "Biográfica"
     },
     {
       "titulo": "LA FUNDACIÓN",
@@ -178,7 +178,7 @@
       "sinopsis": "La obra comienza en lo que parece ser una residencia moderna y confortable (la \"Fundación\"). Un grupo de jóvenes intelectuales disfruta de vistas idílicas, música clásica, libros y comodidades, mientras trabajan en sus investigaciones gracias a una beca. Sin embargo, el protagonista, Tomás, empieza a notar pequeñas grietas en esa realidad perfecta: un compañero que parece enfermo pero a quien nadie ayuda, un vaso que no es lo que parece, o un olor extraño que invade la habitación.\n\nA medida que avanza la trama, se produce el \"efecto de inmersión\" característico de Buero: el espectador descubre, al mismo tiempo que Tomás, que la lujosa residencia es en realidad una celda de castigo en una cárcel para presos políticos condenados a muerte. Lo que Tomás veía como muebles eran petates, y sus \"compañeros becados\" son prisioneros esperando su ejecución. La obra es una poderosa metáfora sobre la alineación, la lucha por la libertad y cómo la mente humana puede construir fantasías para sobrevivir al horror de la represión.",
       "comentario": "Muy original el enfoque.",
       "categoria_principal": "Teatro",
-      "categoria_secundaria": "Drama político"
+      "categoria_secundaria": "Política"
     },
     {
       "titulo": "AMOK",
@@ -190,7 +190,7 @@
       "sinopsis": "El destierro a la soledad de Madame de Prie en tiempos de Luis XV, el deambular de un coronel de las tropas de Napoleón por tierra enemiga entre los martirizados cuerpos de sus subordinados, o el amor obsesivo y sumiso más allá de la muerte de un médico europeo en la India colonial son algunos de los argumentos de este sugestivo libro de relatos de Stefan Zweig. La lucha de los hombres por sus pasiones, la tragedia de los destinos arrollados por la fortuna y el dolor como influjo de supervivencia se inscriben al rojo vivo en cada una de estas sobrias y conmovedoras narraciones de uno de los escritores más apreciados por el público de nuestro tiempo.",
       "comentario": "Me gustó mucho, sobre todo la historia del coronel de Napoleón perdido.",
       "categoria_principal": "Relatos",
-      "categoria_secundaria": "Psicológico"
+      "categoria_secundaria": "Psicológica"
     },
     {
       "titulo": "COMER Y CORRER",
@@ -202,7 +202,7 @@
       "sinopsis": "Este libro es una guía esencial que desmitifica la relación entre la nutrición y el rendimiento deportivo. Escrito por un dietista-nutricionista y un historiador, la obra desmonta los numerosos mitos y falsas promesas de los suplementos milagrosos, ofreciendo en su lugar consejos basados en la evidencia científica para corredores populares y atletas.\n\nA través de un tono cercano y riguroso, los autores explican qué comer antes, durante y después de una carrera, subrayando que una dieta saludable y equilibrada es suficiente para alcanzar nuestras metas sin necesidad de productos costosos. Es una lectura imprescindible para quienes buscan mejorar su salud y su marca personal huyendo de las modas de la industria alimentaria.",
       "comentario": "Una generalidad tras otra.",
       "categoria_principal": "Divulgación",
-      "categoria_secundaria": "Nutrición deportiva"
+      "categoria_secundaria": "Ciencia"
     },
     {
       "titulo": "RETRATO DE UN HOMBRE INMADURO",
@@ -238,7 +238,7 @@
       "sinopsis": "Es una novela satírica que presenta a un protagonista inolvidable: un paciente de un manicomio, sin nombre y de mente brillante aunque excéntrica, que es liberado por el comisario Flores para resolver un caso delicado. La misión consiste en investigar la desaparición de una niña de un internado de monjas en Barcelona, un suceso que guarda un inquietante parecido con otro caso ocurrido años atrás.\n\nCon un estilo que mezcla la novela negra con el humor picaresco, el protagonista recorre los bajos fondos de la ciudad, enfrentándose a situaciones absurdas y personajes estrafalarios. La obra funciona como una crítica mordaz a la sociedad española de la Transición, utilizando la ironía y el ingenio para desentrañar una trama donde nada es lo que parece y el misterio se resuelve de la forma más inesperada.",
       "comentario": "Muy divertido a ratos.",
       "categoria_principal": "Novela",
-      "categoria_secundaria": "Policíaca y humorística"
+      "categoria_secundaria": "Negra"
     },
     {
       "titulo": "EL LABERINTO DE LAS ACEITUNAS",
@@ -250,7 +250,7 @@
       "sinopsis": "Es la segunda entrega de la desternillante saga protagonizada por el detective anónimo y loco que conocimos en El misterio de la cripta embrujada. En esta ocasión, el protagonista es sacado nuevamente del manicomio para cumplir una misión aparentemente sencilla: entregar un maletín lleno de dinero a un ministro en Barcelona. Sin embargo, como es habitual en su mundo, la situación se complica hasta límites absurdos, envolviéndolo en una trama de chantajes, persecuciones y personajes esperpénticos.\n\nA través de un lenguaje que parodia las novelas de detectives clásicas y un humor ácido, Mendoza realiza una sátira brillante de la sociedad española de la época. La novela es un laberinto de malentendidos donde el ingenio del protagonista, a pesar de su supuesta locura, es la única herramienta para sobrevivir al caos urbano y a la corrupción que lo rodea.",
       "comentario": "Algo peor que el primero, yo creo que porque la fórmula se agota, no da para tanto.",
       "categoria_principal": "Novela",
-      "categoria_secundaria": "Policíaca y humorística"
+      "categoria_secundaria": "Negra"
     },
     {
       "titulo": "SI ESTO ES UN HOMBRE",
@@ -262,7 +262,7 @@
       "sinopsis": "Si esto es un hombre (Se questo è un uomo) es el crudo y analítico relato de Primo Levi sobre su experiencia en el campo de concentración de Auschwitz durante la Segunda Guerra Mundial.\n\nEl argumento: Levi, un joven químico judío italiano, narra su captura, el viaje en tren y la lucha diaria por la supervivencia en el Lager.\n\nEl enfoque: A diferencia de otros testimonios más emocionales, Levi utiliza su formación científica para observar con precisión casi clínica cómo el sistema nazi buscaba deshumanizar por completo a los prisioneros antes de eliminarlos.\n\nTemas centrales: La obra explora la pérdida de la identidad, la solidaridad frente al egoísmo extremo y la capacidad del ser humano para conservar un rastro de dignidad en condiciones atroces.\n\nRelevancia: Es la primera parte de la \"Trilogía de Auschwitz\" de Levi y está considerada una de las mejores descripciones del Holocausto por su honestidad y falta de rencor gratuito.",
       "comentario": "La verdad que no vi grandes diferencias a todo lo escrito y filmado de esta parte de la historia.",
       "categoria_principal": "Memorias",
-      "categoria_secundaria": "Holocausto"
+      "categoria_secundaria": "Memoria"
     },
     {
       "titulo": "ALGO SUPUESTAMENTE DIVERTIDO...",
@@ -274,7 +274,7 @@
       "sinopsis": "En este brillante y mordaz ejercicio de periodismo narrativo, David Foster Wallace relata su experiencia a bordo de un crucero de lujo por el Caribe. Con su característico estilo analítico y un humor ácido, el autor disecciona los excesos de la industria del ocio masivo, la desesperación que subyace tras el entretenimiento forzado y el absurdo de ser mimado por una tripulación servil mientras se intenta huir de la angustia existencial.\n\nA través de su mirada obsesiva, Wallace convierte una simple crónica de viajes en una crítica feroz al consumismo americano y a la soledad que emerge en los espacios diseñados exclusivamente para \"pasarlo bien\". Es una obra que invita a la risa incómoda mientras revela las contradicciones de la cultura del bienestar contemporánea.",
       "comentario": "Se supone que es un libro gracioso, me lo recomendó y prestó Mauro, pero no me hizo mucha gracia, aunque sí me identifiqué con el punto de vista del protagonista.",
       "categoria_principal": "Crónica",
-      "categoria_secundaria": "Viajes y crítica social"
+      "categoria_secundaria": "Social y costumbrista"
     },
     {
       "titulo": "LAS OBRAS INFAMES DE PANCHO MARAMBIO",
@@ -286,7 +286,7 @@
       "sinopsis": "Es una novela que combina el humor melancólico con la sátira social, centrada en la figura de Pancho Marambio, un personaje aventurero, tierno y algo desastroso que se mueve entre Europa y el Perú. A través de sus peripecias, Bryce Echenique explora temas como el exilio, la amistad incondicional y la decadencia de la burguesía.\n\nLa obra destaca por su estilo narrativo oral y envolvente, donde los recuerdos de Pancho se mezclan con sus constantes fracasos y sus \"obras\" (que a menudo resultan ser más bien desatinos o proyectos inconclusos). Es una historia sobre la supervivencia emocional de un hombre que, a pesar de sus infamias y derrotas, conserva una humanidad profundamente entrañable.",
       "comentario": "Me pasó como con el otro, a ratos la historia es divertida y a ratos mayores insustancial y repetitiva.",
       "categoria_principal": "Novela",
-      "categoria_secundaria": "Sátira social"
+      "categoria_secundaria": "Sátira"
     },
     {
       "titulo": "INCÓGNITO: LAS VIDAS SECRETAS...",
@@ -298,7 +298,7 @@
       "sinopsis": "Incógnito: Las vidas secretas del cerebro explora la idea de que la mayor parte de lo que hacemos, pensamos y sentimos ocurre fuera del alcance de nuestra conciencia. Eagleman utiliza una metáfora brillante: la mente consciente es como un polizón en un trasatlántico que cree que está llevando el timón, cuando en realidad el barco se mueve gracias a una inmensa maquinaria interna que él ni siquiera ve.\n\nA través de ejemplos sorprendentes y experimentos neurocientíficos, el libro aborda:\n\nEl piloto automático: Cómo realizamos tareas complejas (como conducir o tocar un instrumento) sin pensar en ellas.\n\nLa percepción: Por qué nuestros ojos nos engañan y cómo el cerebro \"construye\" la realidad.\n\nEl \"equipo de rivales\": La idea de que el cerebro no es una unidad, sino un conjunto de sistemas en conflicto (por ejemplo, cuando una parte de ti quiere comer chocolate y la otra quiere hacer dieta).\n\nImplicaciones legales: Si gran parte de nuestras acciones son dictadas por nuestra biología y el subconsciente, ¿hasta qué punto somos responsables de nuestros actos? Eagleman propone una reforma del sistema de justicia basada en la neurociencia.",
       "comentario": "Interesante, se aprenden cosas.",
       "categoria_principal": "Divulgación",
-      "categoria_secundaria": "Neurociencia"
+      "categoria_secundaria": "Ciencia"
     },
     {
       "titulo": "CONTRA EL TIEMPO",
@@ -310,7 +310,7 @@
       "sinopsis": "Se trata de un ensayo filosófico que analiza la aceleración desenfrenada de la vida contemporánea bajo el capitalismo actual. El autor argumenta que vivimos en una sociedad obsesionada con la velocidad y la eficiencia, donde la pausa se castiga y el tiempo se ha convertido en una mercancía.\n\nA través de sus páginas, Concheiro propone la resistencia no mediante una lucha directa, sino a través de la \"tangencialidad\": acciones que nos permitan habitar el tiempo de otra manera, como la contemplación, el arte o la comunidad, para escapar de la tiranía del reloj.",
       "comentario": "Lo empecé con mucho interés pero no me dejó huella, se me hizo un poco pesado.",
       "categoria_principal": "Ensayo",
-      "categoria_secundaria": "Filosofía y sociedad"
+      "categoria_secundaria": "Filosófica"
     },
     {
       "titulo": "ENTRE LÍNEAS: EL CUENTO O LA VIDA",
@@ -322,7 +322,7 @@
       "sinopsis": "Este libro es una pieza fundamental para entender el universo de Landero, ya que se sitúa a medio camino entre la autobiografía, el ensayo y la confesión literaria.\n\nEl tema central: Landero reflexiona sobre cómo la literatura y la vida se entrelazan de forma inseparable. Explora la idea de que todos somos, en cierto modo, novelistas de nuestra propia existencia.\n\nContenido: El autor recorre sus recuerdos de infancia en Alburquerque (Extremadura), su llegada a Madrid y sus inicios como guitarrista flamenco, todo ello mientras analiza cómo nació su vocación de escritor.\n\nLa tesis del libro: Propone que escribir (o contar historias) no es solo un oficio, sino una manera de darle sentido al caos del mundo y de rescatar del olvido los detalles más pequeños de la realidad.",
       "comentario": "No es de los mejores, quizá para un escritor tenga mucho más interés.",
       "categoria_principal": "Ensayo",
-      "categoria_secundaria": "Literatura y escritura"
+      "categoria_secundaria": "Autobiográfica"
     },
     {
       "titulo": "ROMA SOY YO",
@@ -358,7 +358,7 @@
       "sinopsis": "La premisa es tan sencilla como perturbadora: un hombre común llamado Wakefield, que vive en Londres con su esposa, decide un día salir de casa diciéndole que se va de viaje por unos días. Sin embargo, no se va de la ciudad.\n\nEn lugar de viajar, alquila una habitación en la calle de al lado de su propio hogar. Desde esa posición de observador invisible, Wakefield pasa los siguientes veinte años viendo cómo su esposa llora su desaparición, cómo se acostumbra a su ausencia, cómo envejece y cómo la vida sigue adelante sin él.\n\nSin una razón lógica, sin un gran trauma, simplemente por un impulso de curiosidad y vanidad, Wakefield se convierte en el \"Paria del Universo\". Se despoja de su identidad y se queda atrapado en una especie de limbo, observando su propia existencia desde fuera hasta que, un día, decide volver a entrar en su casa como si nada hubiera pasado.",
       "comentario": "Mantiene el interés al inicio pero la historia me deja indiferente.",
       "categoria_principal": "Relatos",
-      "categoria_secundaria": "Psicológico"
+      "categoria_secundaria": "Psicológica"
     },
     {
       "titulo": "JULIO CÉSAR",
@@ -370,7 +370,7 @@
       "sinopsis": "A diferencia de lo que sugiere el título, el verdadero protagonista de la obra no es César, sino Bruto. La trama comienza con el regreso triunfal de Julio César a Roma tras vencer a los hijos de Pompeyo. Su creciente popularidad y su aparente ambición de convertirse en rey despiertan el temor de un grupo de senadores.\n\nLa conspiración: Casio, un hombre astuto y envidioso, convence a Bruto —un hombre de honor intachable y amigo cercano de César— de que la muerte del dictador es necesaria para salvar la República. Bruto acepta, no por odio personal, sino por \"amor a Roma\".\n\nEl magnicidio: A pesar de los presagios (como el famoso \"¡Cuídate de los idus de marzo!\") y los sueños de su esposa Calpurnia, César acude al Senado, donde es asesinado por los conspiradores. Sus últimas palabras, \"¿Et tu, Brute?\" (¿Tú también, Bruto?), sellan la tragedia de la traición.\n\nEl caos: Tras el asesinato, Marco Antonio, leal a César, pronuncia un discurso fúnebre magistral ante el pueblo (\"Amigos, romanos, compatriotas...\"). Con una retórica brillante, logra dar la vuelta a la opinión pública y desata una guerra civil que persigue a los conspiradores hasta su destino final en la batalla de Filipos.",
       "comentario": "No me dio más, no es mi estilo.",
       "categoria_principal": "Teatro",
-      "categoria_secundaria": "Tragedia histórica"
+      "categoria_secundaria": "Histórica"
     },
     {
       "titulo": "FORTUNA",
@@ -382,7 +382,7 @@
       "sinopsis": "Esta es una de las obras más fascinantes y premiadas de los últimos años (ganadora del Premio Pulitzer 2023). Hernán Díaz, autor argentino que escribe en inglés, ha construido un artefacto literario prodigioso sobre el poder, el dinero y la construcción de la \"verdad\".\n\nSinopsis\nLa novela está estructurada como un juego de muñecas rusas o un rompecabezas en cuatro partes. Todas giran en torno a un magnate financiero de los años 20 en Nueva York, Andrew Bevel, y su esposa, Mildred, pero cada parte cuenta la historia de una forma distinta:\n\nVínculos: Una novela dentro de la novela que narra el ascenso de un financiero ficticio basado en Bevel. Lo retrata como un hombre frío y a su mujer como alguien que desciende a la locura.\n\nMi vida: El borrador de la autobiografía del propio Andrew Bevel, escrita para \"corregir\" la imagen que la primera novela dio de él y de su esposa.\n\nRecuerdos de una secretaria: El testimonio de la mujer que ayudó a Bevel a escribir esas memorias años después, revelando cómo se fabrica la imagen pública de un hombre poderoso.\n\nEl diario de Mildred: La pieza final que cambia por completo nuestra percepción de quién era el verdadero genio detrás de la inmensa fortuna familiar.\n\nEs una disección brillante sobre cómo el capitalismo y el poder masculino a menudo borran el papel de las mujeres en la historia, y cómo el dinero tiene la capacidad de doblar la realidad a su antojo.",
       "comentario": "Me costó entender la estructura. Interesante.",
       "categoria_principal": "Novela",
-      "categoria_secundaria": "Social y económica"
+      "categoria_secundaria": "Social y costumbrista"
     },
     {
       "titulo": "GUÍA DEL AUTOESTOPISTA GALÁCTICO",
@@ -394,7 +394,7 @@
       "sinopsis": "Todo empieza un jueves a la hora de comer. La Tierra es demolida para dar paso a una autopista espacial de circunvalación galáctica. El inglés medio Arthur Dent, que todavía no se ha tomado el té, es rescatado en el último segundo por su amigo Ford Prefect, quien resulta ser un alienígena encubierto y redactor de la Guía del autoestopista galáctico.\n\nA partir de ahí, Arthur recorre el universo en pijama, enfrentándose a la burocracia de los horribles Vogones, viajando en la nave Corazón de Oro (propulsada por un motor de improbabilidad infinita) y conociendo a personajes imposibles como:\n\nZaphod Beeblebrox: El narcisista presidente de la galaxia con dos cabezas.\n\nMarvin: El androide paranoide y profundamente deprimido porque tiene \"un cerebro del tamaño de un planeta\" pero solo lo usan para abrir puertas.\n\nLa novela busca responder a la Gran Pregunta sobre el sentido de la Vida, el Universo y Todo lo demás, cuya respuesta resulta ser el número 42... aunque nadie sabe exactamente cuál era la pregunta.",
       "comentario": "No me gustó, no lo dejé porque fue un regalo.",
       "categoria_principal": "Novela",
-      "categoria_secundaria": "Ciencia ficción humorística"
+      "categoria_secundaria": "Ciencia ficción"
     },
     {
       "titulo": "EL MÁGICO APRENDIZ",
@@ -418,7 +418,7 @@
       "sinopsis": "Esta es, probablemente, la novela más cruda y desoladora de Paul Auster. Se aleja de sus juegos metafísicos habituales en Nueva York para sumergirnos en una distopía asfixiante.\n\nSinopsis\nLa historia nos llega a través de una larga carta escrita por Anna Blume. Anna viaja a una ciudad sin nombre, devastada y al borde del colapso absoluto, para buscar a su hermano desaparecido, un periodista del que no se sabe nada hace tiempo.\n\nLo que encuentra es un lugar donde las cosas simplemente dejan de existir: no solo los objetos físicos o los edificios, sino también los recuerdos y las palabras. La ciudad es un vertedero humano donde la gente sobrevive recolectando basura, y donde la muerte es la única industria que florece (con \"Clubes de Corredores\" que corren hasta morir de agotamiento o \"Clubes de Salto\" para suicidarse).\n\nEn medio de este caos, donde la esperanza es un lujo peligroso, Anna lucha por mantener su humanidad, encontrando refugio temporal en una biblioteca y entablando relaciones que son pequeños milagros de ternura en un entorno brutal",
       "comentario": "Mejor de lo esperado, habla más de la salvación a través del amor y lucha contra la adversidad que de pesimismo.",
       "categoria_principal": "Novela",
-      "categoria_secundaria": "Distopía"
+      "categoria_secundaria": "Ciencia ficción"
     },
     {
       "titulo": "MÚSICA PARA CAMALEONES",
@@ -430,7 +430,7 @@
       "sinopsis": "Es una de las mejores muestras del talento de Capote para el periodismo literario. El libro reúne relatos, entrevistas y crónicas —incluyendo la magistral \"A sangre fría en miniatura\" titulada Handcarved Coffins— donde la realidad se narra con las herramientas de la mejor ficción. Capote se sumerge en la vida de personajes famosos y anónimos, demostrando una precisión técnica y una elegancia que elevan el reportaje a la categoría de obra de arte.",
       "comentario": "Me gustó mucho. Sobre todo Ataúdes tallados a mano y la última parte de relatos personales. Algo menos los cuentos.",
       "categoria_principal": "Relatos",
-      "categoria_secundaria": "Narrativa y periodismo literario"
+      "categoria_secundaria": "Biográfica"
     },
     {
       "titulo": "EN LA COLONIA PENITENCIARIA",
@@ -442,7 +442,7 @@
       "sinopsis": "Aquí tienes la sinopsis de En la colonia penitenciaria (In der Strafkolonie), uno de los relatos más perturbadores y proféticos de Franz Kafka, escrito en 1914:\n\nSinopsis\nLa historia se desarrolla en una isla remota que sirve como colonia penal. Un \"explorador\" de alto rango llega para presenciar una ejecución pública mediante un complejo y sofisticado aparato de tortura diseñado por el antiguo comandante de la isla.\n\nEl Oficial a cargo de la máquina explica con orgullo y devoción casi religiosa su funcionamiento: el aparato escribe en la piel del condenado, mediante agujas, la ley que ha infringido (por ejemplo, \"Honra a tus superiores\"). El proceso dura doce horas, durante las cuales el prisionero —que ni siquiera sabe que ha sido condenado ni qué ley ha roto— va comprendiendo su sentencia a través de su propio dolor físico, hasta que finalmente muere.\n\nLa tensión surge cuando el Oficial se da cuenta de que el nuevo Comandante no apoya este método bárbaro y busca el respaldo del Explorador para salvar su preciada máquina. Al recibir el rechazo de este, el Oficial decide someterse él mismo al aparato, pero la máquina, vieja y deteriorada, se desmorona de forma sangrienta mientras lo ejecuta, simbolizando el fin de un orden basado en la crueldad absoluta.",
       "comentario": "Corto y muy fácil de leer. Me gustó.",
       "categoria_principal": "Relatos",
-      "categoria_secundaria": "Alegórico"
+      "categoria_secundaria": "Fantástica"
     },
     {
       "titulo": "EL PEÓN",
@@ -454,7 +454,7 @@
       "sinopsis": "El libro se centra en un momento muy concreto: el campeonato del mundo de ajedrez de 1962 en Curazao. El protagonista es Arturo Pomar, el niño prodigio del ajedrez español que fue utilizado como herramienta de propaganda por el régimen de Franco y luego abandonado a su suerte como un funcionario de correos más.\n\nMientras Pomar se enfrenta al joven estadounidense Bobby Fischer, Cerdà entrelaza la narración con las vidas de otros \"peones\" de la historia: personas reales (comunistas, falangistas, activistas, soldados) que, como en un tablero de ajedrez, fueron sacrificadas o movidas por las grandes potencias durante la Guerra Fría y la dictadura franquista.\n\nEs una reflexión melancólica sobre cómo el poder utiliza a los individuos y cómo, al final, casi todos terminamos siendo piezas prescindibles en una partida que no controlamos.",
       "comentario": "Me encantó, una obligación moral recomendarlo (Leontxo). Muchas historias personales y hechos históricos interesantes, aparte de la principal sobre Arturo Pomar.",
       "categoria_principal": "Crónica",
-      "categoria_secundaria": "Ajedrez y política"
+      "categoria_secundaria": "Política"
     },
     {
       "titulo": "LOS ÚLTIMOS. VOCES DE LA LAPONIA...",
@@ -466,7 +466,7 @@
       "sinopsis": "Aquí tienes la sinopsis de Los últimos. Voces de la Laponia española, de Paco Cerdà (que es el título correcto del que hablábamos antes como \"voces de Laponia\"):\n\nEs una crónica periodística y literaria sobre la despoblación en España, centrada en la llamada Serranía Celtibérica, un territorio que abarca provincias como Teruel, Guadalajara o Soria y que tiene una densidad de población menor que la Laponia ártica. Cerdà recorre más de 2.500 kilómetros en pleno invierno para dar voz a los últimos habitantes de pueblos que están a punto de desaparecer, capturando el silencio, la soledad y la resistencia de quienes se niegan a abandonar sus raíces.\n\nEl libro no solo es un viaje geográfico, sino una denuncia política y social sobre la \"España vaciada\". A través de historias personales y paisajes desolados, el autor reflexiona sobre el olvido institucional y la pérdida de un modo de vida rural que ha definido la historia del país durante siglos. Es un relato crudo, pero lleno de una belleza melancólica que pone rostro humano a las estadísticas demográficas.",
       "comentario": "Está bien pero todos los capítulos parecen iguales, se hace repetitivo.",
       "categoria_principal": "Crónica",
-      "categoria_secundaria": "Despoblación rural"
+      "categoria_secundaria": "Social y costumbrista"
     },
     {
       "titulo": "LEVIATÁN",
@@ -490,7 +490,7 @@
       "sinopsis": "Con un estilo vibrante y casi cinematográfico, Vuillard narra la toma de la Bastilla no desde los despachos oficiales, sino desde la multitud anónima. El autor pone nombre y voz a los artesanos, obreros y ciudadanos comunes que, movidos por el hambre y la injusticia, cambiaron el curso de la historia en un solo día. Es una crónica breve pero poderosa que captura el caos, el miedo y la euforia de una revolución en marcha.",
       "comentario": "Me gustó mucho, por cómo está escrito y por la exquisita rigurosidad de cada dato, por nimio que sea.",
       "categoria_principal": "Relatos",
-      "categoria_secundaria": "Histórico"
+      "categoria_secundaria": "Histórica"
     },
     {
       "titulo": "PRESENTES",
@@ -502,7 +502,7 @@
       "sinopsis": "En esta obra de no ficción, Cerdà reconstruye un momento crucial del siglo XX español: el traslado de los restos de José Antonio Primo de Rivera desde Alicante hasta El Escorial en 1939. En paralelo al desfile falangista, el autor rescata las historias de los perdedores y olvidados que, en ese mismo instante, sufrían la represión o el exilio. Es un ejercicio de memoria histórica que confronta la construcción de un mito con la realidad sangrante de un país roto.",
       "comentario": "Del estilo de sus libros, muchos pasajes cortos contando historias de la época, a la vez que describe el peregrinaje de Valencia a Madrid.",
       "categoria_principal": "Crónica",
-      "categoria_secundaria": "Memoria histórica"
+      "categoria_secundaria": "Memoria"
     },
     {
       "titulo": "COMPRENDER EL VINO",
@@ -514,7 +514,7 @@
       "sinopsis": "Más que una guía técnica, este libro es un puente entre el mundo del sumiller profesional y el aficionado. Escrito por quien fuera sumiller de El Bulli, combina anécdotas personales con conceptos fundamentales sobre la cata, el maridaje y la elaboración. Centelles logra despojar al vino de su aura pretenciosa para explicarlo desde la ciencia y la emoción, ayudando al lector a disfrutar de una copa con conocimiento pero sin miedo.",
       "comentario": "Lo que más me gustó fue la parte histórica del libro.",
       "categoria_principal": "Divulgación",
-      "categoria_secundaria": "Vino y enología"
+      "categoria_secundaria": "Ciencia"
     },
     {
       "titulo": "V13",
@@ -526,7 +526,7 @@
       "sinopsis": "Este libro recoge las crónicas de Carrère sobre el juicio por los atentados terroristas en París del 13 de noviembre de 2015 (la masacre de la sala Bataclan y otros puntos). El autor asistió durante meses a las sesiones del tribunal para escuchar a las víctimas, a los familiares, a los abogados y a los pocos acusados supervivientes.\n\nMás que un relato judicial, es una exploración del dolor humano y del mal absoluto. Carrère logra dar voz a la tragedia sin caer en el amarillismo, buscando entender cómo la justicia intenta restaurar el orden tras un acto de barbarie inenarrable.",
       "comentario": "Flojillo. Me gustó la parte donde relatan los hechos, pero sobró mucho de las relaciones entre los asistentes.",
       "categoria_principal": "Crónica",
-      "categoria_secundaria": "Judicial"
+      "categoria_secundaria": "Memoria"
     },
     {
       "titulo": "EL GUITARRISTA",
@@ -550,7 +550,7 @@
       "sinopsis": "En este ensayo clásico, el filósofo y matemático Bertrand Russell analiza las causas de la infelicidad en el mundo moderno (como la envidia, el miedo o el aburrimiento) y propone soluciones prácticas para alcanzar el bienestar. A diferencia de otros tratados filosóficos, Russell escribe de forma clara y accesible para el público general.\n\nPara el autor, la felicidad no es algo que cae del cielo, sino una conquista que requiere esfuerzo, curiosidad hacia el mundo exterior y la capacidad de dejar de estar obsesionado con uno mismo. Es un manual de sabiduría vital que sigue siendo asombrosamente vigente.",
       "comentario": "Se me hizo pesado, se nota mucho que está escrito hace 100 años.",
       "categoria_principal": "Ensayo",
-      "categoria_secundaria": "Filosofía práctica"
+      "categoria_secundaria": "Filosófica"
     },
     {
       "titulo": "LA VEGETARIANA",
@@ -574,7 +574,7 @@
       "sinopsis": "Esta novela nos traslada a una casona en la costa gallega, donde la vida gira en torno a un matriarcado complejo y dominante. La historia está narrada por Claudia, quien observa las relaciones de poder, los afectos y los rencores entre las mujeres de su familia tras el abandono del padre años atrás.\n\nPombo utiliza su estilo intelectual y preciso para explorar la psicología femenina, la educación sentimental y la herencia emocional. Es un retrato íntimo sobre cómo los lazos de sangre pueden ser, al mismo tiempo, un refugio y una cárcel de la que es difícil escapar.",
       "comentario": "No me dejó huella, la verdad.",
       "categoria_principal": "Novela",
-      "categoria_secundaria": "Familiar y psicológica"
+      "categoria_secundaria": "Psicológica"
     },
     {
       "titulo": "ANATOMÍA DE UN INSTANTE",
@@ -586,7 +586,7 @@
       "sinopsis": "Es una crónica fascinante sobre el fallido golpe de Estado en España del 23 de febrero de 1981. Cercas abandona la ficción para diseccionar el momento exacto en que tres figuras clave —Adolfo Suárez, Gutiérrez Mellado y Santiago Carrillo— permanecieron sentados en sus escaños mientras las balas de los golpistas silbaban en el Congreso.\n\nEl autor analiza los motivos, las traiciones y el contexto político de la Transición, convirtiendo un evento histórico en una pieza literaria de suspenso. Es una reflexión profunda sobre el coraje,",
       "comentario": "Aprendí mucho sobre la Transición y la figura de Suárez, también del papel del Rey en el Golpe de Estado.",
       "categoria_principal": "Crónica",
-      "categoria_secundaria": "Política e historia"
+      "categoria_secundaria": "Política"
     },
     {
       "titulo": "CIEN AÑOS DE SOLEDAD",
@@ -610,7 +610,7 @@
       "sinopsis": "«Soy ateo. Soy anticlerical. Soy un laicista militante, un racionalista contumaz, un impío riguroso. Pero aquí me tienen, volando en dirección a Mongolia con el anciano vicario de Cristo en la Tierra, dispuesto a interrogarle sobre la resurrección de la carne y la vida eterna. Para eso me he embarcado en este avión: para preguntarle al papa Francisco si mi madre verá a mi padre más allá de la muerte, y para llevarle a mi madre su respuesta. He aquí un loco sin Dios persiguiendo al loco de Dios hasta el fin del mundo».\n\nEste es el arranque fulgurante de este libro único, que nadie había tenido la oportunidad de escribir, entre otras razones porque el Vaticano jamás le había abierto de par en par sus puertas a un escritor. Pero, además de único, este es un libro de plenitud, donde su autor logra convertir una propuesta insólita en un relato propio y magistral: un thriller sobre el mayor misterio de la historia de la Humanidad. Con esta novela sin ficción, Javier Cercas vuelve a su línea más personal, en la que logra enlazar sus obsesiones íntimas con una de las preocupaciones fundamentales de la sociedad actual: el papel en la vida humana de lo espiritual y lo transcendente, el lugar en ella de la religión y el ansia de inmortalidad.",
       "comentario": "Básicamente historias de misioneros y datos biográficos del Papa y su papado. Redundante, le sobra la mitad del libro. El hilo conductor sobre la pregunta al Papa es un poco flojo.",
       "categoria_principal": "Crónica",
-      "categoria_secundaria": "Religión"
+      "categoria_secundaria": "Biográfica"
     },
     {
       "titulo": "COMO AGUA PARA CHOCOLATE",
@@ -646,7 +646,7 @@
       "sinopsis": "Una de las novelas más influyentes del siglo XXI. Sigue la búsqueda de dos poetas, Arturo Belano y Ulises Lima, tras el rastro de la misteriosa escritora Cesárea Tinajero por todo el mundo. La historia se fragmenta en decenas de voces y testimonios que retratan a una generación de artistas errantes.",
       "comentario": "Tardé 300 páginas en engancharme pero una vez dentro de la historia me pareció buenísimo y muy original.",
       "categoria_principal": "Novela",
-      "categoria_secundaria": "Literatura y vida bohemia"
+      "categoria_secundaria": "Realismo sucio"
     },
     {
       "titulo": "CUMBRES BORRASCOSAS",
@@ -658,7 +658,7 @@
       "sinopsis": "Una de las historias de amor y venganza más intensas de la literatura universal. Narra la relación tormentosa y autodestructiva entre Catherine Earnshaw y el sombrío Heathcliff en los desolados páramos de Yorkshire.",
       "comentario": "Me dejó indiferente, una historia que acongoja.",
       "categoria_principal": "Novela",
-      "categoria_secundaria": "Gótica"
+      "categoria_secundaria": "Fantástica"
     },
     {
       "titulo": "UN VERDOR TERRIBLE",
@@ -670,7 +670,7 @@
       "sinopsis": "Una obra que explora los límites de la razón científica. A través de relatos entrelazados sobre genios como Heisenberg o Schwarzschild, Labatut muestra cómo sus descubrimientos revolucionarios también los llevaron al borde de la locura y el abismo.",
       "comentario": "Me gustó menos que MANIAC pero también muy interesante, sobre todo la primera parte del libro.",
       "categoria_principal": "Relatos",
-      "categoria_secundaria": "Ficción biográfica y científica"
+      "categoria_secundaria": "Biográfica"
     },
     {
       "titulo": "LA PIEDRA DE LA LOCURA",
@@ -682,7 +682,7 @@
       "sinopsis": "Un ensayo personal donde el autor reflexiona sobre la pérdida de contacto con la realidad en el mundo moderno. Labatut conecta el caos actual con la ciencia, la literatura y la fragilidad de la verdad.",
       "comentario": "Siempre se saca alguna cuirosidad pero es el que menos me gustó hasta ahora de este autor.",
       "categoria_principal": "Ensayo",
-      "categoria_secundaria": "Filosofía y ciencia"
+      "categoria_secundaria": "Filosófica"
     },
     {
       "titulo": "MARIANELA",
@@ -718,7 +718,7 @@
       "sinopsis": "Un análisis crítico sobre los mecanismos de propaganda y control del pensamiento en las democracias modernas. Chomsky examina cómo las élites utilizan los medios de comunicación para fabricar el consenso y dirigir a la opinión pública.",
       "comentario": "No me dejó huella, más bien son generalidades, no casos concretos.",
       "categoria_principal": "Ensayo",
-      "categoria_secundaria": "Medios y propaganda"
+      "categoria_secundaria": "Política"
     },
     {
       "titulo": "LA SUBASTA DEL LOTE 49",
@@ -730,7 +730,7 @@
       "sinopsis": "Sigue a Oedipa Maas, una mujer que, al ser nombrada albacea de un antiguo amante, descubre una posible conspiración que involucra a un sistema de correo paralelo y milenario. Es una historia laberíntica sobre la paranoia y la búsqueda de sentido.",
       "comentario": "Lo dejé después de leer el 70% y no aclararme, no me gustó nada.",
       "categoria_principal": "Novela",
-      "categoria_secundaria": "Experimental"
+      "categoria_secundaria": "Fantástica"
     },
     {
       "titulo": "SAL DE TU MENTE Y ENTRA EN TU VIDA",
@@ -742,7 +742,7 @@
       "sinopsis": "Un libro de referencia en la psicología moderna. En lugar de luchar contra el dolor o los pensamientos negativos, este manual enseña la Terapia de Aceptación y Compromiso (ACT) para aprender a convivir con ellos y centrar la energía en lo que realmente da valor a tu vida.",
       "comentario": "Saque alguna cosa, pero nada comparado con la guía personal. Muchas cosas no dirigidas a mí en absoluto. Se me hizo un poco pesado.",
       "categoria_principal": "Manual",
-      "categoria_secundaria": "Psicología práctica"
+      "categoria_secundaria": "Ciencia"
     },
     {
       "titulo": "SOLDADOS DE SALAMINA",
@@ -766,7 +766,7 @@
       "sinopsis": "Un recorrido filosófico que analiza cómo los grandes pensadores de la historia entendieron la dicha. Es una invitación a aplicar la sabiduría clásica a los problemas contemporáneos para encontrar un equilibrio emocional en el día a día.",
       "comentario": "Tardé en enganchar porque me costaba entender a los filósofos griegos, pero luego sí que lo leí con motivación. Se pueden sacar lecturas en las que profundizar en algunos autores. El final se me hizo un poco pesado",
       "categoria_principal": "Ensayo",
-      "categoria_secundaria": "Filosofía práctica"
+      "categoria_secundaria": "Filosófica"
     },
     {
       "titulo": "MI NOMBRE ES EMILIA DEL VALLE",
@@ -805,7 +805,7 @@
       "comentario": "Se me hizo entretenido, aunque la mayoría de las historias no las entendí o me resultaron indiferentes. Si hay un par de ellas, sobre todo la de las madres en la piscina, que me resultaron graciosas. Forma particular de escribir, no siempre me gustó.",
       "citas": "Página 20. Ayer de carencias, presente con rasmia.\n\nPágina 23. Batían récords de demora en completar un largo.\n\nPágina 23. Un largo de su abuela Paquita? Más de una hora. Nadie había batido esa marca",
       "categoria_principal": "Relatos",
-      "categoria_secundaria": "Humor y vida cotidiana"
+      "categoria_secundaria": "Social y costumbrista"
     },
     {
       "titulo": "CORAZÓN TAN BLANCO",
@@ -844,7 +844,7 @@
       "comentario": "Son seis historias. De más a menos, la mejor con diferencia la que da nombre al libro. Las últimas me dejaron indiferente, no las entendí.",
       "citas": "La juventud servía para sufrir, endurecerse, juntar materiales y construir un castillo. Desde que había dejado la casa de mis padres vivía con una amiga sin pagarle arriendo. Tenía veinticinco años, no había escrito ni siquiera un cuento, no tenía plata, no tenía polola, descuidaba mi salud y fumaba pitos todos los días, pero supongo que de alguna forma lograba sentirme como un hombre valiente, cuando en realidad no era más que un pendejo.",
       "categoria_principal": "Relatos",
-      "categoria_secundaria": "Fantástico y experimental"
+      "categoria_secundaria": "Fantástica"
     },
     {
       "titulo": "DE LA MINA A LA GUERRA",
@@ -870,7 +870,7 @@
       "comentario": "Un género particular, en realidad es una compilación de testimonios. No conocía casi nada de la guerra de Rusia en Afganistán así que me resultó interesante. Algunos de los testimonios, como preveía, son realmente duros. Se me hizo un poco largo por lo repetitivo de los relatos.",
       "citas": "",
       "categoria_principal": "Crónica",
-      "categoria_secundaria": "Testimonios de guerra"
+      "categoria_secundaria": "Memoria"
     },
     {
       "titulo": "LA SENDA DEL PERDEDOR",
@@ -896,7 +896,7 @@
       "comentario": "Un montón de datos interesantes, como siempre. No es su mejor libro pero solo revisando las notas da para adentrarse en muchos otros temas de interés.",
       "citas": "Sagitario A, agujero negro supermasivo en el centro de nuestra galaxia.\n\nSonda Voyager fuera del sistema solar tras 40 años a más de 60.000km/h\n\nWalter Pitts, lógico brillante que termina aislado y alcoholizado en la cúspide de su carrera por una calumnia (haber seducido a la hija de un colaborador)\n\nKurt Gödel y los teoremas de la incompletitud, estableciendo límites a lo que se puede probar con sistemas lógicos. Sólo lo entendió John Von Neuman.\n\nOmega o constante de Chaitin es un número aleatorio e incalculable. Mucho más complejo que PI\n\nVacío Bootes es el lugar más oscuro del universo, con menor densidad de galaxias.\n\nDiscusión teológica acerca del propicio de Jesús.\n\nReferencia a Amok, ira sorda y ciega que hace que mates y luego te suicides sin causa previa (Stefan Zweig)\n\nEcuación de Dirat, que define la antimateria\n\nSanto Tomás de Aquino enmudece tras una revelación y muere a los tres meses. Para que no se hiciera monje lo encerraron 2 años y le enviaban prostitutas que él rechazaba\n\nEl 2% del tiempo estamos ciegos, que es la suma de fracciones de tiempo en que no vemos porque movemos los ojos, y así evitamos imágenes borrosas.\n\nLou Reed recibió terapia electroconvulsiva para curar su homosexualidad.\n\nGeorge R. Price, convertido al cristianismo, regalando todo y cortándose la carótida con un cortaúñas\n\nObra de Edgar Allan Poe pionera en la concepción del universo y denostada. Murió solo y trastornado en Baltimore.\n\nInflación cósmica, que explica la expansión del universo pero implica la creación de incontables universos",
       "categoria_principal": "Ensayo",
-      "categoria_secundaria": "Filosófico y experimental"
+      "categoria_secundaria": "Filosófica"
     },
     {
       "titulo": "SIGO AQUÍ",
@@ -909,7 +909,7 @@
       "comentario": "Me gustó mucho, algunos episodios, sobre todo el último, me emocionaron mucho. Tiene una forma de contar las cosas muy directa y natural, y además de contar la historia como pasó salta en el tiempo para darle contexto. Recomendable.",
       "citas": "Cuello. La de la chica por el monte y el chico con la correa de los prismáticos.\n\nPulmones. Cuando se tira al puerto por la noche y tienen que recatarla porque no tiene sentido de propiocepcion.\n\nColumna, piernas, pelvis, abdomen. El casi atropello de la niña por soltarse de la mano y cruzar la carretera.\n\nTodo el cuerpo. El incidente en el avión con destino Hong Kong.\n\nGarganta. El asalto con machete en un parque en Chile.\n\nAbdomen. El problema en el parto por la enfermedad que tuvo de niña.\n\nRecién nacida y torrente sanguíneo. El aborto retenido.\n\nConozco un remedio para todos los males: agua salada en cualquiera de sus formas. Sudor, lágrimas o agua de mar.\n\nPulmones. La ola en el mar en calma del Índico.\n\nSistema circulatorio. El lanzador de puñales español en un festival de música.\n\nCabeza. El casi golpe al cerrar el maletero cuando era niña.\n\nCráneo. El casi golpe del camión cuando paseaba con un chico y un perro.\n\nIntestinos. La ameba que coge en un monasterio budista en China.\n\nSangre. El análisis de ETS por varias infidelidades de su novio.\n\nCausa desconocida. El intento de asalto por dos hombres cuando estaba dando de mamar a su hijo de 9 semanas dentro del coche en Francia.\n\nPulmones. El susto cuando fue andando hasta una plataforma en una playa africana y dejó de hacer pie con su hijo al lado, que no sabía nadar.\n\nCerebelo. La encefalitis que tuvo de pequeña y que la postró un año y pensaban que se moriría.\n\nHija. El eczema y el peligro de anafilaxia desde su nacimiento por multitud de alergias muy graves.",
       "categoria_principal": "Memorias",
-      "categoria_secundaria": "Experiencias vitales"
+      "categoria_secundaria": "Autobiográfica"
     },
     {
       "titulo": "LA ÚLTIMA DEL DOMINGO",
@@ -922,7 +922,7 @@
       "comentario": "Hubo un par de poemas que me llegaron, relativos al futuro y a la cara que se te pone a los cuarenta y pico. Posiblemente por mi estado de ánimo actual.",
       "citas": "",
       "categoria_principal": "Poesía",
-      "categoria_secundaria": "Vida cotidiana"
+      "categoria_secundaria": "Social y costumbrista"
     },
     {
       "titulo": "FACTOTUM",
@@ -961,7 +961,7 @@
       "comentario": "Lo que más me gustó la introducción y el cuento de la contraportada. De los cuentos el mejor con diferencia uno que ya conocía, El cuento dentro del cuento.",
       "citas": "Verdades:\n1-Lo que es, es\n2-Nada que sea bueno es gratis\n3-Nunca hacer lo que no quiero\n\nEl buscador: que encuentra un cementerio donde se anota sólo el tiempo de vida de disfrute.\n\nEl temido enemigo: el rey que por envidia quiere matar al mago del reino y este le dice que el rey morirá un día después del mago y finalmente se hacen amigos.\n\nEl cuento dentro del cuento.",
       "categoria_principal": "Relatos",
-      "categoria_secundaria": "Desarrollo personal"
+      "categoria_secundaria": "Ciencia"
     },
     {
       "titulo": "UNA BREVE HISTORIA DE CASI TODO",
@@ -1000,7 +1000,7 @@
       "comentario": "Difícil de describir. Me atrae ese cinismo y desencanto general del libro, aunque a veces se hace difícil de seguir el hilo. Me gustó saber acerca de su vida intelectual, una búsqueda incesante e infructuosa finalmente para sus fines. Viendo el resto de sus lecturas creo que Gog y El libro negro va a ser lo más interesante para mí de su obra.",
       "citas": "II. Cita como una de sus obras preferidas El elogio de la locura de Erasmo de Rotterdam\n\nSe imaginaba que la vida se le ofrecería como piedra limpia y mármol de buena grana para esculpir su imagen con el duro escalpelo de la voluntad, y en cambio tiene entre las manos una masa de barro y de mierda que no se deja moldear y modelada no se tiene en pie",
       "categoria_principal": "Memorias",
-      "categoria_secundaria": "Autobiografía literaria"
+      "categoria_secundaria": "Autobiográfica"
     },
     {
       "titulo": "CARTERO",
@@ -1026,7 +1026,7 @@
       "comentario": "De fácil lectura pero la verdad es que me dejó indiferente.",
       "citas": "",
       "categoria_principal": "Novela",
-      "categoria_secundaria": "Crítica social"
+      "categoria_secundaria": "Social y costumbrista"
     },
     {
       "titulo": "HISTORIA DE LANGREO",
@@ -1039,7 +1039,7 @@
       "comentario": "Saqué unos cuantos datos interesantes. Lo valoro porque no hay mucho más de este tema, pero es un poco batiburrillo. Y varias partes son una recolección de datos sin mucho interés. Saqué alguna idea para profundizar: guerras carlistas, Pedro Duro,…",
       "citas": "Capítulo II. El convenio de Langreo\n\nNombres: Lagniam, Lagueyo, Lagneo, Lancritus\n\nEn 1857 Pedro Dueo, con su hacer mano y otros, funda “Duro y compañía “ y empieza la transformación. Tiene estatua en el parque al que da nombre su nieta Dolores.\n\nSanta Rogelio es una novela de Armando Palacio Valdés que describe Lada\n\nCapítulo III. Primeros tiempos\n\nHabla sobre todo de la supuesta ocupación romana, pero hay pocos o casi ningún dato concluyente. Se basa sobre todo en una extrapolación de la ocupación romana en otras regiones.\n\nCapítulo IV. La invasión árabe\n\nEstando ocupada por los musulmanes, enviaron a Pelayo a Córdoba para que Muñiz’s pudiera casarse con su hermana. Pelayo se escapó, regresó an Asturias y unió a todos los caballeros godos y se negó a consentir el enlace. Enviaron un ejército, del que escapó cruzando a nado el río Piloña. Ese ejército fue derrotado en Covadonga. Al enterarse, el gobernador en Gijón decidió huir pero fue perseguido y aniquilado en Santa Olalla, no se sabe bien dónde está.\n\nCapítulo V. El reino de Asturias\n\nLangueyo se llamaba en aquellos tiempos, que significa tierra apacible y deleitosa\n\nEl rey Aurelio reinó 6 años y lo más destacable de su reinado fue el sometimiento de una revuelta de siervos contra sus señores, en una época donde había mucha servidumbre (reyes, iglesia y particulares)\n\nEl rey Aurelio vivió y murió en Langreo\n\nAurelio reinó en paz con los moros. No está probado que pagara tributo por ello, aunque se habla de que entregaba doncellas y siervos anualmente al sultán de Córdoba\n\nCapítulo VII. El fuero de Langreo\n\nEl rey Alfonso VI puso Langreo en poder del obispado de Oviedo\n\nLangreo fue encomendada por el obispado a varios señores, como era costumbre en la época, para que fuera protegido\n\nEl obispado tenía todos los poderes: económico, político y religioso. Elegía jueces, alcaldes, todo en realidad\n\nDesde el 1075 hasta el 1588 con Felipe II fue así\n\nA veces los alcaldes (del árabe alca-di) eran nombrados en asamblea popular, que se hacían para tratar los asuntos del concejo\n\nCapítulo VIII. Baja Edad Media\n\nYa de aquella (siglo XII) había multitud de peregrinos a Santiago, y también a Oviedo a ver las reliquias\n\nEl 1827 desaparecen los señoríos y los cotos son agregados a los concejos limítrofes\n\nCapítulo IX. Los Reyes Católicos\n\nEl 1488 Fernando vino a Asturias a resolver las tropelías y abusos que los señores cometían contra sus vasallos\n\nLa junta general del principado reunirá a representantes de todos los concejos, villas y lugares, que eran elegidos democráticamente\n\nCapítulo X. Redención del concejo de Langreo\n\nEn 1574, los vecinos de Langreo compran al rey Felipe II el concejo, quedando liberados del obispado de Oviedo\n\nCapítulo XII. Los orígenes de la minería del carbón\n\nEn 1858 se describen las cualidades de la zona para su explotación minera\n\nEl carbón se empezó llevando a hombros y carros, luego en chalanas, en 1841 por la carretera carbonera, y en 1852 en ferrocarril\n\nEl transporte en carros duró cien años\n\nEn 1790 Jovellanos visita las minas. De aquella llegaban a Gijón 200 carros y 500 caballerías de carbón diariamente\n\nLas obras para hacer navegable el Nalón hasta San Esteban de Pravia fueron muy costosas, y cada invierno las crecidas las echaban abajo. Además las chalanas no podían retornar, eran de un solo uso. Se decidió entonces construir la carretera carbonera\n\nLa idea fue de Jovellanos en 1791, y la ejecución 50 años más tarde de Alejandro Aguado\n\nEl ferrocarril se construye en torno a 1850. De aquella Asturias era llamada a ser una superpotencia fabril por situación, tener combustible, acero, gente trabajadora, etcétera\n\nEl ingeniero a cargo fue José Elduayen\n\nSe inauguró en Gijón el 25 de agosto de 1852 u asistió la reina madre Cristina de Borbón\n\nLas minas de Langreo eran las más abundantes de Europa y de mucha calidad. Las obras del ferrocarril tuvieron capital público porque interesaba para fomentar la industria y evitar importar carbón inglés. Desde Gijón se repartía por barco a toda España\n\nCapítulo XIV. Sistema político en la edad moderna\n\nCapítulo CV. Vida cotidiana, tradiciones y costumbres\n\nCapítulo XVII. El paso a la sociedad industrial\n\nEl siglo XIX fue el del paso del feudalismo a la propiedad individual. Un aspecto clave fue la desamortización. La guerra contra la ocupación francesa en 1808 y la constitución de 1812 cogieron a Langreo como una sociedad aún campesina.\n\nSestaferia. Obligatorio dedicar 20 días al año a la conservación de los caminos, desde los 16 a los 52 años\n\nCapítulo XIX. Evolución política langreana del siglo XIX\n\nTodo el concejo estuvo ocupado por los franceses, habiendo batalla de guerrillas (1810)\n\nEn 1837 se independiza San Martín del Rey Aurelio\n\nEn 1812 se constituyen ayuntamientos constitucionales pero en 1814 se da para atrás (real cédula de Fernando VII). La revolución de 1820 hace jurar la Constitución al rey (Riego). La primera guerra carlista, lucha entre Carlos María Isidro de Borbón y su sobrina Isabel II. Estos y todos los demás acontecimientos tuvieron reflejo en Langreo\n\nEn 1874, durante la primera guerra carlista, se incendió el archivo de Sama con la historia de Langreo\n\nCapítulo XXI. Los cambios del siglo XX\n\nPrimer hospital fue el sanatorio Adaro, en 1915, para heridos de Duro Felguera. En 1919 se hizo un hospital para infecciosos por la gripe\n\nEl sanatorio Adaro era para accidentados en las minas, era en cooperativa\n\nDesde 1914 a 1932 hubo problemas de agua potable y para lavaderos debido a la actividad minera. Se solucionó con una traída de aguas desde el Raigosu en Laviana\n\nEn 1904 se fundó en Sama ERCOA para dar luz para uso doméstico y público",
       "categoria_principal": "Historia",
-      "categoria_secundaria": "Historia local"
+      "categoria_secundaria": "Memoria"
     },
     {
       "titulo": "LAS LEYES DE LA FRONTERA",
@@ -1052,7 +1052,7 @@
       "comentario": "Me gustó mucho. Original el planteamiento de que el autor habla sobre el libro que va a escribir con los personajes que se lo están contando. La historia engancha desde el principio y no decae.",
       "citas": "Primera parte. Más allá\n\n1. Las humillaciones de Batista y su pandilla le hacen aislarse. Conoce al Zarco y Tere en los recreativos de Matías. Luego al Gordo y al Tío. Le invitan a La Font, un bar del chino pero nunca va. Tere se la chupa en el baño.\n\n2. Habla un policía que lleva 40 años en el cuerpo sobre su llegada a Gerona a finales de los 70. En el barrio chino se concentraba la delincuencia, y allí conoció al Zarco\n\n3. Le pueden devolver el favor de no atracar los recreativos, y ayuda en el robo de un chalet con Zarco, Tere y Guille. Van en un coche robado y luego se lo venden al General. El dinero se lo gastaban enseguida en comer, beber, en drogas y en putas. Él perdió la virginidad en un burdel. Cada noche iban a la misma discoteca. Una noche Tere se fue a follar con uno y le prometió follar con él otro día. Esa vida empezó a gustarle cada vez más y estaba enamorado de Tere\n\n4. Sigue con el policía. Conoció al Zarco en 1978, en un cacheo ordinario por la calle. Conoce al Gafitas (Cañas) como integrante de la banda. Dice que el ingreso del Gafitas coincidió con la madurez de la banda.\n\n5. Habla de nuevo el Gafitas. Había dos grupos para los golpes, uno liderado por Guille y otro por el Zarco. Su rutina era siempre vaguear hasta las 3, ir a La Font en el barrio chino y luego a Rufus, la discoteca, hasta las 4. Coincide con el inspector Cuenca en que la policía tenía el barrio chino controlado. Los golpes que daban era el tirón, robo de coches, y alguna casa. Se plantea que el Zarco lo vio en los recreativos y lo quiso fichar por su aspecto, y que quizá iluso a Tere para engancharlo. Incluso que era mentira que quisiera atracar los recreativos y lo usó para obligarle a ayudarles con el chalet.\n\nUna noche que conocen un par de chicas Tere se acuesta con el en una playa de noche.\n\n6. Habla el policía. Le encargaron investigar en el chino sobre una banda de delincuentes que usaban adolescentes. No sospechaban de la banda del Zarco, pero una de las prostitutas con las que habló les dijo que el sábado se habían gastado una fortuna y que habían estado esa tarde en Lloret. Al llegar a la oficina comprobó que había habido un robo allí (el primero donde Cañas hizo de pantalla) y ahí se dio cuenta del asunto.\n\n7. Tras un asalto a una casa, en una persecución en coche, muere Guille, queda tetrapléjico el Chino y oro Tío y el Drácula salen heridos. Algo cambió con eso. En el próximo robo de una caja fuerte le piden al General armas en lugar de dinero. Empiezan ahí asaltos a gasolineras, y después a bancos.\n\nEl Zarco le recomienda a Calas que deje la banda y vuelva a su vida, que no es como ellos. Aunque se lo piensa no le da tiempo, porque a mediados de septiembre, todo se acaba. En un atraco a un banco, todo sale mal y la policía les está esperando. Tras una persecución en coche y con helicóptero, atrapan al Zarco. Cañas llega a casa, y el padre le ayuda simulando que llevan juntos una semana en una casa en la playa. Hasta allí va a interrogarle Cuenca, que no le cree, pero que se marcha sin detenerle.\n\n8. El policía cuenta cómo montó el dispositivo para atrapar al Zarco una vez cometido el atraco para conseguir una buena condena. Tras la persecución y cogerle, fue a casa del Gafotas convencido de que era el que se había escapado. La reacción de la madre y del propio Cañas le convenció. El padre le pidió que se olvidara, que no volvería a ocurrir y si entraba en la cárcel saldría como un delincuente más. Cuando el inspector volvió a la habitación a por el y le vio la cara decidió irse sin más. A los pocos años Ignacio Cañas volvió como abogado y como trabajaba enfrente del inspector llegaron a tener cierto trato.\n\n9. Habla Cañas. Volvió con su padre del pueblo con la promesa de no volver al chino y volver a las clases. Lo cumple y en el primer encuentro con Batista queda claro que ya no es el mismo del año pasado. Vas a buscar a Tere a los barracones donde vive y se da cuenta que ya no está enamorado. Hace nuevos amigos con los que sale, y buscando chocolate se encuentra con Tere, que se lo consigue. Vuelve a quedar con ella y vuelve a plantarla. No volvió a saber de ella ni del Zarco ni de nadie.\n\nSegunda parte. Más acá.\n\n1. Cañas cuenta su vida desde que apresaron al Zarco. Estudió derecho, se casó, tuvo una hija y se divorció al poco. Empezó a trabajar en el bufete del amigo de su padre que les prestó el apartamento el día del robo, y se quedó con el despacho cuando este murió atropellado tras abandonar a su familia por una mujer y ser abandonado por esta. Se convirtió en un penalista de éxito y 21 años más tarde le visitaron Tere y María, mujer del Zarco, para que le defendiera ahora que había sido trasladado a Gerona. Acepta el caso y va a ver al Zarco. Le quedan 20 años por cumplir por docenas de pequeñas condenas.\n\n2. Habla el director de la prisión de Gerona. Se entera de que Cañas va a defender a Antonio Gamallo (Zarco) y habla con el para convencerle de que no se problemas, pero se lleva una sorpresa. No tenía buen concepto de Cañas por todo lo que aparecía por la prensa. Se menciona en la conversación que Tere murió hace unas semanas.\n\n3. Cañas se lía durante meses con Tere, después de que ella fuera a buscarle a su casa un día y le propusiera follar. La relación fue clandestina y muy feliz para ambas partes. Cañas se vuelca en el caso, y encuentra que María, la mujer del Zarco, es perfecta para presentar a los medios por su ingenuidad, pobreza, por ser madre y tenerle idealizado. Eso ayudaría a sacarlo antes de la cárcel. Todo el mundo era optimista salvo Eduardo Requena, el director  Cañas recomienda al entrevistador que lo conozca.\n\n4. El director le cuenta que llamó a Cañas para intentar ponerse de acuerdo con el en cuanto a Gamallo para que este no cree los problemas que habitualmente genera por donde pasa. Le cuenta que es heroinómano y seropositivo, y que se aprovecha de sus privilegios y derechos en todas las cárceles. También que no está preparado en absoluto para salir, a pesar de que tiene instrucciones derechos arriba de intentar rehabilitarlo. Cañas responde que ya está rehabilitado y debería estar fuera, lo que decepciona al director y da su intento por perdido.\n\n5. Cañas cuenta que el plan para sacarle de la cárcel es solicitar unir las penas a 30 años, que se case con María y empezar una campaña en los medios para luego pedir el indulto para un marido modélico. María se destapa en una crack y se convierte en la protagonista de historia. Cañas se entera por el Zarco, y se lo confirma Tere, que aquel verano ella estaba loca por él y que no era la chica del Zarco. Consiguen la unificación de las penas que supone permisos en unas semanas pero eso agita mucho al Zarco, según Cañas porque tiene miedo a estar libre.\n\n6. El director tiene otro encuentro con Cañas, y le dice que es un error lo que están haciendo. Gamallo está cada día más nervioso, quejándose por todo, y piensa que no está preparado para salir. Cañas está muy alterado, solo piensa en sacarlo de la cárcel , no se sabe si por aprovecharse de su fama o por pura ingenuidad. Acaba solicitando salir de permiso la próxima semana.\n\n7. Tras varios fines de semana de permiso, un domingo a las doce de la noche el director llama a Cañas para decirle que no se había presentado el Zarco. María no sabe nada, y va con Tere a buscarlo. Lo encuentran hasta arriba de alcohol, cocaina, heroína y porros en un edificio abandonado. Consiguen convencerle de volver a la cárcel.\n\n8. Habla el director. Llegaron a las siete de la mañana y ninguno cruzó una palabra con el. El hizo la vista gorda, como había hecho otras veces con otros presos. Aunque no creía en la reinserción del Zarco, si fracasaba el Zarco fracasaba el porque lo tenía a su cargo.\n\nEl Zarco le dice a Cañas que lo utilizaron, que fue un pardillo. A Cañas le afecta eso, y cuando exige a Tere una relación normal esta se aleja de él. El Zarco se casó con María, trabajaba en la fábrica de cartones y dejó la heroína y terminó consiguiendo la provisional. El Zarco empezó a ir por el despacho para tomar una cerveza con el, en una de esas le habló de Batista, al poco murió apuñalado, y todo apunta a que pudo ser el Zarco. Al poco volvieron las quejas habituales del Zarco sobre el trabajo de esclavo, por todo, volvió a la heroína, solo veía a María para robarle, dejó de ir al trabajo puntualmente, etc. A los cinco meses de la condicional volvieron a coger al Zarco robando lo que le volvía a los 30 años de condena. María estaba por las televisiones echando mierda de todos, incluido Cañas. Todo junto le llevo a una depresión, por la sensación además de haber sido utilizado dos veces por Zarco y Tere para sus intereses. Logró recuperarse, pero a los 3 recibió carta del Zarco. Al poco apareció Tere para pedirle que le ayudara, y al negarse, le confesó que eran hermanos y se echó a llorar.\n\n10. Habla el director de la cárcel. Cañas fue a pedirle apoyo para el traslado de Gamallo. Este acaba por no oponerse y cuando ve. Gamallo queda impresionado de su lamentable estado físico por el avance del sida.\n\nCañas retoma el contacto con Gamallo, al que va a ver un par de veces a la cárcel para charlar del pasado del Zarco, pero sobre todo del verano del 78. También con Tere, con la que queda junto a su novio de vez en cuando. Un año más tarde, tras perder contacto con Tere, se la encuentra de casualidad y se acaban acostando. El Zarco está muy enfermo de neumonía y acabó muriendo. Tras esa mini luna de miel, después del entierro, Tere desapareció de nuevo totalmente. Un año más tarde no sabía nada de ella y había esquivado una depresión.\n\n12. El director cuenta que volvió a ver a Cañas un año y pico más tarde, bastante desmejorado después de haber estado un tiempo fuera de la circulación. Le vio necesitado de sentir que habían hecho lo posible por Gamallo.\n\nEpílogo. Cañas cuenta cómo surgió la idea de escribir el libro. Se lo propusieron unas editoras después de una cena, y decidieron que el libro lo escribiera (el autor) a partir de lo que él le fuera contando. Luego habla de su último encuentro con Tere, enferma y en un apartamento en condiciones pésimas. Le confesó que fue ella quien los delató por presión de la policía a cambio de que a él lo dejaran libre. Luego ella se irá con un tal Julián. Cañas queda con Cuenca para confirmar esto, pero le dice que no aunque no le desvela la fuente.",
       "categoria_principal": "Novela",
-      "categoria_secundaria": "Delincuencia y formación"
+      "categoria_secundaria": "Formación"
     },
     {
       "titulo": "TRILOGÍA SUCIA DE LA HABANA",
@@ -1081,14 +1081,14 @@
       "autor": "CHUCK PALAHNIUK",
       "sinopsis": "La primera regla del club de la lucha es no hablar del club de la lucha. Cada fin de semana, un puñado de jóvenes oficinistas se quita los zapatos y las camisas y pelean entre sí hasta la extenuación. Los lunes vuelven a sus despachos con los ojos amoratados y un embriagador sentimiento de omnipotencia. Pero estas reuniones son solo el comienzo del plan con el que Tyler Durden, proyeccionista, camarero y oscuro genio anárquico, aspira a vengarse de una sociedad paralizada por el consumismo exacerbado.",
       "categoria_principal": "Novela",
-      "categoria_secundaria": "Sátira social"
+      "categoria_secundaria": "Sátira"
     },
     {
       "titulo": "LO DEMÁS ES AIRE",
       "autor": "JUAN GÓMEZ BÁRCENA",
       "sinopsis": "La novela es una ambiciosa biografía de un lugar concreto: Toñanes, un pequeño pueblo de Cantabria. A través de una estructura narrativa innovadora que rompe la linealidad del tiempo, el autor entrelaza siglos de historia en una sola página, permitiendo que personajes del siglo XVI, de la posguerra y de la actualidad convivan y compartan las mismas calles y miedos.\n\nEs una reflexión profunda sobre la memoria, el arraigo y la huella que dejamos en la tierra. Gómez Bárcena convierte un punto minúsculo en el mapa en un microcosmos universal, explorando cómo las vidas de los habitantes —con sus amores, nacimientos y muertes— se superponen para formar el alma de un pueblo que sobrevive al paso de los años.",
       "categoria_principal": "Novela",
-      "categoria_secundaria": "Histórica y experimental"
+      "categoria_secundaria": "Histórica"
     },
     {
       "titulo": "MANTECA COLORÁ",
@@ -1109,91 +1109,91 @@
       "autor": "LOUIS-FERDINAND CÉLINE",
       "sinopsis": "Viaje al fin de la noche narra la epopeya de Ferdinand Baradamu, herido en la primera guerra mundial en la que participa como voluntario, enamorado de una prostituta sin futuro, sobreviviendo en las colonias francesas en África gracias a un trabajo alienante, persiguiendo su particular sueño americano, de regreso en Francia trabajando como médico rural\u0085 Pero más allá del argumento, la fuerza y el interés de la novela residen en la prosa amarga y quebradiza de Céline, en su característico ritmo acelerado, en el lirismo salvaje y descarnado con que construyó a sus personajes o la altiva mueca con que contempló la existencia y que han provocado siempre las más encontradas reacciones; pero que sin duda le convierten en uno de los autores de mayor vigencia y, a través sobre todo de la generación beat, tal vez en el que mayor influencia ha ejercido en las nuevas promociones de narradores. Una gran novela que contiene muchas claves para comprender la literatura europea y latinoamericana actual. Tras Marcel Proust, el autor francés más traducido e internacionalmente reconocido y popular del siglo XX sigue siendo Céline, cuya influencia se ha señalado en la obra de escritores muy diversos (Henry Miller, Charles Bukowski, Alessandro Baricco, Kurt Vonnegut\u0085). En Francia se generó una intensa polémica acerca de si era o no acertado conmemorar de un modo oficial el cincuentenario de la muerte del autor, y debido a las presiones sociales (que señalaban las opiniones antisemitas de Céline), el Gobierno suprimió el homenaje de Estado que se había previsto inicalmente. Esto dio pie a una serie de reflexiones y debates (tanto en Francia como fuera de ese país) acerca de la legitimidad, la conveniencia o incluso la posibilidad de separar el juicio estético del juicio moral, así como acerca de los límites de la libertad de expresión. Se cumplen además ochenta años desde que Céline terminó la novela que le ganaría un lugar de honor en las letras francesas, Viaje al fin de la noche, que se publicó el año siguiente (1932).",
       "categoria_principal": "Novela",
-      "categoria_secundaria": "Crítica social"
+      "categoria_secundaria": "Social y costumbrista"
     },
     {
       "titulo": "EL IMPOSTOR",
       "autor": "JAVIER CERCAS",
       "sinopsis": "¿Quién es Enric Marco? Un nonagenario barcelonés que se hizo pasar por superviviente de los campos nazis y que fue desenmascarado en mayo de 2005, después de presidir durante tres años la asociación española de los supervivientes, pronunciar centenares de conferencias, conceder decenas de entrevistas, recibir importantes distinciones y conmover en algún caso hasta las lágrimas a los parlamentarios españoles reunidos para rendir homenaje por vez primera a los republicanos deportados por el III Reich.\n\nEl caso dio la vuelta al mundo y convirtió a Marco en el gran impostor y el gran maldito. Ahora, casi una década más tarde, Javier Cercas asedia, en este thriller hipnótico que es también un banquete con muchos platos -narración, crónica, ensayo, biografía y autobiografía-, el enigma del personaje, su verdad y sus falsedades y, a través de esa indagación que recorre casi un siglo de historia de España, bucea con una pasión de kamikaze y una honestidad desgarradora en lo más profundo de nosotros mismos: en nuestra infinita capacidad de autoengaño, en nuestro conformismo y nuestras mentiras, en nuestra sed insaciable de afecto, en nuestras necesidades contrapuestas de ficción y de realidad, en las zonas más dolorosas de nuestro pasado reciente.\n\nEl resultado es un libro que no habla de Enric Marco sino de usted, lector; también el libro más insumiso y radical de Javier Cercas: un libro asombroso que, con una audacia inédita, ensancha los límites del género novelesco y explora las últimas fronteras de nuestra humanidad.",
       "categoria_principal": "Crónica",
-      "categoria_secundaria": "Investigación biográfica"
+      "categoria_secundaria": "Biográfica"
     },
     {
       "titulo": "EL FIN DEL HOMO SOVIETICUS",
       "autor": "SVETLANA ALEKSIÉVICH",
       "sinopsis": "Con la sola ayuda de una grabadora y una pluma, Svetlana Aleksiévich se empeña en mantener viva la memoria de la tragedia que fue la URSS, en narrar las microhistorias de una gran utopía. «El comunismo se propuso la insensatez de transformar al hombre antiguo, al viejo Adán. Y lo consiguió [\u0085]. En setenta y pocos años, el laboratorio del marxismo-leninismo creó un singular tipo de hombre: el Homo\nsovieticus», condenado a desaparecer con la implosión de la URSS. En este magnífico réquiem, la autora reinventa una forma literaria polifónica muy singular que le permite dar voz a cientos de damnificados: a los humillados y a los ofendidos, a madres deportadas con sus hijos, a estalinistas irredentos a pesar del Gulag, a entusiastas de la perestroika anonadados ante el triunfo del capitalismo, a ciudadanos que plantan cara a la instauración de nuevas dictaduras\u0085\nUn texto extraordinario por su sencillez, que describe de un modo conmovedor la sobrecogedora condición humana.",
       "categoria_principal": "Crónica",
-      "categoria_secundaria": "Memoria soviética"
+      "categoria_secundaria": "Memoria"
     },
     {
       "titulo": "GRAN SOL",
       "autor": "IGNACIO ALDECOA",
       "sinopsis": "Desde niño, Ignacio Aldecoa nunca dejó de soñar con el mar. Para él representaba la libertad, y ésta, en sus propias palabras, era «tener un lugar en el sol», porque la libertad es el estado natural del escritor. En alta mar, las fuerzas naturales se oponen a los hombres con extrema crudeza. Esa realidad aparece retratada en esta novela ya clásica de nuestra literatura, a veces triste y siempre auténtica, en la que se dignifica la miseria de un oficio duro y peligroso.\n\nAldecoa escribió Gran Sol después de compartir la intensa experiencia de la pesca de altura con los marineros del Cantábrico. Testigo del sacrificio y la pobreza, consigue acercar al lector con singular talento su día a día, sus conflictos laborales, sus dificultades y sus conversaciones cotidianas, sin perder nunca de vista la constante amenaza de la fatalidad. El íntimo vínculo entre los pescadores y la naturaleza queda al descubierto por medio de un lenguaje luminoso y colorista de una maestría indiscutible.",
       "categoria_principal": "Novela",
-      "categoria_secundaria": "Social y marinera"
+      "categoria_secundaria": "Social y costumbrista"
     },
     {
       "titulo": "EL MUNDO DESPUÉS DE GAZA",
       "autor": "PANKAJ MISHRA",
       "sinopsis": "Aquí tienes la sinopsis de El mundo después de Gaza, de Pankaj Mishra:\n\nEn este ensayo incisivo y urgente, el intelectual indio Pankaj Mishra analiza cómo la guerra actual en Gaza y la respuesta internacional ante el conflicto están marcando el fin de la autoridad moral de Occidente. El autor sostiene que el orden global posterior a 1945, construido sobre la memoria del Holocausto como la \"atrocidad de referencia\", ha entrado en crisis al chocar con las realidades de un Sur Global que ve en la descolonización el eje central de su historia y su justicia.\n\nMishra reevalúa dos narrativas opuestas: el relato triunfal del Norte Global sobre el capitalismo liberal y la visión del Sur Global que busca igualdad racial y libertad frente al dominio colonial. A través de una mirada desprovista de eurocentrismo, el libro aborda cuestiones fundamentales como la construcción de la identidad, el papel de las naciones y el impacto de la deshumanización en la era digital, convirtiéndose en una guía necesaria para entender el cambio de equilibrio en el poder mundial.",
       "categoria_principal": "Ensayo",
-      "categoria_secundaria": "Política internacional"
+      "categoria_secundaria": "Política"
     },
     {
       "titulo": "EL CUADERNO GRIS",
       "autor": "JOSEP PLA",
       "sinopsis": "Considerado uno de los diarios más importantes de la literatura europea, comienza en 1918, cuando un joven Pla regresa a su pueblo natal, Palafrugell, debido al cierre de la universidad por la epidemia de gripe española. Lo que empieza como un ejercicio para combatir el aburrimiento y practicar el estilo literario, se convierte en un vasto retrato de la vida cotidiana, el paisaje ampurdanés, las tertulias madrileñas y la evolución intelectual del autor.\n\nLa obra destaca por su ironía escéptica y una capacidad de observación prodigiosa. A través de sus anotaciones, Pla eleva lo banal a la categoría de arte, analizando con una prosa precisa y adjetivación perfecta tanto la gastronomía local como la psicología de sus vecinos y las tensiones políticas de la época. Es, en definitiva, el autorretrato de un joven que decide convertir la mirada y la escritura en su única forma de estar en el mundo.",
       "categoria_principal": "Memorias",
-      "categoria_secundaria": "Diario literario"
+      "categoria_secundaria": "Autobiográfica"
     },
     {
       "titulo": "ITALO CALVINO",
       "autor": "EL BARÓN RAMPANTE",
       "sinopsis": "Aquí tienes la sinopsis de El barón rampante, la obra más célebre de Italo Calvino:\n\nLa historia comienza en 1767, cuando el joven aristócrata Cosimo Piovasco di Rondò, tras una discusión con su padre por negarse a comer un plato de caracoles, decide subir a una encina de la propiedad familiar y jura no volver a pisar la tierra nunca más. A partir de ese momento, Cosimo organiza su vida entera en las copas de los árboles, desde donde estudia, caza, se enamora y participa en los grandes eventos de la historia, como la Revolución Francesa y las guerras napoleónicas.\n\nEs una fábula filosófica sobre la libertad individual y la distancia necesaria para observar el mundo con claridad. A pesar de vivir \"fuera\" de la sociedad, Cosimo está más comprometido con ella que nadie, demostrando que para ser verdaderamente independiente hay que mantener una postura firme, incluso si eso significa vivir a diez metros del suelo para siempre.",
       "categoria_principal": "Novela",
-      "categoria_secundaria": "Fábula filosófica"
+      "categoria_secundaria": "Filosófica"
     },
     {
       "titulo": "AL ESTE DEL EDÉN",
       "autor": "JOHN STEINBECK",
       "sinopsis": "Esta monumental saga familiar narra las vidas entrelazadas de dos familias, los Trask y los Hamilton, a lo largo de tres generaciones en el valle de Salinas, California. Con un trasfondo que va desde la Guerra de Secesión hasta la Primera Guerra Mundial, la novela es una reinterpretación moderna del mito bíblico de Caín y Abel, explorando la lucha eterna entre el bien y el mal, la culpa y la posibilidad de redención a través de la libre elección humana.\n\nLa trama se centra especialmente en los hermanos Cal y Aron Trask, quienes compiten por el afecto de su padre y lidian con el oscuro legado de su madre, la enigmática y cruel Cathy Ames. A través de personajes profundamente complejos, Steinbeck construye una epopeya sobre la identidad y la capacidad de cada individuo para romper con su pasado y elegir su propio camino moral.",
       "categoria_principal": "Novela",
-      "categoria_secundaria": "Saga familiar"
+      "categoria_secundaria": "Histórica"
     },
     {
       "titulo": "REFERENCIAS PERSONALES",
       "autor": "MATÍAS RIVAS",
       "sinopsis": "Este libro es una colección de fragmentos y apuntes que transitan entre el ensayo, el diario personal y la autobiografía. En él, Rivas —quien se desempeña como poeta, editor y crítico literario— construye un mosaico de sus obsesiones intelectuales y estéticas, abordando temas universales como el ocio, el miedo, el deseo, la belleza y el valor de la poesía. A través de una mirada directa y a menudo sarcástica, el autor reflexiona sobre su pasado, la incomodidad del propio cuerpo y la naturaleza acelerada de la vida contemporánea.\n\nLa obra funciona como un testimonio de su relación con la lectura y el pensamiento, donde las confidencias personales dialogan con juicios sobre el arte, las costumbres de la sociedad y las derivas de un presente incierto. Es, en esencia, un ejercicio de introspección de un hombre maduro que utiliza la palabra escrita para dar sentido a la cotidianeidad y rescatar la curiosidad y la quietud frente al ruido de la información actual.",
       "categoria_principal": "Ensayo",
-      "categoria_secundaria": "Literatura y autobiografía"
+      "categoria_secundaria": "Autobiográfica"
     },
     {
       "titulo": "EL HOLOCAUSTO ESPAÑOL",
       "autor": "PAUL PRESTON",
       "sinopsis": "«Durante la Guerra Civil española, cerca de 200.000 hombres y mujeres fueron asesinados lejos del frente, ejecutados extrajudicialmente o tras precarios procesos legales, y al menos 300.000 hombres perdieron la vida en los frentes de batalla. Además, un número desconocido de hombres, mujeres y niños fueron víctimas de los bombardeos y los éxodos que siguieron a la ocupación del territorio por parte de las fuerzas militares de Franco. En el conjunto de España, tras la victoria definitiva de los rebeldes a finales de marzo de 1939, alrededor de 20.000 republicanos fueron ejecutados. Muchos más murieron de hambre y enfermedades en las prisiones y los campos de concentración donde se hacinaban en condiciones infrahumanas. Otros sucumbieron a las condiciones esclavistas de los batallones de trabajo. A más de medio millón de refugiados no les quedó otra salida que el exilio, y muchos perecieron en los campos de internamiento franceses. Varios miles acabaron en los campos de exterminio nazis.",
       "categoria_principal": "Historia",
-      "categoria_secundaria": "Guerra Civil y represión"
+      "categoria_secundaria": "Memoria"
     },
     {
       "titulo": "LOS DESTROZOS",
       "autor": "BRET EASTON ELLIS",
       "sinopsis": "Los Ángeles, 1981. A sus diecisiete años, Bret está a punto de empezar su último curso de secundaria en Buckley junto a su exclusivo y sofisticado grupo de amigos: Thom, Susan y Debbie, novia de Bret, experimentan con el sexo, el alcohol y las drogas mientras aprovechan los últimos días de verano. Pero este sueño paradisiaco se desmorona con la llegada de un nuevo alumno: Robert Mallory es brillante, guapo y carismático, pero algo en él no encaja, y nadie más que Bret parece darse cuenta de que ese algo podría estar relacionado con la aparición del Arrastrero, un asesino en serie que amenaza a los adolescentes de la ciudad y a sus mascotas.",
       "categoria_principal": "Novela",
-      "categoria_secundaria": "Suspense psicológico"
+      "categoria_secundaria": "Psicológica"
     },
     {
       "titulo": "CINCO HORAS CON MARIO",
       "autor": "MIGUEL DELIBES",
       "sinopsis": "Una mujer acaba de perder a su marido y vela el cadáver durante la noche. Sobre la mesilla hay un libro ―la Biblia― que la esposa hojea, leyendo los párrafos subrayados por el hombre que se ha ido para siempre. Una oleada de recuerdos le viene a la mente y empieza un lento desordenado monólogo en el que la vida pugna para hacerse real otra vez. La pobre vida llena de errores y torpezas, de pequeños goces e incomprensiones. ¿Ha conocido Carmen alguna vez a Mario? Escuchemos el irritante discurrir de la pequeña y estrecha mentalidad de la esposa. Otro hombre irá poco a poco descubriéndose, para todos menos para ella, con toda su desesperanza y su fe en la vida.",
       "categoria_principal": "Novela",
-      "categoria_secundaria": "Social y psicológica"
+      "categoria_secundaria": "Psicológica"
     },
     {
       "titulo": "VOCES DE CHERNÓBIL",
       "autor": "SVETLANA ALEXIEVICH",
       "sinopsis": "«Cierra las ventanillas y acuéstate. Hay un incendio en la central. Vendré pronto.» Esto fue lo último que un joven bombero dijo a su esposa antes de acudir al lugar de la explosión. No regresó. Y en cierto modo, ya no volvió a verle, pues en el hospital su marido dejó de ser su marido. Todavía hoy ella se pregunta si su historia trata sobre el amor o la muerte.\n\nVoces de Chernóbil está planteado como si fuera una tragedia griega, con coros y unos héroes marcados por un destino fatal, cuyas voces fueron silenciadas durante muchos años por una polis representada aquí por la antigua URSS. Pero, a diferencia de una tragedia griega, no hubo posibilidad de catarsis.",
       "categoria_principal": "Crónica",
-      "categoria_secundaria": "Testimonios de una catástrofe"
+      "categoria_secundaria": "Memoria"
     },
     {
       "titulo": "LA ANOMALÍA",
@@ -1207,7 +1207,7 @@
       "autor": "JAVIER CERCAS",
       "sinopsis": "El nuevo libro de Javier Cercas relata los últimos 50 años de la historia de España, que son los del diario El País, a través de un recorrido personal y una lúcida reflexión sobre los vínculos entre periodismo, literatura, política y libertades.\n\nEl diario El País salió a la calle el 4 de mayo de 1976, menos de seis meses después de la muerte de Franco, cuando el camino a la democracia apenas empezaba a atisbarse. La idea del periódico se incubó entre un grupo de editores e intelectuales que, en las postrimerías del franquismo, buscaba un instrumento de reforma del régimen, de talante liberal y vocación europeísta, que contribuyera a suturar las heridas provocadas por la guerra civil y la dictadura y a hallar una salida sin traumas del franquismo. Su éxito fue fulgurante. A los 50 años de ese momento fundacional de la historia reciente española, Javier Cercas asumió el reto de contar la historia de un país a través de la de su periódico de referencia; pero El periódico de la democracia no es solo una historia personal de ese periodo: es también una reflexión acerca de la relación del periodismo con la literatura, una crónica de la formación intelectual de un escritor y un homenaje a la importancia de la prensa en la construcción y la defensa de las libertades.",
       "categoria_principal": "Crónica",
-      "categoria_secundaria": "Periodismo y política"
+      "categoria_secundaria": "Política"
     },
     {
       "titulo": "ESCORIA",
@@ -1228,14 +1228,14 @@
       "autor": "JORGE MARTÍNEZ REVERTE",
       "sinopsis": "Al igual que ocurrió en 1934, la minería asturiana se declara en huelga en 1962 para reivindicar unas condiciones de trabajo mucho más justas. Esta huelga la inició un picador, Francisco Fernández, quien un día se niega a bajar al pozo harto ya de tanta injusticia. Siete mineros más le secundan. \n\nNadie en ese momento podía imaginar que, esta protesta, se extendería muy pronto al resto de los pozos, no solo los de la cuenca asturiana sino, también, a los situados en León, el País Vasco donde la huelga consigue paralizar los Altos Hornos, Cataluña, Jerez, El Ferrol y Sagunto.\n\nUna situación que llega a poner en jaque al Gobierno franquista que, lógicamente, la reprimirá. Pese a las reformas que se iniciaron en el año 1959, España vive aún, en 1962, bajo una situación que no pone facilidades en las protestas populares.",
       "categoria_principal": "Historia",
-      "categoria_secundaria": "Movimiento obrero"
+      "categoria_secundaria": "Política"
     },
     {
       "titulo": "OPEN: MEMORIAS",
       "autor": "ANDRE AGASSI",
       "sinopsis": "Siendo un bebé, le pusieron una raqueta de juguete en la mano. Desde entonces, Agassi no ha hecho otra cosa que golpear pelotas de tenis. Su padre, obsesionado en convertirlo en un astro del deporte, construyó una máquina (el dragón) que disparaba 2.500 pelotas al día contra el pequeño Andre.. Escrita por el premio Pulitzer J. R. Moehringer, Open es la semblanza a corazón abierto de Andre Agassi, que en estas memorias se muestra tal como es: un hombre que debió enfrentarse a las presiones de su familia, de la fama, pero que siempre conservó el valor de la amistad y un sentido altruista de la vida. En esta cautivadora autobiografía, Agassi revela, con sentido del humor y ternura, una vida definida por la contradicción entre un destino impuesto y el anhelo por complacer a quienes lo han sacrificado todo por él.«Odio el tenis, lo detesto con una oscura y secreta pasión, y sin embargo sigo jugando porque no tengo alternativa. Y ese abismo, esa contradicción entre lo que quiero hacer y lo que de hecho hago, es la esencia de mi vida». Andre Agassi.",
       "categoria_principal": "Memorias",
-      "categoria_secundaria": "Deporte"
+      "categoria_secundaria": "Autobiográfica"
     },
     {
       "titulo": "TRAINSPOTTING",
@@ -1249,7 +1249,7 @@
       "autor": "JOHN KENNEDY TOOLE",
       "sinopsis": "",
       "categoria_principal": "Novela",
-      "categoria_secundaria": "Sátira social"
+      "categoria_secundaria": "Sátira"
     }
   ],
   "abandonados": [
@@ -1266,7 +1266,7 @@
       "porcentajeAbandono": 51,
       "fechaAbandono": "2026-03-16T07:32:09.781Z",
       "categoria_principal": "Novela",
-      "categoria_secundaria": "Sátira social"
+      "categoria_secundaria": "Sátira"
     },
     {
       "titulo": "EL ORDEN DEL TIEMPO",
@@ -1281,7 +1281,7 @@
       "porcentajeAbandono": 65,
       "fechaAbandono": "2026-05-10T14:50:09.995Z",
       "categoria_principal": "Divulgación",
-      "categoria_secundaria": "Física"
+      "categoria_secundaria": "Ciencia"
     },
     {
       "titulo": "DIGNOS DE SER HUMANOS",
@@ -1296,7 +1296,7 @@
       "porcentajeAbandono": 42,
       "fechaAbandono": "2026-08-02T17:40:17.897Z",
       "categoria_principal": "Ensayo",
-      "categoria_secundaria": "Sociedad y comportamiento humano"
+      "categoria_secundaria": "Ciencia"
     }
   ],
   "leyendo": [
@@ -1308,7 +1308,7 @@
       "fechaInicio": "2026-09-17T14:59:43.162Z",
       "porcentaje": 20,
       "categoria_principal": "Biografía",
-      "categoria_secundaria": "Música"
+      "categoria_secundaria": "Biográfica"
     },
     {
       "titulo": "TRÓPICO DE CÁNCER",
@@ -1328,7 +1328,7 @@
       "fechaInicio": "2026-10-03T07:54:30.79Z",
       "porcentaje": 30,
       "categoria_principal": "Poesía",
-      "categoria_secundaria": "Amorosa"
+      "categoria_secundaria": "Autobiográfica"
     }
   ]
 }
