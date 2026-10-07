@@ -1863,6 +1863,93 @@
             color: white;
         }
 
+        .categoria-bloque {
+            margin-bottom: 1.35rem;
+        }
+
+        .categoria-bloque h3 {
+            margin: 0 0 0.65rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .categoria-lista {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-bottom: 0.65rem;
+        }
+
+        .categoria-fila {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            min-width: 0;
+        }
+
+        .categoria-nombre {
+            flex: 1 1 auto;
+            min-width: 0;
+            font-size: 0.92rem;
+            line-height: 1.3;
+            overflow-wrap: anywhere;
+        }
+
+        .categoria-fila input,
+        .categoria-alta input {
+            flex: 1 1 auto;
+            min-width: 0;
+            padding: 0.55rem 0.7rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--secondary);
+            color: var(--text);
+            font: inherit;
+            font-size: 0.92rem;
+        }
+
+        .categoria-fila button,
+        .categoria-alta button {
+            flex: 0 0 auto;
+            padding: 0.45rem 0.65rem;
+            border: none;
+            border-radius: 8px;
+            background: color-mix(in srgb, var(--secondary) 72%, #000);
+            color: var(--text);
+            font: inherit;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .categoria-fila button.categoria-eliminar {
+            color: #f3d0d0;
+            background: #6a3030;
+        }
+
+        .categoria-alta {
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .categoria-alta button {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        [data-theme="light"] .categoria-fila button,
+        [data-theme="fresh-light"] .categoria-fila button {
+            background: color-mix(in srgb, var(--accent) 24%, var(--secondary));
+            color: var(--accent);
+        }
+
+        [data-theme="light"] .categoria-fila button.categoria-eliminar,
+        [data-theme="fresh-light"] .categoria-fila button.categoria-eliminar {
+            background: #f3d0d0;
+            color: #6a3030;
+        }
+
         .form-group {
             margin-bottom: 1.25rem;
         }
@@ -2975,13 +3062,14 @@
             <button class="btn-icon" id="operacionesBtn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9c.3.6.9 1 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Operaciones</button>
             <div class="operaciones-menu" id="operacionesMenu">
                 <button class="btn-icon" id="addBookBtn">Añadir Libro</button>
+                <button class="btn-icon" id="categoriasBtn">Categorías</button>
                 <button class="btn-icon" id="exportBtn">Exportar</button>
                 <button class="btn-icon" id="uploadGitHubBtn" title="Subir mi_biblioteca.json a GitHub">Subir a GitHub</button>
                 <button class="btn-icon" id="configGitHubTokenBtn" title="Guardar o cambiar tu token de GitHub">Configurar token GitHub</button>
                 <button class="btn-icon" id="importBtn">Importar</button>
                 <input type="file" id="importFile" accept=".json" style="display: none;">
                 <button class="btn-icon" id="resetBtn" title="Recargar datos desde el servidor">Resetear</button>
-                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.47)</button>
+                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.48)</button>
             </div>
         </div>
     </nav>
@@ -3201,15 +3289,13 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="categoriaPrincipal">Género (opcional)</label>
-                        <input type="text" id="categoriaPrincipal" list="listaCategoriaPrincipal" placeholder="Ej: Novela" autocomplete="off">
+                        <select id="categoriaPrincipal"><option value="">Sin género</option></select>
                     </div>
                     <div class="form-group">
                         <label for="categoriaSecundaria">Subgénero (opcional)</label>
-                        <input type="text" id="categoriaSecundaria" list="listaCategoriaSecundaria" placeholder="Ej: Psicológica" autocomplete="off">
+                        <select id="categoriaSecundaria"><option value="">Sin subgénero</option></select>
                     </div>
                 </div>
-                <datalist id="listaCategoriaPrincipal"></datalist>
-                <datalist id="listaCategoriaSecundaria"></datalist>
                 <div class="form-group">
                     <label for="sinopsis">Sinopsis (opcional)</label>
                     <textarea id="sinopsis" placeholder="Resumen o sinopsis del libro..." rows="3"></textarea>
@@ -3273,11 +3359,11 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="proximaCategoriaPrincipal">Género (opcional)</label>
-                        <input type="text" id="proximaCategoriaPrincipal" list="listaCategoriaPrincipal" placeholder="Ej: Novela" autocomplete="off">
+                        <select id="proximaCategoriaPrincipal"><option value="">Sin género</option></select>
                     </div>
                     <div class="form-group">
                         <label for="proximaCategoriaSecundaria">Subgénero (opcional)</label>
-                        <input type="text" id="proximaCategoriaSecundaria" list="listaCategoriaSecundaria" placeholder="Ej: Psicológica" autocomplete="off">
+                        <select id="proximaCategoriaSecundaria"><option value="">Sin subgénero</option></select>
                     </div>
                 </div>
                 <div class="form-group">
@@ -3304,6 +3390,31 @@
         </div>
     </div>
 
+    <div class="modal-overlay" id="categoriasOverlay">
+        <div class="modal" role="dialog" aria-labelledby="categoriasTitle">
+            <div class="modal-header">
+                <h2 id="categoriasTitle">Categorías</h2>
+                <button type="button" class="modal-close" id="categoriasClose" aria-label="Cerrar">×</button>
+            </div>
+            <section class="categoria-bloque">
+                <h3>Género</h3>
+                <div class="categoria-lista" id="listaGeneros"></div>
+                <form class="categoria-alta" id="formGeneroNuevo">
+                    <input type="text" id="generoNuevo" placeholder="Nuevo género" autocomplete="off" aria-label="Nuevo género">
+                    <button type="submit">Añadir</button>
+                </form>
+            </section>
+            <section class="categoria-bloque">
+                <h3>Subgénero</h3>
+                <div class="categoria-lista" id="listaSubgeneros"></div>
+                <form class="categoria-alta" id="formSubgeneroNuevo">
+                    <input type="text" id="subgeneroNuevo" placeholder="Nuevo subgénero" autocomplete="off" aria-label="Nuevo subgénero">
+                    <button type="submit">Añadir</button>
+                </form>
+            </section>
+        </div>
+    </div>
+
     <!-- Toast -->
     <div class="toast" id="toast">
         <span id="toastIcon">✓</span>
@@ -3315,6 +3426,7 @@
         const STORAGE_KEY = 'biblioteca_libros_v7';
         const PROXIMAS_KEY = 'biblioteca_proximas_v2';
         const ABANDONADOS_KEY = 'biblioteca_abandonados_v1';
+        const CATEGORIAS_KEY = 'biblioteca_categorias_v1';
         const JSON_URL = 'mi_biblioteca.json';
 
         // Token propio de esta app. No compartir la clave con RunMetrics: ambas
@@ -3330,6 +3442,8 @@
         let abandonados = [];
         const MAX_LEYENDO = 3;
         let librosLeyendo = [];
+        let catalogoCategorias = { generos: [], subgeneros: [] };
+        let categoriaEditando = null;
         let proximaPendiente = null; // Para guardar datos de la próxima lectura temporalmente
         const LEYENDO_KEY = 'biblioteca_leyendo_v1';
         let indiceLeyendoEditando = -1;
@@ -3481,7 +3595,7 @@
                 if (jsonData && jsonData.hasOwnProperty('leyendo') && completarCategorias(librosLeyendo, jsonData.leyendo)) {
                     saveLeyendo();
                 }
-                rellenarSugerenciasCategorias();
+                iniciarCatalogo(jsonData);
 
                 renderLeyendo();
                 renderProximas();
@@ -3597,33 +3711,292 @@
 
         function escribirCategorias(idPrincipal, idSecundaria, libro) {
             const categorias = categoriasDe(libro);
+            asegurarEnCatalogo('generos', categorias.categoria_principal);
+            asegurarEnCatalogo('subgeneros', categorias.categoria_secundaria);
+            refrescarDesplegablesCategorias();
             document.getElementById(idPrincipal).value = categorias.categoria_principal;
             document.getElementById(idSecundaria).value = categorias.categoria_secundaria;
         }
 
-        function rellenarSugerenciasCategorias() {
-            const principales = new Set();
-            const secundarias = new Set();
-            [libros, proximasLecturas, abandonados, librosLeyendo].forEach(lista => {
-                (lista || []).forEach(libro => {
-                    const categorias = categoriasDe(libro);
-                    if (categorias.categoria_principal) principales.add(categorias.categoria_principal);
-                    if (categorias.categoria_secundaria) secundarias.add(categorias.categoria_secundaria);
-                });
-            });
-            ponerOpcionesLista('listaCategoriaPrincipal', principales);
-            ponerOpcionesLista('listaCategoriaSecundaria', secundarias);
+        function normalizarNombreCategoria(nombre) {
+            return String(nombre || '').trim().replace(/\s+/g, ' ');
         }
 
-        function ponerOpcionesLista(id, valores) {
-            const list = document.getElementById(id);
-            if (!list) return;
-            list.replaceChildren();
-            [...valores].sort((a, b) => a.localeCompare(b, 'es')).forEach(valor => {
+        function mismoNombreCategoria(a, b) {
+            return normalizarNombreCategoria(a).toLocaleLowerCase('es') === normalizarNombreCategoria(b).toLocaleLowerCase('es');
+        }
+
+        function ordenarCatalogo(lista) {
+            lista.sort((a, b) => a.localeCompare(b, 'es'));
+        }
+
+        function incorporarValores(lista, valores) {
+            (valores || []).forEach(valor => {
+                const nombre = normalizarNombreCategoria(valor);
+                if (nombre && !lista.some(item => mismoNombreCategoria(item, nombre))) lista.push(nombre);
+            });
+            ordenarCatalogo(lista);
+        }
+
+        function fusionarCatalogo(origen) {
+            if (!origen) return;
+            incorporarValores(catalogoCategorias.generos, origen.generos);
+            incorporarValores(catalogoCategorias.subgeneros, origen.subgeneros);
+        }
+
+        function sembrarCatalogoDesdeLibros() {
+            const generos = [];
+            const subgeneros = [];
+            [libros, proximasLecturas, abandonados, librosLeyendo].forEach(lista => {
+                (lista || []).forEach(libro => {
+                    generos.push(libro.categoria_principal);
+                    subgeneros.push(libro.categoria_secundaria);
+                });
+            });
+            incorporarValores(catalogoCategorias.generos, generos);
+            incorporarValores(catalogoCategorias.subgeneros, subgeneros);
+        }
+
+        function cargarCatalogoLocal() {
+            try {
+                const parsed = JSON.parse(localStorage.getItem(CATEGORIAS_KEY) || '');
+                if (parsed && Array.isArray(parsed.generos) && Array.isArray(parsed.subgeneros)) {
+                    catalogoCategorias = { generos: [], subgeneros: [] };
+                    fusionarCatalogo(parsed);
+                    return true;
+                }
+            } catch (e) {}
+            return false;
+        }
+
+        function guardarCatalogo() {
+            localStorage.setItem(CATEGORIAS_KEY, JSON.stringify(catalogoCategorias));
+        }
+
+        function iniciarCatalogo(jsonData, reemplazar) {
+            if (reemplazar || !cargarCatalogoLocal()) {
+                catalogoCategorias = { generos: [], subgeneros: [] };
+                if (jsonData && jsonData.categorias) fusionarCatalogo(jsonData.categorias);
+            }
+            sembrarCatalogoDesdeLibros();
+            guardarCatalogo();
+            refrescarDesplegablesCategorias();
+        }
+
+        function asegurarEnCatalogo(tipo, nombre) {
+            const limpio = normalizarNombreCategoria(nombre);
+            if (!limpio || catalogoCategorias[tipo].some(item => item === limpio)) return;
+            incorporarValores(catalogoCategorias[tipo], [limpio]);
+            guardarCatalogo();
+        }
+
+        function rellenarSelectCategoria(id, valores, etiquetaVacia) {
+            const select = document.getElementById(id);
+            if (!select) return;
+            const actual = select.value;
+            select.replaceChildren();
+            const vacia = document.createElement('option');
+            vacia.value = '';
+            vacia.textContent = etiquetaVacia;
+            select.appendChild(vacia);
+            valores.forEach(valor => {
                 const option = document.createElement('option');
                 option.value = valor;
-                list.appendChild(option);
+                option.textContent = valor;
+                select.appendChild(option);
             });
+            select.value = valores.includes(actual) ? actual : '';
+        }
+
+        function refrescarDesplegablesCategorias() {
+            rellenarSelectCategoria('categoriaPrincipal', catalogoCategorias.generos, 'Sin género');
+            rellenarSelectCategoria('categoriaSecundaria', catalogoCategorias.subgeneros, 'Sin subgénero');
+            rellenarSelectCategoria('proximaCategoriaPrincipal', catalogoCategorias.generos, 'Sin género');
+            rellenarSelectCategoria('proximaCategoriaSecundaria', catalogoCategorias.subgeneros, 'Sin subgénero');
+        }
+
+        function campoCategoria(tipo) {
+            return tipo === 'generos' ? 'categoria_principal' : 'categoria_secundaria';
+        }
+
+        function recorrerLibros(callback) {
+            const grupos = [
+                [libros, () => saveData(libros)],
+                [proximasLecturas, () => saveProximas(proximasLecturas)],
+                [abandonados, () => saveAbandonados(abandonados)],
+                [librosLeyendo, () => saveLeyendo()]
+            ];
+            grupos.forEach(([lista, guardar]) => {
+                let cambio = false;
+                (lista || []).forEach(libro => {
+                    if (callback(libro)) cambio = true;
+                });
+                if (cambio) guardar();
+            });
+        }
+
+        function contarLibrosConCategoria(campo, nombre) {
+            let total = 0;
+            [libros, proximasLecturas, abandonados, librosLeyendo].forEach(lista => {
+                (lista || []).forEach(libro => {
+                    if ((libro[campo] || '').trim() === nombre) total++;
+                });
+            });
+            return total;
+        }
+
+        function refrescarVistasCategorias() {
+            guardarCatalogo();
+            refrescarDesplegablesCategorias();
+            initFilters();
+            filterAndSortBooks();
+            renderLeyendo();
+            renderProximas();
+            renderAbandonados();
+            if (chartsInitialized) {
+                destroyCharts();
+                initCharts();
+            }
+            if (document.getElementById('categoriasOverlay').classList.contains('visible')) pintarCatalogo();
+        }
+
+        function anadirCategoria(tipo, input) {
+            const nombre = normalizarNombreCategoria(input.value);
+            if (!nombre) return;
+            if (catalogoCategorias[tipo].some(item => mismoNombreCategoria(item, nombre))) {
+                showToast('Esa categoría ya existe', 'error');
+                return;
+            }
+            incorporarValores(catalogoCategorias[tipo], [nombre]);
+            input.value = '';
+            refrescarVistasCategorias();
+            showToast('Categoría añadida');
+        }
+
+        function renombrarCategoria(tipo, anterior, propuesto) {
+            const nuevo = normalizarNombreCategoria(propuesto);
+            if (!nuevo) {
+                showToast('Escribe un nombre', 'error');
+                return;
+            }
+            if (nuevo === anterior) {
+                categoriaEditando = null;
+                pintarCatalogo();
+                return;
+            }
+            if (catalogoCategorias[tipo].some(item => item !== anterior && mismoNombreCategoria(item, nuevo))) {
+                showToast('Esa categoría ya existe', 'error');
+                return;
+            }
+            const indice = catalogoCategorias[tipo].indexOf(anterior);
+            if (indice < 0) return;
+            catalogoCategorias[tipo][indice] = nuevo;
+            ordenarCatalogo(catalogoCategorias[tipo]);
+            const campo = campoCategoria(tipo);
+            let afectados = 0;
+            recorrerLibros(libro => {
+                if ((libro[campo] || '').trim() !== anterior) return false;
+                libro[campo] = nuevo;
+                afectados++;
+                return true;
+            });
+            categoriaEditando = null;
+            refrescarVistasCategorias();
+            showToast(afectados ? `Categoría actualizada en ${afectados} libros` : 'Categoría actualizada');
+        }
+
+        function eliminarCategoria(tipo, nombre) {
+            const campo = campoCategoria(tipo);
+            const afectados = contarLibrosConCategoria(campo, nombre);
+            const aviso = afectados
+                ? `Se quitará «${nombre}» de ${afectados} ${afectados === 1 ? 'libro' : 'libros'}. ¿Eliminarla?`
+                : `¿Eliminar «${nombre}»?`;
+            if (!confirm(aviso)) return;
+            catalogoCategorias[tipo] = catalogoCategorias[tipo].filter(item => item !== nombre);
+            if (afectados) {
+                recorrerLibros(libro => {
+                    if ((libro[campo] || '').trim() !== nombre) return false;
+                    libro[campo] = '';
+                    return true;
+                });
+            }
+            if (categoriaEditando && categoriaEditando.tipo === tipo && categoriaEditando.nombre === nombre) categoriaEditando = null;
+            refrescarVistasCategorias();
+            showToast('Categoría eliminada');
+        }
+
+        function botonCategoria(texto, clase, accion) {
+            const boton = document.createElement('button');
+            boton.type = 'button';
+            boton.textContent = texto;
+            if (clase) boton.className = clase;
+            boton.addEventListener('click', accion);
+            return boton;
+        }
+
+        function pintarListaCategoria(contenedorId, tipo) {
+            const contenedor = document.getElementById(contenedorId);
+            contenedor.replaceChildren();
+            catalogoCategorias[tipo].forEach(nombre => {
+                const fila = document.createElement('div');
+                fila.className = 'categoria-fila';
+                const editando = categoriaEditando && categoriaEditando.tipo === tipo && categoriaEditando.nombre === nombre;
+                if (editando) {
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.value = nombre;
+                    input.setAttribute('aria-label', `Nuevo nombre de ${nombre}`);
+                    input.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter') {
+                            e.preventDefault();
+                            renombrarCategoria(tipo, nombre, input.value);
+                        }
+                        if (e.key === 'Escape') {
+                            categoriaEditando = null;
+                            pintarCatalogo();
+                        }
+                    });
+                    fila.append(
+                        input,
+                        botonCategoria('Guardar', '', () => renombrarCategoria(tipo, nombre, input.value)),
+                        botonCategoria('Cancelar', '', () => { categoriaEditando = null; pintarCatalogo(); })
+                    );
+                    contenedor.appendChild(fila);
+                    input.focus();
+                    input.select();
+                } else {
+                    const etiqueta = document.createElement('span');
+                    etiqueta.className = 'categoria-nombre';
+                    etiqueta.textContent = nombre;
+                    fila.append(
+                        etiqueta,
+                        botonCategoria('Editar', '', () => { categoriaEditando = { tipo, nombre }; pintarCatalogo(); }),
+                        botonCategoria('Eliminar', 'categoria-eliminar', () => eliminarCategoria(tipo, nombre))
+                    );
+                    contenedor.appendChild(fila);
+                }
+            });
+        }
+
+        function pintarCatalogo() {
+            pintarListaCategoria('listaGeneros', 'generos');
+            pintarListaCategoria('listaSubgeneros', 'subgeneros');
+        }
+
+        function abrirCategorias() {
+            document.getElementById('operacionesMenu').classList.remove('visible');
+            categoriaEditando = null;
+            pintarCatalogo();
+            document.getElementById('categoriasOverlay').classList.add('visible');
+        }
+
+        function cerrarCategorias() {
+            categoriaEditando = null;
+            document.getElementById('categoriasOverlay').classList.remove('visible');
+        }
+
+        function rellenarSugerenciasCategorias() {
+            refrescarDesplegablesCategorias();
         }
 
         function completarCategorias(locales, remotos) {
@@ -4295,7 +4668,8 @@
                 libros,
                 proximas: proximasLecturas,
                 abandonados,
-                leyendo: librosLeyendo
+                leyendo: librosLeyendo,
+                categorias: catalogoCategorias
             };
         }
 
@@ -4359,6 +4733,11 @@
                     }
 
                     if (importedBooks > 0 || importedProximas > 0 || importedAbandonados > 0 || data.hasOwnProperty('leyendo')) {
+                        fusionarCatalogo(data.categorias);
+                        sembrarCatalogoDesdeLibros();
+                        guardarCatalogo();
+                        refrescarDesplegablesCategorias();
+                        renderProximas();
                         const leyendoMsg = mensajeLeyendo();
                         const abandonadosMsg = importedAbandonados ? ` + ${importedAbandonados} abandonados` : '';
                         showToast(`Importados: ${importedBooks} libros + ${importedProximas} próximas${leyendoMsg}${abandonadosMsg}`);
@@ -4736,6 +5115,19 @@
         });
 
         document.getElementById('addBookBtn').addEventListener('click', () => openModal('Añadir Libro'));
+        document.getElementById('categoriasBtn').addEventListener('click', abrirCategorias);
+        document.getElementById('categoriasClose').addEventListener('click', cerrarCategorias);
+        document.getElementById('categoriasOverlay').addEventListener('click', (e) => {
+            if (e.target.id === 'categoriasOverlay') cerrarCategorias();
+        });
+        document.getElementById('formGeneroNuevo').addEventListener('submit', (e) => {
+            e.preventDefault();
+            anadirCategoria('generos', document.getElementById('generoNuevo'));
+        });
+        document.getElementById('formSubgeneroNuevo').addEventListener('submit', (e) => {
+            e.preventDefault();
+            anadirCategoria('subgeneros', document.getElementById('subgeneroNuevo'));
+        });
         document.getElementById('leyendoSection').addEventListener('click', (e) => {
             const pct = e.target.closest('.leyendo-porcentaje');
             if (!pct || pct.querySelector('input')) return;
@@ -4905,6 +5297,7 @@
                 localStorage.removeItem(PROXIMAS_KEY);
                 localStorage.removeItem(LEYENDO_KEY);
                 localStorage.removeItem(ABANDONADOS_KEY);
+                localStorage.removeItem(CATEGORIAS_KEY);
                 
                 // Reload from JSON
                 try {
@@ -4932,7 +5325,9 @@
                             librosLeyendo = [];
                             localStorage.removeItem(LEYENDO_KEY);
                         }
+                        iniciarCatalogo(jsonData, true);
                         renderLeyendo();
+                        renderProximas();
                         renderAbandonados();
                         initFilters();
                         filterAndSortBooks();
@@ -5194,6 +5589,7 @@
             indiceLeyendoEditando = -1;
             document.getElementById('editProximaTitle').textContent = 'Añadir Próxima Lectura';
             document.getElementById('editProximaForm').reset();
+            refrescarDesplegablesCategorias();
             document.getElementById('editProximaId').value = '';
             document.getElementById('deleteProximaBtn').style.display = 'none';
             document.getElementById('marcarLeidoBtn').style.display = 'none';
