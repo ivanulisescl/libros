@@ -1528,6 +1528,19 @@
 
         .books-grid:not(.list-view) .book-rating { margin: 0.35rem 0 0.4rem; }
 
+        .book-categorias {
+            margin: 0.05rem 0 0.45rem;
+            font-size: 0.72rem;
+            line-height: 1.35;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .proxima-body .book-categorias,
+        .leyendo-main .book-categorias {
+            margin: 0;
+        }
+
         .books-grid:not(.list-view) .star { font-size: 1.05rem; }
         .books-grid:not(.list-view) .star.filled { color: var(--accent); }
 
@@ -1745,6 +1758,10 @@
 
         .books-grid.list-view .book-rating {
             margin: 0.5rem 0;
+        }
+
+        .books-grid.list-view .book-categorias {
+            margin: 0.15rem 0 0;
         }
 
         /* Lista reducida: como lista pero sin puntuación ni botones editar/papelera */
@@ -2959,7 +2976,7 @@
                 <button class="btn-icon" id="importBtn">Importar</button>
                 <input type="file" id="importFile" accept=".json" style="display: none;">
                 <button class="btn-icon" id="resetBtn" title="Recargar datos desde el servidor">Resetear</button>
-                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.44)</button>
+                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.45)</button>
             </div>
         </div>
     </nav>
@@ -3046,11 +3063,11 @@
                 <div class="chart-container"><canvas id="ratingsChart"></canvas></div>
             </div>
             <div class="chart-card">
-                <h3 class="chart-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12.2 12 19.7l8.2-8.2L12.7 4H7A2.5 2.5 0 0 0 4.5 6.5z"/><circle cx="8.4" cy="8.4" r="1.15" fill="currentColor" stroke="none"/></svg>Distribución por Categoría Primaria</h3>
-                <div class="chart-container"><canvas id="primaryCategoryChart"></canvas></div>
+                <h3 class="chart-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12.2 12 19.7l8.2-8.2L12.7 4H7A2.5 2.5 0 0 0 4.5 6.5z"/><circle cx="8.4" cy="8.4" r="1.15" fill="currentColor" stroke="none"/></svg>Distribución por Género</h3>
+                <div class="chart-container" id="primaryCategoryContainer"><canvas id="primaryCategoryChart"></canvas></div>
             </div>
             <div class="chart-card">
-                <h3 class="chart-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 8.2 9.2 13.9l6.4-6.4L10.2 2H6A2.5 2.5 0 0 0 3.5 4.5z"/><path d="M10.5 11.2 16.2 16.9 22 11.1 16.8 5.9h-4.2z"/></svg>Distribución por Categoría Secundaria</h3>
+                <h3 class="chart-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 8.2 9.2 13.9l6.4-6.4L10.2 2H6A2.5 2.5 0 0 0 3.5 4.5z"/><path d="M10.5 11.2 16.2 16.9 22 11.1 16.8 5.9h-4.2z"/></svg>Distribución por Subgénero</h3>
                 <div class="chart-container" id="secondaryCategoryContainer"><canvas id="secondaryCategoryChart"></canvas></div>
             </div>
             <div class="chart-card">
@@ -3092,8 +3109,8 @@
                 <option value="5">⭐ 5+</option>
                 <option value="0">Sin puntuar</option>
             </select>
-            <select id="primaryCategoryFilter" aria-label="Categoría primaria"><option value="">Categoría primaria</option></select>
-            <select id="secondaryCategoryFilter" aria-label="Categoría secundaria"><option value="">Categoría secundaria</option></select>
+            <select id="primaryCategoryFilter" aria-label="Género"><option value="">Género</option></select>
+            <select id="secondaryCategoryFilter" aria-label="Subgénero"><option value="">Subgénero</option></select>
         </div>
         <div class="sort-row">
             <span class="sort-label">Ordenar por</span>
@@ -3178,11 +3195,11 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="categoriaPrincipal">Categoría principal (opcional)</label>
+                        <label for="categoriaPrincipal">Género (opcional)</label>
                         <input type="text" id="categoriaPrincipal" list="listaCategoriaPrincipal" placeholder="Ej: Novela" autocomplete="off">
                     </div>
                     <div class="form-group">
-                        <label for="categoriaSecundaria">Categoría secundaria (opcional)</label>
+                        <label for="categoriaSecundaria">Subgénero (opcional)</label>
                         <input type="text" id="categoriaSecundaria" list="listaCategoriaSecundaria" placeholder="Ej: Psicológica" autocomplete="off">
                     </div>
                 </div>
@@ -3250,11 +3267,11 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="proximaCategoriaPrincipal">Categoría principal (opcional)</label>
+                        <label for="proximaCategoriaPrincipal">Género (opcional)</label>
                         <input type="text" id="proximaCategoriaPrincipal" list="listaCategoriaPrincipal" placeholder="Ej: Novela" autocomplete="off">
                     </div>
                     <div class="form-group">
-                        <label for="proximaCategoriaSecundaria">Categoría secundaria (opcional)</label>
+                        <label for="proximaCategoriaSecundaria">Subgénero (opcional)</label>
                         <input type="text" id="proximaCategoriaSecundaria" list="listaCategoriaSecundaria" placeholder="Ej: Psicológica" autocomplete="off">
                     </div>
                 </div>
@@ -3847,20 +3864,28 @@
             const ratingData = ratingLabels.map(r => ratingCounts[r]);
 
             const categoriasPrimarias = conteoCategorias('categoria_principal');
+            const primaryContainer = document.getElementById('primaryCategoryContainer');
+            primaryContainer.style.height = Math.max(280, categoriasPrimarias.length * 28) + 'px';
             charts.primaryCategory = new Chart(document.getElementById('primaryCategoryChart'), {
-                type: 'doughnut',
+                type: 'bar',
                 data: {
                     labels: categoriasPrimarias.map(item => item[0]),
                     datasets: [{
+                        label: 'Libros',
                         data: categoriasPrimarias.map(item => item[1]),
                         backgroundColor: getChartColors(categoriasPrimarias.length),
-                        borderWidth: 0
+                        borderRadius: 6
                     }]
                 },
                 options: {
+                    indexAxis: 'y',
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: { legend: { position: 'right', labels: { boxWidth: 12, padding: 8, font: { size: 11 } } } }
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { beginAtZero: true, ticks: { stepSize: 1, precision: 0 } },
+                        y: { ticks: { autoSkip: false, font: { size: 11 } } }
+                    }
                 }
             });
 
@@ -3957,8 +3982,8 @@
                 authorSelect.innerHTML += `<option value="${author}">${author}</option>`;
             });
 
-            fillCategoryFilter('primaryCategoryFilter', 'Categoría primaria', 'categoria_principal');
-            fillCategoryFilter('secondaryCategoryFilter', 'Categoría secundaria', 'categoria_secundaria');
+            fillCategoryFilter('primaryCategoryFilter', 'Género', 'categoria_principal');
+            fillCategoryFilter('secondaryCategoryFilter', 'Subgénero', 'categoria_secundaria');
         }
 
         function fillCategoryFilter(id, placeholder, field) {
@@ -4018,6 +4043,18 @@
             ).join('');
         }
 
+        function textoHtml(valor) {
+            return String(valor)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+        }
+
+        function filaCategorias(book) {
+            const partes = [(book.categoria_principal || '').trim(), (book.categoria_secundaria || '').trim()].filter(Boolean);
+            return partes.length ? `<div class="book-categorias">${textoHtml(partes.join('-'))}</div>` : '';
+        }
+
         // Render books
         function renderBooks(books) {
             const grid = document.getElementById('booksGrid');
@@ -4047,6 +4084,7 @@
                             <h3 class="book-title">${book.titulo}</h3>
                             <p class="book-author">${book.autor}</p>
                             <div class="book-rating">${renderStars(book.puntuacion)}</div>
+                            ${filaCategorias(book)}
                             ${hasSinopsis ? `<button type="button" class="extra-toggle sinopsis-btn book-sinopsis-btn" id="toggle-sinopsis-${realIndex}" onclick="toggleExtra(${realIndex}, 'sinopsis')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 5.5A2.5 2.5 0 0 1 6.5 8H20"/></svg><span class="extra-label">Sinopsis</span></button>` : ''}
                         </div>
                     </div>
@@ -4957,6 +4995,7 @@
                     <div class="proxima-body">
                         <div class="proxima-titulo">${libro.titulo}</div>
                         <div class="proxima-autor">${libro.autor}</div>
+                        ${filaCategorias(libro)}
                         ${libro.sinopsis ? `<button type="button" class="proxima-has-sinopsis" onclick="mostrarSinopsisProxima(${index})"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3.5" width="12" height="17" rx="1.5"/><path d="M9 8.5h6M9 12h6M9 15.5h4"/></svg>Sinopsis</button>` : ''}
                         <div class="proxima-actions">
                             <button class="proxima-btn edit" onclick="event.stopPropagation(); editarProxima(${index})" title="Editar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4 11.5-11.5z"/></svg><span>Editar</span></button>
@@ -5624,6 +5663,7 @@
                     <div class="leyendo-main">
                         <div class="leyendo-titulo">${libro.titulo}</div>
                         <div class="leyendo-autor">${libro.autor}</div>
+                        ${filaCategorias(libro)}
                         <div class="leyendo-progress-wrap">
                             <div class="leyendo-progress-bar">
                                 <div class="leyendo-progress-fill" style="width: ${pct}%"></div>
