@@ -3069,7 +3069,7 @@
                 <button class="btn-icon" id="importBtn">Importar</button>
                 <input type="file" id="importFile" accept=".json" style="display: none;">
                 <button class="btn-icon" id="resetBtn" title="Recargar datos desde el servidor">Resetear</button>
-                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.48)</button>
+                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.49)</button>
             </div>
         </div>
     </nav>
@@ -3136,7 +3136,7 @@
         </div>
         <div class="charts-grid">
             <div class="chart-card">
-                <h3 class="chart-title"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="12" width="4.5" height="8" rx="0.8"/><rect x="9.75" y="5" width="4.5" height="15" rx="0.8"/><rect x="16" y="9" width="4.5" height="11" rx="0.8"/></svg>Libros por Año</h3>
+                <h3 class="chart-title"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="12" width="4.5" height="8" rx="0.8"/><rect x="9.75" y="5" width="4.5" height="15" rx="0.8"/><rect x="16" y="9" width="4.5" height="11" rx="0.8"/></svg><span>Leído por año</span><select id="yearlyMetricSelect" class="chart-year-select" aria-label="Métrica de leído por año"><option value="libros">Libros</option><option value="paginas">Páginas</option><option value="autores">Autores</option><option value="editoriales">Editoriales</option></select></h3>
                 <div class="chart-container"><canvas id="yearlyChart"></canvas></div>
             </div>
             <div class="chart-card">
@@ -3617,6 +3617,12 @@
         let charts = {};
         let chartsInitialized = false;
         const STATS_MONTH_YEAR_KEY = 'statsMonthlyYear';
+        const YEARLY_METRICS = {
+            libros: { label: 'Libros' },
+            paginas: { label: 'Páginas' },
+            autores: { label: 'Autores' },
+            editoriales: { label: 'Editoriales' }
+        };
         const MONTH_SHORT = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
 
         // Parse date for sorting
@@ -3676,6 +3682,64 @@
                 if (date.getFullYear() === year) counts[date.getMonth()]++;
             });
             return counts;
+        }
+
+        function selectedYearlyMetric() {
+            const select = document.getElementById('yearlyMetricSelect');
+            const current = select?.value;
+            return YEARLY_METRICS[current] ? current : 'libros';
+        }
+
+        function fillYearlyMetricSelect() {
+            const select = document.getElementById('yearlyMetricSelect');
+            if (select) select.value = 'libros';
+            return 'libros';
+        }
+
+        function yearlyStatsByMetric(metric) {
+            const byYear = {};
+            libros.forEach(book => {
+                const year = bookYear(book);
+                if (!year) return;
+                if (!byYear[year]) {
+                    byYear[year] = { libros: 0, paginas: 0, autores: new Set(), editoriales: new Set() };
+                }
+                byYear[year].libros += 1;
+                byYear[year].paginas += Number(book.paginas) || 0;
+                if (book.autor) byYear[year].autores.add(String(book.autor).trim());
+                if (book.editorial) byYear[year].editoriales.add(String(book.editorial).trim());
+            });
+            const years = Object.keys(byYear).map(Number).sort((a, b) => a - b);
+            const key = YEARLY_METRICS[metric] ? metric : 'libros';
+            return {
+                years: years.map(String),
+                values: years.map(year => {
+                    const row = byYear[year];
+                    if (key === 'autores' || key === 'editoriales') return row[key].size;
+                    return row[key];
+                }),
+                label: YEARLY_METRICS[key].label
+            };
+        }
+
+        function formatYearlyBarValue(value, metric) {
+            if (value == null) return '';
+            if (metric === 'paginas') return Number(value).toLocaleString('es-ES');
+            return String(value);
+        }
+
+        function applyYearlyMetric(metric) {
+            const key = YEARLY_METRICS[metric] ? metric : 'libros';
+            const select = document.getElementById('yearlyMetricSelect');
+            if (select) select.value = key;
+            if (!charts.yearly) return;
+            const stats = yearlyStatsByMetric(key);
+            charts.yearly.$yearlyMetric = key;
+            charts.yearly.data.labels = stats.years;
+            charts.yearly.data.datasets[0].label = stats.label;
+            charts.yearly.data.datasets[0].data = stats.values;
+            charts.yearly.data.datasets[0].backgroundColor = getChartColors(stats.years.length);
+            charts.yearly.update();
         }
 
         // Count occurrences
@@ -4135,9 +4199,9 @@
             });
 
             // Yearly Chart
-            const yearlyData = countBy(libros.map(b => ({year: b.fecha.split(' de ')[1]})), 'year');
-            const years = Object.keys(yearlyData).sort();
-            
+            const yearlyMetric = fillYearlyMetricSelect();
+            const yearlyStats = yearlyStatsByMetric(yearlyMetric);
+
             charts.yearly = new Chart(document.getElementById('yearlyChart'), {
                 type: 'bar',
                 plugins: [{
@@ -4146,6 +4210,7 @@
                         const { ctx } = chart;
                         const meta = chart.getDatasetMeta(0);
                         if (!meta || meta.hidden) return;
+                        const metric = chart.$yearlyMetric || selectedYearlyMetric();
                         ctx.save();
                         ctx.fillStyle = getChartTextColor();
                         ctx.font = '600 13px Inter, sans-serif';
@@ -4154,17 +4219,17 @@
                         meta.data.forEach((bar, index) => {
                             const value = chart.data.datasets[0].data[index];
                             if (value == null) return;
-                            ctx.fillText(String(value), bar.x, bar.y - 6);
+                            ctx.fillText(formatYearlyBarValue(value, metric), bar.x, bar.y - 6);
                         });
                         ctx.restore();
                     }
                 }],
                 data: {
-                    labels: years,
+                    labels: yearlyStats.years,
                     datasets: [{
-                        label: 'Libros',
-                        data: years.map(y => yearlyData[y]),
-                        backgroundColor: getChartColors(years.length),
+                        label: yearlyStats.label,
+                        data: yearlyStats.values,
+                        backgroundColor: getChartColors(yearlyStats.years.length),
                         borderRadius: 8
                     }]
                 },
@@ -4183,6 +4248,7 @@
                     }
                 }
             });
+            charts.yearly.$yearlyMetric = yearlyMetric;
 
             // Authors Chart
             const authorCounts = countBy(libros, 'autor');
@@ -4213,15 +4279,22 @@
             const topEditorials = Object.entries(editorialCounts).sort((a, b) => b[1] - a[1]).slice(0, 10);
 
             charts.editorials = new Chart(document.getElementById('editorialsChart'), {
-                type: 'doughnut',
+                type: 'bar',
                 data: {
-                    labels: topEditorials.map(e => e[0].length > 18 ? e[0].slice(0, 18) + '...' : e[0]),
-                    datasets: [{ data: topEditorials.map(e => e[1]), backgroundColor: getChartColors(10), borderWidth: 0 }]
+                    labels: topEditorials.map(e => e[0].length > 20 ? e[0].slice(0, 20) + '...' : e[0]),
+                    datasets: [{
+                        label: 'Libros',
+                        data: topEditorials.map(e => e[1]),
+                        backgroundColor: getChartColors(10),
+                        borderRadius: 8
+                    }]
                 },
                 options: {
+                    indexAxis: 'y',
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: { legend: { position: 'right', labels: { boxWidth: 12, padding: 8, font: { size: 11 } } } }
+                    plugins: { legend: { display: false } },
+                    scales: { x: { beginAtZero: true, ticks: { stepSize: 1 } } }
                 }
             });
 
@@ -5065,6 +5138,7 @@
                 } else {
                     setViewMode('stats');
                     if (!chartsInitialized) initCharts();
+                    else applyYearlyMetric('libros');
                 }
             });
         }
@@ -5097,6 +5171,9 @@
                 charts.monthly.data.datasets[0].data = monthlyCountsForYear(year);
                 charts.monthly.update();
             }
+        });
+        document.getElementById('yearlyMetricSelect').addEventListener('change', () => {
+            applyYearlyMetric(document.getElementById('yearlyMetricSelect').value);
         });
         document.getElementById('searchInput').addEventListener('input', filterAndSortBooks);
         document.getElementById('authorFilter').addEventListener('change', filterAndSortBooks);
