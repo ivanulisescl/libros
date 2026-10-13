@@ -1544,6 +1544,20 @@
             margin: 0 0 0.45rem;
         }
 
+        .libro-ficha-meta {
+            font-size: 0.75rem;
+            line-height: 1.35;
+            color: var(--text-muted);
+        }
+
+        .proxima-body .libro-ficha-meta {
+            margin: 0;
+        }
+
+        .leyendo-main .libro-ficha-meta {
+            margin: 0 0 0.4rem;
+        }
+
         .books-grid:not(.list-view) .star { font-size: 1.05rem; }
         .books-grid:not(.list-view) .star.filled { color: var(--accent); }
 
@@ -3105,7 +3119,7 @@
                 <button class="btn-icon" id="importBtn">Importar</button>
                 <input type="file" id="importFile" accept=".json" style="display: none;">
                 <button class="btn-icon" id="resetBtn" title="Recargar datos desde el servidor">Resetear</button>
-                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.50)</button>
+                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.51)</button>
             </div>
         </div>
     </nav>
@@ -3403,6 +3417,16 @@
                 <div class="form-group">
                     <label for="editProximaAutor">Autor</label>
                     <input type="text" id="editProximaAutor" required placeholder="Nombre del autor">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editProximaPaginas">Páginas (opcional)</label>
+                        <input type="number" id="editProximaPaginas" min="1" placeholder="256">
+                    </div>
+                    <div class="form-group">
+                        <label for="editProximaEditorial">Editorial (opcional)</label>
+                        <input type="text" id="editProximaEditorial" placeholder="Ej: Anagrama">
+                    </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
@@ -4555,6 +4579,46 @@
             return partes.length ? `<div class="book-categorias">${textoHtml(partes.join('-'))}</div>` : '';
         }
 
+        function fichaOpcional(paginas, editorial) {
+            const n = parseInt(paginas, 10);
+            const editorialLimpia = String(editorial || '').trim();
+            const datos = {};
+            if (Number.isInteger(n) && n > 0) datos.paginas = n;
+            if (editorialLimpia) datos.editorial = editorialLimpia;
+            return datos;
+        }
+
+        function leerFichaFormularioProxima() {
+            return fichaOpcional(
+                document.getElementById('editProximaPaginas').value,
+                document.getElementById('editProximaEditorial').value
+            );
+        }
+
+        function escribirFichaFormularioProxima(libro) {
+            document.getElementById('editProximaPaginas').value = (libro && libro.paginas) || '';
+            document.getElementById('editProximaEditorial').value = (libro && libro.editorial) || '';
+        }
+
+        function aplicarFichaOpcional(libro, ficha) {
+            if (ficha.paginas) libro.paginas = ficha.paginas;
+            else delete libro.paginas;
+            if (ficha.editorial) libro.editorial = ficha.editorial;
+            else delete libro.editorial;
+        }
+
+        function prellenarFichaLibroLeido(libro) {
+            document.getElementById('paginas').value = (libro && libro.paginas) || '';
+            document.getElementById('editorial').value = (libro && libro.editorial) || '';
+        }
+
+        function filaFichaOpcional(libro) {
+            const partes = [];
+            if (libro && libro.paginas) partes.push(`${libro.paginas} págs.`);
+            if (libro && (libro.editorial || '').trim()) partes.push(String(libro.editorial).trim());
+            return partes.length ? `<div class="libro-ficha-meta">${textoHtml(partes.join(' · '))}</div>` : '';
+        }
+
         // Render books
         function renderBooks(books) {
             const grid = document.getElementById('booksGrid');
@@ -5521,6 +5585,7 @@
                     <div class="proxima-body">
                         <div class="proxima-titulo">${libro.titulo}</div>
                         <div class="proxima-autor">${libro.autor}</div>
+                        ${filaFichaOpcional(libro)}
                         ${filaCategorias(libro)}
                         ${libro.sinopsis ? `<button type="button" class="proxima-has-sinopsis" onclick="mostrarSinopsisProxima(${index})"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3.5" width="12" height="17" rx="1.5"/><path d="M9 8.5h6M9 12h6M9 15.5h4"/></svg>Sinopsis</button>` : ''}
                         <div class="proxima-actions">
@@ -5699,6 +5764,7 @@
             document.getElementById('editProximaTitulo').value = libro.titulo;
             document.getElementById('editProximaAutor').value = libro.autor;
             document.getElementById('editProximaSinopsis').value = libro.sinopsis || '';
+            escribirFichaFormularioProxima(libro);
             escribirCategorias('proximaCategoriaPrincipal', 'proximaCategoriaSecundaria', libro);
             document.getElementById('deleteProximaBtn').style.display = 'inline-flex';
             document.getElementById('marcarLeidoBtn').style.display = 'inline-flex';
@@ -5732,6 +5798,7 @@
             const titulo = document.getElementById('editProximaTitulo').value.trim();
             const autor = document.getElementById('editProximaAutor').value.trim();
             const sinopsis = document.getElementById('editProximaSinopsis').value.trim();
+            const ficha = leerFichaFormularioProxima();
             const portadaFile = document.getElementById('editPortadaArchivo').files[0] || null;
             
             if (!titulo || !autor) return;
@@ -5742,6 +5809,7 @@
                 libro.titulo = titulo.toUpperCase();
                 libro.autor = autor.toUpperCase();
                 libro.sinopsis = sinopsis;
+                aplicarFichaOpcional(libro, ficha);
                 Object.assign(libro, leerCategorias('proximaCategoriaPrincipal', 'proximaCategoriaSecundaria'));
                 saveLeyendo();
                 renderLeyendo();
@@ -5756,6 +5824,7 @@
                 titulo: titulo.toUpperCase(),
                 autor: autor.toUpperCase(),
                 sinopsis: sinopsis,
+                ...ficha,
                 ...leerCategorias('proximaCategoriaPrincipal', 'proximaCategoriaSecundaria')
             };
             
@@ -5795,7 +5864,7 @@
             const sinopsis = document.getElementById('editProximaSinopsis').value.trim();
             if (!titulo || !autor) return;
             
-            if (!anadirLibroLeyendo(titulo, autor, sinopsis, leerCategorias('proximaCategoriaPrincipal', 'proximaCategoriaSecundaria'))) return;
+            if (!anadirLibroLeyendo(titulo, autor, sinopsis, leerCategorias('proximaCategoriaPrincipal', 'proximaCategoriaSecundaria'), leerFichaFormularioProxima())) return;
 
             proximasLecturas.splice(currentEditProximaIndex, 1);
             saveProximas(proximasLecturas);
@@ -5814,7 +5883,7 @@
         function empezarLectura() {
             if (!proximaPendiente) return;
 
-            if (!anadirLibroLeyendo(proximaPendiente.titulo, proximaPendiente.autor, proximaPendiente.sinopsis, categoriasDe(proximaPendiente))) {
+            if (!anadirLibroLeyendo(proximaPendiente.titulo, proximaPendiente.autor, proximaPendiente.sinopsis, categoriasDe(proximaPendiente), fichaOpcional(proximaPendiente.paginas, proximaPendiente.editorial))) {
                 cerrarOpciones();
                 return;
             }
@@ -5840,6 +5909,7 @@
             document.getElementById('titulo').value = proximaPendiente.titulo.toUpperCase();
             document.getElementById('autor').value = proximaPendiente.autor.toUpperCase();
             document.getElementById('sinopsis').value = proximaPendiente.sinopsis;
+            prellenarFichaLibroLeido(proximaPendiente);
             escribirCategorias('categoriaPrincipal', 'categoriaSecundaria', proximaPendiente);
             
             // Set current month/year
@@ -5867,7 +5937,7 @@
             return librosLeyendo.length === 1 ? ' + 1 leyendo' : ` + ${librosLeyendo.length} leyendo`;
         }
 
-        function crearLibroLeyendo(titulo, autor, sinopsis, categorias) {
+        function crearLibroLeyendo(titulo, autor, sinopsis, categorias, ficha) {
             return {
                 titulo: (titulo || '').toUpperCase(),
                 autor: (autor || '').toUpperCase(),
@@ -5875,12 +5945,13 @@
                 citas: '',
                 fechaInicio: new Date().toISOString(),
                 porcentaje: 0,
-                ...categoriasDe(categorias)
+                ...categoriasDe(categorias),
+                ...fichaOpcional(ficha && ficha.paginas, ficha && ficha.editorial)
             };
         }
 
-        function anadirLibroLeyendo(titulo, autor, sinopsis, categorias) {
-            const nuevo = crearLibroLeyendo(titulo, autor, sinopsis, categorias);
+        function anadirLibroLeyendo(titulo, autor, sinopsis, categorias, ficha) {
+            const nuevo = crearLibroLeyendo(titulo, autor, sinopsis, categorias, ficha);
             const duplicado = librosLeyendo.some(l => l.titulo === nuevo.titulo && l.autor === nuevo.autor);
             if (duplicado) {
                 showToast('Ese libro ya está en lectura', 'error');
@@ -5936,6 +6007,14 @@
                 }
                 if (!(local.sinopsis || '').trim() && (remoto.sinopsis || '').trim()) {
                     local.sinopsis = remoto.sinopsis;
+                    cambiado = true;
+                }
+                if (!local.paginas && remoto.paginas) {
+                    local.paginas = remoto.paginas;
+                    cambiado = true;
+                }
+                if (!(local.editorial || '').trim() && (remoto.editorial || '').trim()) {
+                    local.editorial = remoto.editorial;
                     cambiado = true;
                 }
                 if (!local.fechaInicio && remoto.fechaInicio) {
@@ -6190,6 +6269,7 @@
                     <div class="leyendo-main">
                         <div class="leyendo-titulo">${libro.titulo}</div>
                         <div class="leyendo-autor">${libro.autor}</div>
+                        ${filaFichaOpcional(libro)}
                         ${filaCategorias(libro)}
                         <div class="leyendo-progress-wrap">
                             <div class="leyendo-progress-bar">
@@ -6363,6 +6443,7 @@
             document.getElementById('autor').value = libro.autor;
             document.getElementById('sinopsis').value = libro.sinopsis || '';
             document.getElementById('citas').value = libro.citas || '';
+            prellenarFichaLibroLeido(libro);
             escribirCategorias('categoriaPrincipal', 'categoriaSecundaria', libro);
             
             const now = new Date();
@@ -6396,6 +6477,7 @@
             document.getElementById('autor').value = libro.autor;
             document.getElementById('sinopsis').value = libro.sinopsis || '';
             document.getElementById('citas').value = libro.citas || '';
+            prellenarFichaLibroLeido(libro);
             escribirCategorias('categoriaPrincipal', 'categoriaSecundaria', libro);
             
             const now = new Date();
@@ -6422,6 +6504,7 @@
             document.getElementById('editProximaTitulo').value = libro.titulo;
             document.getElementById('editProximaAutor').value = libro.autor;
             document.getElementById('editProximaSinopsis').value = libro.sinopsis || '';
+            escribirFichaFormularioProxima(libro);
             escribirCategorias('proximaCategoriaPrincipal', 'proximaCategoriaSecundaria', libro);
             prepararPortadaEdicion(libro.titulo);
             
