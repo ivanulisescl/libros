@@ -3119,7 +3119,7 @@
                 <button class="btn-icon" id="importBtn">Importar</button>
                 <input type="file" id="importFile" accept=".json" style="display: none;">
                 <button class="btn-icon" id="resetBtn" title="Recargar datos desde el servidor">Resetear</button>
-                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.51)</button>
+                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.52)</button>
             </div>
         </div>
     </nav>
@@ -4613,10 +4613,8 @@
         }
 
         function filaFichaOpcional(libro) {
-            const partes = [];
-            if (libro && libro.paginas) partes.push(`${libro.paginas} págs.`);
-            if (libro && (libro.editorial || '').trim()) partes.push(String(libro.editorial).trim());
-            return partes.length ? `<div class="libro-ficha-meta">${textoHtml(partes.join(' · '))}</div>` : '';
+            if (!libro || !libro.paginas) return '';
+            return `<div class="libro-ficha-meta">${textoHtml(`${libro.paginas} págs.`)}</div>`;
         }
 
         // Render books
