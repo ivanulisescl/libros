@@ -1131,6 +1131,15 @@
       "categoria_secundaria": "Ficción literaria"
     },
     {
+      "titulo": "EL IMPOSTOR",
+      "autor": "JAVIER CERCAS",
+      "sinopsis": "¿Quién es Enric Marco? Un nonagenario barcelonés que se hizo pasar por superviviente de los campos nazis y que fue desenmascarado en mayo de 2005, después de presidir durante tres años la asociación española de los supervivientes, pronunciar centenares de conferencias, conceder decenas de entrevistas, recibir importantes distinciones y conmover en algún caso hasta las lágrimas a los parlamentarios españoles reunidos para rendir homenaje por vez primera a los republicanos deportados por el III Reich.\n\nEl caso dio la vuelta al mundo y convirtió a Marco en el gran impostor y el gran maldito. Ahora, casi una década más tarde, Javier Cercas asedia, en este thriller hipnótico que es también un banquete con muchos platos -narración, crónica, ensayo, biografía y autobiografía-, el enigma del personaje, su verdad y sus falsedades y, a través de esa indagación que recorre casi un siglo de historia de España, bucea con una pasión de kamikaze y una honestidad desgarradora en lo más profundo de nosotros mismos: en nuestra infinita capacidad de autoengaño, en nuestro conformismo y nuestras mentiras, en nuestra sed insaciable de afecto, en nuestras necesidades contrapuestas de ficción y de realidad, en las zonas más dolorosas de nuestro pasado reciente.\n\nEl resultado es un libro que no habla de Enric Marco sino de usted, lector; también el libro más insumiso y radical de Javier Cercas: un libro asombroso que, con una audacia inédita, ensancha los límites del género novelesco y explora las últimas fronteras de nuestra humanidad.",
+      "paginas": 432,
+      "editorial": "Literatura Random House",
+      "categoria_principal": "Crónica",
+      "categoria_secundaria": "Biográfica"
+    },
+    {
       "titulo": "MANTECA COLORÁ",
       "autor": "MONTERO GLEZ",
       "sinopsis": "Por si no lo he dicho antes, estamos hablando de Conil de la Frontera, un pueblo marinero situado en la región más antigua y más ofendida de occidente: la costa gaditana. El pueblo no es muy grande y visto de lejos, se asemeja a un brochazo blanco sobre la playa je llaman de los Bateles. Sin embargo, a la noche, recién encendidas las casas, guarda cierto parecido con un belén navideño de los tiempos de Augusto, no haciendo falta que ea época de villancicos para que el milagro acontezca Ocurre en todas las épocas del año, incluso en las de verano, con sus noches de brisa agradable y sardinita a la plancha, siendo en tan candente estación cuando el Nacimiento puede verse al completo. No faltan ni las luces de mentiras ni las estrellas de purpurina, ni tampoco los camellos ni sus tabernas brillando a lo lejos. Una de estas tabernas lleva por nombre la Gigantilla y tiene un cartel a la entrada donde pone: Especialidad en Caracoles y Carne Mechada. Y aquí nos vamos a parar, pues es donde la Sole trabaja. Abre una vez pasada la calor, a eso de las seis de la tarde. Y echa los cierres después del último cliente, que suele ser a las mil y gallo.",
@@ -1138,6 +1147,15 @@
       "editorial": "Tusquets",
       "categoria_principal": "Novela",
       "categoria_secundaria": "Realismo sucio"
+    },
+    {
+      "titulo": "REFERENCIAS PERSONALES",
+      "autor": "MATÍAS RIVAS",
+      "sinopsis": "Este libro es una colección de fragmentos y apuntes que transitan entre el ensayo, el diario personal y la autobiografía. En él, Rivas —quien se desempeña como poeta, editor y crítico literario— construye un mosaico de sus obsesiones intelectuales y estéticas, abordando temas universales como el ocio, el miedo, el deseo, la belleza y el valor de la poesía. A través de una mirada directa y a menudo sarcástica, el autor reflexiona sobre su pasado, la incomodidad del propio cuerpo y la naturaleza acelerada de la vida contemporánea.\n\nLa obra funciona como un testimonio de su relación con la lectura y el pensamiento, donde las confidencias personales dialogan con juicios sobre el arte, las costumbres de la sociedad y las derivas de un presente incierto. Es, en esencia, un ejercicio de introspección de un hombre maduro que utiliza la palabra escrita para dar sentido a la cotidianeidad y rescatar la curiosidad y la quietud frente al ruido de la información actual.",
+      "paginas": 148,
+      "editorial": "Seix Barral",
+      "categoria_principal": "Ensayo",
+      "categoria_secundaria": "Autobiográfica"
     },
     {
       "titulo": "HHHH",
@@ -1165,15 +1183,6 @@
       "editorial": "Edhasa",
       "categoria_principal": "Novela",
       "categoria_secundaria": "Social"
-    },
-    {
-      "titulo": "EL IMPOSTOR",
-      "autor": "JAVIER CERCAS",
-      "sinopsis": "¿Quién es Enric Marco? Un nonagenario barcelonés que se hizo pasar por superviviente de los campos nazis y que fue desenmascarado en mayo de 2005, después de presidir durante tres años la asociación española de los supervivientes, pronunciar centenares de conferencias, conceder decenas de entrevistas, recibir importantes distinciones y conmover en algún caso hasta las lágrimas a los parlamentarios españoles reunidos para rendir homenaje por vez primera a los republicanos deportados por el III Reich.\n\nEl caso dio la vuelta al mundo y convirtió a Marco en el gran impostor y el gran maldito. Ahora, casi una década más tarde, Javier Cercas asedia, en este thriller hipnótico que es también un banquete con muchos platos -narración, crónica, ensayo, biografía y autobiografía-, el enigma del personaje, su verdad y sus falsedades y, a través de esa indagación que recorre casi un siglo de historia de España, bucea con una pasión de kamikaze y una honestidad desgarradora en lo más profundo de nosotros mismos: en nuestra infinita capacidad de autoengaño, en nuestro conformismo y nuestras mentiras, en nuestra sed insaciable de afecto, en nuestras necesidades contrapuestas de ficción y de realidad, en las zonas más dolorosas de nuestro pasado reciente.\n\nEl resultado es un libro que no habla de Enric Marco sino de usted, lector; también el libro más insumiso y radical de Javier Cercas: un libro asombroso que, con una audacia inédita, ensancha los límites del género novelesco y explora las últimas fronteras de nuestra humanidad.",
-      "paginas": 432,
-      "editorial": "Literatura Random House",
-      "categoria_principal": "Crónica",
-      "categoria_secundaria": "Biográfica"
     },
     {
       "titulo": "EL FIN DEL HOMO SOVIETICUS",
@@ -1228,15 +1237,6 @@
       "editorial": "Tusquets",
       "categoria_principal": "Novela",
       "categoria_secundaria": "Histórica"
-    },
-    {
-      "titulo": "REFERENCIAS PERSONALES",
-      "autor": "MATÍAS RIVAS",
-      "sinopsis": "Este libro es una colección de fragmentos y apuntes que transitan entre el ensayo, el diario personal y la autobiografía. En él, Rivas —quien se desempeña como poeta, editor y crítico literario— construye un mosaico de sus obsesiones intelectuales y estéticas, abordando temas universales como el ocio, el miedo, el deseo, la belleza y el valor de la poesía. A través de una mirada directa y a menudo sarcástica, el autor reflexiona sobre su pasado, la incomodidad del propio cuerpo y la naturaleza acelerada de la vida contemporánea.\n\nLa obra funciona como un testimonio de su relación con la lectura y el pensamiento, donde las confidencias personales dialogan con juicios sobre el arte, las costumbres de la sociedad y las derivas de un presente incierto. Es, en esencia, un ejercicio de introspección de un hombre maduro que utiliza la palabra escrita para dar sentido a la cotidianeidad y rescatar la curiosidad y la quietud frente al ruido de la información actual.",
-      "paginas": 148,
-      "editorial": "Seix Barral",
-      "categoria_principal": "Ensayo",
-      "categoria_secundaria": "Autobiográfica"
     },
     {
       "titulo": "EL HOLOCAUSTO ESPAÑOL",
