@@ -2445,7 +2445,7 @@
         .proxima-actions {
             display: flex;
             align-items: center;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             gap: 0.35rem;
             margin-top: auto;
             padding-top: 0.4rem;
@@ -2481,6 +2481,13 @@
             line-height: 1.1;
             white-space: nowrap;
             cursor: pointer;
+        }
+
+        .proxima-btn.edit {
+            width: 1.9rem;
+            height: 1.9rem;
+            padding: 0;
+            flex: 0 0 auto;
         }
 
         .proxima-btn.edit svg,
@@ -3112,7 +3119,7 @@
                 <button class="btn-icon" id="importBtn">Importar</button>
                 <input type="file" id="importFile" accept=".json" style="display: none;">
                 <button class="btn-icon" id="resetBtn" title="Recargar datos desde el servidor">Resetear</button>
-                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.53)</button>
+                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.54)</button>
             </div>
         </div>
     </nav>
@@ -5580,7 +5587,7 @@
                         ${filaCategorias(libro)}
                         <div class="proxima-actions">
                             ${libro.sinopsis ? `<button type="button" class="proxima-has-sinopsis" onclick="mostrarSinopsisProxima(${index})"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 5.5A2.5 2.5 0 0 1 6.5 8H20"/></svg><span>Sinopsis</span></button>` : ''}
-                            <button class="proxima-btn edit" onclick="event.stopPropagation(); editarProxima(${index})" title="Editar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4 11.5-11.5z"/></svg><span>Editar</span></button>
+                            <button class="proxima-btn edit" onclick="event.stopPropagation(); editarProxima(${index})" title="Editar" aria-label="Editar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4 11.5-11.5z"/></svg></button>
                         </div>
                     </div>
                 </div>
