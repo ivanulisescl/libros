@@ -1104,13 +1104,13 @@
       "categoria_secundaria": "Realismo sucio"
     },
     {
-      "titulo": "EL CLUB DE LA LUCHA",
-      "autor": "CHUCK PALAHNIUK",
-      "sinopsis": "La primera regla del club de la lucha es no hablar del club de la lucha. Cada fin de semana, un puñado de jóvenes oficinistas se quita los zapatos y las camisas y pelean entre sí hasta la extenuación. Los lunes vuelven a sus despachos con los ojos amoratados y un embriagador sentimiento de omnipotencia. Pero estas reuniones son solo el comienzo del plan con el que Tyler Durden, proyeccionista, camarero y oscuro genio anárquico, aspira a vengarse de una sociedad paralizada por el consumismo exacerbado.",
-      "paginas": 224,
-      "editorial": "El Aleph",
+      "titulo": "MANTECA COLORÁ",
+      "autor": "MONTERO GLEZ",
+      "sinopsis": "Por si no lo he dicho antes, estamos hablando de Conil de la Frontera, un pueblo marinero situado en la región más antigua y más ofendida de occidente: la costa gaditana. El pueblo no es muy grande y visto de lejos, se asemeja a un brochazo blanco sobre la playa je llaman de los Bateles. Sin embargo, a la noche, recién encendidas las casas, guarda cierto parecido con un belén navideño de los tiempos de Augusto, no haciendo falta que ea época de villancicos para que el milagro acontezca Ocurre en todas las épocas del año, incluso en las de verano, con sus noches de brisa agradable y sardinita a la plancha, siendo en tan candente estación cuando el Nacimiento puede verse al completo. No faltan ni las luces de mentiras ni las estrellas de purpurina, ni tampoco los camellos ni sus tabernas brillando a lo lejos. Una de estas tabernas lleva por nombre la Gigantilla y tiene un cartel a la entrada donde pone: Especialidad en Caracoles y Carne Mechada. Y aquí nos vamos a parar, pues es donde la Sole trabaja. Abre una vez pasada la calor, a eso de las seis de la tarde. Y echa los cierres después del último cliente, que suele ser a las mil y gallo.",
+      "paginas": 184,
+      "editorial": "Tusquets",
       "categoria_principal": "Novela",
-      "categoria_secundaria": "Psicológica"
+      "categoria_secundaria": "Realismo sucio"
     },
     {
       "titulo": "LO DEMÁS ES AIRE",
@@ -1138,15 +1138,6 @@
       "editorial": "Literatura Random House",
       "categoria_principal": "Crónica",
       "categoria_secundaria": "Biográfica"
-    },
-    {
-      "titulo": "MANTECA COLORÁ",
-      "autor": "MONTERO GLEZ",
-      "sinopsis": "Por si no lo he dicho antes, estamos hablando de Conil de la Frontera, un pueblo marinero situado en la región más antigua y más ofendida de occidente: la costa gaditana. El pueblo no es muy grande y visto de lejos, se asemeja a un brochazo blanco sobre la playa je llaman de los Bateles. Sin embargo, a la noche, recién encendidas las casas, guarda cierto parecido con un belén navideño de los tiempos de Augusto, no haciendo falta que ea época de villancicos para que el milagro acontezca Ocurre en todas las épocas del año, incluso en las de verano, con sus noches de brisa agradable y sardinita a la plancha, siendo en tan candente estación cuando el Nacimiento puede verse al completo. No faltan ni las luces de mentiras ni las estrellas de purpurina, ni tampoco los camellos ni sus tabernas brillando a lo lejos. Una de estas tabernas lleva por nombre la Gigantilla y tiene un cartel a la entrada donde pone: Especialidad en Caracoles y Carne Mechada. Y aquí nos vamos a parar, pues es donde la Sole trabaja. Abre una vez pasada la calor, a eso de las seis de la tarde. Y echa los cierres después del último cliente, que suele ser a las mil y gallo.",
-      "paginas": 184,
-      "editorial": "Tusquets",
-      "categoria_principal": "Novela",
-      "categoria_secundaria": "Realismo sucio"
     },
     {
       "titulo": "LOS PAZOS DE ULLOA",
@@ -1183,6 +1174,15 @@
       "editorial": "Tusquets",
       "categoria_principal": "Novela",
       "categoria_secundaria": "Social"
+    },
+    {
+      "titulo": "EL CLUB DE LA LUCHA",
+      "autor": "CHUCK PALAHNIUK",
+      "sinopsis": "La primera regla del club de la lucha es no hablar del club de la lucha. Cada fin de semana, un puñado de jóvenes oficinistas se quita los zapatos y las camisas y pelean entre sí hasta la extenuación. Los lunes vuelven a sus despachos con los ojos amoratados y un embriagador sentimiento de omnipotencia. Pero estas reuniones son solo el comienzo del plan con el que Tyler Durden, proyeccionista, camarero y oscuro genio anárquico, aspira a vengarse de una sociedad paralizada por el consumismo exacerbado.",
+      "paginas": 224,
+      "editorial": "El Aleph",
+      "categoria_principal": "Novela",
+      "categoria_secundaria": "Psicológica"
     },
     {
       "titulo": "VIAJE AL FIN DE LA NOCHE",
@@ -1429,9 +1429,9 @@
       "titulo": "TRÓPICO DE CÁNCER",
       "autor": "HENRY MILLER",
       "sinopsis": "Henry Miller fue un lector voraz y autodidacta. Pensaba, siguiendo a Emerson, que la literatura del futuro sería autobiográfica. \"Trópico de Cáncer\" inicia con su publicación en 1934 la explosión literaria y editorial de Miller. A pesar de que dio lugar a que se celebraran más de sesenta juicios a propósito de su legalización, no fue escrito para escandalizar a los \"burgueses bien pensantes\"; su cuidada elaboración prueba la aspiración literaria de su autor, que logró hacer de ella un emblema de la desolada condición del artista en aquellos tiempos.",
-      "citas": "Replica unos párrafos de Papini. Yo creo que de \"Un hombre acabado\"\n\nUn frio húmedo, borracho, contra el que no hay otra protección que la fortaleza de espíritu.",
+      "citas": "Replica unos párrafos de Papini. Yo creo que de \"Un hombre acabado\"\n\nUn frio húmedo, borracho, contra el que no hay otra protección que la fortaleza de espíritu.\n\nPágina 270. Se queda a gusto hablando de la religión católica\n\nPágina 273. Menciona que de sirve como un factótum. Sacaría Bulowski el título de su libro de aquí?",
       "fechaInicio": "2026-10-02T10:40:20.085Z",
-      "porcentaje": 81,
+      "porcentaje": 88,
       "categoria_principal": "Novela",
       "categoria_secundaria": "Realismo sucio",
       "paginas": 384,
