@@ -1354,6 +1354,15 @@
       "editorial": "Literatura Random House",
       "categoria_principal": "Novela",
       "categoria_secundaria": "Histórica"
+    },
+    {
+      "titulo": "LOS PAZOS DE ULLOA",
+      "autor": "EMILIA PARDO BAZÁN",
+      "sinopsis": "La acción está ambientada en Ulloa, agreste región de Galicia, alrededor de 1866. El joven y recién ordenado sacerdote Julián Álvarez llega como capellán al poblado de Los Pazos, donde se levanta el castillo perteneciente a don Pedro Moscoso, de 30 años de edad, hombre licencioso, frívolo y desaprensivo, que ilegítimamente ostenta el título de marqués de Ulloa. En Los Pazos reina el más completo desorden y abandono. Los aldeanos roban impunemente al marquesado todo cuanto pueden. Quien verdaderamente manda y administra el solar es Primitivo, astuto labriego a las órdenes de don Pedro, que no ve con buenos ojos la llegada de Julián. La hermosa Isabel, hija de Primitivo, es la amante de don Pedro (y de cualquier campesino de los alrededores que la solicite), relación propiciada por su propio padre para tener así mayor dominio sobre el amo. De estos amores ilícitos ha nacido un niño, Perucho, de quien nadie se ocupa y por ello crece salvaje, sucio y solo. El sacerdote desaprueba tanto saqueo y libertinaje. Con no poco esfuerzo, convence a don Pedro de que abandone su vida viciosa, elija una mujer digna y la haga su esposa. La elección recae en Marcelina, llamada cariñosamente Nucha, virtuosa joven citadina y además prima del marqués. El matrimonio parece aquietar al principio el desenfreno de don Pedro, pero cuando a costa de su salud Nucha da a luz una niña y no un heredero varón, Moscoso, frustrado, vuelve junto a Isabel y al escándalo de sus antiguas costumbres. Esta conducta del marido atormenta y consume el ánimo de Nucha, quien finalmente muere de angustia y aflicción. Los Pazos de Ulloa, describe con realismo y fidelidad el ambiente y los caracteres, tanto el de los protagonistas como el de los personajes secundarios, el abad de Ulloa, el doctor Juncal —ejemplo de médico de aldea—, Perucho y los caciques que participan en la lucha electoral, entre otros. La sensibilidad de la autora ha captado el clima social de atraso, corrupción y pasiones primitivas que se vive en ese apartado rincón de Galicia, símbolo de la provincia española a fines del siglo XIX, pero sobre todo ha puesto énfasis en el elemento humano, la víctima de su instinto, del dolor o el desengaño. Novela intensa, amena, concebida con dominio de los efectos y escrita con estilo sencillo, es la mejor y más representativa de Emilia Pardo Bazán.",
+      "paginas": 536,
+      "editorial": "Cátedra",
+      "categoria_principal": "Novela",
+      "categoria_secundaria": "Realismo"
     }
   ],
   "abandonados": [
@@ -1456,6 +1465,7 @@
       "Negra",
       "Política",
       "Psicológica",
+      "Realismo",
       "Realismo mágico",
       "Realismo sucio",
       "Social"
