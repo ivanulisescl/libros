@@ -1095,6 +1095,15 @@
   ],
   "proximas": [
     {
+      "titulo": "COLOQUIO DE INVIERNO",
+      "autor": "LUIS LANDERO",
+      "sinopsis": "Siete personajes atrapados por un temporal deciden animar la espera contándose historias que nunca antes habían confesado.",
+      "paginas": 312,
+      "editorial": "Tusquets",
+      "categoria_principal": "Novela",
+      "categoria_secundaria": "Social"
+    },
+    {
       "titulo": "REVANCHA",
       "autor": "KIKO AMAT",
       "sinopsis": "Amador es el consejero y número dos de la facción cri­minal de Lokos, el grupo ultra del FC Barcelona. Extor­sionan, pegan palizas por encargo, mueven droga y des­truyen a bandas de traficantes o ultras enemigos. Su kapo es Alberto Cid, alias el Cid, un psicópata catalán sin alma ni escrúpulos. Amador y el Cid, legendarios skinheads neonazis del gol sur durante los ochenta y noventa, fueron inseparables durante años, hasta que algo les separó. Amador acarrea muchos secretos, y el mayor de ellos es su homosexualidad. César «Jabalí» Beltrán fue rugbista y ahora se gana la vida vengando por encargo a víctimas de pederastas y atropelladores en fuga. Un secuestro, una redada y un botín desapare­cido hacen que la vida de César y la de Amador se entre­crucen, con resultados imprevisibles para ambos.",
@@ -1165,15 +1174,6 @@
       "editorial": "Seix Barral",
       "categoria_principal": "Historia",
       "categoria_secundaria": "Histórica"
-    },
-    {
-      "titulo": "COLOQUIO DE INVIERNO",
-      "autor": "LUIS LANDERO",
-      "sinopsis": "Siete personajes atrapados por un temporal deciden animar la espera contándose historias que nunca antes habían confesado.",
-      "paginas": 312,
-      "editorial": "Tusquets",
-      "categoria_principal": "Novela",
-      "categoria_secundaria": "Social"
     },
     {
       "titulo": "EL CLUB DE LA LUCHA",
@@ -1436,6 +1436,18 @@
       "categoria_secundaria": "Realismo sucio",
       "paginas": 384,
       "editorial": "Cátedra"
+    },
+    {
+      "titulo": "POETA DE GUARDIA",
+      "autor": "GLORIA FUERTES",
+      "sinopsis": "",
+      "citas": "",
+      "fechaInicio": "2026-10-16T18:08:24.611Z",
+      "porcentaje": 0,
+      "categoria_principal": "Poesía",
+      "categoria_secundaria": "",
+      "paginas": 159,
+      "editorial": "Torremozas"
     }
   ],
   "categorias": {
