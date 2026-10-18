@@ -1091,18 +1091,22 @@
       "citas": "Soneto 9.\nFuera menos penado si no fuera\nnardo tu tez para mi vista, nardo,\ncardo tu piel para mi tacto, cardo,\ntuera tu voz para mi oído, tuera.\nTuera es tu voz para mi oído, tuera,\ny ardo en tu voz y en tu alrededor ardo,\ny tardo a arder lo que a ofrecerte tardo\nmiera, mi voz para la tuya miera.\nZarza es tu mano si la tiento, zarza,\nola tu cuerpo si lo alcanzo, ola,\ncerca una vez, pero un millar no cerca.\nGarza es mi pena, esbelta y triste garza,\nsola como un suspiro y un ay, sola,\nterca en su error y en su desgracia terca.\n\n\nSoneto 10.\nTengo estos huesos hechos a las penas\ny a las cavilaciones estas sienes:\npena que vas, cavilación que vienes\ncomo el mar de la playa a las arenas.\nComo el mar de la playa a las arenas,\nvoy en este naufragio de vaivenes\npor una noche oscura de sartenes\nredondas, pobres, tristes y morenas.\nNadie me salvará de este naufragio\nsi no es tu amor, la tabla que procuro,\nsi no es tu voz, el norte que pretendo.\nEludiendo por eso el mal presagio\nde que ni en ti siquiera habré seguro,\nvoy entre pena y pena sonriendo.",
       "categoria_principal": "Poesía",
       "categoria_secundaria": "Autobiográfica"
+    },
+    {
+      "titulo": "TRÓPICO DE CÁNCER",
+      "autor": "HENRY MILLER",
+      "fecha": "Octubre de 2026",
+      "paginas": 384,
+      "editorial": "Cátedra",
+      "puntuacion": 5,
+      "sinopsis": "Henry Miller fue un lector voraz y autodidacta. Pensaba, siguiendo a Emerson, que la literatura del futuro sería autobiográfica. \"Trópico de Cáncer\" inicia con su publicación en 1934 la explosión literaria y editorial de Miller. A pesar de que dio lugar a que se celebraran más de sesenta juicios a propósito de su legalización, no fue escrito para escandalizar a los \"burgueses bien pensantes\"; su cuidada elaboración prueba la aspiración literaria de su autor, que logró hacer de ella un emblema de la desolada condición del artista en aquellos tiempos.",
+      "comentario": "No me gustó mucho. Las partes en las que describe sus vivencias sí son curiosas, sobre todo al final del libro, pero las disertaciones que intercala me resultaron incomprensibles. En general, se me hizo largo.",
+      "citas": "Replica unos párrafos de Papini. Yo creo que de \"Un hombre acabado\"\n\nUn frio húmedo, borracho, contra el que no hay otra protección que la fortaleza de espíritu.\n\nPágina 270. Se queda a gusto hablando de la religión católica\n\nPágina 273. Menciona que de siente como un factótum. Sacaría Bulowski el título de su libro de aquí?",
+      "categoria_principal": "Novela",
+      "categoria_secundaria": "Realismo sucio"
     }
   ],
   "proximas": [
-    {
-      "titulo": "COLOQUIO DE INVIERNO",
-      "autor": "LUIS LANDERO",
-      "sinopsis": "Siete personajes atrapados por un temporal deciden animar la espera contándose historias que nunca antes habían confesado.",
-      "paginas": 312,
-      "editorial": "Tusquets",
-      "categoria_principal": "Novela",
-      "categoria_secundaria": "Social"
-    },
     {
       "titulo": "REVANCHA",
       "autor": "KIKO AMAT",
@@ -1426,18 +1430,6 @@
       "editorial": "Libros Cúpula"
     },
     {
-      "titulo": "TRÓPICO DE CÁNCER",
-      "autor": "HENRY MILLER",
-      "sinopsis": "Henry Miller fue un lector voraz y autodidacta. Pensaba, siguiendo a Emerson, que la literatura del futuro sería autobiográfica. \"Trópico de Cáncer\" inicia con su publicación en 1934 la explosión literaria y editorial de Miller. A pesar de que dio lugar a que se celebraran más de sesenta juicios a propósito de su legalización, no fue escrito para escandalizar a los \"burgueses bien pensantes\"; su cuidada elaboración prueba la aspiración literaria de su autor, que logró hacer de ella un emblema de la desolada condición del artista en aquellos tiempos.",
-      "citas": "Replica unos párrafos de Papini. Yo creo que de \"Un hombre acabado\"\n\nUn frio húmedo, borracho, contra el que no hay otra protección que la fortaleza de espíritu.\n\nPágina 270. Se queda a gusto hablando de la religión católica\n\nPágina 273. Menciona que de siente como un factótum. Sacaría Bulowski el título de su libro de aquí?",
-      "fechaInicio": "2026-10-02T10:40:20.085Z",
-      "porcentaje": 94,
-      "categoria_principal": "Novela",
-      "categoria_secundaria": "Realismo sucio",
-      "paginas": 384,
-      "editorial": "Cátedra"
-    },
-    {
       "titulo": "POETA DE GUARDIA",
       "autor": "GLORIA FUERTES",
       "sinopsis": "",
@@ -1448,6 +1440,18 @@
       "categoria_secundaria": "",
       "paginas": 159,
       "editorial": "Torremozas"
+    },
+    {
+      "titulo": "COLOQUIO DE INVIERNO",
+      "autor": "LUIS LANDERO",
+      "sinopsis": "Siete personajes atrapados por un temporal deciden animar la espera contándose historias que nunca antes habían confesado.",
+      "citas": "",
+      "fechaInicio": "2026-10-18T21:45:39.280Z",
+      "porcentaje": 0,
+      "categoria_principal": "Novela",
+      "categoria_secundaria": "Social",
+      "paginas": 312,
+      "editorial": "Tusquets"
     }
   ],
   "categorias": {
