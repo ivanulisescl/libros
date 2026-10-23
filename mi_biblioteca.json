@@ -1108,15 +1108,6 @@
   ],
   "proximas": [
     {
-      "titulo": "MEMORIAS DEL SUBSUELO",
-      "autor": "FIÓDOR DOSTOYEVSKI",
-      "sinopsis": "Memorias del subsuelo es una obra contradictoria, no exenta de matices. En forma de diálogo, un hombre sin nombre ni identidad concreta, excepto la de ser un funcionario, como se presenta a sí mismo desde las primeras páginas, va narrando las memorias de su tragedia personal. Dostoievski logra crear con él uno de los mejores y más impactantes antihéroes de su ingente producción novelística, como lo son Raskólnikov o Iván Karamázov, un sujeto retórico de difícil imitación, en el que las raíces eslavófilas y el innegable rechazo a la imposición burocrática se aúnan en todo un tratado.Fiódor M. Dostoievski escribe Memorias del subsuelo en un momento social y político bastante complejo, al que se une la delicada situación personal por la que el autor estaba atravesando: su mujer se moría y su tormentosa relación sentimental con una joven le causaba dudas y remordimientos que incidían en una evidente crisis personal. El resultado de esa situación histórica, personal, vital y anímica es una obra que en pocas páginas concentra más contenido filosófico que ninguna otra obra del autor, y en la que se plantean las cuestiones más extremas que un hombre pueda hacer.",
-      "paginas": 101,
-      "editorial": "Cátedra",
-      "categoria_principal": "Novela",
-      "categoria_secundaria": "Psicológica"
-    },
-    {
       "titulo": "REVANCHA",
       "autor": "KIKO AMAT",
       "sinopsis": "Amador es el consejero y número dos de la facción cri­minal de Lokos, el grupo ultra del FC Barcelona. Extor­sionan, pegan palizas por encargo, mueven droga y des­truyen a bandas de traficantes o ultras enemigos. Su kapo es Alberto Cid, alias el Cid, un psicópata catalán sin alma ni escrúpulos. Amador y el Cid, legendarios skinheads neonazis del gol sur durante los ochenta y noventa, fueron inseparables durante años, hasta que algo les separó. Amador acarrea muchos secretos, y el mayor de ellos es su homosexualidad. César «Jabalí» Beltrán fue rugbista y ahora se gana la vida vengando por encargo a víctimas de pederastas y atropelladores en fuga. Un secuestro, una redada y un botín desapare­cido hacen que la vida de César y la de Amador se entre­crucen, con resultados imprevisibles para ambos.",
@@ -1133,23 +1124,6 @@
       "editorial": "Tusquets",
       "categoria_principal": "Novela",
       "categoria_secundaria": "Realismo sucio"
-    },
-    {
-      "titulo": "BARTLEBY, EL ESCRIBIENTE",
-      "autor": "HERMAN MELVILLE",
-      "sinopsis": "«Bartleby, el escribiente» es una de las narraciones más originales y conmovedoras de la historia de la literatura. Melville escribió este relato a mediados del siglo XIX, pero por él no parece haber pasado el tiempo. Nos cuenta la historia de un peculiar copista que trabaja en una oficina de Wall Street. Un día, de repente, deja de escribir amparándose en su famosa fórmula: «Preferiría no hacerlo». Nadie sabe de dónde viene este escribiente, prefiere no decirlo, y su futuro es incierto pues prefiere no hacer nada que altere su situación. El abogado, que es el narrador, no sabe cómo actuar ante esta rebeldía, pero al mismo tiempo se siente atraído por tan misteriosa actitud. Su compasión hacia el escribiente, un empleado que no cumple ninguna de sus órdenes, hace de este personaje un ser tan extraño como el propio Bartleby. El libro está ilustrado por Javier Zabala, Premio Nacional de Ilustración 2005.",
-      "paginas": 45,
-      "editorial": "Cátedra",
-      "categoria_principal": "Relatos",
-      "categoria_secundaria": "Psicológica"
-    },
-    {
-      "titulo": "EL IDIOTA",
-      "autor": "FIÓDOR DOSTOYEVSKI",
-      "sinopsis": "«Necesito tratar con buenas personas», dice el joven príncipe Lev Nikoláievich Myshkin al llegar a San Petersburgo, después de pasar cuatro años en un sanatorio suizo tratándose el «mal caduco». Apenas tiene dinero y su única esperanza es una pariente muy remota, Lizaveta Profófievna Yepanchiná, casada con un general retirado y madre de tres hijas. El mismo día de su llegada es un cúmulo de incidencias: desde la acogida —mezcla de curiosidad y suspicacia— que le dispensa su lejana familia hasta una noche de escándalo y humillaciones en casa de una bella mujer de mala reputación, Nastasia Filíppovna, cercada por varios pretendientes. Se encuentra de pronto, en fin, arrojado al acontecer, en medio de «una gente extremadamente rara», como un eremita obligado a socializar. Con su candidez e inconsciente indiscreción, a lo largo de la novela no dejarán de llamarlo «idiota», pero también «artista», «enfermo», «loco», «niño»; y algunos creen que es un tipo astuto que esconde algún as bajo la manga. Él es incapaz de comprender la mentira, el desdén, la bajeza, la «extraña e incesante necesidad de ser y sentirse permanentemente agraviado», el «estado febril» en que él mismo se sumerge a veces. «Estoy de más en la sociedad», llega a pensar, pero la compasión y un impulso de ser de algún modo útil le impiden abandonar, con dramáticas consecuencias. Escrita después de Crimen y castigo y antes de Los demonios, de nuevo en un largo período de penurias, El idiota (1868-1869), que aquí presentamos en una nueva traducción de Fernando Otero Macías, inicia el ciclo final de obras maestras de Dostoievski. Como ellas, ha propiciado múltiples lecturas, pero sigue siendo la más enigmática e imprevisible de todas.",
-      "paginas": 713,
-      "categoria_principal": "Novela",
-      "categoria_secundaria": ""
     },
     {
       "titulo": "LO DEMÁS ES AIRE",
@@ -1473,7 +1447,7 @@
       "sinopsis": "Siete personajes atrapados por un temporal deciden animar la espera contándose historias que nunca antes habían confesado.",
       "citas": "El término proselitista es un adjetivo (y se usa también como sustantivo) que define a quien pone empeño o muestra celo en ganar prosélitos, es decir, en convencer y atraer a nuevas personas para que se unan a una causa, doctrina, organización social, partido político o religión.\n\nUna glosa es una nota o comentario que se añade para explicar, aclarar o ampliar el significado de un texto, una cuenta o un acto administrativo.",
       "fechaInicio": "2026-10-18T21:45:39.280Z",
-      "porcentaje": 29,
+      "porcentaje": 33,
       "categoria_principal": "Novela",
       "categoria_secundaria": "Social",
       "paginas": 312,
