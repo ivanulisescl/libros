@@ -1398,6 +1398,23 @@
       "editorial": "Literatura Random House",
       "categoria_principal": "Novela",
       "categoria_secundaria": "Histórica"
+    },
+    {
+      "titulo": "VIDA, PASIÓN Y MUERTE DE FEDERICO GARCÍA LORCA (1898 - 1936)",
+      "autor": "IAN GIBSON",
+      "sinopsis": "Esta biografía sobre Lorca, mundialmente aclamada, enriquecida hoy con nueva información, nos ofrece las claves de uno de los genios más apasionantes y más queridos del siglo XX, un revolucionario sin carnet, que cantó al derecho del individuo a su propia vida, a su propio erotismo, a su libertad. Estar al lado de los marginados le condenó a muerte y, en el 70.º aniversario de su fusilamiento, su obra sigue más vigente que nunca. «La novela verdadera y trágica de la vida de Federico García Lorca no puede contarla ya nadie sin tener presente la aventura de indagaciones a la que ha dedicado tantos años Ian Gibson.",
+      "paginas": 890,
+      "editorial": "Penguin",
+      "categoria_principal": "Biografía",
+      "categoria_secundaria": "Biográfica"
+    },
+    {
+      "titulo": "ROMANCERO GITANO",
+      "autor": "FEDERICO GARCÍA LORCA",
+      "sinopsis": "El Romancero gitano es una de las creaciones líricas más significativas del siglo XX. Punto culminante de la primera etapa estética de Lorca, el propio poeta lo define como el poema de Andalucía, y lo llamo gitano porque el gitano es lo más elevado, lo más profundo, más aristocrático de mi país, lo más representativo de su modo y el que guarda el ascua, la sangre y el alfabeto de la verdad andaluza y universal. Es, sin embargo, un libro donde apenas sí está expresada la Andalucía que se ve, pero donde está temblando la que no se ve: un libro antipintoresco, antifolclórico, antiflamenco..., donde las figuras sirven a fondos milenarios y donde no hay más que un personaje grande y oscuro como un cielo de estío... la Pena",
+      "paginas": 81,
+      "categoria_principal": "Poesía",
+      "categoria_secundaria": ""
     }
   ],
   "abandonados": [
