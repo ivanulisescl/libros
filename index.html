@@ -2675,11 +2675,20 @@
         }
 
         .leyendo-progress-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 2.75rem;
             margin-bottom: 0;
+        }
+
+        .leyendo-progress-wrap.arrastrando {
+            z-index: 4;
         }
 
         .leyendo-progress-bar {
             position: relative;
+            width: 100%;
             height: 0.85rem;
             background: color-mix(in srgb, var(--secondary) 80%, #000);
             border: none;
@@ -2694,7 +2703,6 @@
             bottom: 0;
             background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
             border-radius: 999px;
-            transition: width 0.4s ease;
             width: 0%;
         }
 
@@ -2711,26 +2719,41 @@
             line-height: 1;
             font-weight: 600;
             color: #fff;
-            cursor: pointer;
             z-index: 2;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
-            transition: background 0.2s ease;
+            pointer-events: none;
         }
 
-        .leyendo-porcentaje:hover {
-            background: rgba(0, 0, 0, 0.06);
-        }
-
-        .leyendo-porcentaje input {
-            width: 3.5rem;
+        .leyendo-progress-range {
+            position: absolute;
+            inset: 0;
+            width: 100%;
             height: 100%;
-            font-size: inherit;
-            color: inherit;
-            background: var(--card-bg);
-            border: 1px solid var(--accent);
-            border-radius: 6px;
-            padding: 0 0.25rem;
-            text-align: center;
+            margin: 0;
+            opacity: 0;
+            cursor: pointer;
+            touch-action: none;
+        }
+
+        .leyendo-pct-bubble {
+            position: absolute;
+            z-index: 5;
+            bottom: calc(100% - 0.2rem);
+            transform: translateX(-50%);
+            padding: 0.1rem 0.45rem 0.15rem;
+            border-radius: 0.7rem;
+            background: var(--accent-light);
+            color: #2d2520;
+            font-size: 2.5rem;
+            font-weight: 600;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .leyendo-pct-bubble[hidden] {
+            display: none;
         }
 
         .leyendo-actions {
@@ -3119,7 +3142,7 @@
                 <button class="btn-icon" id="importBtn">Importar</button>
                 <input type="file" id="importFile" accept=".json" style="display: none;">
                 <button class="btn-icon" id="resetBtn" title="Recargar datos desde el servidor">Resetear</button>
-                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.54)</button>
+                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.55)</button>
             </div>
         </div>
     </nav>
@@ -5316,14 +5339,6 @@
             e.preventDefault();
             anadirCategoria('subgeneros', document.getElementById('subgeneroNuevo'));
         });
-        document.getElementById('leyendoSection').addEventListener('click', (e) => {
-            const pct = e.target.closest('.leyendo-porcentaje');
-            if (!pct || pct.querySelector('input')) return;
-            const card = e.target.closest('.leyendo-card');
-            if (!card) return;
-            const index = parseInt(card.dataset.index, 10);
-            if (!isNaN(index)) editarPorcentajeLeyendo(index);
-        });
         document.getElementById('modalClose').addEventListener('click', closeModal);
         document.getElementById('cancelBtn').addEventListener('click', closeModal);
         document.getElementById('modalOverlay').addEventListener('click', (e) => {
@@ -6270,10 +6285,12 @@
                         ${filaFichaOpcional(libro)}
                         ${filaCategorias(libro)}
                         <div class="leyendo-progress-wrap">
+                            <div class="leyendo-pct-bubble" hidden>${pct}%</div>
                             <div class="leyendo-progress-bar">
                                 <div class="leyendo-progress-fill" style="width: ${pct}%"></div>
-                                <div class="leyendo-porcentaje" title="Clic para editar">${pct}%</div>
+                                <div class="leyendo-porcentaje">${pct}%</div>
                             </div>
+                            <input type="range" class="leyendo-progress-range" min="0" max="100" step="1" value="${pct}" aria-label="Porcentaje de ${textoHtml(libro.titulo).replace(/"/g, '&quot;')}" aria-valuetext="${pct} por ciento">
                         </div>
                     </div>
                     <div class="leyendo-actions">
@@ -6290,6 +6307,7 @@
                 </div>`;
             }).join('');
 
+            enlazarPorcentajeLeyendo();
             section.classList.add('visible');
         }
 
@@ -6312,48 +6330,80 @@
             btn.blur();
         }
 
-        function editarPorcentajeLeyendo(index) {
-            const libro = librosLeyendo[index];
-            if (!libro) return;
-            const card = document.querySelector(`.leyendo-card[data-index="${index}"]`);
-            if (!card) return;
-            const div = card.querySelector('.leyendo-porcentaje');
-            if (!div || div.querySelector('input')) return;
-            const actual = libro.porcentaje ?? 0;
-            const input = document.createElement('input');
-            input.type = 'number';
-            input.min = 0;
-            input.max = 100;
-            input.value = actual;
-            input.addEventListener('blur', guardarPorcentaje);
-            input.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') { e.preventDefault(); guardarPorcentaje(e); }
-                if (e.key === 'Escape') { cancelarEdicionPorcentaje(); }
+        function enlazarPorcentajeLeyendo() {
+            document.querySelectorAll('.leyendo-card').forEach(card => {
+                const index = parseInt(card.dataset.index, 10);
+                const libro = librosLeyendo[index];
+                const input = card.querySelector('.leyendo-progress-range');
+                const wrap = card.querySelector('.leyendo-progress-wrap');
+                const fill = card.querySelector('.leyendo-progress-fill');
+                const label = card.querySelector('.leyendo-porcentaje');
+                const bubble = card.querySelector('.leyendo-pct-bubble');
+                const bar = card.querySelector('.leyendo-progress-bar');
+                if (!libro || !input || !wrap || !fill || !label || !bubble || !bar) return;
+
+                let pendiente = false;
+                let pulsado = false;
+
+                function colocar(valor) {
+                    const n = Math.max(0, Math.min(100, Math.round(valor)));
+                    input.value = String(n);
+                    input.setAttribute('aria-valuetext', n + ' por ciento');
+                    fill.style.width = n + '%';
+                    label.textContent = n + '%';
+                    bubble.textContent = n + '%';
+                    libro.porcentaje = n;
+                    if (bubble.hidden) return;
+                    const ancho = bar.clientWidth;
+                    const burbuja = bubble.offsetWidth || 72;
+                    const minimo = burbuja / 2;
+                    const maximo = Math.max(minimo, ancho - burbuja / 2);
+                    const x = Math.max(minimo, Math.min(maximo, (n / 100) * ancho));
+                    bubble.style.left = x + 'px';
+                }
+
+                function mostrar() {
+                    wrap.classList.add('arrastrando');
+                    bubble.hidden = false;
+                    colocar(Number(input.value));
+                }
+
+                function ocultar() {
+                    wrap.classList.remove('arrastrando');
+                    bubble.hidden = true;
+                }
+
+                function guardar() {
+                    if (!pendiente) return;
+                    pendiente = false;
+                    saveLeyendo();
+                }
+
+                function soltar() {
+                    pulsado = false;
+                    ocultar();
+                    guardar();
+                }
+
+                input.addEventListener('pointerdown', (event) => {
+                    pulsado = true;
+                    mostrar();
+                    try { input.setPointerCapture(event.pointerId); } catch (e) {}
+                });
+                input.addEventListener('pointerup', soltar);
+                input.addEventListener('pointercancel', soltar);
+                input.addEventListener('lostpointercapture', soltar);
+                input.addEventListener('keydown', mostrar);
+                input.addEventListener('blur', soltar);
+                input.addEventListener('input', () => {
+                    pendiente = true;
+                    colocar(Number(input.value));
+                });
+                input.addEventListener('change', () => {
+                    guardar();
+                    if (!pulsado) ocultar();
+                });
             });
-            div.textContent = '';
-            div.appendChild(input);
-            input.focus();
-            input.select();
-
-            function guardarPorcentaje() {
-                let n = parseInt(input.value, 10);
-                if (isNaN(n)) n = actual;
-                n = Math.max(0, Math.min(100, n));
-                libro.porcentaje = n;
-                saveLeyendo();
-                div.textContent = n + '%';
-                div.title = 'Clic para editar';
-                const progressFill = card.querySelector('.leyendo-progress-fill');
-                if (progressFill) progressFill.style.width = n + '%';
-                input.removeEventListener('blur', guardarPorcentaje);
-            }
-
-            function cancelarEdicionPorcentaje() {
-                input.removeEventListener('blur', guardarPorcentaje);
-                div.textContent = (libro.porcentaje ?? 0) + '%';
-                div.title = 'Clic para editar';
-                input.remove();
-            }
         }
 
         function abrirCitaRapida(index) {
