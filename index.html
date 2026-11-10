@@ -2680,6 +2680,7 @@
             align-items: center;
             height: 2.75rem;
             margin-bottom: 0;
+            touch-action: none;
         }
 
         .leyendo-progress-wrap.arrastrando {
@@ -2733,6 +2734,12 @@
             opacity: 0;
             cursor: pointer;
             touch-action: none;
+        }
+
+        @media (pointer: coarse) {
+            .leyendo-progress-range {
+                pointer-events: none;
+            }
         }
 
         .leyendo-pct-bubble {
@@ -3142,7 +3149,7 @@
                 <button class="btn-icon" id="importBtn">Importar</button>
                 <input type="file" id="importFile" accept=".json" style="display: none;">
                 <button class="btn-icon" id="resetBtn" title="Recargar datos desde el servidor">Resetear</button>
-                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.55)</button>
+                <button class="btn-icon" id="updateAppBtn" title="Forzar actualización de la app">Actualizar (v3.56)</button>
             </div>
         </div>
     </nav>
@@ -6344,6 +6351,10 @@
 
                 let pendiente = false;
                 let pulsado = false;
+                let tactil = null;
+                // La barra mide unos 200px: a 1:1 cada punto son ~2px y el dedo se pasa.
+                // En táctil el arrastre parte del porcentaje actual, a 20px por punto.
+                const pxPorPunto = 20;
 
                 function colocar(valor) {
                     const n = Math.max(0, Math.min(100, Math.round(valor)));
@@ -6362,10 +6373,10 @@
                     bubble.style.left = x + 'px';
                 }
 
-                function mostrar() {
+                function mostrar(valor) {
                     wrap.classList.add('arrastrando');
                     bubble.hidden = false;
-                    colocar(Number(input.value));
+                    colocar(valor === undefined ? Number(input.value) : valor);
                 }
 
                 function ocultar() {
@@ -6380,12 +6391,51 @@
                 }
 
                 function soltar() {
+                    if (tactil) return;
                     pulsado = false;
                     ocultar();
                     guardar();
                 }
 
+                function moverTactil(event) {
+                    if (!tactil || event.pointerId !== tactil.id) return;
+                    const dx = event.clientX - tactil.x;
+                    tactil.movido = true;
+                    pendiente = true;
+                    tactil.mostrado = tactil.valor + dx / pxPorPunto;
+                    colocar(tactil.mostrado);
+                }
+
+                function finalizarTactil(event) {
+                    if (!tactil || !event || event.pointerId !== tactil.id) return;
+                    tactil = null;
+                    pulsado = false;
+                    ocultar();
+                    guardar();
+                }
+
+                wrap.addEventListener('pointerdown', (event) => {
+                    if (event.pointerType !== 'touch') return;
+                    event.preventDefault();
+                    event.stopPropagation();
+                    const actual = libro.porcentaje ?? 0;
+                    tactil = {
+                        id: event.pointerId,
+                        x: event.clientX,
+                        valor: actual,
+                        movido: false,
+                        mostrado: actual
+                    };
+                    pulsado = true;
+                    mostrar(actual);
+                    try { wrap.setPointerCapture(event.pointerId); } catch (e) {}
+                }, { capture: true, passive: false });
+                wrap.addEventListener('pointermove', moverTactil);
+                wrap.addEventListener('pointerup', finalizarTactil);
+                wrap.addEventListener('pointercancel', finalizarTactil);
+
                 input.addEventListener('pointerdown', (event) => {
+                    if (event.pointerType === 'touch') return;
                     pulsado = true;
                     mostrar();
                     try { input.setPointerCapture(event.pointerId); } catch (e) {}
@@ -6393,13 +6443,18 @@
                 input.addEventListener('pointerup', soltar);
                 input.addEventListener('pointercancel', soltar);
                 input.addEventListener('lostpointercapture', soltar);
-                input.addEventListener('keydown', mostrar);
+                input.addEventListener('keydown', () => mostrar());
                 input.addEventListener('blur', soltar);
                 input.addEventListener('input', () => {
+                    if (tactil) {
+                        colocar(tactil.movido ? tactil.mostrado : tactil.valor);
+                        return;
+                    }
                     pendiente = true;
                     colocar(Number(input.value));
                 });
                 input.addEventListener('change', () => {
+                    if (tactil) return;
                     guardar();
                     if (!pulsado) ocultar();
                 });
