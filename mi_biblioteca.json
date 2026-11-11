@@ -1144,15 +1144,6 @@
       "categoria_secundaria": "Psicológica"
     },
     {
-      "titulo": "MANTECA COLORÁ",
-      "autor": "MONTERO GLEZ",
-      "sinopsis": "Por si no lo he dicho antes, estamos hablando de Conil de la Frontera, un pueblo marinero situado en la región más antigua y más ofendida de occidente: la costa gaditana. El pueblo no es muy grande y visto de lejos, se asemeja a un brochazo blanco sobre la playa je llaman de los Bateles. Sin embargo, a la noche, recién encendidas las casas, guarda cierto parecido con un belén navideño de los tiempos de Augusto, no haciendo falta que ea época de villancicos para que el milagro acontezca Ocurre en todas las épocas del año, incluso en las de verano, con sus noches de brisa agradable y sardinita a la plancha, siendo en tan candente estación cuando el Nacimiento puede verse al completo. No faltan ni las luces de mentiras ni las estrellas de purpurina, ni tampoco los camellos ni sus tabernas brillando a lo lejos. Una de estas tabernas lleva por nombre la Gigantilla y tiene un cartel a la entrada donde pone: Especialidad en Caracoles y Carne Mechada. Y aquí nos vamos a parar, pues es donde la Sole trabaja. Abre una vez pasada la calor, a eso de las seis de la tarde. Y echa los cierres después del último cliente, que suele ser a las mil y gallo.",
-      "paginas": 184,
-      "editorial": "Tusquets",
-      "categoria_principal": "Novela",
-      "categoria_secundaria": "Realismo sucio"
-    },
-    {
       "titulo": "BARTLEBY, EL ESCRIBIENTE",
       "autor": "HERMAN MELVILLE",
       "sinopsis": "«Bartleby, el escribiente» es una de las narraciones más originales y conmovedoras de la historia de la literatura. Melville escribió este relato a mediados del siglo XIX, pero por él no parece haber pasado el tiempo. Nos cuenta la historia de un peculiar copista que trabaja en una oficina de Wall Street. Un día, de repente, deja de escribir amparándose en su famosa fórmula: «Preferiría no hacerlo». Nadie sabe de dónde viene este escribiente, prefiere no decirlo, y su futuro es incierto pues prefiere no hacer nada que altere su situación. El abogado, que es el narrador, no sabe cómo actuar ante esta rebeldía, pero al mismo tiempo se siente atraído por tan misteriosa actitud. Su compasión hacia el escribiente, un empleado que no cumple ninguna de sus órdenes, hace de este personaje un ser tan extraño como el propio Bartleby. El libro está ilustrado por Javier Zabala, Premio Nacional de Ilustración 2005.",
@@ -1160,6 +1151,15 @@
       "editorial": "Cátedra",
       "categoria_principal": "Relatos",
       "categoria_secundaria": "Psicológica"
+    },
+    {
+      "titulo": "MANTECA COLORÁ",
+      "autor": "MONTERO GLEZ",
+      "sinopsis": "Por si no lo he dicho antes, estamos hablando de Conil de la Frontera, un pueblo marinero situado en la región más antigua y más ofendida de occidente: la costa gaditana. El pueblo no es muy grande y visto de lejos, se asemeja a un brochazo blanco sobre la playa je llaman de los Bateles. Sin embargo, a la noche, recién encendidas las casas, guarda cierto parecido con un belén navideño de los tiempos de Augusto, no haciendo falta que ea época de villancicos para que el milagro acontezca Ocurre en todas las épocas del año, incluso en las de verano, con sus noches de brisa agradable y sardinita a la plancha, siendo en tan candente estación cuando el Nacimiento puede verse al completo. No faltan ni las luces de mentiras ni las estrellas de purpurina, ni tampoco los camellos ni sus tabernas brillando a lo lejos. Una de estas tabernas lleva por nombre la Gigantilla y tiene un cartel a la entrada donde pone: Especialidad en Caracoles y Carne Mechada. Y aquí nos vamos a parar, pues es donde la Sole trabaja. Abre una vez pasada la calor, a eso de las seis de la tarde. Y echa los cierres después del último cliente, que suele ser a las mil y gallo.",
+      "paginas": 184,
+      "editorial": "Tusquets",
+      "categoria_principal": "Novela",
+      "categoria_secundaria": "Realismo sucio"
     },
     {
       "titulo": "EL IDIOTA",
