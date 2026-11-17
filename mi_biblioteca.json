@@ -1430,15 +1430,6 @@
       "categoria_secundaria": ""
     },
     {
-      "titulo": "POESÍAS COMPLETAS",
-      "autor": "GARCILASO DE LA VEGA",
-      "sinopsis": "a edición reúne los sonetos, canciones, elegías, epístolas y églogas de Garcilaso de la Vega, poeta del Siglo de Oro español. El amor domina su escritura, y el volumen añade un estudio introductorio del autor y su época, cuadros cronológicos, notas y orientaciones para el análisis de los poemas.",
-      "paginas": 250,
-      "editorial": "Castalia",
-      "categoria_principal": "Poesía",
-      "categoria_secundaria": ""
-    },
-    {
       "titulo": "EL JUGADOR",
       "autor": "FIÓDOR DOSTOYEVSKI",
       "sinopsis": "Novela de indudable trasfondo autobiográfico, El jugador (1866) refleja los dos grandes impulsos, el juego y la pasión amorosa, que dominaron la vida de Fiódor Dostoyevski (1821-1881).En medio de una galería de personajes desarraigados y trashumantes que deambulan por la ciudad-balneario de Wiesbaden (el «Roulettenburg» de la ficción), la patética figura de Aleksei Ivanovich personifica el goce y la angustia del tipo humano que acaba por canalizar toda su capacidad de protesta en la pasión por el juego como vía de acceso, mediante el dolor y el envilecimiento, a una libertad vorazmente deseada.",
@@ -1534,6 +1525,18 @@
       "categoria_secundaria": "Psicológica",
       "paginas": 101,
       "editorial": "Cátedra"
+    },
+    {
+      "titulo": "POESÍAS COMPLETAS",
+      "autor": "GARCILASO DE LA VEGA",
+      "sinopsis": "a edición reúne los sonetos, canciones, elegías, epístolas y églogas de Garcilaso de la Vega, poeta del Siglo de Oro español. El amor domina su escritura, y el volumen añade un estudio introductorio del autor y su época, cuadros cronológicos, notas y orientaciones para el análisis de los poemas.",
+      "citas": "",
+      "fechaInicio": "2026-11-17T12:17:12.681Z",
+      "porcentaje": 0,
+      "categoria_principal": "Poesía",
+      "categoria_secundaria": "",
+      "paginas": 250,
+      "editorial": "Castalia"
     }
   ],
   "categorias": {
